@@ -1,6 +1,21 @@
 const User = require('../models/User')
 const SECURITY = require('../../../services/security/Security')
 
+
+const GetOne = async (id) =>
+{
+    return await User.findById(id)
+        .then((user) =>
+        {
+            user == null ? { status: 404 } : { status: 200, data: user }
+        })
+}
+
+const GetAll = async () =>
+{
+    return await User.find()
+}
+
 const Create = async (user) =>
 {
     user.password = await SECURITY.encrypt(user.password)
@@ -11,8 +26,21 @@ const Create = async (user) =>
         })
 }
 
+const Update = async (userUpdate) =>
+{
+    return await User.findByIdAndUpdate(userUpdate.id, userUpdate)
+}
+
+const Delete = async () =>
+{
+
+}
 
 
 module.exports = {
-    Create
+    GetOne,
+    GetAll,
+    Create,
+    Update,
+    Delete
 }
