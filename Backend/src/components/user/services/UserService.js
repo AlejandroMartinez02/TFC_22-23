@@ -4,11 +4,9 @@ const SECURITY = require('../../../services/security/Security')
 
 const GetOne = async (id) =>
 {
-    return await User.findById(id)
-        .then((user) =>
-        {
-            user == null ? { status: 404 } : { status: 200, data: user }
-        })
+    let user = await User.findById(id)
+    return user == null ? { status: 404 } : { status: 200, data: user }
+
 }
 
 const GetAll = async () =>
@@ -19,11 +17,7 @@ const GetAll = async () =>
 const Create = async (user) =>
 {
     user.password = await SECURITY.encrypt(user.password)
-    return await new User(user).save()
-        .then(async newUser =>
-        {
-            return user == null ? { status: 401 } : { status: 200, token: SECURITY.createToken(newUser) }
-        })
+    await new User(user).save()
 }
 
 const Update = async (userUpdate) =>
@@ -33,7 +27,7 @@ const Update = async (userUpdate) =>
 
 const Delete = async () =>
 {
-
+    return await User.findByIdAndDelete(id)
 }
 
 

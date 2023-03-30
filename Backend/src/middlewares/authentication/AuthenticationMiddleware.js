@@ -14,10 +14,7 @@ function isAuth(req, res, next)
             req.user = response;
             next();
         })
-        .catch(() =>
-        {
-            RESPONSE_MANAGER.RESPONSE_500(res)
-        })
+        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }
 
 module.exports = isAuth

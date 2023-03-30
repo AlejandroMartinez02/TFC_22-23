@@ -28,9 +28,19 @@ const Login = (req, res) =>
 }
 
 
-const Register = (req, res) =>
+const Register = async (req, res) =>
 {
-
+    const { body } = req
+    await SERVICE.Register(body)
+        .then((response) =>
+        {
+            response.status == 201 ? RESPONSE_MANAGER.RESPONSE_201(res, response.data) : RESPONSE_MANAGER.RESPONSE_404(res)
+        })
+        .catch((error) =>
+        {
+            console.log(error)
+            RESPONSE_MANAGER.RESPONSE_500(res)
+        })
 }
 
 

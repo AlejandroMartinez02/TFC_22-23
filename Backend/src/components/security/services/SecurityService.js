@@ -13,9 +13,12 @@ const Login = async (user) =>
         })
 }
 
-const Register = () =>
+const Register = async (user) =>
 {
-
+    user.password = await SECURITY.encrypt(user.password)
+    user.rol = "User"
+    let response = await new User(user).save()
+    return { status: 201, data: SECURITY.createToken(response) }
 }
 
 module.exports = {
