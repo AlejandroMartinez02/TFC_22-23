@@ -6,7 +6,7 @@ dotenv.config()
 
 let userRouter = require('./components/user/UserRoutes')
 let workersRoutes = require('./components/worker/WorkerRoutes')
-let dishesRoutes = require('./components/dish/DishRoutes.js')
+let dishesRoutes = require('./components/dish/DishRoutes')
 let securityRoutes = require('./components/security/SecurityRoutes')
 
 mongoose.set('strictQuery', true)

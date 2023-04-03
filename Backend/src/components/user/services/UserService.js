@@ -22,7 +22,7 @@ const Create = async (user) =>
 
 const Update = async (userUpdate) =>
 {
-    return await User.findByIdAndUpdate(userUpdate.id, userUpdate)
+    await User.findByIdAndUpdate(userUpdate._id, userUpdate)
 }
 
 const Delete = async () =>
