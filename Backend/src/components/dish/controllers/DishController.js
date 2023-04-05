@@ -41,7 +41,7 @@ const Update = async (req, res) =>
     const { body } = req
     await SERVICE.Update(body)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch((error) => console.log(error))
+        .catch(() => RESPONSE_MANAGER.RESPONSE_404(res))
 }
 
 const Delete = async (req, res) =>
@@ -49,7 +49,7 @@ const Delete = async (req, res) =>
     const { id } = req.body
     await SERVICE.Delete(id)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
+        .catch(() => RESPONSE_MANAGER.RESPONSE_404(res))
 }
 
 

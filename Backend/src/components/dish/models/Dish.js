@@ -4,7 +4,8 @@ let dishSchema = new MONGOOSE.Schema({
     name: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        unique: true
     },
     ingredients: {
         type: String,

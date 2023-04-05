@@ -4,6 +4,7 @@ const RESPONSE_MANAGER = require('../../../services/response/ResponseManager')
 const GetById = async (req, res) =>
 {
     let id = req.headers.id == undefined ? req.user.sub : req.headers.id
+
     await SERVICE.GetOne(id)
         .then((response) =>
         {
@@ -32,10 +33,7 @@ const Create = async (req, res) =>
 
     const { body } = req
     await SERVICE.Create(body)
-        .then(() =>
-        {
-            RESPONSE_MANAGER.RESPONSE_200(res)
-        })
+        .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
         .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }
 
@@ -44,7 +42,7 @@ const Update = async (req, res) =>
 {
     const { body } = req
 
-    if (user.rol != "Admin" || user.rol == body.rol) return RESPONSE_MANAGER.RESPONSE_403(res)
+    if (req.user.rol != "Admin" && req.user.rol == body.rol) return RESPONSE_MANAGER.RESPONSE_403(res)
 
     await SERVICE.Update(body)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
@@ -53,12 +51,12 @@ const Update = async (req, res) =>
 
 const Delete = async (req, res) =>
 {
-    if (user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)
+    if (req.user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)
 
-    const { id } = req.headers
-    await SERVICE.Delete(id)
+    const { _id } = req.body
+    await SERVICE.Delete(_id)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
+        .catch(() => RESPONSE_MANAGER.RESPONSE_404(res))
 
 }
 
