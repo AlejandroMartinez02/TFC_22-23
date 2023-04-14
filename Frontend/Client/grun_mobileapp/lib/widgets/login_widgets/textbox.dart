@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
 
 class LoginTextBox extends StatelessWidget {
-  final String text;
+  final Function(String?) onChanged;
   final TextInputType inputType;
   final IconData icon;
   final String hintText;
   final String labelText;
   final bool obscureText;
+  final String? Function(String?) validator;
 
-  const LoginTextBox(
-      {super.key,
-      required this.text,
-      required this.inputType,
-      required this.icon,
-      required this.hintText,
-      required this.labelText,
-      this.obscureText = false});
+  const LoginTextBox({
+    super.key,
+    required this.onChanged,
+    required this.inputType,
+    required this.icon,
+    required this.hintText,
+    required this.labelText,
+    this.obscureText = false,
+    required this.validator,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +26,10 @@ class LoginTextBox extends StatelessWidget {
     return TextFormField(
       autofocus: false,
       initialValue: '',
+      onChanged: onChanged,
       keyboardType: inputType,
       obscureText: obscureText,
+      validator: validator,
       decoration: InputDecoration(
           hintText: hintText,
           label: Text(

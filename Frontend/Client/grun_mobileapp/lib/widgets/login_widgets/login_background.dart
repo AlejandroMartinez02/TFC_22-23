@@ -37,34 +37,6 @@ class _HeaderIcon extends StatelessWidget {
   }
 }
 
-class _LoginMainBox extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Positioned(
-      top: size.height * 0.1,
-      left: size.width * 0.1,
-      child: _MainBox(),
-    );
-  }
-}
-
-class _MainBox extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      height: size.height * 0.4,
-      width: size.width * 0.8,
-      decoration: BoxDecoration(
-        color: Colors.red,
-        border: const Border.symmetric(),
-        borderRadius: BorderRadius.circular(15),
-      ),
-    );
-  }
-}
-
 class _GreenBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -86,6 +58,7 @@ class _GreenBox extends StatelessWidget {
 }
 
 //TODO: Implement this Widget with animation
+//* These are widgets that maybe i'll use in the future
 // class _BubbleForm extends StatelessWidget {
 
 //   @override
@@ -96,6 +69,34 @@ class _GreenBox extends StatelessWidget {
 //       decoration: BoxDecoration(
 //         borderRadius: BorderRadius.circular(100),
 //         color: const Color.fromRGBO(255, 255, 255, 0.22)
+//       ),
+//     );
+//   }
+// }
+
+// class _LoginMainBox extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     final size = MediaQuery.of(context).size;
+//     return Positioned(
+//       top: size.height * 0.1,
+//       left: size.width * 0.1,
+//       child: _MainBox(),
+//     );
+//   }
+// }
+
+// class _MainBox extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     final size = MediaQuery.of(context).size;
+//     return Container(
+//       height: size.height * 0.4,
+//       width: size.width * 0.8,
+//       decoration: BoxDecoration(
+//         color: Colors.red,
+//         border: const Border.symmetric(),
+//         borderRadius: BorderRadius.circular(15),
 //       ),
 //     );
 //   }
