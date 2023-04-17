@@ -38,7 +38,9 @@ class LoginForm extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            LoginButton(onPressed: () => {})
+            LoginButton(
+                onPressed: () =>
+                    {Navigator.pushReplacementNamed(context, 'home')})
           ],
         ));
   }

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'login_widgets.dart';
+
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key, required this.child});
 
@@ -7,32 +9,20 @@ class LoginBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return SizedBox(
       height: double.infinity,
       width: double.infinity,
       child: Stack(
         children: [
-          _GreenBox(),
-          _HeaderIcon(),
+          AnimatedWave(
+            height: size.height,
+            speed: 0.25,
+            direction: 0.6,
+          ),
           child,
         ],
       ),
-    );
-  }
-}
-
-class _HeaderIcon extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SafeArea(
-      child: Container(
-          width: double.infinity,
-          margin: const EdgeInsets.only(top: 30),
-          child: Image.asset(
-            "assets/1.png",
-            height: 50,
-            width: 50,
-          )),
     );
   }
 }

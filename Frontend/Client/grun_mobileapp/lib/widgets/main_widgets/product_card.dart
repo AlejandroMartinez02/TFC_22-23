@@ -1,28 +1,30 @@
 // ignore_for_file: camel_case_types
 
 import 'package:flutter/material.dart';
+import 'package:grun_mobileapp/models/models.dart';
 import 'package:grun_mobileapp/utils/utils.dart';
 
 class CategoryCard extends StatelessWidget {
-  final String photo;
-  const CategoryCard({super.key, required this.photo});
+  final Product category;
+  const CategoryCard({
+    super.key,
+    required this.category,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15),
-      child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 10),
-        height: 100,
-        decoration: _cardDecoration(),
-        child: Stack(children: [
-          _backgroundImage(photo: photo),
-          const _backgroundColor(),
-          _cardTitle(
-            title: photo.split('.')[0],
-          )
-        ]),
-      ),
+    return Container(
+      width: 250,
+      decoration: _cardDecoration(),
+      child: Stack(children: [
+        _backgroundImage(
+          photo: category.photo,
+        ),
+        const _backgroundColor(),
+        _cardTitle(
+          title: category.name,
+        )
+      ]),
     );
   }
 
@@ -50,7 +52,7 @@ class _cardTitle extends StatelessWidget {
       padding: const EdgeInsets.all(20),
       child: Text(
         title.toUpperCase(),
-        style: const TextStyle(fontSize: 40, color: Colors.white),
+        style: const TextStyle(fontSize: 18, color: Colors.white),
       ),
     );
   }
@@ -85,14 +87,14 @@ class _backgroundImage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(Constants.borderRadius),
-      child: SizedBox(
-          width: double.infinity,
-          height: 350,
-          child: FadeInImage(
-            image: AssetImage("assets/$photo"),
-            placeholder: const AssetImage("assets/foodLoader.gif"),
-            fit: BoxFit.cover,
-          )),
+      child: Container(
+        width: double.infinity,
+        child: FadeInImage(
+          image: NetworkImage(photo),
+          placeholder: const AssetImage("assets/foodLoader.gif"),
+          fit: BoxFit.cover,
+        ),
+      ),
     );
   }
 }

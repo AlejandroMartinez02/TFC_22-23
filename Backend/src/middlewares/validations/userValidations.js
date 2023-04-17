@@ -24,10 +24,6 @@ const SIGNUPCHECK = () =>
                     throw new Error("This email is already in use")
             }),
 
-        check('address')
-            .trim()
-            .isAlphanumeric('es-ES', { ignore: ' ' }),
-
         check('phone_number')
             .isMobilePhone('es-ES')
             .custom(async (phone) =>
