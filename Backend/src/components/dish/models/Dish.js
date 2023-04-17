@@ -13,7 +13,7 @@ let dishSchema = new MONGOOSE.Schema({
     },
     category: {
         type: String,
-        enum: ['Starter', 'Main', 'Dessert', 'Drink'],
+        enum: ['Entrantes', 'Para compartir', 'Bocatas', 'Hamburguesas', 'Postre', 'Bebida'],
         required: true
     },
     cost: {

@@ -3,22 +3,22 @@ const DISH = require('../../components/dish/models/Dish')
 
 const CRUD_DISH = () =>
 {
-    check('name')
-        .trim()
-        .notEmpty()
-        .isAlpha('es-ES', { ignore: ' ' })
-        .custom(async (name) =>
-        {
-            if (await DISH.find({ name: name }).length == 0) throw new Error()
-        }),
+    return [
+        check('name')
+            .trim()
+            .notEmpty()
+            .isAlpha('es-ES', { ignore: ' ' })
+            .custom(async (name) =>
+            {
+                if (await DISH.find({ name: name }).length == 0) throw new Error()
+            }),
 
         check('ingredients')
-            .notEmpty()
-            .isAlpha('es-ES', { ignore: ' ' }),
+            .notEmpty(),
 
         check('category')
             .notEmpty()
-            .matches(/Starter|Main|Dessert|Drink/g),
+            .matches(/Entrantes|Para compartir|Bocatas|Hamburguesas|Postre|Bebida/g),
 
         check('cost')
             .notEmpty()
@@ -30,7 +30,7 @@ const CRUD_DISH = () =>
 
         check('description')
             .notEmpty()
-
+    ]
 }
 
 
