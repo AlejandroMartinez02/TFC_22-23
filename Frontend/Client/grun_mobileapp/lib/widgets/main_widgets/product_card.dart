@@ -5,7 +5,7 @@ import 'package:grun_mobileapp/models/models.dart';
 import 'package:grun_mobileapp/utils/utils.dart';
 
 class CategoryCard extends StatelessWidget {
-  final Product category;
+  final ProductDTO category;
   const CategoryCard({
     super.key,
     required this.category,

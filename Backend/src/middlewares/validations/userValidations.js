@@ -47,6 +47,9 @@ const SIGNUPCHECK = () =>
 const UPDATEUSERCHECK = () =>
 {
     return [
+        check('_id')
+        .isMongoId(),
+        
         check('name')
             .trim()
             .notEmpty()

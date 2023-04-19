@@ -1,9 +1,12 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:grun_mobileapp/providers/login_form_provider.dart';
-import '../widgets/login_widgets/login_widgets.dart';
+import 'package:grun_mobileapp/providers/providers.dart';
+import 'package:grun_mobileapp/screens/register_screen.dart';
+import 'package:grun_mobileapp/utils/create_route.dart';
 import 'package:grun_mobileapp/utils/utils.dart' show Constants;
+import 'package:grun_mobileapp/widgets/login_widgets/login_widgets.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -12,6 +15,7 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: LoginBody(
           child: SingleChildScrollView(
         child: Column(children: [
@@ -23,7 +27,7 @@ class LoginScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
             child: Column(
               children: [
-                Text(Constants.loginText,
+                Text(Constants.loginTitle,
                     style: Theme.of(context).textTheme.headlineLarge),
                 SizedBox(
                   height: size.height * 0.04,
@@ -52,17 +56,25 @@ class _RegisterText extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Text(Constants.registerText,
+      children: [
+        const Text(Constants.loginRegisterText,
             style: TextStyle(
               fontSize: 18,
             )),
-        Text(
-          Constants.registerTextLink,
-          style: TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.bold,
-              fontStyle: FontStyle.italic),
+        RichText(
+          text: TextSpan(
+              text: Constants.loginRegisterLink,
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.italic,
+                  color: Colors.black),
+              recognizer: TapGestureRecognizer()
+                ..onTap = () => Navigator.pushReplacement(
+                    context,
+                    CreateRoutes.SlideFadeIn(
+                        direccion: const Offset(0, 1),
+                        screen: const RegisterScreen()))),
         ),
       ],
     );

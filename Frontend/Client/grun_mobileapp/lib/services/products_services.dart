@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 import '../utils/constants.dart';
 
 class ProductsService extends ChangeNotifier {
-  final List<Product> products = [];
+  final List<ProductDTO> products = [];
   bool isLoading = true;
 
   ProductsService() {
@@ -25,7 +25,7 @@ class ProductsService extends ChangeNotifier {
     final Map<String, dynamic> productsMap = json.decode(response.body);
     productsMap['data'].forEach((product) => {
           products.add(
-            Product.fromJson(product),
+            ProductDTO.fromJson(product),
           )
         });
 

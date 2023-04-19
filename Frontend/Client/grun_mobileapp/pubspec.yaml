@@ -37,10 +37,20 @@ dependencies:
   simple_animations: ^5.0.0+3
 
 dev_dependencies:
+  flutter_launcher_icons: ^0.13.0
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: 'launcher_icon'
+  ios: true
+  image_path: 'assets/light_logo.png'
+  adaptive_icon_background: '/assets/dark_logo.png'
+  windows:
+    generate: true
+    image_path: "assets/light_logo.png"
+    icon_size: 48
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.

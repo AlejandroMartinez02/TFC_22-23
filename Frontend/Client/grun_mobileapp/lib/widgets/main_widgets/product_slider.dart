@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/models/products.dart';
+import 'package:grun_mobileapp/models/Response/products_dto.dart';
 import 'package:grun_mobileapp/widgets/main_widgets/main_widgets.dart';
 
 class ProductSlider extends StatelessWidget {
   const ProductSlider({super.key, required this.products});
-  final List<Product> products;
+  final List<ProductDTO> products;
 
   @override
   Widget build(BuildContext context) {

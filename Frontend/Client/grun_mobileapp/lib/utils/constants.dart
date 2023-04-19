@@ -1,8 +1,14 @@
 class Constants {
   //*--- Texts and values ---*//
-  static const loginText = 'Inicio de sesión';
-  static const registerText = '¿No tienes cuenta? ';
-  static const registerTextLink = '¡Regístrate ahora!';
+  static const loginTitle = 'Inicio de sesión';
+  static const loginRegisterText = '¿Quieres ser Grün? ';
+  static const loginRegisterLink = '¡Regístrate!';
+  static const registerLoginText = '¿Ya eres Grün? ';
+  static const registerLoginLink = '¡Inicia sesión!';
+  static const registerTitle = '¡Hazte Grün!';
+  static const personalData = "Datos personales";
+  static const accountData = "Datos de la cuenta";
+  static const addressData = "Dirección";
   static const borderRadius = 15.0;
 
   //*--- Static photos ---//

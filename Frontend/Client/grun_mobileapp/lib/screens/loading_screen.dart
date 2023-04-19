@@ -5,14 +5,15 @@ class LoadingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-            child: SizedBox(
-                height: double.infinity,
-                width: double.infinity,
-                child: Column(children: const [
+        body: SizedBox(
+            height: double.infinity,
+            width: double.infinity,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
                   Image(
                     image: AssetImage("assets/hamburgerLoader.gif"),
                   ),
-                ]))));
+                ])));
   }
 }

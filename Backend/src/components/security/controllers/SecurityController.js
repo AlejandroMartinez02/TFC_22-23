@@ -8,7 +8,7 @@ const Login = (req, res) =>
         email: req.body.email,
         password: req.body.password
     }
-
+     console.log(user)
     SERVICE.Login(user)
         .then((data) =>
         {
@@ -22,7 +22,6 @@ const Login = (req, res) =>
         })
         .catch((error) =>
         {
-            console.log(error)
             RESPONSE_MANAGER.RESPONSE_500(res)
         })
 }
@@ -34,6 +33,7 @@ const Register = async (req, res) =>
     await SERVICE.Register(body)
         .then((response) =>
         {
+            console.log(response);
             response.status == 201 ? RESPONSE_MANAGER.RESPONSE_201(res, response.data) : RESPONSE_MANAGER.RESPONSE_404(res)
         })
         .catch((error) =>
