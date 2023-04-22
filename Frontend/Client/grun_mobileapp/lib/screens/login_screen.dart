@@ -15,36 +15,33 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       body: LoginBody(
-          child: SingleChildScrollView(
-        child: Column(children: [
-          _HeaderIcon(),
-          SizedBox(
-            height: size.height * 0.04,
+        child: SingleChildScrollView(
+          padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _HeaderIcon(),
+              SizedBox(
+                height: size.height * 0.04,
+              ),
+              Text(Constants.loginTitle,
+                  style: Theme.of(context).textTheme.headlineLarge),
+              SizedBox(
+                height: size.height * 0.04,
+              ),
+              ChangeNotifierProvider(
+                create: (_) => LoginFormProvider(),
+                child: const LoginForm(),
+              ),
+              SizedBox(height: size.height * 0.02),
+              SizedBox(height: size.height * 0.02),
+              const _RegisterText(),
+              SizedBox(height: size.height * 0.05),
+            ],
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
-            child: Column(
-              children: [
-                Text(Constants.loginTitle,
-                    style: Theme.of(context).textTheme.headlineLarge),
-                SizedBox(
-                  height: size.height * 0.04,
-                ),
-                ChangeNotifierProvider(
-                  create: (_) => LoginFormProvider(),
-                  child: const LoginForm(),
-                ),
-                SizedBox(height: size.height * 0.02),
-              ],
-            ),
-          ),
-          SizedBox(height: size.height * 0.02),
-          const _RegisterText(),
-          SizedBox(height: size.height * 0.05),
-        ]),
-      )),
+        ),
+      ),
     );
   }
 }

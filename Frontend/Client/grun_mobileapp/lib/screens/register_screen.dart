@@ -2,6 +2,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/providers/providers.dart';
 import 'package:grun_mobileapp/screens/screens.dart';
+import 'package:grun_mobileapp/services/notification_service.dart';
 import 'package:grun_mobileapp/utils/constants.dart';
 import 'package:grun_mobileapp/widgets/register_widgets/register_passwordbox.dart';
 import 'package:grun_mobileapp/widgets/register_widgets/register_widgets.dart';
@@ -97,16 +98,21 @@ class _RegisterForm extends StatelessWidget {
             SizedBox(height: size.height * padding),
             PasswordBox(registerForm: registerForm),
             SizedBox(height: size.height * (padding + 0.04)),
-            RegisterButton(onPressed: () async {
-              if (await registerForm.isValidForm() == null) {
-                // ignore: use_build_context_synchronously
-                Navigator.pushReplacement(
-                    context,
-                    CreateRoutes.SlideFadeIn(
-                        direccion: const Offset(1, 0),
-                        screen: const HomeScreen()));
-              } else {}
-            }),
+            RegisterButton(
+                isLoading: registerForm.isLoading,
+                onPressed: () async {
+                  if (await registerForm.isValidForm() == null) {
+                    // ignore: use_build_context_synchronously
+                    Navigator.pushReplacement(
+                        context,
+                        CreateRoutes.SlideFadeIn(
+                            direccion: const Offset(1, 0),
+                            screen: const HomeScreen()));
+                  } else {
+                    NotificationService.showSnackBar(
+                        "El correo electrónico ya está en uso, por favor ingresa uno nuevo");
+                  }
+                }),
             SizedBox(
               height: size.height * padding,
             ),

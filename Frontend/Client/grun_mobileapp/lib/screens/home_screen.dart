@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/services/products_service.dart';
 import 'package:grun_mobileapp/screens/screens.dart';
+import 'package:grun_mobileapp/services/services.dart';
+import 'package:grun_mobileapp/utils/utils.dart';
 import 'package:grun_mobileapp/widgets/main_widgets/main_widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,7 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text("Productos"),
         ),
+        drawer: CustomDrawer(),
         body: SingleChildScrollView(
           child: Column(
             children: [

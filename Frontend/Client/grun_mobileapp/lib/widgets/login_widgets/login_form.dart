@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/screens/screens.dart';
+import 'package:grun_mobileapp/services/notification_service.dart';
 import 'package:provider/provider.dart';
 
 import 'login_widgets.dart';
@@ -31,9 +32,9 @@ class LoginForm extends StatelessWidget {
               height: 40,
             ),
             LoginButton(
+                isLoading: loginForm.isLoading,
                 onPressed: () async => {
                       FocusScope.of(context).unfocus(),
-                      print(loginForm.isValidForm2()),
                       if (await loginForm.isValidForm() == null)
                         {
                           Navigator.pushReplacement(
@@ -44,11 +45,8 @@ class LoginForm extends StatelessWidget {
                         }
                       else
                         {
-                          SnackBar(
-                            content: Text(
-                              "pruebaaaaaa",
-                            ),
-                          ),
+                          NotificationService.showSnackBar(
+                              'El usuario o la contraseña son incorrectos'),
                         }
                     })
           ],
@@ -56,8 +54,9 @@ class LoginForm extends StatelessWidget {
   }
 }
 
+// ignore: camel_case_types
 class _passwordBox extends StatefulWidget {
-  const _passwordBox({super.key});
+  const _passwordBox();
 
   @override
   State<_passwordBox> createState() => _PasswordBoxState();

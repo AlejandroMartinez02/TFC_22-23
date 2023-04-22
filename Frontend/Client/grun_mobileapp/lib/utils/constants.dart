@@ -9,6 +9,7 @@ class Constants {
   static const personalData = "Datos personales";
   static const accountData = "Datos de la cuenta";
   static const addressData = "Dirección";
+  static const slogan = "Sei Vegan, Sei Grün";
   static const borderRadius = 15.0;
 
   //*--- Static photos ---//

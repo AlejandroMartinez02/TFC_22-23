@@ -39,6 +39,7 @@ dependencies:
 dev_dependencies:
   flutter_launcher_icons: ^0.13.0
   flutter_lints: ^2.0.0
+  flutter_secure_storage: ^8.0.0
   flutter_test:
     sdk: flutter
 
@@ -73,7 +74,10 @@ flutter:
     # "family" key with the font family name, and a "fonts" key with a
     # list giving the asset and other descriptors for the font. For
     # example:
-    # fonts:
+  fonts:
+    - family: Paralucent
+      fonts:
+        - asset: fonts/paralucent.ttf
     #   - family: Schyler
     #     fonts:
     #       - asset: fonts/Schyler-Regular.ttf

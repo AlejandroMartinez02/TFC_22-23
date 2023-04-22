@@ -26,7 +26,6 @@ class AuthService extends ChangeNotifier {
       body: json.encode(user),
       headers: {'content-type': 'application/json'},
     );
-    print("GSFGDFGSDfg");
 
     return response.body;
   }

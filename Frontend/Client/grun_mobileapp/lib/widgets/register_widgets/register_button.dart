@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:grun_mobileapp/providers/providers.dart';
+import 'package:provider/provider.dart';
 
 class RegisterButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final bool isLoading;
 
-  const RegisterButton({super.key, required this.onPressed});
+  const RegisterButton(
+      {super.key, required this.onPressed, required this.isLoading});
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +16,11 @@ class RegisterButton extends StatelessWidget {
       minWidth: size.height * 0.2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       textColor: Colors.white,
+      disabledColor: Colors.grey,
       color: Theme.of(context).primaryColor,
-      onPressed: onPressed,
+      onPressed: isLoading ? null : onPressed,
       child: Text(
-        "Registarme",
+        isLoading ? 'Espere' : 'Registrarme',
         style: _buttonTextStyle(),
       ),
     );

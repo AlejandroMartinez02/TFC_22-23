@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {
   final VoidCallback onPressed;
+  final bool isLoading;
 
-  const LoginButton({super.key, required this.onPressed});
+  const LoginButton(
+      {super.key, required this.onPressed, required this.isLoading});
 
   @override
   Widget build(BuildContext context) {
@@ -13,9 +15,10 @@ class LoginButton extends StatelessWidget {
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       textColor: Colors.white,
       color: Theme.of(context).primaryColor,
-      onPressed: onPressed,
+      disabledColor: Colors.grey,
+      onPressed: isLoading ? null : onPressed,
       child: Text(
-        "Iniciar sesión",
+        isLoading ? 'Espere' : "Iniciar sesión",
         style: _buttonTextStyle(),
       ),
     );

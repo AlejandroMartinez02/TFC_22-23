@@ -5,11 +5,11 @@ import 'package:grun_mobileapp/models/models.dart';
 import 'package:http/http.dart' as http;
 import '../utils/constants.dart';
 
-class ProductsService extends ChangeNotifier {
+class ProductService extends ChangeNotifier {
   final List<ProductDTO> products = [];
   bool isLoading = true;
 
-  ProductsService() {
+  ProductService() {
     loadProducts();
   }
 
@@ -31,6 +31,5 @@ class ProductsService extends ChangeNotifier {
 
     isLoading = false;
     notifyListeners();
-    print(isLoading);
   }
 }

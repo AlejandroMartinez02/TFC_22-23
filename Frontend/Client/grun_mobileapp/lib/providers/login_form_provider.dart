@@ -11,12 +11,23 @@ class LoginFormProvider extends ChangeNotifier {
 
   bool isHidden = true;
 
-  bool isValidForm2() => formKey.currentState?.validate() ?? false;
-
   Future isValidForm() async {
     if (formKey.currentState?.validate() ?? false) {
-      return await AuthRepository.Login(email, password);
+      isLoading = true;
+      notifyListeners();
+      final reponse = await AuthRepository.login(email, password);
+      isLoading = false;
+      notifyListeners();
+      return reponse;
     }
     return "ERRROR";
+  }
+
+  Future<String> readToken() async {
+    return await AuthRepository.readToken();
+  }
+
+  Future<void> logout() async {
+    return await AuthRepository.logOut();
   }
 }

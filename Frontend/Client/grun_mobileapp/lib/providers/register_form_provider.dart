@@ -9,8 +9,6 @@ class RegisterFormProvider extends ChangeNotifier {
 
   bool isLoading = false;
 
-  bool isDisable = false;
-
   String? name;
   String? lastName;
   String? email;
@@ -21,7 +19,8 @@ class RegisterFormProvider extends ChangeNotifier {
 
   Future isValidForm() async {
     if (firstKey.currentState?.validate() ?? false) {
-      isDisable = true;
+      isLoading = true;
+      notifyListeners();
       final user = CreateUserDto(
           email: email!,
           lastname: lastName!,
@@ -32,7 +31,8 @@ class RegisterFormProvider extends ChangeNotifier {
 
       return await AuthRepository.register(user);
     }
-    isDisable = false;
+    isLoading = false;
+    notifyListeners();
     return "ERROR";
   }
 }

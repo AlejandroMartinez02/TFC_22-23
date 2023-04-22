@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/providers/providers.dart';
 import 'package:grun_mobileapp/screens/screens.dart';
 import 'package:grun_mobileapp/services/services.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp(AppState());
+  runApp(const AppState());
 }
 
 class AppState extends StatelessWidget {
+  const AppState({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -37,9 +38,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Grün',
-        initialRoute: 'login',
-        routes: {'login': (_) => const LoginScreen()},
-        theme: ThemeData.light()
-            .copyWith(primaryColor: const Color.fromARGB(255, 43, 181, 114)));
+        initialRoute: 'splash',
+        scaffoldMessengerKey: NotificationService.messengerKey,
+        routes: {'splash': (_) => const SplashScreen()},
+        theme: ThemeData.light().copyWith(
+          primaryColor: const Color.fromARGB(255, 43, 181, 114),
+        ));
   }
 }
