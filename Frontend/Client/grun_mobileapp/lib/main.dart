@@ -1,9 +1,16 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/screens/screens.dart';
-import 'package:grun_mobileapp/services/services.dart';
+import 'package:grun_mobileapp/exports/screens.dart';
+import 'package:grun_mobileapp/exports/providers.dart';
+import 'package:grun_mobileapp/utils/services/notification_service.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  HttpOverrides.global = MyHttpOverrides();
   runApp(const AppState());
 }
 
@@ -15,7 +22,10 @@ class AppState extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (_) => ProductService(),
+          create: (_) => SplashProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MainProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => LoginFormProvider(),
@@ -44,5 +54,14 @@ class MyApp extends StatelessWidget {
         theme: ThemeData.light().copyWith(
           primaryColor: const Color.fromARGB(255, 43, 181, 114),
         ));
+  }
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }

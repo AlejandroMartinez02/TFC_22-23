@@ -10,7 +10,9 @@ class Constants {
   static const accountData = "Datos de la cuenta";
   static const addressData = "Dirección";
   static const slogan = "Sei Vegan, Sei Grün";
-  static const borderRadius = 15.0;
+  static const logoutAutoMessage =
+      "Tu sesión ha caducado. Por favor, inicia sesión de nuevo";
+  static const borderRadius = 30.0;
 
   //*--- Static photos ---//
   static const lightLogoApp = 'assets/light_logo.png';
