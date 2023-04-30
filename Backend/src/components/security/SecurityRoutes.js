@@ -6,6 +6,7 @@ const CHECKERRORS = require('../../middlewares/validations/CheckErrors')
 
 
 ROUTER
+    .get('/checktoken', CONTROLLER.Check)
     .post('/login', CONTROLLER.Login)
     .post('/register', VALIDATIONS.SIGNUPCHECK(), CHECKERRORS, CONTROLLER.Register)
 

@@ -12,6 +12,8 @@ let securityRoutes = require('./components/security/SecurityRoutes')
 
 mongoose.set('strictQuery', true)
 mongoose.connect(process.env.MONGO_URI)
+    .then(() => console.log("contected to mongodb"))
+    .catch(() => console.log("Error connecting"))
 
 var app = express()
 app.use(bodyParser.json({ limit: '50mb' }))
@@ -23,7 +25,7 @@ app.use(bodyParser.urlencoded({
 app.use('/api/users', userRouter)
 app.use('/api/workers', workersRoutes)
 app.use('/api/dishes', dishesRoutes)
-app.user('/api/category', categoryRoutes)
+app.use('/api/categories', categoryRoutes)
 app.use('/api/', securityRoutes)
 
 

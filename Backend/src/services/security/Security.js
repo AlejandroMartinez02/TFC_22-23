@@ -2,27 +2,22 @@ const jwt = require('jwt-simple')
 const moment = require('moment')
 const bcrypt = require('bcrypt')
 
-function createToken(user)
-{
+function createToken(user) {
     const payload = {
         sub: user._id,
         rol: user.rol,
         iat: moment().unix(),
-        exp: moment().add(8, 'hours').unix()
+        exp: moment().add(15, 'days').unix()
     }
     return jwt.encode(payload, process.env.SECRET_TOKEN)
 }
 
-function decodeToken(token)
-{
-    const decoded = new Promise((resolve, reject) =>
-    {
-        try
-        {
+function decodeToken(token) {
+    const decoded = new Promise((resolve, reject) => {
+        try {
             const payload = jwt.decode(token, process.env.SECRET_TOKEN)
             resolve(payload)
-        } catch (error)
-        {
+        } catch (error) {
             reject({ status: 500, "data": "Expirated token or invalid token" })
         }
     })
@@ -30,13 +25,20 @@ function decodeToken(token)
     return decoded;
 }
 
-async function encrypt(password)
-{
+async function checkToken(token) {
+    try {
+        await jwt.decode(token, process.env.SECRET_TOKEN);
+        return true;
+    } catch (error) {
+        return false;
+    }
+}
+
+async function encrypt(password) {
     return await bcrypt.hash(password, 10);
 }
 
-async function comparePassword(userPassword, dbPassword)
-{
+async function comparePassword(userPassword, dbPassword) {
     return await bcrypt.compare(userPassword, dbPassword)
 }
 
@@ -44,5 +46,6 @@ module.exports = {
     createToken,
     decodeToken,
     encrypt,
-    comparePassword
+    comparePassword,
+    checkToken
 }
