@@ -26,14 +26,17 @@ class ProductCard extends StatelessWidget {
             CreateRoutes.SlideFadeIn(
                 direccion: const Offset(1, 0),
                 screen: ProductScreen(product: product))),
-        child: Stack(children: [
-          BackgroundImage(
-            photo: product.photo,
-          ),
-          _cardTitle(
-            title: product.name,
-          )
-        ]),
+        child: Hero(
+          tag: product.id!,
+          child: Stack(children: [
+            BackgroundImage(
+              photo: product.photo,
+            ),
+            _cardTitle(
+              title: product.name,
+            )
+          ]),
+        ),
       ),
     );
   }
@@ -65,10 +68,7 @@ class _cardTitle extends StatelessWidget {
           ? Text(
               title.toUpperCase(),
               textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: size.width < 600 ? 22 : 24,
-                color: Colors.white,
-              ),
+              style: _textStyle(size),
             )
           : Marquee(
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -80,11 +80,16 @@ class _cardTitle extends StatelessWidget {
               decelerationDuration: const Duration(milliseconds: 500),
               decelerationCurve: Curves.easeOutCubic,
               text: title.toUpperCase(),
-              style: TextStyle(
-                fontSize: size.width < 600 ? 22 : 24,
-                color: Colors.white,
-              ),
+              style: _textStyle(size),
             ),
     );
+  }
+
+  TextStyle _textStyle(Size size) {
+    return TextStyle(
+        fontSize: size.width < 600 ? 22 : 24,
+        color: Colors.white,
+        fontFamily: 'Paralucent',
+        fontWeight: FontWeight.w600);
   }
 }

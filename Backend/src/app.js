@@ -4,6 +4,17 @@ const bodyParser = require('body-parser')
 const dotenv = require('dotenv')
 dotenv.config()
 
+var app = express()
+
+
+const server = require('http').createServer(app)
+const io = require('socket.io')(server)
+io.on('connection', client => {
+    client.on('event', data => { })
+    client.on('disconnect', () => { })
+})
+server.listen(3000)
+
 let userRouter = require('./components/user/UserRoutes')
 let workersRoutes = require('./components/worker/WorkerRoutes')
 let dishesRoutes = require('./components/dish/DishRoutes')
@@ -15,7 +26,7 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("contected to mongodb"))
     .catch(() => console.log("Error connecting"))
 
-var app = express()
+
 app.use(bodyParser.json({ limit: '50mb' }))
 app.use(bodyParser.urlencoded({
     limit: '500mb',
@@ -29,7 +40,7 @@ app.use('/api/categories', categoryRoutes)
 app.use('/api/', securityRoutes)
 
 
-app.listen(8080, function () {
-    console.log('Http server running on port 8080')
+app.listen(process.env.PORT, function () {
+    console.log('Http server running on port ' + process.env.PORT)
 })
 

@@ -4,7 +4,6 @@ const RESPONSE_MANAGER = require('../../../services/response/ResponseManager')
 
 const Check = async (req, res) => {
     const token = req.headers.authorization.split(" ")[1];
-    console.log(token)
     await SERVICE.Check(token)
         .then((response) => response ? RESPONSE_MANAGER.RESPONSE_200(res) : RESPONSE_MANAGER.RESPONSE_401(res))
         .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))

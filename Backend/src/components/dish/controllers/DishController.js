@@ -14,7 +14,10 @@ const GetOne = async (req, res) => {
 const GetAll = async (req, res) => {
     await SERVICE.GetAll()
         .then(response => RESPONSE_MANAGER.RESPONSE_201(res, response))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
+        .catch((error) => {
+            console.log(error)
+            RESPONSE_MANAGER.RESPONSE_500(res)
+        })
 }
 
 const Create = async (req, res) => {

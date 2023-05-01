@@ -108,7 +108,7 @@ class _RegisterForm extends StatelessWidget {
                         context,
                         CreateRoutes.SlideFadeIn(
                             direccion: const Offset(1, 0),
-                            screen: const HomeScreen()));
+                            screen: const MainScreen()));
                   } else {
                     NotificationService.showSnackBar(
                         "El correo electrónico ya está en uso, por favor ingresa uno nuevo");

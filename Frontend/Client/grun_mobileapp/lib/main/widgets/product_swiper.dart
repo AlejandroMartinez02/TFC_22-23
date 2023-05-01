@@ -12,7 +12,8 @@ class ProductSwiper extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      padding: const EdgeInsets.only(top: 40, bottom: 80),
+      margin:
+          EdgeInsets.only(top: size.height * 0.1, bottom: size.height * 0.05),
       child: CarouselSlider.builder(
           options: CarouselOptions(
               viewportFraction: size.width < 600 ? 0.80 : 0.55,
@@ -23,7 +24,7 @@ class ProductSwiper extends StatelessWidget {
           itemCount: products.length,
           itemBuilder: (_, index, __) {
             return Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: const EdgeInsets.symmetric(vertical: 15),
               child: ProductCard(product: products[index]),
             );
           }),

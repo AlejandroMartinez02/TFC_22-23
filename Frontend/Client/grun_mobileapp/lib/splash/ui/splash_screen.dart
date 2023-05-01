@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:is_first_run/is_first_run.dart';
 
 import 'package:grun_mobileapp/exports/providers.dart';
 import 'package:grun_mobileapp/exports/screens.dart';
@@ -43,7 +44,7 @@ class _SplashScreenState extends State<SplashScreen>
             Navigator.pushReplacement(
                 context,
                 CreateRoutes.SlideFadeIn(
-                    direccion: const Offset(1, 0), screen: const HomeScreen()));
+                    direccion: const Offset(1, 0), screen: const MainScreen()));
             return;
           }
         }
@@ -51,8 +52,12 @@ class _SplashScreenState extends State<SplashScreen>
             context,
             CreateRoutes.SlideFadeIn(
                 direccion: const Offset(1, 0),
-                screen: LoginScreen(
-                    isLogout: true, message: Constants.logoutAutoMessage)));
+                screen: await IsFirstRun.isFirstRun()
+                    ? LoginScreen()
+                    : LoginScreen(
+                        isLogout: true,
+                        message: Constants.logoutAutoMessage,
+                      )));
       }
     });
 
@@ -120,13 +125,13 @@ class _splashContent extends StatelessWidget {
           opacity: Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(
               parent: controller,
               curve: const Interval(0.5, 0.8, curve: Curves.easeInExpo))),
-          child: Text(Constants.slogan,
+          child: const Text(Constants.slogan,
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 40,
                 fontFamily: 'Paralucent',
                 fontWeight: FontWeight.bold,
-                color: primaryColor,
+                color: Constants.secondaryColor,
               )),
         ),
       ],
