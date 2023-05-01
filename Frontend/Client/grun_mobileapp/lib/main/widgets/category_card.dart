@@ -23,11 +23,21 @@ class CategoryCard extends StatelessWidget {
                 children: [
                   Text(
                     category.name,
-                    style: TextStyle(fontSize: 30, color: Colors.white),
+                    style: const TextStyle(
+                        fontSize: 30,
+                        color: Colors.white,
+                        fontFamily: 'Paralucent',
+                        fontWeight: FontWeight.bold),
                   ),
-                  Text(category.description,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 20, color: Colors.white)),
+                  Text(
+                    category.description,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                        fontSize: 20,
+                        color: Colors.white,
+                        fontFamily: 'Paralucent',
+                        fontWeight: FontWeight.w600),
+                  ),
                 ],
               ),
             )

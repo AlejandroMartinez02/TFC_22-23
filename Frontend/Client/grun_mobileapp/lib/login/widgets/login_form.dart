@@ -41,7 +41,7 @@ class LoginForm extends StatelessWidget {
                               context,
                               CreateRoutes.SlideFadeIn(
                                   direccion: const Offset(1, 0),
-                                  screen: const HomeScreen()))
+                                  screen: const MainScreen()))
                         }
                       else
                         {
@@ -80,7 +80,6 @@ class _PasswordBoxState extends State<_passwordBox> {
           cursorColor: mainColor,
           decoration: passwordDecoration(loginForm, mainColor),
           onChanged: (value) => loginForm.password = value,
-          validator: (value) => Validations.passwordValidator(value),
         ));
   }
 

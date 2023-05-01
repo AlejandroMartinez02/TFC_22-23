@@ -28,27 +28,28 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  animate_do: ^3.0.2
+  cached_network_image: ^3.2.3
   carousel_slider: ^4.2.1
   cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
+  flutter_secure_storage: ^8.0.0
   http: ^0.13.5
+  is_first_run: ^1.0.0
+  marquee: ^2.2.3
   provider: ^6.0.5
   simple_animations: ^5.0.0+3
-  flutter_secure_storage: ^8.0.0
-  cached_network_image: ^3.2.3
-  marquee: ^2.2.3
+  clippy_flutter: ^2.0.0-nullsafety.1
 
 dev_dependencies:
-  animate_do: ^3.0.2
   flutter_launcher_icons: ^0.13.0
   flutter_lints: ^2.0.0
   flutter_test:
     sdk: flutter
 
-
 flutter_icons:
-  android: 'launcher_icon'
+  android: 'assets/light_logo.png'
   ios: true
   image_path: 'assets/light_logo.png'
   adaptive_icon_background: '/assets/dark_logo.png'

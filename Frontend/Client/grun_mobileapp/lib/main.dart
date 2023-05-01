@@ -52,11 +52,12 @@ class MyApp extends StatelessWidget {
         scaffoldMessengerKey: NotificationService.messengerKey,
         routes: {'splash': (_) => const SplashScreen()},
         theme: ThemeData.light().copyWith(
-          primaryColor: const Color.fromARGB(255, 43, 181, 114),
-        ));
+            primaryColor: Colors.grey[800],
+            textTheme: TextTheme(bodyLarge: TextStyle(color: Colors.white))));
   }
 }
 
+//const Color.fromARGB(255, 43, 181, 114)
 class MyHttpOverrides extends HttpOverrides {
   @override
   HttpClient createHttpClient(SecurityContext? context) {

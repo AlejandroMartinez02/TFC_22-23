@@ -12,6 +12,12 @@
             "request": "launch",
             "type": "dart",
             "deviceId": "SM T870"
+        },
+        {
+            "name": "Android-VM",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "sdk gphone x86 64"
         }
     ],
     "compounds": [

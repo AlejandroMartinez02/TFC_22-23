@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:grun_mobileapp/main/domain/entity/category_dto.dart';
+
 class ProductDTO {
   ProductDTO({
     this.id,
@@ -11,10 +13,11 @@ class ProductDTO {
     required this.description,
   });
 
+  String? heroId;
   String? id;
   String name;
   String ingredients;
-  String category;
+  CategoryDTO category;
   double cost;
   String photo;
   String description;
@@ -28,7 +31,7 @@ class ProductDTO {
         id: json["_id"],
         name: json["name"],
         ingredients: json["ingredients"],
-        category: json["category"],
+        category: CategoryDTO.fromJson(json["category"]),
         cost: json["cost"]?.toDouble(),
         photo: json["photo"],
         description: json["description"],

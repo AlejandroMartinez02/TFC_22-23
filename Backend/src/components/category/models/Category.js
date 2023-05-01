@@ -15,6 +15,6 @@ const CategorySchema = new MONGOOSE.Schema({
     photo: String
 })
 
-const CATEGORY = MONGOOSE.model('Categories', CategorySchema)
+const CATEGORY = MONGOOSE.model('Category', CategorySchema)
 
 module.exports = CATEGORY

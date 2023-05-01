@@ -10,7 +10,7 @@ import 'package:grun_mobileapp/utils/create_route.dart';
 import 'package:grun_mobileapp/utils/utils.dart' show Constants;
 
 class LoginScreen extends StatelessWidget {
-  bool? isLogout = false;
+  bool? isLogout;
   String? message = ' ';
 
   LoginScreen({super.key, this.isLogout, this.message});
@@ -43,7 +43,7 @@ class LoginScreen extends StatelessWidget {
               SizedBox(height: size.height * 0.04),
               const _RegisterText(),
               SizedBox(height: size.height * 0.05),
-              if (isLogout!)
+              if (isLogout ?? false)
                 Text(
                   message!,
                   textAlign: TextAlign.center,
