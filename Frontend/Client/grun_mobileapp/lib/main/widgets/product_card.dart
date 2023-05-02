@@ -1,4 +1,5 @@
 // ignore_for_file: camel_case_types
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:grun_mobileapp/main/ui/product_screen.dart';
 import 'package:grun_mobileapp/utils/widgets/card/card_widgets.dart';
 import 'package:marquee/marquee.dart';
@@ -62,15 +63,18 @@ class _cardTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      alignment: Alignment.bottomRight,
-      padding: const EdgeInsets.all(15),
-      child: title.length < 19
-          ? Text(
-              title.toUpperCase(),
-              textAlign: TextAlign.left,
-              style: _textStyle(size),
-            )
-          : Marquee(
+        alignment: Alignment.bottomRight,
+        padding: const EdgeInsets.all(15),
+        child: Material(
+          type: MaterialType.transparency,
+          borderOnForeground: false,
+          child: AutoSizeText(
+            title.toUpperCase(),
+            minFontSize: size.width < 600 ? 22 : 24,
+            maxLines: 1,
+            textAlign: TextAlign.left,
+            style: _textStyle(size),
+            overflowReplacement: Marquee(
               crossAxisAlignment: CrossAxisAlignment.end,
               pauseAfterRound: const Duration(seconds: 2),
               startPadding: 18.0,
@@ -82,7 +86,8 @@ class _cardTitle extends StatelessWidget {
               text: title.toUpperCase(),
               style: _textStyle(size),
             ),
-    );
+          ),
+        ));
   }
 
   TextStyle _textStyle(Size size) {

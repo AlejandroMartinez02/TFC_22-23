@@ -25,7 +25,8 @@
             "name": "All devices",
             "configurations": [
                 "Flutter-Android",
-                "Flutter-Tablet"
+                "Flutter-Tablet",
+                "Android-VM"
             ]
         }
     ]

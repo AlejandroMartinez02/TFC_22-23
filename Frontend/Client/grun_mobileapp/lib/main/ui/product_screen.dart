@@ -26,7 +26,10 @@ class ProductScreen extends StatelessWidget {
                   duration: Constants.componentAnimationDuration,
                   child: Column(
                     children: [
-                      ProductTitle(name: product.name),
+                      Container(
+                          constraints: BoxConstraints(
+                              maxHeight: 50, maxWidth: size.width),
+                          child: ProductTitle(name: product.name)),
                       const Divider(
                         thickness: 2,
                         color: Colors.white,

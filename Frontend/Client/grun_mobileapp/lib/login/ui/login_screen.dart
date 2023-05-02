@@ -32,7 +32,10 @@ class LoginScreen extends StatelessWidget {
                 height: size.height * 0.04,
               ),
               Text(Constants.loginTitle,
-                  style: Theme.of(context).textTheme.headlineLarge),
+                  style: Theme.of(context)
+                      .textTheme
+                      .headlineLarge!
+                      .copyWith(color: Colors.black)),
               SizedBox(
                 height: size.height * 0.04,
               ),
@@ -70,6 +73,7 @@ class _RegisterText extends StatelessWidget {
       children: [
         const Text(Constants.loginRegisterText,
             style: TextStyle(
+              color: Colors.black,
               fontSize: 18,
             )),
         RichText(

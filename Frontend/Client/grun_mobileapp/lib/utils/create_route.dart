@@ -7,7 +7,7 @@ class CreateRoutes {
       pageBuilder: (BuildContext context, Animation<double> animation,
               Animation<double> secondaryAnimation) =>
           screen,
-      transitionDuration: Duration(milliseconds: 1500),
+      transitionDuration: Duration(milliseconds: 800),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         final curveAnimation =
             CurvedAnimation(parent: animation, curve: Curves.fastOutSlowIn);
