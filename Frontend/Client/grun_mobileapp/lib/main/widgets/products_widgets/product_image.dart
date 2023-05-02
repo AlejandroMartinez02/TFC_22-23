@@ -18,11 +18,18 @@ class ProductImage extends StatelessWidget {
       Hero(
         tag: id!,
         child: CachedNetworkImage(
-          width: size.width,
-          height: size.height * 0.4,
-          imageUrl: photo!,
-          fit: BoxFit.cover,
-        ),
+            width: size.width,
+            height: size.height * 0.4,
+            imageUrl: photo!,
+            fit: BoxFit.cover,
+            placeholder: (context, url) => Image.asset(
+                  "assets/foodLoader.gif",
+                  fit: BoxFit.cover,
+                ),
+            errorWidget: (context, url, error) => const Image(
+                  image: AssetImage("assets/no-image.png"),
+                  fit: BoxFit.cover,
+                )),
       ),
       BackButton(
         color: Colors.white,

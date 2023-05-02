@@ -23,8 +23,10 @@ class BackgroundImage extends StatelessWidget {
                   image: AssetImage("assets/foodLoader.gif"),
                   fit: BoxFit.cover,
                 ),
-            errorWidget: (context, url, error) =>
-                const Image(image: AssetImage("assets/no-image.png"))),
+            errorWidget: (context, url, error) => const Image(
+                  image: AssetImage("assets/no-image.png"),
+                  fit: BoxFit.cover,
+                )),
       ),
     );
   }

@@ -2,7 +2,7 @@ name: grun_mobileapp
 description: A new Flutter project.
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=2.19.4 <3.0.0'
+  sdk: ">=2.19.4 <3.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -40,7 +40,7 @@ dependencies:
   marquee: ^2.2.3
   provider: ^6.0.5
   simple_animations: ^5.0.0+3
-  clippy_flutter: ^2.0.0-nullsafety.1
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.0
@@ -49,10 +49,10 @@ dev_dependencies:
     sdk: flutter
 
 flutter_icons:
-  android: 'assets/light_logo.png'
+  android: "assets/light_logo.png"
   ios: true
-  image_path: 'assets/light_logo.png'
-  adaptive_icon_background: '/assets/dark_logo.png'
+  image_path: "assets/light_logo.png"
+  adaptive_icon_background: "/assets/dark_logo.png"
   windows:
     generate: true
     image_path: "assets/light_logo.png"
@@ -61,7 +61,6 @@ flutter_icons:
 # following page: https://dart.dev/tools/pub/pubspec
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
