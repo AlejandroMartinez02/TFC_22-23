@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/main/domain/entity/entity.dart';
 import 'package:grun_mobileapp/main/domain/usecase/usecase.dart';
+import 'package:grun_mobileapp/main/ui/menu_provider.dart';
 
 class MainProvider extends ChangeNotifier {
   final List<ProductDTO> _products = [];
@@ -42,4 +43,24 @@ class MainProvider extends ChangeNotifier {
     isLoading = false;
     notifyListeners();
   }
+
+  int _actualPage = 0;
+
+  int get actualPage => _actualPage;
+
+  void changeActualPage(int page, MenuProvider menuProvider,
+      {String secondaryPageName = 'Entrantes'}) {
+    _actualPage = page;
+    if (page == 1) {
+      menuProvider.actualPage = secondaryPageName;
+    }
+    _pageController.animateToPage(_actualPage,
+        duration: const Duration(milliseconds: 500),
+        curve: Curves.fastLinearToSlowEaseIn);
+    notifyListeners();
+  }
+
+  PageController _pageController = PageController(initialPage: 0);
+
+  PageController get pageController => _pageController;
 }

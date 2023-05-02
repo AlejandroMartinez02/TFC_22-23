@@ -12,6 +12,7 @@ const GetOne = async (req, res) => {
 }
 
 const GetAll = async (req, res) => {
+    console.log("SDFGDFG")
     await SERVICE.GetAll()
         .then(response => RESPONSE_MANAGER.RESPONSE_201(res, response))
         .catch((error) => {

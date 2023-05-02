@@ -25,14 +25,17 @@ class AppState extends StatelessWidget {
           create: (_) => SplashProvider(),
         ),
         ChangeNotifierProvider(
-          create: (_) => MainProvider(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => LoginFormProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => RegisterFormProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => MainProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MenuProvider(),
+        )
       ],
       child: const MyApp(),
     );

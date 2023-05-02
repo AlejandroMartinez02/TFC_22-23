@@ -6,8 +6,7 @@ import 'package:grun_mobileapp/exports/providers.dart';
 import 'package:grun_mobileapp/login/widgets/login_widgets.dart'
     show LoginBody, LoginForm;
 import 'package:grun_mobileapp/register/ui/register_screen.dart';
-import 'package:grun_mobileapp/utils/create_route.dart';
-import 'package:grun_mobileapp/utils/utils.dart' show Constants;
+import 'package:grun_mobileapp/utils/utils.dart' show Constants, CreateRoutes;
 
 class LoginScreen extends StatelessWidget {
   bool? isLogout;
