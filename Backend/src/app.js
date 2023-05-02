@@ -20,6 +20,7 @@ let workersRoutes = require('./components/worker/WorkerRoutes')
 let dishesRoutes = require('./components/dish/DishRoutes')
 let categoryRoutes = require('./components/category/CategoryRoutes')
 let securityRoutes = require('./components/security/SecurityRoutes')
+let orderRoutes = require('./components/order/OrdersRoutes')
 
 mongoose.set('strictQuery', true)
 mongoose.connect(process.env.MONGO_URI)
@@ -34,10 +35,11 @@ app.use(bodyParser.urlencoded({
 }))
 
 app.use('/api/users', userRouter)
-app.use('/api/workers', workersRoutes)
-app.use('/api/dishes', dishesRoutes)
-app.use('/api/categories', categoryRoutes)
-app.use('/api/', securityRoutes)
+    .use('/api/workers', workersRoutes)
+    .use('/api/dishes', dishesRoutes)
+    .use('/api/categories', categoryRoutes)
+    .use('/api/orders', orderRoutes)
+    .use('/api/', securityRoutes)
 
 
 app.listen(process.env.PORT, function () {
