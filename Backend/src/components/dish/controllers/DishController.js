@@ -12,13 +12,18 @@ const GetOne = async (req, res) => {
 }
 
 const GetAll = async (req, res) => {
-    console.log("SDFGDFG")
     await SERVICE.GetAll()
         .then(response => RESPONSE_MANAGER.RESPONSE_201(res, response))
-        .catch((error) => {
-            console.log(error)
-            RESPONSE_MANAGER.RESPONSE_500(res)
-        })
+        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res)
+        )
+}
+
+const GetByCategory = async (req, res) => {
+    let { category } = req.headers
+
+    await SERVICE.GetByCategory(category)
+        .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
+        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }
 
 const Create = async (req, res) => {
@@ -53,6 +58,7 @@ const Delete = async (req, res) => {
 module.exports = {
     GetOne,
     GetAll,
+    GetByCategory,
     Create,
     Update,
     Delete

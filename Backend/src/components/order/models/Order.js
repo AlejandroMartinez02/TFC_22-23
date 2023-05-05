@@ -18,7 +18,10 @@ let orderSchema = new MONGOOSE.Schema({
     order_lines: [{
         type: MONGOOSE.Schema.Types.ObjectId,
         ref: 'OrderLine'
-    }]
+    }],
+    state: {
+        enum: ['En espera', 'En proceso', 'En entrega', 'Finalizado']
+    }
 })
 
 let Order = MONGOOSE.model('Order', orderSchema)

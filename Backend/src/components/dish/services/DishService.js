@@ -2,13 +2,20 @@ const DISH = require('../models/Dish')
 const CATEGORY = require('../../category/models/Category')
 
 const GetOne = async (id) => {
-    let dish = await DISH.findOne({ _id: id })
+    let dish = await DISH.findOne({ _id: id }).populate("category")
 
     return dish != null ? { status: 201, data: dish } : { status: 404 }
 }
 
 const GetAll = async () => {
     return await DISH.find().populate("category")
+}
+
+const GetByCategory = async (category) => {
+    return (await DISH.find().populate({ path: "category", match: { name: category } })).filter((product) => {
+        if (product.category == null) return;
+        if (product.category.name.toLowerCase == category.toLowerCase) return product
+    })
 }
 
 const Create = async (dish) => {
@@ -30,6 +37,7 @@ const Delete = async (id) => {
 module.exports = {
     GetOne,
     GetAll,
+    GetByCategory,
     Create,
     Update,
     Delete
