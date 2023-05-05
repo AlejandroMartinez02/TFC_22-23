@@ -21,20 +21,19 @@ class ProductCard extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final primaryColor = Theme.of(context).primaryColor;
 
-    return SizedBox(
+    return Container(
       height: size.height * 0.2,
       width: size.width * 0.9,
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+      decoration: BoxDecoration(
+          border: Border.all(color: Colors.grey), color: primaryColor),
       child: GestureDetector(
         onTap: () => Navigator.push(
             context,
             CreateRoutes.SlideFadeIn(
-                direccion: Offset(0, 1),
+                direccion: const Offset(0, 1),
                 screen: ProductScreen(product: product))),
-        child: Container(
-          width: double.infinity,
-          padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-          decoration: BoxDecoration(
-              border: Border.all(color: Colors.grey), color: primaryColor),
+        child: Expanded(
           child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
             Hero(
               tag: product.id!,
@@ -51,70 +50,73 @@ class ProductCard extends StatelessWidget {
                     Image.asset("assets/no-image.png", fit: BoxFit.cover),
               ),
             ),
-            Container(
-              width: size.width * 0.5,
-              padding: EdgeInsets.only(left: 10),
+            Expanded(
               child: Column(
-                mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Container(
-                    margin: EdgeInsets.only(bottom: size.height * 0.02),
-                    constraints: BoxConstraints(
-                        maxHeight: size.width < 600 ? 20 : 30,
-                        maxWidth: size.width),
-                    child: AutoSizeText(product.name,
-                        maxLines: 1,
-                        minFontSize: size.width < 600 ? 20 : 24,
-                        style: nameStyle(size),
-                        overflowReplacement: Marquee(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          pauseAfterRound: const Duration(seconds: 2),
-                          startPadding: 18.0,
-                          blankSpace: size.width < 600 ? 14 : 18,
-                          accelerationDuration: const Duration(seconds: 1),
-                          accelerationCurve: Curves.easeInCubic,
-                          decelerationDuration:
-                              const Duration(milliseconds: 500),
-                          decelerationCurve: Curves.easeOutCubic,
-                          text: product.name,
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _ContainerTitle(
+                          child: AutoSizeText(product.name,
+                              maxLines: 1,
+                              minFontSize: size.width < 600 ? 20 : 24,
+                              style: nameStyle(size),
+                              overflowReplacement: Marquee(
+                                crossAxisAlignment: CrossAxisAlignment.end,
+                                pauseAfterRound: const Duration(seconds: 2),
+                                startPadding: 18.0,
+                                blankSpace: size.width < 600 ? 14 : 18,
+                                accelerationDuration:
+                                    const Duration(seconds: 1),
+                                accelerationCurve: Curves.easeInCubic,
+                                decelerationDuration:
+                                    const Duration(milliseconds: 500),
+                                decelerationCurve: Curves.easeOutCubic,
+                                text: product.name,
+                                style: nameStyle(size),
+                              )),
+                        ),
+                        Text(
+                          "${product.cost}€",
                           style: nameStyle(size),
-                        )),
+                        )
+                      ],
+                    ),
                   ),
-                  AutoSizeText(
-                    product.description,
-                    overflow: TextOverflow.ellipsis,
-                    minFontSize: size.width < 600 ? 16 : 18,
-                    maxLines: 4,
-                    textAlign: TextAlign.justify,
-                    style: TextStyle(fontFamily: 'Paralucent'),
+                  Expanded(
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        _ContainerDescription(
+                          child: AutoSizeText(
+                            product.description,
+                            overflow: TextOverflow.ellipsis,
+                            minFontSize: size.width < 600 ? 16 : 18,
+                            maxLines: 3,
+                            textAlign: TextAlign.justify,
+                            style: const TextStyle(fontFamily: 'Paralucent'),
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              NotificationService.showSnackBar(
+                                  "¡Producto añadido al carrito!");
+                            },
+                            icon: const Icon(
+                              Icons.add,
+                              color: Colors.white,
+                            ))
+                      ],
+                    ),
                   )
                 ],
               ),
             ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Text(
-                    "${product.cost}€",
-                    style: nameStyle(size),
-                  ),
-                  IconButton(
-                      onPressed: () {
-                        NotificationService.showSnackBar(
-                            "¡Producto añadido al carrito!");
-                      },
-                      icon: Icon(
-                        Icons.add,
-                        color: Colors.white,
-                      ))
-                ],
-              ),
-            )
           ]),
         ),
       ),
@@ -126,5 +128,40 @@ class ProductCard extends StatelessWidget {
         fontSize: size.width < 600 ? 22 : 24,
         fontFamily: 'Paralucent',
         fontWeight: FontWeight.bold);
+  }
+}
+
+class _ContainerTitle extends StatelessWidget {
+  const _ContainerTitle({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Container(
+      width: size.width * 0.5,
+      padding: EdgeInsets.only(left: size.width * 0.02),
+      constraints: BoxConstraints(
+          maxHeight: size.width < 600 ? 20 : 30, maxWidth: size.width),
+      child: child,
+    );
+  }
+}
+
+class _ContainerDescription extends StatelessWidget {
+  const _ContainerDescription({required this.child});
+
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Container(
+      width: size.width * 0.5,
+      padding: EdgeInsets.only(left: size.width * 0.02),
+      constraints: BoxConstraints(maxWidth: size.width),
+      child: child,
+    );
   }
 }
