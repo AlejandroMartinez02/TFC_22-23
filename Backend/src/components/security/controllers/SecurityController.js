@@ -17,7 +17,26 @@ const Login = async (req, res) => {
     }
     await SERVICE.Login(user)
         .then((data) => {
-            console.log(data.data)
+            if (data.status == 200) {
+                RESPONSE_MANAGER.RESPONSE_TOKEN(res, data)
+            } else if (data.status == 401) {
+                RESPONSE_MANAGER.RESPONSE_401(res)
+            } else {
+                RESPONSE_MANAGER.RESPONSE_403(res)
+            }
+        })
+        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res)
+        )
+}
+
+const WorkerLogin = async (req, res) => {
+    const user = {
+        email: req.body.email,
+        password: req.body.password
+    }
+
+    await SERVICE.WorkerLogin(user)
+        .then((data) => {
             if (data.status == 200) {
                 RESPONSE_MANAGER.RESPONSE_TOKEN(res, data)
             } else if (data.status == 401) {
@@ -29,7 +48,8 @@ const Login = async (req, res) => {
         .catch((error) => {
             console.log(error)
             RESPONSE_MANAGER.RESPONSE_500(res)
-        })
+        }
+        )
 }
 
 
@@ -46,6 +66,7 @@ const Register = async (req, res) => {
 
 module.exports = {
     Login,
+    WorkerLogin,
     Register,
     Check
 }

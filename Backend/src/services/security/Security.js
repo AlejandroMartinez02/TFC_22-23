@@ -5,9 +5,19 @@ const bcrypt = require('bcrypt')
 function createToken(user) {
     const payload = {
         sub: user._id,
-        rol: user.rol,
         iat: moment().unix(),
         exp: moment().add(15, 'days').unix()
+    }
+    return jwt.encode(payload, process.env.SECRET_TOKEN)
+}
+
+function createTokenWorker(worker) {
+    console.log(worker.role)
+    const payload = {
+        sub: worker._id,
+        rol: worker.role,
+        iat: moment().unix(),
+        exp: moment().add(30, 'days').unix()
     }
     return jwt.encode(payload, process.env.SECRET_TOKEN)
 }
@@ -44,6 +54,7 @@ async function comparePassword(userPassword, dbPassword) {
 
 module.exports = {
     createToken,
+    createTokenWorker,
     decodeToken,
     encrypt,
     comparePassword,
