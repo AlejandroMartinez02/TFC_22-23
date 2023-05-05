@@ -17,9 +17,6 @@ class MainScreen extends StatelessWidget {
         backgroundColor: const Color.fromARGB(237, 255, 255, 255),
         drawerEnableOpenDragGesture: false,
         bottomNavigationBar: const CustomBottomBar(),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-        ),
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: mainProvider.pageController,

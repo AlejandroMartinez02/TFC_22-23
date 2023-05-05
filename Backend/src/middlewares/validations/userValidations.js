@@ -1,8 +1,7 @@
 const { check } = require('express-validator');
 const USER = require('../../components/user/models/User')
 
-const SIGNUPCHECK = () =>
-{
+const SIGNUPCHECK = () => {
     return [
         check('name')
             .trim()
@@ -17,8 +16,7 @@ const SIGNUPCHECK = () =>
             .trim()
             .notEmpty()
             .isEmail()
-            .custom(async (email) =>
-            {
+            .custom(async (email) => {
                 const searchedEmail = await USER.find({ email: email });
                 if (searchedEmail.length > 0)
                     throw new Error("This email is already in use")
@@ -26,16 +24,14 @@ const SIGNUPCHECK = () =>
 
         check('phone_number')
             .isMobilePhone('es-ES')
-            .custom(async (phone) =>
-            {
+            .custom(async (phone) => {
                 const searchedPhone = await USER.find({ phone_number: phone })
                 if (searchedPhone.length > 0)
                     throw new Error('This phone number is already in use')
             }),
 
-        check('rol')
-            .notEmpty()
-            .matches(/User|Admin|Chef|Waiter/g),
+        check('address')
+            .notEmpty(),
 
         check('password')
             .trim()
@@ -44,12 +40,11 @@ const SIGNUPCHECK = () =>
     ]
 }
 
-const UPDATEUSERCHECK = () =>
-{
+const UPDATEUSERCHECK = () => {
     return [
         check('_id')
-        .isMongoId(),
-        
+            .isMongoId(),
+
         check('name')
             .trim()
             .notEmpty()
@@ -63,8 +58,7 @@ const UPDATEUSERCHECK = () =>
             .trim()
             .isEmail()
             .notEmpty()
-            .custom(async (email) =>
-            {
+            .custom(async (email) => {
                 const searchedEmail = await USER.find({ email: email });
                 if (searchedEmail.length > 0)
                     throw new Error("This email is already in use")
@@ -78,8 +72,7 @@ const UPDATEUSERCHECK = () =>
         check('phone_number')
             .isMobilePhone('es-ES')
             .notEmpty()
-            .custom(async (phone) =>
-            {
+            .custom(async (phone) => {
                 const searchedPhone = await USER.find({ phone_number: phone })
                 if (searchedPhone.length > 0)
                     throw new Error('This phone number is already in use')

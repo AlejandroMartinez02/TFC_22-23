@@ -6,7 +6,7 @@ class RegisterUserDTO {
     required this.lastname,
     required this.email,
     required this.phoneNumber,
-    required this.rol,
+    required this.address,
     required this.password,
   });
 
@@ -14,7 +14,7 @@ class RegisterUserDTO {
   String lastname;
   String email;
   String phoneNumber;
-  String rol;
+  String address;
   String password;
 
   String toRawJson() => json.encode(toJson());
@@ -24,7 +24,7 @@ class RegisterUserDTO {
         "lastname": lastname,
         "email": email,
         "phone_number": phoneNumber,
-        "rol": rol,
+        "address": address,
         "password": password,
       };
 }

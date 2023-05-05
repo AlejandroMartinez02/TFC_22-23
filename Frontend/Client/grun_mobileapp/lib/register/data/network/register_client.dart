@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:grun_mobileapp/register/data/network/response/register_response.dart';
 import 'package:grun_mobileapp/register/domain/entities/register_user_dto.dart';
 import 'package:grun_mobileapp/utils/utils.dart';
@@ -10,7 +12,7 @@ class RegisterClient {
     final url = Uri.http(_baseUrl, '/api/register');
 
     final response = await http.post(url,
-        body: user.toJson(), headers: {'content-type': 'application/json'});
+        body: user.toRawJson(), headers: {'content-type': 'application/json'});
     return RegisterResponse.fromRawJson(response.body);
   }
 }

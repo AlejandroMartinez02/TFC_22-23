@@ -46,18 +46,24 @@ class _SplashScreenState extends State<SplashScreen>
                 CreateRoutes.SlideFadeIn(
                     direccion: const Offset(1, 0), screen: const MainScreen()));
             return;
+          } else {
+            Navigator.pushReplacement(
+                context,
+                CreateRoutes.SlideFadeIn(
+                    direccion: const Offset(1, 0),
+                    screen: await IsFirstRun.isFirstRun()
+                        ? LoginScreen()
+                        : LoginScreen(
+                            isLogout: true,
+                            message: Constants.logoutAutoMessage,
+                          )));
+            return;
           }
         }
         Navigator.pushReplacement(
             context,
             CreateRoutes.SlideFadeIn(
-                direccion: const Offset(1, 0),
-                screen: await IsFirstRun.isFirstRun()
-                    ? LoginScreen()
-                    : LoginScreen(
-                        isLogout: true,
-                        message: Constants.logoutAutoMessage,
-                      )));
+                direccion: const Offset(1, 0), screen: LoginScreen()));
       }
     });
 

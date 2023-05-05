@@ -17,13 +17,19 @@ const Login = async (req, res) => {
     }
     await SERVICE.Login(user)
         .then((data) => {
+            console.log(data.data)
             if (data.status == 200) {
                 RESPONSE_MANAGER.RESPONSE_TOKEN(res, data)
-            } else {
+            } else if (data.status == 401) {
                 RESPONSE_MANAGER.RESPONSE_401(res)
+            } else {
+                RESPONSE_MANAGER.RESPONSE_403(res)
             }
         })
-        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
+        .catch((error) => {
+            console.log(error)
+            RESPONSE_MANAGER.RESPONSE_500(res)
+        })
 }
 
 

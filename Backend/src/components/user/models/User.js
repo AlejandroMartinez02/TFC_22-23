@@ -21,6 +21,7 @@ const UserSchema = new MONGOOSE.Schema({
     },
     address: {
         type: String,
+        require: true,
         trim: true,
         length: 80
     },
@@ -36,7 +37,18 @@ const UserSchema = new MONGOOSE.Schema({
     },
     password: {
         type: String,
-        require: true
+        require: true,
+        select: false,
+    },
+    login_attempts: {
+        type: Number,
+        required: true,
+        select: false,
+        default: 0
+    },
+    lock_until: {
+        type: Number,
+        select: false,
     }
 })
 

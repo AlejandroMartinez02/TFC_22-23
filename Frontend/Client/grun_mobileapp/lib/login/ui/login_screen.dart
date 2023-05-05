@@ -19,44 +19,59 @@ class LoginScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: LoginBody(
-        child: SingleChildScrollView(
-          padding: EdgeInsets.symmetric(
-              horizontal:
-                  size.width < 500 ? size.width * 0.01 : size.width * 0.1),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _HeaderIcon(),
-              SizedBox(
-                height: size.height * 0.04,
-              ),
-              Text(Constants.loginTitle,
-                  style: Theme.of(context)
-                      .textTheme
-                      .headlineLarge!
-                      .copyWith(color: Colors.black)),
-              SizedBox(
-                height: size.height * 0.04,
-              ),
-              ChangeNotifierProvider(
-                create: (_) => LoginFormProvider(),
-                child: const LoginForm(),
-              ),
-              SizedBox(height: size.height * 0.04),
-              const _RegisterText(),
-              SizedBox(height: size.height * 0.05),
-              if (isLogout ?? false)
-                Text(
-                  message!,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: size.width < 600 ? 16 : 18,
-                  ),
-                )
-            ],
+        child: _loginFrom(size: size, isLogout: isLogout, message: message),
+      ),
+    );
+  }
+}
+
+class _loginFrom extends StatelessWidget {
+  const _loginFrom({
+    super.key,
+    required this.size,
+    required this.isLogout,
+    required this.message,
+  });
+
+  final Size size;
+  final bool? isLogout;
+  final String? message;
+
+  @override
+  Widget build(BuildContext context) {
+    return SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      padding: EdgeInsets.symmetric(
+          horizontal: size.width < 500 ? size.width * 0.01 : size.width * 0.1),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _HeaderIcon(),
+          SizedBox(
+            height: size.height * 0.04,
           ),
-        ),
+          Text(Constants.loginTitle,
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge!
+                  .copyWith(color: Colors.black)),
+          SizedBox(
+            height: size.height * 0.04,
+          ),
+          const LoginForm(),
+          SizedBox(height: size.height * 0.04),
+          const _RegisterText(),
+          SizedBox(height: size.height * 0.05),
+          if (isLogout ?? false)
+            Text(
+              message!,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Colors.red,
+                fontSize: size.width < 600 ? 16 : 18,
+              ),
+            )
+        ],
       ),
     );
   }

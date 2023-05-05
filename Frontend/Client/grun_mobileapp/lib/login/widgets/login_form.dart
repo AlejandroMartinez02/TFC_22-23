@@ -1,8 +1,10 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/exports/screens.dart';
-import 'package:grun_mobileapp/utils/services/notification_service.dart';
 import 'package:provider/provider.dart';
 
+import '../../main/ui/main_screen.dart';
+import '../../utils/services/notification_service.dart';
 import 'login_widgets.dart';
 import '../ui/login_form_provider.dart';
 import '../../utils/utils.dart';
@@ -33,36 +35,38 @@ class LoginForm extends StatelessWidget {
             ),
             LoginButton(
                 isLoading: loginForm.isLoading,
-                onPressed: () async => {
-                      FocusScope.of(context).unfocus(),
-                      if (await loginForm.isValidForm() == null)
-                        {
-                          Navigator.pushReplacement(
-                              context,
-                              CreateRoutes.SlideFadeIn(
-                                  direccion: const Offset(1, 0),
-                                  screen: const MainScreen()))
-                        }
-                      else
-                        {
-                          NotificationService.showSnackBar(
-                              'El usuario o la contraseña son incorrectos'),
-                        }
-                    })
+                onPressed: () async {
+                  FocusScope.of(context).unfocus();
+                  final responseLogin = await loginForm.isValidForm();
+                  _checkResponse(responseLogin, context);
+                })
           ],
         ));
   }
 }
 
-// ignore: camel_case_types
-class _passwordBox extends StatefulWidget {
-  const _passwordBox();
-
-  @override
-  State<_passwordBox> createState() => _PasswordBoxState();
+void _checkResponse(String? responseLogin, BuildContext context) {
+  switch (responseLogin) {
+    case null:
+      Navigator.pushReplacement(
+          context,
+          CreateRoutes.SlideFadeIn(
+              direccion: const Offset(1, 0), screen: const MainScreen()));
+      break;
+    case '401':
+      NotificationService.showSnackBar(Constants.wrongLogin);
+      break;
+    case '403':
+      NotificationService.showSnackBar(Constants.accountLocked);
+      break;
+    default:
+      NotificationService.showSnackBar(Constants.serverFailedText);
+  }
 }
 
-class _PasswordBoxState extends State<_passwordBox> {
+// ignore: camel_case_types
+class _passwordBox extends StatelessWidget {
+  const _passwordBox();
   @override
   Widget build(BuildContext context) {
     final loginForm = Provider.of<LoginFormProvider>(context);
@@ -75,6 +79,7 @@ class _PasswordBoxState extends State<_passwordBox> {
         width: size.width < 600 ? size.width * 0.3 : size.width * 0.5,
         child: TextFormField(
           obscureText: loginForm.isHidden,
+          style: TextStyle(color: mainColor),
           enableSuggestions: false,
           autocorrect: false,
           cursorColor: mainColor,
@@ -84,27 +89,26 @@ class _PasswordBoxState extends State<_passwordBox> {
   }
 
   InputDecoration passwordDecoration(
-      LoginFormProvider registerForm, Color mainColor) {
+      LoginFormProvider loginForm, Color mainColor) {
     return InputDecoration(
       suffixIcon: IconButton(
         splashRadius: 15,
         constraints: const BoxConstraints(maxWidth: 40, maxHeight: 40),
         padding: EdgeInsets.zero,
-        icon: registerForm.isHidden
+        icon: loginForm.isHidden
             ? Icon(
                 color: mainColor,
                 Icons.visibility_off_outlined,
               )
             : Icon(color: mainColor, Icons.visibility_outlined),
-        onPressed: () =>
-            setState(() => registerForm.isHidden = !registerForm.isHidden),
+        onPressed: () => loginForm.isHidden = !loginForm.isHidden,
       ),
       prefixIcon: Icon(
         Icons.lock_outlined,
         color: mainColor,
       ),
       label: const Text(
-        "Contraseña",
+        Constants.labelPasswordLogin,
         style: TextStyle(color: Color.fromARGB(255, 99, 99, 99)),
       ),
       enabledBorder:

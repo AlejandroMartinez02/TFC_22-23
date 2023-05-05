@@ -32,11 +32,9 @@ class AppState extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => MainProvider(),
-          lazy: false,
         ),
         ChangeNotifierProvider(
           create: (_) => MenuProvider(),
-          lazy: false,
         )
       ],
       child: const MyApp(),

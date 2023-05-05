@@ -1,22 +1,36 @@
+// ignore_for_file: unnecessary_getters_setters
+
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/login/domain/usecase/login_usecase.dart';
 
 class LoginFormProvider extends ChangeNotifier {
   GlobalKey<FormState> formKey = GlobalKey();
 
-  String? email = '';
-  String? password = '';
+  String? _email = '';
+  String? get email => _email;
+  set email(String? email) => _email = email;
 
-  bool isLoading = false;
+  String? _password = '';
+  String? get password => _password;
+  set password(String? pass) => _password = pass;
 
-  bool isHidden = true;
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
+  set isLoading(bool isLoading) => _isLoading = isLoading;
+
+  bool _isHidden = true;
+  bool get isHidden => _isHidden;
+  set isHidden(bool isHidden) {
+    _isHidden = isHidden;
+    notifyListeners();
+  }
 
   Future isValidForm() async {
     if (formKey.currentState?.validate() ?? false) {
-      isLoading = true;
+      _isLoading = true;
       notifyListeners();
       final reponse = await LoginUseCase.login(email!, password!);
-      isLoading = false;
+      _isLoading = false;
       notifyListeners();
       return reponse;
     }
