@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/main/ui/menu_provider.dart';
+import 'package:grun_mobileapp/menu/ui/menu_provider.dart';
 import 'package:grun_mobileapp/main/widgets/main_widgets.dart';
 import 'package:provider/provider.dart';
 
@@ -35,10 +35,11 @@ class HomePage extends StatelessWidget {
               height:
                   size.height < 600 ? size.height * 0.1 : size.height * 0.03,
             ),
-            ...mainProvider.categories.map((e) => GestureDetector(
-                onTap: () => mainProvider.changeActualPage(1, menuProvider,
-                    secondaryPageName: e.name),
-                child: CategoryCard(category: e)))
+            ...mainProvider.categories.asMap().entries.map((e) =>
+                GestureDetector(
+                    onTap: () => mainProvider.changeActualPage(1, menuProvider,
+                        secondaryPageName: e.key),
+                    child: CategoryCard(category: e.value)))
           ],
         ),
       ]),
