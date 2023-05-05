@@ -19,13 +19,9 @@ const GetAll = async (req, res) => {
 
 const Create = async (req, res) => {
     let { body } = req
-    console.log(body)
     await SERVICE.Create(body)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch((error) => {
-            console.log(error)
-            RESPONSE_MANAGER.RESPONSE_500(res)
-        })
+        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }
 
 const Update = async (req, res) => {

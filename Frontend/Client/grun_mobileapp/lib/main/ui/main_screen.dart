@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grun_mobileapp/exports/main_pages.dart';
 import 'package:grun_mobileapp/exports/screens.dart';
 import 'package:grun_mobileapp/main/ui/main_provider.dart';
 import 'package:grun_mobileapp/main/widgets/main_widgets.dart';
@@ -10,55 +11,23 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mainProvider = Provider.of<MainProvider>(context);
-    final size = MediaQuery.of(context).size;
-
     if (mainProvider.isLoading) return const LoadingScreen();
 
     return Scaffold(
         backgroundColor: const Color.fromARGB(237, 255, 255, 255),
         drawerEnableOpenDragGesture: false,
         bottomNavigationBar: const CustomBottomBar(),
-        body: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          child: Stack(children: [
-            const BackgroundMainTitle(),
-            Column(
-              children: [
-                SizedBox(
-                  height: size.height < 600
-                      ? size.height * 0.02
-                      : size.height * 0.04,
-                ),
-                const TextTitle(),
-                GestureDetector(
-                  child: ProductSwiper(products: mainProvider.products),
-                ),
-                const MenuDivider(),
-                const CategoryTitle(),
-                const MenuDivider(),
-                SizedBox(
-                  height: size.height < 600
-                      ? size.height * 0.1
-                      : size.height * 0.03,
-                ),
-                ...mainProvider.categories.map((e) => CategoryCard(category: e))
-              ],
-            ),
-          ]),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {},
+        ),
+        body: PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: mainProvider.pageController,
+          children: const [
+            HomePage(),
+            MenuPage(),
+            ProfilePage(),
+          ],
         ));
-  }
-}
-
-class MenuDivider extends StatelessWidget {
-  const MenuDivider({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const Divider(
-      height: 30,
-      thickness: 2,
-    );
   }
 }

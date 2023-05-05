@@ -25,14 +25,19 @@ class AppState extends StatelessWidget {
           create: (_) => SplashProvider(),
         ),
         ChangeNotifierProvider(
-          create: (_) => MainProvider(),
-        ),
-        ChangeNotifierProvider(
           create: (_) => LoginFormProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => RegisterFormProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => MainProvider(),
+          lazy: false,
+        ),
+        ChangeNotifierProvider(
+          create: (_) => MenuProvider(),
+          lazy: false,
+        )
       ],
       child: const MyApp(),
     );
@@ -53,7 +58,8 @@ class MyApp extends StatelessWidget {
         routes: {'splash': (_) => const SplashScreen()},
         theme: ThemeData.light().copyWith(
             primaryColor: Colors.grey[800],
-            textTheme: TextTheme(bodyLarge: TextStyle(color: Colors.white))));
+            textTheme:
+                const TextTheme(bodyLarge: TextStyle(color: Colors.white))));
   }
 }
 
