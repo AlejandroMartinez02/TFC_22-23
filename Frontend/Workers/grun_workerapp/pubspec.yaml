@@ -1,0 +1,38 @@
+name: grun_workerapp
+description: A new Flutter project.
+publish_to: "none"
+version: 0.1.0
+
+environment:
+  sdk: ">=2.19.6 <3.0.0"
+
+dependencies:
+  animate_do: ^3.0.2
+  cached_network_image: ^3.2.3
+  flutter_secure_storage: ^8.0.0
+  http: ^0.13.5
+  provider: ^6.0.5
+  simple_animations: ^5.0.0+3
+  auto_size_text: ^3.0.0
+  scrollable_positioned_list: ^0.3.7
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_launcher_icons: ^0.13.0
+  flutter_lints: ^2.0.0
+  flutter_test:
+    sdk: flutter
+
+flutter_icons:
+  android: "assets/light_logo.png"
+  ios: true
+  image_path: "assets/light_logo.png"
+  adaptive_icon_background: "/assets/dark_logo.png"
+  windows:
+    generate: true
+    image_path: "assets/light_logo.png"
+    icon_size: 144
+
+flutter:
+  uses-material-design: true
