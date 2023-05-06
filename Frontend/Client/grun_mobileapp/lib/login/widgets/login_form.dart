@@ -50,7 +50,7 @@ void _checkResponse(String? responseLogin, BuildContext context) {
     case null:
       Navigator.pushReplacement(
           context,
-          CreateRoutes.SlideFadeIn(
+          CreateRoutes.slideFadeIn(
               direccion: const Offset(1, 0), screen: const MainScreen()));
       break;
     case '401':
@@ -79,7 +79,10 @@ class _passwordBox extends StatelessWidget {
         width: size.width < 600 ? size.width * 0.3 : size.width * 0.5,
         child: TextFormField(
           obscureText: loginForm.isHidden,
-          style: TextStyle(color: mainColor),
+          style: Theme.of(context)
+              .textTheme
+              .bodyLarge!
+              .copyWith(color: Colors.black),
           enableSuggestions: false,
           autocorrect: false,
           cursorColor: mainColor,

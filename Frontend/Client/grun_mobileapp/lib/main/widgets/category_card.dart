@@ -21,22 +21,21 @@ class CategoryCard extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    category.name,
-                    style: const TextStyle(
-                        fontSize: 30,
-                        color: Colors.white,
-                        fontFamily: 'Paralucent',
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Text(
-                    category.description,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                        fontSize: 20,
-                        color: Colors.white,
-                        fontFamily: 'Paralucent',
-                        fontWeight: FontWeight.w600),
+                  Text(category.name,
+                      style:
+                          Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                fontSize: size.width < 600 ? 30 : 34,
+                              )),
+                  Padding(
+                    padding:
+                        EdgeInsets.symmetric(horizontal: size.width * 0.01),
+                    child: Text(
+                      category.description,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                            fontSize: size.width < 600 ? 18 : 20,
+                          ),
+                    ),
                   ),
                 ],
               ),

@@ -36,7 +36,6 @@ dependencies:
     sdk: flutter
   flutter_secure_storage: ^8.0.0
   http: ^0.13.5
-  is_first_run: ^1.0.0
   marquee: ^2.2.3
   provider: ^6.0.5
   simple_animations: ^5.0.0+3
@@ -83,6 +82,11 @@ flutter:
     - family: Paralucent
       fonts:
         - asset: fonts/paralucent.ttf
+    - family: Montserrat
+      fonts:
+        - asset: fonts/montserrat.ttf
+        - asset: fonts/montserrat-regular.ttf
+
     #   - family: Schyler
     #     fonts:
     #       - asset: fonts/Schyler-Regular.ttf

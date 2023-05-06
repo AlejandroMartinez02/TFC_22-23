@@ -19,15 +19,14 @@ class AddToCartButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
+            Text(Constants.addToCartButtonText,
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                      fontSize: size.width < 600 ? 22 : 28,
+                    )),
             Icon(
               Icons.shopping_cart,
               size: size.width < 600 ? 22 : 28,
             ),
-            Text(Constants.addToCartButtonText,
-                style: TextStyle(
-                    fontSize: size.width < 600 ? 22 : 28,
-                    fontFamily: 'Paralucent',
-                    fontWeight: FontWeight.bold))
           ]),
     );
   }

@@ -51,10 +51,9 @@ class _loginFrom extends StatelessWidget {
             height: size.height * 0.04,
           ),
           Text(Constants.loginTitle,
-              style: Theme.of(context)
-                  .textTheme
-                  .headlineLarge!
-                  .copyWith(color: Colors.black)),
+              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                    color: Colors.black,
+                  )),
           SizedBox(
             height: size.height * 0.04,
           ),
@@ -66,10 +65,10 @@ class _loginFrom extends StatelessWidget {
             Text(
               message!,
               textAlign: TextAlign.center,
-              style: TextStyle(
-                color: Colors.red,
-                fontSize: size.width < 600 ? 16 : 18,
-              ),
+              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                    color: Colors.red,
+                    fontSize: size.width < 600 ? 16 : 18,
+                  ),
             )
         ],
       ),
@@ -85,23 +84,23 @@ class _RegisterText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(Constants.loginRegisterText,
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 18,
-            )),
+        Text(Constants.loginRegisterText,
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  color: Colors.black,
+                  fontSize: 18,
+                )),
         RichText(
           text: TextSpan(
               text: Constants.loginRegisterLink,
-              style: const TextStyle(
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   fontSize: 18,
-                  fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.italic,
-                  color: Colors.black),
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold),
               recognizer: TapGestureRecognizer()
                 ..onTap = () => Navigator.pushReplacement(
                     context,
-                    CreateRoutes.SlideFadeIn(
+                    CreateRoutes.slideFadeIn(
                         direccion: const Offset(0, 1),
                         screen: const RegisterScreen()))),
         ),

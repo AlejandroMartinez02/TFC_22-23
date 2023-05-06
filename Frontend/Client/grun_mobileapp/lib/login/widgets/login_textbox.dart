@@ -24,7 +24,10 @@ class LoginTextBox extends StatelessWidget {
       constraints: const BoxConstraints(minWidth: 250, maxWidth: 400),
       width: size.width < 600 ? size.width * 0.3 : size.width * 0.5,
       child: TextFormField(
-        style: TextStyle(color: mainColor),
+        style: Theme.of(context)
+            .textTheme
+            .bodyLarge!
+            .copyWith(color: Colors.black),
         cursorColor: mainColor,
         initialValue: '',
         onChanged: onChanged,

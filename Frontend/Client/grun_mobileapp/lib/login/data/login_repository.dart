@@ -1,5 +1,5 @@
-import 'package:grun_mobileapp/login/data/network/login_service.dart';
-import 'package:grun_mobileapp/login/domain/entity/user_dto.dart';
+import '../domain/entity/user_dto.dart';
+import 'network/login_service.dart';
 
 class LoginRepository {
   static Future<String?> login(String email, String password) async {

@@ -30,7 +30,7 @@ class ProductCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () => Navigator.push(
             context,
-            CreateRoutes.SlideFadeIn(
+            CreateRoutes.slideFadeIn(
                 direccion: const Offset(0, 1),
                 screen: ProductScreen(product: product))),
         child: Expanded(
@@ -52,8 +52,6 @@ class ProductCard extends StatelessWidget {
             ),
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Expanded(
                     child: Row(
@@ -63,8 +61,13 @@ class ProductCard extends StatelessWidget {
                         _ContainerTitle(
                           child: AutoSizeText(product.name,
                               maxLines: 1,
-                              minFontSize: size.width < 600 ? 20 : 24,
-                              style: nameStyle(size),
+                              minFontSize: size.width < 600 ? 18 : 22,
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .bodyLarge!
+                                  .copyWith(
+                                    fontSize: size.width < 600 ? 22 : 24,
+                                  ),
                               overflowReplacement: Marquee(
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 pauseAfterRound: const Duration(seconds: 2),
@@ -77,12 +80,20 @@ class ProductCard extends StatelessWidget {
                                     const Duration(milliseconds: 500),
                                 decelerationCurve: Curves.easeOutCubic,
                                 text: product.name,
-                                style: nameStyle(size),
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .bodyLarge!
+                                    .copyWith(
+                                      fontSize: size.width < 600 ? 22 : 24,
+                                    ),
                               )),
                         ),
                         Text(
                           "${product.cost}€",
-                          style: nameStyle(size),
+                          style:
+                              Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                    fontSize: size.width < 600 ? 22 : 24,
+                                  ),
                         )
                       ],
                     ),
@@ -99,7 +110,10 @@ class ProductCard extends StatelessWidget {
                             minFontSize: size.width < 600 ? 16 : 18,
                             maxLines: 3,
                             textAlign: TextAlign.justify,
-                            style: const TextStyle(fontFamily: 'Paralucent'),
+                            style:
+                                Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                      fontSize: size.width < 600 ? 22 : 24,
+                                    ),
                           ),
                         ),
                         IconButton(
@@ -122,13 +136,6 @@ class ProductCard extends StatelessWidget {
       ),
     );
   }
-
-  TextStyle nameStyle(Size size) {
-    return TextStyle(
-        fontSize: size.width < 600 ? 22 : 24,
-        fontFamily: 'Paralucent',
-        fontWeight: FontWeight.bold);
-  }
 }
 
 class _ContainerTitle extends StatelessWidget {
@@ -143,7 +150,7 @@ class _ContainerTitle extends StatelessWidget {
       width: size.width * 0.5,
       padding: EdgeInsets.only(left: size.width * 0.02),
       constraints: BoxConstraints(
-          maxHeight: size.width < 600 ? 20 : 30, maxWidth: size.width),
+          maxHeight: size.width < 600 ? 22 : 30, maxWidth: size.width),
       child: child,
     );
   }

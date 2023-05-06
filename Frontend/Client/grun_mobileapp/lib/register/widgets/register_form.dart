@@ -93,7 +93,7 @@ class RegisterForm extends StatelessWidget {
       case null:
         Navigator.pushReplacement(
             context,
-            CreateRoutes.SlideFadeIn(
+            CreateRoutes.slideFadeIn(
                 direccion: const Offset(1, 0), screen: const MainScreen()));
         break;
       case '500':
@@ -133,7 +133,7 @@ class _LoginText extends StatelessWidget {
                 recognizer: TapGestureRecognizer()
                   ..onTap = () => Navigator.pushReplacement(
                       context,
-                      CreateRoutes.SlideFadeIn(
+                      CreateRoutes.slideFadeIn(
                           direccion: const Offset(0, -1),
                           screen: LoginScreen())))
           ]),

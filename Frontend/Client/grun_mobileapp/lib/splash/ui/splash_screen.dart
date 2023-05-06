@@ -2,11 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:is_first_run/is_first_run.dart';
 
-import 'package:grun_mobileapp/exports/providers.dart';
-import 'package:grun_mobileapp/exports/screens.dart';
-import 'package:grun_mobileapp/utils/utils.dart';
+import '../../exports/screens.dart';
+import '../../utils/constants.dart';
+import '../../utils/widgets/create_route.dart';
+import 'splash_provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -43,26 +43,24 @@ class _SplashScreenState extends State<SplashScreen>
           if (await splashProvider.checkToken()) {
             Navigator.pushReplacement(
                 context,
-                CreateRoutes.SlideFadeIn(
+                CreateRoutes.slideFadeIn(
                     direccion: const Offset(1, 0), screen: const MainScreen()));
             return;
           } else {
             Navigator.pushReplacement(
                 context,
-                CreateRoutes.SlideFadeIn(
+                CreateRoutes.slideFadeIn(
                     direccion: const Offset(1, 0),
-                    screen: await IsFirstRun.isFirstRun()
-                        ? LoginScreen()
-                        : LoginScreen(
-                            isLogout: true,
-                            message: Constants.logoutAutoMessage,
-                          )));
+                    screen: LoginScreen(
+                      isLogout: true,
+                      message: Constants.logoutAutoMessage,
+                    )));
             return;
           }
         }
         Navigator.pushReplacement(
             context,
-            CreateRoutes.SlideFadeIn(
+            CreateRoutes.slideFadeIn(
                 direccion: const Offset(1, 0), screen: LoginScreen()));
       }
     });

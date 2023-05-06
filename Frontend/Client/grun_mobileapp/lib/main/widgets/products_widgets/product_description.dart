@@ -9,9 +9,7 @@ class ProductDescription extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Text(description,
         textAlign: TextAlign.justify,
-        style: TextStyle(
-            color: Colors.grey,
-            fontSize: size.width < 600 ? 22 : 28,
-            fontFamily: 'Paralucent'));
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            fontSize: size.width < 600 ? 22 : 28, color: Colors.grey));
   }
 }

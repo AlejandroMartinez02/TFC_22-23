@@ -9,10 +9,9 @@ class ProductPrice extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Text(
       '$price€',
-      style: TextStyle(
-          fontFamily: 'Paralucent',
-          fontSize: size.width < 600 ? 30 : 35,
-          fontWeight: FontWeight.bold),
+      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+            fontSize: size.width < 600 ? 30 : 34,
+          ),
     );
   }
 }

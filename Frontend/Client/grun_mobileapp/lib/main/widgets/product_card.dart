@@ -24,7 +24,7 @@ class ProductCard extends StatelessWidget {
       child: GestureDetector(
         onTap: () => Navigator.push(
             context,
-            CreateRoutes.SlideFadeIn(
+            CreateRoutes.slideFadeIn(
                 direccion: const Offset(1, 0),
                 screen: ProductScreen(product: product))),
         child: Hero(
@@ -73,7 +73,9 @@ class _cardTitle extends StatelessWidget {
             minFontSize: size.width < 600 ? 22 : 24,
             maxLines: 1,
             textAlign: TextAlign.left,
-            style: _textStyle(size),
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                  fontSize: size.width < 600 ? 22 : 24,
+                ),
             overflowReplacement: Marquee(
               crossAxisAlignment: CrossAxisAlignment.end,
               pauseAfterRound: const Duration(seconds: 2),
@@ -84,17 +86,11 @@ class _cardTitle extends StatelessWidget {
               decelerationDuration: const Duration(milliseconds: 500),
               decelerationCurve: Curves.easeOutCubic,
               text: title.toUpperCase(),
-              style: _textStyle(size),
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    fontSize: size.width < 600 ? 22 : 24,
+                  ),
             ),
           ),
         ));
-  }
-
-  TextStyle _textStyle(Size size) {
-    return TextStyle(
-        fontSize: size.width < 600 ? 22 : 24,
-        color: Colors.white,
-        fontFamily: 'Paralucent',
-        fontWeight: FontWeight.w600);
   }
 }

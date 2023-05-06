@@ -13,9 +13,9 @@ class ProductScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final primaryColor = Theme.of(context).primaryColor;
     return Scaffold(
-      backgroundColor: primaryColor.withOpacity(0.7),
+      backgroundColor: primaryColor.withOpacity(0.8),
       body: ListView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           ProductImage(photo: product.photo, id: product.id),
           Container(

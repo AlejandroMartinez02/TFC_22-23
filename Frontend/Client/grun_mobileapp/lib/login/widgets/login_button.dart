@@ -19,14 +19,11 @@ class LoginButton extends StatelessWidget {
       onPressed: isLoading ? null : onPressed,
       child: Text(
         isLoading ? 'Espere' : "Iniciar sesión",
-        style: _buttonTextStyle(),
+        style: Theme.of(context)
+            .textTheme
+            .bodyLarge!
+            .copyWith(fontSize: size.width < 600 ? 22 : 28),
       ),
     );
   }
-
-  TextStyle _buttonTextStyle() => const TextStyle(
-        fontFamily: "Calibri",
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      );
 }

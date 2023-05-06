@@ -7,12 +7,10 @@ class CategoryTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    return Text(
-      Constants.categoryTitle,
-      style: TextStyle(
-          fontFamily: 'Paralucent',
-          fontSize: width < 600 ? 30 : 35,
-          color: Colors.black),
-    );
+    return Text(Constants.categoryTitle,
+        style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+            fontSize: width < 600 ? 30 : 35,
+            color: Colors.black,
+            fontWeight: FontWeight.w500));
   }
 }

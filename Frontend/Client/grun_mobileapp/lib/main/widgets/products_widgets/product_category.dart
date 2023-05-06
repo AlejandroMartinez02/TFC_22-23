@@ -9,7 +9,8 @@ class ProductCategory extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Text("Categoría : ${category.name}",
-        style: TextStyle(
-            fontSize: size.width < 600 ? 24 : 30, fontFamily: 'Paralucent'));
+        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+              fontSize: size.width < 600 ? 24 : 30,
+            ));
   }
 }

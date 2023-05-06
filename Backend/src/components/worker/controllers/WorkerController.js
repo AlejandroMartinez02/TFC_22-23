@@ -44,6 +44,7 @@ const Update = async (req, res) => {
 const Delete = async (req, res) => {
     let { user } = req
     if (user.rol != 'Admin') return RESPONSE_MANAGER.RESPONSE_401(res)
+
     let { _id } = req.body
     await SERVICE.Delete(_id)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))

@@ -56,8 +56,14 @@ class MyApp extends StatelessWidget {
         routes: {'splash': (_) => const SplashScreen()},
         theme: ThemeData.light().copyWith(
             primaryColor: Colors.grey[800],
-            textTheme:
-                const TextTheme(bodyLarge: TextStyle(color: Colors.white))));
+            textTheme: const TextTheme(
+                headlineLarge: TextStyle(
+                    fontFamily: 'Paralucent', fontWeight: FontWeight.w700),
+                bodyLarge: TextStyle(
+                  fontSize: 18,
+                  color: Colors.white,
+                  fontFamily: 'Montserrat',
+                ))));
   }
 }
 

@@ -1,9 +1,9 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
-import 'package:grun_mobileapp/login/data/network/response/login_response.dart';
-import 'package:grun_mobileapp/login/domain/entity/user_dto.dart';
-import 'package:grun_mobileapp/utils/utils.dart' show Constants;
+import '../../../utils/constants.dart';
+import '../../domain/entity/user_dto.dart';
+import 'response/login_response.dart';
 
 class LoginClient {
   static const _baseUrl = Constants.httpAPI;

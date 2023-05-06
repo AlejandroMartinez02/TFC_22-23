@@ -43,7 +43,9 @@ class CategoryList extends StatelessWidget {
                 child: Center(
                   child: AutoSizeText(
                     menuProvider.categories[index].name,
-                    style: _textStyle(size),
+                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                          fontSize: size.width < 600 ? 22 : 24,
+                        ),
                   ),
                 ),
               ),
