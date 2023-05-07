@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/exports/screens.dart';
 import 'package:grun_mobileapp/exports/providers.dart';
+import 'package:grun_mobileapp/utils/services/navigator_service.dart';
 import 'package:grun_mobileapp/utils/services/notification_service.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +36,9 @@ class AppState extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (_) => MenuProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => ProfileProvider(),
         )
       ],
       child: const MyApp(),
@@ -52,6 +56,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Grün',
         initialRoute: 'splash',
+        navigatorKey: NavigatorService.navigatorKey,
         scaffoldMessengerKey: NotificationService.messengerKey,
         routes: {'splash': (_) => const SplashScreen()},
         theme: ThemeData.light().copyWith(

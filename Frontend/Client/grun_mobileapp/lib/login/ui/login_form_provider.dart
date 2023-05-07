@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/login/domain/usecase/login_usecase.dart';
 
+import '../../utils/constants.dart';
+
 class LoginFormProvider extends ChangeNotifier {
   GlobalKey<FormState> formKey = GlobalKey();
 
@@ -26,14 +28,21 @@ class LoginFormProvider extends ChangeNotifier {
   }
 
   Future isValidForm() async {
-    if (formKey.currentState?.validate() ?? false) {
-      _isLoading = true;
-      notifyListeners();
-      final reponse = await LoginUseCase.login(email!, password!);
+    try {
+      if (formKey.currentState?.validate() ?? false) {
+        _isLoading = true;
+        notifyListeners();
+        final reponse = await LoginUseCase.login(email!, password!);
+        _isLoading = false;
+        notifyListeners();
+        return reponse;
+      }
+      return "NoValid";
+      // ignore: empty_catches
+    } catch (ex) {
       _isLoading = false;
       notifyListeners();
-      return reponse;
+      return Constants.error;
     }
-    return "NoValid";
   }
 }

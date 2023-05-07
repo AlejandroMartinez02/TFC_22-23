@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 
-class LoadingProductWidget extends StatelessWidget {
-  const LoadingProductWidget({
+class PageLoading extends StatelessWidget {
+  const PageLoading({
     super.key,
-    required this.size,
   });
-
-  final Size size;
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Center(
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: size.height * 0.1),

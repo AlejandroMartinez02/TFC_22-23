@@ -65,7 +65,7 @@ class _loginFrom extends StatelessWidget {
             Text(
               message!,
               textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     color: Colors.red,
                     fontSize: size.width < 600 ? 16 : 18,
                   ),

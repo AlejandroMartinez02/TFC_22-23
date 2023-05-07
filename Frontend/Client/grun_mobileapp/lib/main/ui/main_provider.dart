@@ -37,11 +37,15 @@ class MainProvider extends ChangeNotifier {
   }
 
   Future loadData() async {
-    products = await GetProductsUseCase.init();
-    categories = await GetCategoriesUseCase.getCategories();
-
-    isLoading = false;
-    notifyListeners();
+    try {
+      products = await GetProductsUseCase.init();
+      categories = await GetCategoriesUseCase.getCategories();
+      isLoading = false;
+      notifyListeners();
+    } catch (ex) {
+      isLoading = false;
+      notifyListeners();
+    }
   }
 
   int _actualPage = 0;

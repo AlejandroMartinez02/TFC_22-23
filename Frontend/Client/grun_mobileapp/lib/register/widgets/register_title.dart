@@ -10,10 +10,10 @@ class RegisterTitle extends StatelessWidget {
     final mainColor = Theme.of(context).primaryColor;
     return Text(
       Constants.registerTitle,
-      style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-          color: mainColor,
-          fontFamily: 'Paralucent',
-          fontWeight: FontWeight.bold),
+      style: Theme.of(context)
+          .textTheme
+          .headlineLarge!
+          .copyWith(color: mainColor, fontWeight: FontWeight.bold),
     );
   }
 }

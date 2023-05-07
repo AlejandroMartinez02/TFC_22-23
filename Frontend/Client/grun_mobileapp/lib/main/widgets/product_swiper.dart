@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/main/domain/entity/products_dto.dart';
 import 'package:grun_mobileapp/main/widgets/main_widgets.dart';
 
+import '../../utils/constants.dart';
+
 class ProductSwiper extends StatelessWidget {
   final List<ProductDTO> products;
 
@@ -28,6 +30,26 @@ class ProductSwiper extends StatelessWidget {
               child: ProductCard(product: products[index]),
             );
           }),
+    );
+  }
+}
+
+class _errorSwiper extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
+    return Container(
+      height: size.height * 0.4,
+      child: Center(
+        child: Text(
+          Constants.noProducts,
+          textAlign: TextAlign.center,
+          style: Theme.of(context)
+              .textTheme
+              .bodyLarge!
+              .copyWith(color: Colors.black),
+        ),
+      ),
     );
   }
 }

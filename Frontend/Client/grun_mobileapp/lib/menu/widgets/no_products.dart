@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grun_mobileapp/utils/utils.dart';
 
 class NoProducts extends StatelessWidget {
   const NoProducts({
@@ -11,15 +12,9 @@ class NoProducts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: size.height * 0.3),
-      child: Text(
-        "No hay ningún producto",
-        style: TextStyle(
-            color: Colors.black,
-            fontSize: size.width < 600 ? 24 : 30,
-            fontFamily: 'Paralucent',
-            fontWeight: FontWeight.bold),
-      ),
-    );
+        padding: EdgeInsets.symmetric(vertical: size.height * 0.1),
+        child: const NotFoundPage(
+          message: Constants.noProducts,
+        ));
   }
 }

@@ -11,8 +11,8 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mainProvider = Provider.of<MainProvider>(context);
-    if (mainProvider.isLoading) return const LoadingScreen();
 
+    if (mainProvider.isLoading) return const LoadingScreen();
     return Scaffold(
         backgroundColor: const Color.fromARGB(237, 255, 255, 255),
         drawerEnableOpenDragGesture: false,

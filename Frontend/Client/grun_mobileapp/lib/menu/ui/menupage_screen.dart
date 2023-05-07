@@ -3,6 +3,7 @@ import 'package:grun_mobileapp/exports/providers.dart';
 import 'package:grun_mobileapp/exports/screens.dart';
 import 'package:grun_mobileapp/menu/ui/menu_provider.dart';
 import 'package:grun_mobileapp/menu/widgets/widgets.dart';
+import 'package:grun_mobileapp/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 class MenuPage extends StatelessWidget {
@@ -10,11 +11,13 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
+    final menuProvider = Provider.of<MenuProvider>(context);
+
+    return Scaffold(
+        body: SafeArea(
       child: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
-        child: Scaffold(
-            body: SingleChildScrollView(
+        child: SingleChildScrollView(
           physics: const ClampingScrollPhysics(),
           child: Column(
             children: const [
@@ -22,8 +25,8 @@ class MenuPage extends StatelessWidget {
               ProductList(),
             ],
           ),
-        )),
+        ),
       ),
-    );
+    ));
   }
 }

@@ -7,7 +7,9 @@ class SplashService {
     final token = await SecureStorageService.getToken();
     final response =
         CheckTokenResponse.fromRawJson(await SplashClient.checkToken(token));
-    return response.status == "200" ? true : false;
+    final isTokenValid = response.status == "200" ? true : false;
+    if (!isTokenValid) await SecureStorageService.deleteToken();
+    return isTokenValid;
   }
 
   static Future<bool> getToken() async {

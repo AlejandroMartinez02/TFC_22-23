@@ -11,30 +11,40 @@ class MenuProvider extends ChangeNotifier {
 
   bool _isLoading = true;
   bool get isLoading => _isLoading;
-  set isLoading(bool loading) => _isLoading = loading;
+  set isLoading(bool loading) {
+    _isLoading = loading;
+  }
 
   int _actualCategory = 0;
 
   int get actualCategory => _actualCategory;
 
   void changeActualPage({int page = -1}) async {
-    if (page != -1) _actualCategory = page;
-
-    _isLoading = true;
-    notifyListeners();
-    await loadProducts();
-    _isLoading = false;
-    notifyListeners();
+    try {
+      if (page != -1) _actualCategory = page;
+      _isLoading = true;
+      notifyListeners();
+      await loadProducts();
+      _isLoading = false;
+      notifyListeners();
+    } catch (ex) {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
 
   Map<String, List<ProductDTO>> categoryProducts = {};
-  late List<CategoryDTO> categories;
+  List<CategoryDTO> categories = [];
 
   Future loadData() async {
-    await loadCategories();
-    await loadProducts();
-    _isLoading = false;
-    notifyListeners();
+    try {
+      await loadCategories();
+      await loadProducts();
+      _isLoading = false;
+    } catch (ex) {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
 
   Future loadProducts() async {
@@ -47,9 +57,9 @@ class MenuProvider extends ChangeNotifier {
 
   loadCategories() async {
     categories = await GetCategoriesUseCase.getCategories();
-    categories.forEach((element) {
+    for (var element in categories) {
       categoryProducts[element.name] = [];
-    });
+    }
   }
 
   final ItemScrollController _categoryController = ItemScrollController();

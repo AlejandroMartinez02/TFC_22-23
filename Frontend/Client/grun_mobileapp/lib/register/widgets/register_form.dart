@@ -1,7 +1,6 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'package:grun_mobileapp/exports/screens.dart';
 import 'package:grun_mobileapp/register/widgets/register_widgets.dart';
@@ -76,7 +75,9 @@ class RegisterForm extends StatelessWidget {
                 isLoading: registerForm.isLoading,
                 onPressed: () async {
                   final response = await registerForm.isValidForm();
-                  _checkResponse(response, context);
+                  SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+                    _checkResponse(response, context);
+                  });
                 }),
             SizedBox(
               height: size.height * padding,
@@ -97,7 +98,7 @@ class RegisterForm extends StatelessWidget {
                 direccion: const Offset(1, 0), screen: const MainScreen()));
         break;
       case '500':
-        NotificationService.showSnackBar(Constants.serverFailedText);
+        NotificationService.showSnackBar(Constants.errorPageText);
         break;
       case '404':
         NotificationService.showSnackBar(Constants.registerFailedText);
@@ -116,20 +117,22 @@ class _LoginText extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(Constants.registerLoginText,
-            style: TextStyle(
-              fontSize: size.width < 600 ? 18 : 22,
-              color: mainColor,
-            )),
+        Text(
+          Constants.registerLoginText,
+          style: Theme.of(context)
+              .textTheme
+              .bodyLarge!
+              .copyWith(color: mainColor, fontSize: size.width < 600 ? 18 : 22),
+        ),
         RichText(
           text: TextSpan(children: [
             TextSpan(
                 text: Constants.registerLoginLink,
-                style: TextStyle(
+                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                    color: mainColor,
                     fontSize: size.width < 600 ? 18 : 22,
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontStyle: FontStyle.italic),
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.bold),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () => Navigator.pushReplacement(
                       context,

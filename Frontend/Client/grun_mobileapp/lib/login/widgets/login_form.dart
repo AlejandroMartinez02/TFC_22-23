@@ -1,7 +1,6 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter/scheduler.dart';
 
 import '../../main/ui/main_screen.dart';
 import '../../utils/services/notification_service.dart';
@@ -38,7 +37,9 @@ class LoginForm extends StatelessWidget {
                 onPressed: () async {
                   FocusScope.of(context).unfocus();
                   final responseLogin = await loginForm.isValidForm();
-                  _checkResponse(responseLogin, context);
+                  SchedulerBinding.instance.addPostFrameCallback((_) {
+                    _checkResponse(responseLogin, context);
+                  });
                 })
           ],
         ));
@@ -59,8 +60,8 @@ void _checkResponse(String? responseLogin, BuildContext context) {
     case '403':
       NotificationService.showSnackBar(Constants.accountLocked);
       break;
-    default:
-      NotificationService.showSnackBar(Constants.serverFailedText);
+    case Constants.error:
+      NotificationService.showSnackBar(Constants.errorPageText);
   }
 }
 

@@ -1,6 +1,5 @@
-// ignore_for_file: use_build_context_synchronously
-
 import 'package:flutter/material.dart';
+import 'package:grun_mobileapp/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 import '../../exports/screens.dart';
@@ -138,6 +137,13 @@ class _splashContent extends StatelessWidget {
                 color: Constants.secondaryColor,
               )),
         ),
+        Padding(
+          padding: EdgeInsets.symmetric(vertical: size.height * 0.05),
+          child: CircularProgressIndicator(
+              color: splashProvider.isLoading
+                  ? Constants.secondaryColor
+                  : Colors.white),
+        )
       ],
     );
   }

@@ -16,11 +16,17 @@ class SplashProvider extends ChangeNotifier {
   }
 
   Future<bool> checkToken() async {
-    _isLoading = true;
-    notifyListeners();
-    final checkToken = await CheckTokenUseCase.checkToken();
-    isLoading = false;
-    notifyListeners();
-    return checkToken;
+    try {
+      _isLoading = true;
+      notifyListeners();
+      final checkToken = await CheckTokenUseCase.checkToken();
+      isLoading = false;
+      notifyListeners();
+      return checkToken;
+    } catch (ex) {
+      isLoading = false;
+      notifyListeners();
+      return false;
+    }
   }
 }

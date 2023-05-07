@@ -11,24 +11,19 @@ class RegisterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mainColor = Theme.of(context).primaryColor;
     final size = MediaQuery.of(context).size;
     return MaterialButton(
       minWidth: size.height * 0.2,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       textColor: Colors.white,
       disabledColor: Colors.grey,
-      color: Theme.of(context).primaryColor,
+      color: mainColor,
       onPressed: isLoading ? null : onPressed,
       child: Text(
         isLoading ? 'Espere' : 'Registrarme',
-        style: _buttonTextStyle(),
+        style: Theme.of(context).textTheme.bodyLarge,
       ),
     );
   }
-
-  TextStyle _buttonTextStyle() => const TextStyle(
-        fontFamily: "Calibri",
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-      );
 }

@@ -5,6 +5,8 @@ import 'package:grun_mobileapp/login/data/network/login_client.dart';
 import 'package:grun_mobileapp/register/domain/entities/register_user_dto.dart';
 import 'package:grun_mobileapp/register/domain/usecase/register_usecase.dart';
 
+import '../../utils/constants.dart';
+
 class RegisterFormProvider extends ChangeNotifier {
   GlobalKey<FormState> firstKey = GlobalKey();
 
@@ -47,22 +49,26 @@ class RegisterFormProvider extends ChangeNotifier {
   set password(String? password) => _password = password;
 
   Future isValidForm() async {
-    if (firstKey.currentState?.validate() ?? false) {
-      isLoading = true;
-      notifyListeners();
-      final user = RegisterUserDTO(
-          email: email!,
-          lastname: lastName!,
-          name: name!,
-          password: password!,
-          phoneNumber: phoneNumber!,
-          address: address!);
-      final response = await RegisterUseCase.register(user);
-      isLoading = false;
-      notifyListeners();
-      return response;
-    }
+    try {
+      if (firstKey.currentState?.validate() ?? false) {
+        isLoading = true;
+        notifyListeners();
+        final user = RegisterUserDTO(
+            email: email!,
+            lastname: lastName!,
+            name: name!,
+            password: password!,
+            phoneNumber: phoneNumber!,
+            address: address!);
+        final response = await RegisterUseCase.register(user);
+        isLoading = false;
+        notifyListeners();
+        return response;
+      }
 
-    return "noValid";
+      return "noValid";
+    } catch (ex) {
+      return Constants.error;
+    }
   }
 }
