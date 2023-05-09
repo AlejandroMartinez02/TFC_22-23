@@ -10,25 +10,23 @@ class ProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    try {
-      final menuProvider = Provider.of<MenuProvider>(context);
-      final actualProducts = menuProvider.categoryProducts[
-          menuProvider.categories[menuProvider.actualCategory].name];
-      final size = MediaQuery.of(context).size;
+    final menuProvider = Provider.of<MenuProvider>(context);
+    final actualProducts = menuProvider.categories.isEmpty
+        ? []
+        : menuProvider.categoryProducts[
+            menuProvider.categories[menuProvider.actualCategory].name];
+    final size = MediaQuery.of(context).size;
 
-      if (menuProvider.isLoading) return const PageLoading();
-      return actualProducts!.isEmpty
-          ? NoProducts(size: size)
-          : ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: actualProducts.length,
-              itemBuilder: (BuildContext context, int index) {
-                return ProductCard(product: actualProducts[index]);
-              },
-            );
-    } catch (ex) {
-      return const NotFoundPage(message: Constants.noProducts);
-    }
+    if (menuProvider.isLoading) return const PageLoading();
+    return actualProducts!.isEmpty
+        ? NoProducts(size: size)
+        : ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            shrinkWrap: true,
+            itemCount: actualProducts.length,
+            itemBuilder: (BuildContext context, int index) {
+              return ProductCard(product: actualProducts[index]);
+            },
+          );
   }
 }

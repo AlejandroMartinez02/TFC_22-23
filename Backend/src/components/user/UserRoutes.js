@@ -9,8 +9,8 @@ const CHECKERRORS = require('../../middlewares/validations/CheckErrors')
 ROUTER
     .get('/', AUTH, CONTROLLER.GetOne)
     .get('/all', AUTH, CONTROLLER.GetAll)
-    .post('/', AUTH, VALIDATIONS.SIGNUPCHECK, CHECKERRORS, CONTROLLER.Create)
-    .patch('/', AUTH, VALIDATIONS.UPDATEUSERCHECK, CHECKERRORS, CONTROLLER.Update)
+    .post('/', AUTH, VALIDATIONS.SIGNUPCHECK(), CHECKERRORS, CONTROLLER.Create)
+    .patch('/', AUTH, VALIDATIONS.UPDATEUSERCHECK(), CHECKERRORS, CONTROLLER.Update)
     .delete('/', AUTH, CONTROLLER.Delete)
 
 module.exports = ROUTER

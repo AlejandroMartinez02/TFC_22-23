@@ -1,13 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:grun_mobileapp/utils/services/navigator_service.dart';
 
-import 'package:provider/provider.dart';
-
-import '../../login/ui/login_screen.dart';
+import '../../utils/services/navigator_service.dart';
 import '../../utils/utils.dart';
-import '../ui/profile_provider.dart';
 import 'logout_dialog_android.dart';
 
 class LogoutButton extends StatelessWidget {
@@ -29,7 +24,7 @@ class LogoutButton extends StatelessWidget {
           Icon(
             Icons.logout,
             color: Colors.red,
-            size: size.width < 600 ? 25 : 50,
+            size: size.width < 600 ? 25 : 35,
           ),
           const SizedBox(
             width: 10,
@@ -37,7 +32,7 @@ class LogoutButton extends StatelessWidget {
           Text(
             Constants.logoutText,
             style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                fontSize: size.width < 600 ? 22 : 32, color: Colors.black),
+                fontSize: size.width < 600 ? 22 : 28, color: Colors.black),
           )
         ]),
       ),

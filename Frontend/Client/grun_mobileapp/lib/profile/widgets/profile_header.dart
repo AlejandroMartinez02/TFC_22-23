@@ -21,9 +21,9 @@ class ProfileHeader extends StatelessWidget {
       height: size.height * 0.2,
       alignment: Alignment.bottomLeft,
       width: size.width,
-      decoration: const BoxDecoration(
-          color: Constants.secondaryColor,
-          borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+          color: Theme.of(context).primaryColor,
+          borderRadius: const BorderRadius.only(
               bottomLeft: Radius.circular(20),
               bottomRight: Radius.circular(20))),
       child: Text(

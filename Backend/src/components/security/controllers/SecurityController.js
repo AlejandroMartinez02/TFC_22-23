@@ -62,11 +62,25 @@ const Register = async (req, res) => {
         .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }
 
+const ChangePassword = async (req, res) => {
+    const { oldPassword } = req.body
+    const { sub } = req.user
+    const { newPassword } = req.body
+
+    await SERVICE.ChangePassword(sub, oldPassword, newPassword)
+        .then((response) => response.status == 200 ? RESPONSE_MANAGER.RESPONSE_200(res) : RESPONSE_MANAGER.RESPONSE_401(res))
+        .catch((error) => {
+            console.log(error)
+            RESPONSE_MANAGER.RESPONSE_500(res)
+        })
+}
+
 
 
 module.exports = {
     Login,
     WorkerLogin,
     Register,
-    Check
+    Check,
+    ChangePassword
 }

@@ -42,20 +42,6 @@ class ProfilePage extends StatelessWidget {
   }
 }
 
-class PersonalDataButton extends StatelessWidget {
-  const PersonalDataButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: () {},
-      child: Text("Mis datos personales"),
-    );
-  }
-}
-
 class MyOrderButton extends StatelessWidget {
   const MyOrderButton({
     super.key,

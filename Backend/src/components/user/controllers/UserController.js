@@ -35,8 +35,7 @@ const Create = async (req, res) => {
 
 const Update = async (req, res) => {
     const { body } = req
-
-    if (req.user.rol != "Admin" && req.user.rol == body.rol) return RESPONSE_MANAGER.RESPONSE_403(res)
+    if (req.user.sub != body._id) return RESPONSE_MANAGER.RESPONSE_403(res)
 
     await SERVICE.Update(body)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))

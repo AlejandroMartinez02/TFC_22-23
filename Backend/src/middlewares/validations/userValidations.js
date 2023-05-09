@@ -57,12 +57,7 @@ const UPDATEUSERCHECK = () => {
         check('email')
             .trim()
             .isEmail()
-            .notEmpty()
-            .custom(async (email) => {
-                const searchedEmail = await USER.find({ email: email });
-                if (searchedEmail.length > 0)
-                    throw new Error("This email is already in use")
-            }),
+            .notEmpty(),
 
         check('address')
             .trim()
@@ -71,16 +66,7 @@ const UPDATEUSERCHECK = () => {
 
         check('phone_number')
             .isMobilePhone('es-ES')
-            .notEmpty()
-            .custom(async (phone) => {
-                const searchedPhone = await USER.find({ phone_number: phone })
-                if (searchedPhone.length > 0)
-                    throw new Error('This phone number is already in use')
-            }),
-
-        check('rol')
-            .notEmpty()
-            .matches(/User|Admin|Chef|Waiter/g),
+            .notEmpty(),
     ]
 }
 

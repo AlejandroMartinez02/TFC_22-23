@@ -4,6 +4,7 @@ import 'package:grun_mobileapp/main/widgets/main_widgets.dart';
 import 'package:grun_mobileapp/utils/utils.dart';
 import 'package:provider/provider.dart';
 
+import '../../menu/widgets/no_products.dart';
 import 'main_provider.dart';
 
 class HomePage extends StatelessWidget {
@@ -18,9 +19,7 @@ class HomePage extends StatelessWidget {
 
     final size = MediaQuery.of(context).size;
     return mainProvider.products.isEmpty || mainProvider.categories.isEmpty
-        ? const NotFoundPage(
-            message: Constants.noProducts,
-          )
+        ? Scaffold(body: SafeArea(child: NoProducts(size: size)))
         : SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
             child: Stack(children: [

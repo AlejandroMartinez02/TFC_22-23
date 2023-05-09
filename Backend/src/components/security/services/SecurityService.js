@@ -87,10 +87,25 @@ const Register = async (user) => {
     return { status: 201, data: SECURITY.createToken(response) }
 }
 
+const ChangePassword = async (id, oldPassword, newPassword) => {
+    let user = await USER.findOne({ _id: id }, 'password')
+    let response
+    await SECURITY.comparePassword(oldPassword, user.password)
+        .then(async (isEqual) => {
+            if (isEqual) {
+                await USER.findByIdAndUpdate(id, { password: await SECURITY.encrypt(newPassword) })
+                response = { status: 200 }
+            } else {
+                response = { status: 401 }
+            }
+        })
+    return response;
+}
 
 module.exports = {
     Login,
     WorkerLogin,
     Register,
-    Check
+    Check,
+    ChangePassword,
 }

@@ -13,49 +13,52 @@ class CategoryList extends StatelessWidget {
     final menuProvider = Provider.of<MenuProvider>(context);
     final size = MediaQuery.of(context).size;
     final primaryColor = Theme.of(context).primaryColor;
-    return Container(
-      height: size.height * 0.1,
-      width: size.width,
-      color: primaryColor,
-      child: ScrollConfiguration(
-        behavior: const ScrollBehavior().copyWith(overscroll: false),
-        child: ScrollablePositionedList.separated(
-          itemScrollController: menuProvider.categoryController,
-          scrollDirection: Axis.horizontal,
-          itemCount: menuProvider.categories.length,
-          initialScrollIndex: menuProvider.actualCategory,
-          physics: const ClampingScrollPhysics(),
-          itemBuilder: (BuildContext context, int index) {
-            return GestureDetector(
-              onTap: () {
-                menuProvider.changeActualPage(page: index);
-                menuProvider.categoryController.scrollTo(
-                    alignment: 0.5,
-                    index: index,
-                    duration: const Duration(milliseconds: 200));
-              },
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                    color: menuProvider.actualCategory == index
-                        ? Constants.secondaryColor
-                        : primaryColor),
-                child: Center(
-                  child: AutoSizeText(
-                    menuProvider.categories[index].name,
-                    style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                          fontSize: size.width < 600 ? 22 : 24,
+    return menuProvider.categories.isEmpty
+        ? const SizedBox()
+        : Container(
+            height: size.height * 0.1,
+            width: size.width,
+            color: primaryColor,
+            child: ScrollConfiguration(
+              behavior: const ScrollBehavior().copyWith(overscroll: false),
+              child: ScrollablePositionedList.separated(
+                itemScrollController: menuProvider.categoryController,
+                scrollDirection: Axis.horizontal,
+                itemCount: menuProvider.categories.length,
+                initialScrollIndex: menuProvider.actualCategory,
+                physics: const ClampingScrollPhysics(),
+                itemBuilder: (BuildContext context, int index) {
+                  return GestureDetector(
+                    onTap: () {
+                      menuProvider.changeActualPage(page: index);
+                      menuProvider.categoryController.scrollTo(
+                          alignment: 0.5,
+                          index: index,
+                          duration: const Duration(milliseconds: 200));
+                    },
+                    child: Container(
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: menuProvider.actualCategory == index
+                              ? Constants.secondaryColor
+                              : primaryColor),
+                      child: Center(
+                        child: AutoSizeText(
+                          menuProvider.categories[index].name,
+                          style:
+                              Theme.of(context).textTheme.bodyLarge!.copyWith(
+                                    fontSize: size.width < 600 ? 22 : 24,
+                                  ),
                         ),
-                  ),
-                ),
+                      ),
+                    ),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    const Padding(padding: EdgeInsets.symmetric(horizontal: 6)),
               ),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) =>
-              const Padding(padding: EdgeInsets.symmetric(horizontal: 6)),
-        ),
-      ),
-    );
+            ),
+          );
   }
 
   TextStyle _textStyle(Size size) => TextStyle(
