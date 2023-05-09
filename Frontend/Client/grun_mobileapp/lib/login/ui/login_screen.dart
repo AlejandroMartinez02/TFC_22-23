@@ -19,15 +19,14 @@ class LoginScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: LoginBody(
-        child: _loginFrom(size: size, isLogout: isLogout, message: message),
+        child: _loginForm(size: size, isLogout: isLogout, message: message),
       ),
     );
   }
 }
 
-class _loginFrom extends StatelessWidget {
-  const _loginFrom({
-    super.key,
+class _loginForm extends StatelessWidget {
+  const _loginForm({
     required this.size,
     required this.isLogout,
     required this.message,

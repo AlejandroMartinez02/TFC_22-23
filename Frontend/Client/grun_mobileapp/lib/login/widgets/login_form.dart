@@ -112,7 +112,7 @@ class _passwordBox extends StatelessWidget {
         color: mainColor,
       ),
       label: const Text(
-        Constants.labelPasswordLogin,
+        Constants.labelPassword,
         style: TextStyle(color: Color.fromARGB(255, 99, 99, 99)),
       ),
       enabledBorder:

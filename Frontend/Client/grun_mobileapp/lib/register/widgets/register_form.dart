@@ -30,34 +30,33 @@ class RegisterForm extends StatelessWidget {
             RegisterTextBox(
               hintText: 'Juan Carlos',
               inputType: TextInputType.name,
-              labelText: 'Nombre',
+              labelText: Constants.nameTextFiled,
               onChanged: (value) => registerForm.name = value,
               validator: (value) =>
-                  value!.isEmpty ? "¡Debes escribir tu nombre! :)" : null,
+                  value!.isEmpty ? Constants.nameFieldError : null,
             ),
             SizedBox(height: size.height * padding),
             RegisterTextBox(
               hintText: 'Cardo Jiménez',
               inputType: TextInputType.name,
-              labelText: 'Apellidos',
+              labelText: Constants.lastnameTextField,
               onChanged: (value) => registerForm.lastName = value,
               validator: (value) =>
-                  value!.isEmpty ? "¡Debes escribir tus apellidos! :)" : null,
+                  value!.isEmpty ? Constants.lastnameFieldError : null,
             ),
             RegisterTextBox(
               onChanged: (value) => registerForm.address = value,
               inputType: TextInputType.streetAddress,
               hintText: 'Avinguna Rei Jaume I, 32',
-              labelText: 'Dirección',
-              validator: (value) => value!.isEmpty
-                  ? "¡Debes escribir tu dirección de casa! :)"
-                  : null,
+              labelText: Constants.addressTextField,
+              validator: (value) =>
+                  value!.isEmpty ? Constants.addressFieldError : null,
             ),
             SizedBox(height: size.height * padding),
             RegisterTextBox(
               hintText: '695811734',
               inputType: TextInputType.phone,
-              labelText: 'Teléfono móvil',
+              labelText: Constants.phoneTextField,
               onChanged: (value) => registerForm.phoneNumber = value,
               validator: (value) => Validations.phoneValidator(value),
             ),
@@ -65,7 +64,7 @@ class RegisterForm extends StatelessWidget {
             RegisterTextBox(
                 hintText: 'juancarloscardo@gmail.com',
                 inputType: TextInputType.emailAddress,
-                labelText: 'Correo electrónico',
+                labelText: Constants.emailAddressTextField,
                 onChanged: (value) => registerForm.email = value,
                 validator: (value) => Validations.emailValidator(value)),
             SizedBox(height: size.height * padding),
