@@ -26,6 +26,7 @@ class Constants {
   static const categoryTitle = 'Nuestro menú';
   static const accountDrawerText = 'Tu perfil';
   static const addToCartButtonText = "Añadir al carrito";
+  static const addedToCart = '¡Producto añadido al carrito';
 
   //---Profile---//
   static String profileHeaderText(String name) => '¡Hola $name!';
@@ -77,10 +78,34 @@ class Constants {
       '¡Oh no! Parece que tenemos algún problema, lo intentaremos solucionar lo antes posible';
   static const noProducts =
       'Lo sentimos, pero no hay productos disponibles. Puede ser que sea por renovación de menú...';
+  static const total = 'Total:';
+  //---Order---//
+  static const orderSummary = 'Resumen del pedido';
+
   //*--- Static photos ---//
   static const lightLogoApp = 'assets/light_logo.png';
   static const darkLogoApp = 'assets/dark_logo.png';
 
 //*--- IP's ---*//
   static const httpAPI = '192.168.1.104:8080';
+
+//*--- Functions ---*//
+  static Color pickColor(String state) {
+    Color color;
+    switch (state) {
+      case 'En proceso':
+        color = Colors.green;
+        break;
+      case 'Finalizado':
+        color = Colors.red;
+        break;
+      case 'Entregando':
+        color = Colors.white;
+        break;
+      default:
+        color = Colors.orange;
+    }
+
+    return color;
+  }
 }

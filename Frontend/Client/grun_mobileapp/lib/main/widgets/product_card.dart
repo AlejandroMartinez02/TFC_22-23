@@ -18,15 +18,15 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
-      width: size.width < 600 ? 275 : 350,
-      decoration: _cardDecoration(),
-      child: GestureDetector(
-        onTap: () => Navigator.push(
-            context,
-            CreateRoutes.slideFadeIn(
-                direccion: const Offset(1, 0),
-                screen: ProductScreen(product: product))),
+    return GestureDetector(
+      onTap: () => Navigator.push(
+          context,
+          CreateRoutes.slideFadeIn(
+              direccion: const Offset(1, 0),
+              screen: ProductScreen(product: product))),
+      child: Container(
+        width: size.width < 600 ? 275 : 350,
+        decoration: _cardDecoration(),
         child: Hero(
           tag: product.id!,
           child: Stack(children: [

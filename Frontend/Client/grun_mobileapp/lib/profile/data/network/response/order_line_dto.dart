@@ -2,38 +2,38 @@ import 'dart:convert';
 
 import 'product_dto.dart';
 
-class OrderLine {
+class OrderLineDTO {
   String id;
   Product product;
   int count;
   double cost;
 
-  OrderLine({
+  OrderLineDTO({
     required this.id,
     required this.product,
     required this.count,
     required this.cost,
   });
 
-  OrderLine copyWith({
+  OrderLineDTO copyWith({
     String? id,
     Product? product,
     int? count,
     double? cost,
   }) =>
-      OrderLine(
+      OrderLineDTO(
         id: id ?? this.id,
         product: product ?? this.product,
         count: count ?? this.count,
         cost: cost ?? this.cost,
       );
 
-  factory OrderLine.fromRawJson(String str) =>
-      OrderLine.fromJson(json.decode(str));
+  factory OrderLineDTO.fromRawJson(String str) =>
+      OrderLineDTO.fromJson(json.decode(str));
 
   String toRawJson() => json.encode(toJson());
 
-  factory OrderLine.fromJson(Map<String, dynamic> json) => OrderLine(
+  factory OrderLineDTO.fromJson(Map<String, dynamic> json) => OrderLineDTO(
         id: json["_id"],
         product: Product.fromJson(json["product"]),
         count: json["count"],

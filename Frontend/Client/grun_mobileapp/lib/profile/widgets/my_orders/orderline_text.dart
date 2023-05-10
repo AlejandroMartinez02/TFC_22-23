@@ -6,7 +6,7 @@ import '../../data/network/response/order_line_dto.dart';
 class OrderLinesWidget extends StatelessWidget {
   OrderLinesWidget({super.key, required this.orderLines});
 
-  List<OrderLine> orderLines;
+  List<OrderLineDTO> orderLines;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

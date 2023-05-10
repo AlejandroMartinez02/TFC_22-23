@@ -27,7 +27,7 @@ class ChangePasswordOption extends StatelessWidget {
       },
       child: Container(
         margin:
-            EdgeInsets.only(left: size.width * 0.05, top: size.height * 0.02),
+            EdgeInsets.only(left: size.width * 0.02, top: size.height * 0.02),
         child: ProfileDataContainer(
           size: size,
           child: Text(

@@ -7,7 +7,7 @@ class OrderDTO {
   DateTime date;
   double totalCost;
   String userId;
-  List<OrderLine> orderLines;
+  List<OrderLineDTO> orderLines;
   String state;
   int v;
 
@@ -26,7 +26,7 @@ class OrderDTO {
     DateTime? date,
     double? totalCost,
     String? userId,
-    List<OrderLine>? orderLines,
+    List<OrderLineDTO>? orderLines,
     String? state,
     int? v,
   }) =>
@@ -50,8 +50,8 @@ class OrderDTO {
         date: DateTime.parse(json["date"]),
         totalCost: json["total_cost"]?.toDouble(),
         userId: json["userId"],
-        orderLines: List<OrderLine>.from(
-            json["order_lines"].map((x) => OrderLine.fromJson(x))),
+        orderLines: List<OrderLineDTO>.from(
+            json["order_lines"].map((x) => OrderLineDTO.fromJson(x))),
         state: json["state"],
         v: json["__v"],
       );

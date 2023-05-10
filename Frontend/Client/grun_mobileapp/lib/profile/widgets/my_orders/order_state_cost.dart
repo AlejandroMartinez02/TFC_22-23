@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../utils/constants.dart';
 import '../../data/network/response/order_dto.dart';
 
 class OrderStateCost extends StatelessWidget {
@@ -20,7 +21,7 @@ class OrderStateCost extends StatelessWidget {
                 order.state,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                     fontSize: size.width < 600 ? 20 : 25,
-                    color: _pickColor(order.state)),
+                    color: Constants.pickColor(order.state)),
               ),
               Text(
                 'Total: ${order.totalCost}€',
@@ -32,24 +33,5 @@ class OrderStateCost extends StatelessWidget {
             ],
           )),
     );
-  }
-
-  Color _pickColor(String state) {
-    Color color;
-    switch (state) {
-      case 'En proceso':
-        color = Colors.green;
-        break;
-      case 'Finalizado':
-        color = Colors.red;
-        break;
-      case 'Entregando':
-        color = Colors.white;
-        break;
-      default:
-        color = Colors.orange;
-    }
-
-    return color;
   }
 }

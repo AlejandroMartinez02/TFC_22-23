@@ -6,6 +6,7 @@ import 'package:grun_mobileapp/main/domain/usecase/usecase.dart';
 import 'package:grun_mobileapp/menu/ui/menu_provider.dart';
 
 class MainProvider extends ChangeNotifier {
+  bool faIsVisible = true;
   final List<ProductDTO> _products = [];
 
   List<ProductDTO> get products => _products;
@@ -54,10 +55,17 @@ class MainProvider extends ChangeNotifier {
 
   void changeActualPage(int page, MenuProvider menuProvider,
       {int secondaryPageName = -1}) {
+    faIsVisible = true;
+    notifyListeners();
     if (page == _actualPage) return;
 
     if (page == 1) {
       menuProvider.changeActualPage(page: secondaryPageName);
+    }
+
+    if (page == 2) {
+      faIsVisible = false;
+      notifyListeners();
     }
     _actualPage = page;
     _pageController.animateToPage(_actualPage,

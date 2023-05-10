@@ -15,10 +15,15 @@ class ProfileProvider extends ChangeNotifier {
   GlobalKey<FormState> changePasswordKey = GlobalKey();
   GlobalKey<FormState> updateUserKey = GlobalKey();
 
+  List<OrderDTO> orders = [];
+
   bool _isLoading = true;
   bool get isLoading => _isLoading;
-
   set isLoading(bool isLoading) => _isLoading = isLoading;
+
+  bool _isOrderLoading = true;
+  bool get isOrderLoading => _isOrderLoading;
+  set isOrderLoading(bool loading) => _isOrderLoading = loading;
 
   UserDTO _user = UserDTO(
       id: '', name: '', lastname: '', email: '', phoneNumber: '', address: '');
@@ -121,16 +126,17 @@ class ProfileProvider extends ChangeNotifier {
     _updatedUser = _user.copyWith();
   }
 
-  List<OrderDTO> orders = [];
   void getOrders() async {
-    isLoading = true;
-    notifyListeners();
-    orders = await GetOrdersUseCase.getOrders();
-    orders.sort((a, b) => b.date.compareTo(a.date));
-    orders.forEach((element) {
-      print(element.date);
-    });
-    isLoading = false;
-    notifyListeners();
+    try {
+      isOrderLoading = true;
+      notifyListeners();
+      orders = await GetOrdersUseCase.getOrders();
+      orders.sort((a, b) => b.date.compareTo(a.date));
+      isOrderLoading = false;
+      notifyListeners();
+    } catch (ex) {
+      isOrderLoading = false;
+      notifyListeners();
+    }
   }
 }

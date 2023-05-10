@@ -14,7 +14,7 @@ class MyOrdersScreen extends StatelessWidget {
     final mainColor = Theme.of(context).primaryColor;
     final profileProvider = Provider.of<ProfileProvider>(context);
     final size = MediaQuery.of(context).size;
-    if (profileProvider.isLoading) return const LoadingScreen();
+    if (profileProvider.isOrderLoading) return const LoadingScreen();
     return Scaffold(
         appBar: AppBar(
           toolbarHeight: size.height * 0.1,
