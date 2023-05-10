@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-import '../../../../utils/constants.dart';
-import '../../../../utils/widgets/create_route.dart';
-import 'change_password_screen.dart';
-import '../../profile_data_container.dart';
+import '../../../utils/constants.dart';
+import '../../../utils/widgets/create_route.dart';
+import 'change_password_widgets/change_password_screen.dart';
+import '../profile_data_container.dart';
 
 class ChangePasswordOption extends StatelessWidget {
   const ChangePasswordOption({
@@ -25,11 +25,15 @@ class ChangePasswordOption extends StatelessWidget {
                 direccion: const Offset(1, 0),
                 screen: const ChangePasswordScreen()));
       },
-      child: ProfileDataContainer(
-        size: size,
-        child: Text(
-          Constants.editPassword,
-          style: bodyLarge,
+      child: Container(
+        margin:
+            EdgeInsets.only(left: size.width * 0.05, top: size.height * 0.02),
+        child: ProfileDataContainer(
+          size: size,
+          child: Text(
+            Constants.editPassword,
+            style: bodyLarge,
+          ),
         ),
       ),
     );

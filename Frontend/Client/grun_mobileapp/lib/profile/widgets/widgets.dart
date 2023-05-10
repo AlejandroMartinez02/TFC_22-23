@@ -1,10 +1,12 @@
-export 'package:grun_mobileapp/profile/widgets/personal_data/change_password_widgets/change_password_option.dart';
+export 'package:grun_mobileapp/profile/widgets/my_orders_option.dart';
+export 'package:grun_mobileapp/profile/widgets/my_orders/my_orders_screen.dart';
+export 'package:grun_mobileapp/profile/widgets/personal_data/change_password_option.dart';
 export 'package:grun_mobileapp/profile/widgets/logout_dialog_android.dart';
 export 'package:grun_mobileapp/profile/widgets/profile_data_container.dart';
 export 'package:grun_mobileapp/profile/widgets/personal_data/change_password_widgets/change_password_screen.dart';
-export 'package:grun_mobileapp/profile/widgets/personal_data/edit_data_widgets/edit_profile_data_option.dart';
+export 'package:grun_mobileapp/profile/widgets/personal_data/edit_profile_data_option.dart';
 export 'package:grun_mobileapp/profile/widgets/personal_data/edit_data_widgets/edit_personal_data_screen.dart';
 export 'package:grun_mobileapp/exports/main_pages.dart';
-export 'package:grun_mobileapp/profile/widgets/profile_data.dart';
+export 'package:grun_mobileapp/profile/widgets/profile_data_option.dart';
 export 'package:grun_mobileapp/profile/widgets/logout_button.dart';
 export 'package:grun_mobileapp/profile/widgets/profile_header.dart';

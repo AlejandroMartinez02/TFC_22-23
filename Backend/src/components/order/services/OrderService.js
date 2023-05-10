@@ -11,6 +11,7 @@ const GetAll = async (userId) => {
 }
 
 const Create = async (order) => {
+    if (order.date == null) order.date = Date.now()
     for (let i = 0; i < order.order_lines.length; i++) {
         let order_line = await new ORDER_LINE(order.order_lines[i]).save()
         order.order_lines[i] = order_line;

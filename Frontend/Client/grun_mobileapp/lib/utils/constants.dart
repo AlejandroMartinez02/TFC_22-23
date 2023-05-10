@@ -32,16 +32,12 @@ class Constants {
   static const logoutQuestion = '¿Seguro que quieres cerrar sesión?';
   static const logoutText = 'Cerrar sesión';
   static const errorLogout =
-      'Parece que ha habido un error intentando cerrar sesión, ¡inténtalo de nuevo!😁';
+      'Parece que ha habido un error intentando cerrar sesión, ¡inténtalo de nuevo!';
   static const cancel = 'Cancelar';
   static const personalDataText = 'Mis datos personales';
   static const personalDataAppBar = 'Tu información personal';
   static const editProfileData = 'Editar mis datos';
-  static const nameTextFiled = 'Nombre';
-  static const lastnameTextField = 'Apellidos';
-  static const phoneTextField = 'Teléfono móvil';
-  static const addressTextField = 'Dirección';
-  static const emailAddressTextField = 'Correo electrónico';
+
   static const editPassword = 'Cambiar mi contraseña';
   static const passwordTextField = 'Contraseña antigua';
   static const newPasswordTextField = 'Nueva contraseña';
@@ -61,21 +57,26 @@ class Constants {
   static const anyChangesDone =
       'Debes realizar algún cambio para poder actualizar tu usuario';
 
+  static const myOrders = 'Mis pedidos';
+
   //---Others---//
   static const borderRadius = 30.0;
   static const secondaryColor = Color.fromARGB(255, 43, 181, 114);
   static const componentAnimationDuration = Duration(milliseconds: 500);
   static const nameFieldError = '¡Debes escribir tu nombre! :)';
   static const lastnameFieldError = '¡Debes escribir tu apellido! :)';
-  static const emailFieldError = '';
-  static const phoneFieldError = '';
   static const addressFieldError = '¡Debes escribir tu dirección! :)';
+  static const nameTextFiled = 'Nombre';
+  static const lastnameTextField = 'Apellidos';
+  static const phoneTextField = 'Teléfono móvil';
+  static const addressTextField = 'Dirección';
+  static const emailAddressTextField = 'Correo electrónico';
   static const slogan = 'Sei Vegan, Sei Grün';
   static const error = 'ERROR';
   static const errorPageText =
-      '¡Oh no! Parece que tenemos algún problema, lo intentaremos solucionar lo antes posible 😕';
+      '¡Oh no! Parece que tenemos algún problema, lo intentaremos solucionar lo antes posible';
   static const noProducts =
-      'Lo sentimos, pero no hay productos disponibles. Puede ser que sea por renovación de menú...🤔';
+      'Lo sentimos, pero no hay productos disponibles. Puede ser que sea por renovación de menú...';
   //*--- Static photos ---//
   static const lightLogoApp = 'assets/light_logo.png';
   static const darkLogoApp = 'assets/dark_logo.png';

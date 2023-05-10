@@ -33,4 +33,11 @@ class ProfileClient {
         body: user.toJson(), headers: {'Authorization': 'Bearer $token'});
     return response.body;
   }
+
+  static Future<String> getOrders({required String token}) async {
+    final uri = Uri.http(_baseUrl, '/api/orders/all');
+    final response =
+        await http.get(uri, headers: {'Authorization': 'Bearer $token'});
+    return response.body;
+  }
 }

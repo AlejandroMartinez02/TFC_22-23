@@ -74,8 +74,7 @@ class EditPersonalDataScreen extends StatelessWidget {
                           profileProvider.updatedUser.phoneNumber = value!,
                       inputType: TextInputType.phone,
                       labelText: Constants.phoneTextField,
-                      validator: (value) =>
-                          value!.isEmpty ? Constants.phoneFieldError : null,
+                      validator: (value) => Validations.phoneValidator(value),
                       initialValue: profileProvider.updatedUser.phoneNumber,
                     ),
                     _separation(size: size),
@@ -84,8 +83,7 @@ class EditPersonalDataScreen extends StatelessWidget {
                           profileProvider.updatedUser.email = value!,
                       inputType: TextInputType.emailAddress,
                       labelText: Constants.emailAddressTextField,
-                      validator: (value) =>
-                          value!.isEmpty ? Constants.emailFieldError : null,
+                      validator: (value) => Validations.emailValidator(value),
                       initialValue: profileProvider.updatedUser.email,
                     ),
                     _separation(size: size),

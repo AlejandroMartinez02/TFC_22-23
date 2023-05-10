@@ -1,13 +1,15 @@
 // ignore_for_file: unnecessary_null_comparison, unnecessary_getters_setters
 
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/login/data/datastore/secure_storage_service.dart';
-import 'package:grun_mobileapp/profile/domain/usecase/update_user_usecase.dart';
 
+import '../../login/data/datastore/secure_storage_service.dart';
 import '../../utils/constants.dart';
+import '../data/network/response/order_dto.dart';
 import '../data/network/response/user_dto.dart';
 import '../domain/usecase/change_password_usecase.dart';
+import '../domain/usecase/get_orders_usecase.dart';
 import '../domain/usecase/get_user_usecase.dart';
+import '../domain/usecase/update_user_usecase.dart';
 
 class ProfileProvider extends ChangeNotifier {
   GlobalKey<FormState> changePasswordKey = GlobalKey();
@@ -117,5 +119,18 @@ class ProfileProvider extends ChangeNotifier {
 
   void copyUser() {
     _updatedUser = _user.copyWith();
+  }
+
+  List<OrderDTO> orders = [];
+  void getOrders() async {
+    isLoading = true;
+    notifyListeners();
+    orders = await GetOrdersUseCase.getOrders();
+    orders.sort((a, b) => b.date.compareTo(a.date));
+    orders.forEach((element) {
+      print(element.date);
+    });
+    isLoading = false;
+    notifyListeners();
   }
 }
