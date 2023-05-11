@@ -1,6 +1,5 @@
 export 'package:grun_mobileapp/main/widgets/background_main_title.dart';
 export 'package:grun_mobileapp/main/widgets/category_title.dart';
-export 'package:grun_mobileapp/main/widgets/product_slider.dart';
 export 'package:grun_mobileapp/main/widgets/category_card.dart';
 export 'package:grun_mobileapp/main/widgets/product_card.dart';
 export 'package:grun_mobileapp/main/widgets/product_swiper.dart';

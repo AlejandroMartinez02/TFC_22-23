@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/utils/constants.dart';
-import 'package:grun_mobileapp/utils/services/notification_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../../menu/ui/menu_provider.dart';
+import '../../../utils/services/navigator_service.dart';
+import 'created_order_notification.dart';
+import 'error_creating_order_notification.dart';
 
-class AddToCartButton extends StatelessWidget {
-  const AddToCartButton({super.key});
+class PayButton extends StatelessWidget {
+  const PayButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     final menuProvider = Provider.of<MenuProvider>(context);
+    final size = MediaQuery.of(context).size;
     return MaterialButton(
       minWidth: size.width * 0.6,
       height: size.height * 0.1,
-      onPressed: () {
-        menuProvider.addOrderLine();
-        NotificationService.showSnackBar(Constants.addedToCart);
-        Navigator.pop(context);
+      onPressed: () async {
+        final response = await menuProvider.finishOrder();
+
+        _checkResponse(status: response);
       },
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Constants.borderRadius)),
@@ -28,7 +30,7 @@ class AddToCartButton extends StatelessWidget {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(Constants.addToCartButtonText,
+            Text(Constants.payButtonText,
                 style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                       fontSize: size.width < 600 ? 22 : 28,
                     )),
@@ -38,5 +40,23 @@ class AddToCartButton extends StatelessWidget {
             ),
           ]),
     );
+  }
+
+  void _checkResponse({required int status}) {
+    switch (status) {
+      case 200:
+        _showDialog(child: const CreatedOrderNotification());
+        break;
+      case 500:
+        _showDialog(child: const ErrorCreatingOrderNotification());
+    }
+  }
+
+  void _showDialog({required Widget child}) {
+    showDialog(
+        context: NavigatorService.navigatorKey.currentContext!,
+        builder: (context) {
+          return child;
+        });
   }
 }

@@ -1,12 +1,14 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/main/domain/entity/products_dto.dart';
-import 'package:grun_mobileapp/main/ui/product_screen.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
-import 'package:grun_mobileapp/utils/services/notification_service.dart';
-import 'package:grun_mobileapp/utils/widgets/create_route.dart';
+import 'package:grun_mobileapp/menu/domain/entity/entity.dart';
 import 'package:marquee/marquee.dart';
+import 'package:provider/provider.dart';
+
+import '../../main/ui/product_screen.dart';
+import '../../utils/utils.dart';
+import '../../main/domain/entity/products_dto.dart';
+import '../ui/menu_provider.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({
@@ -20,19 +22,23 @@ class ProductCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final primaryColor = Theme.of(context).primaryColor;
-
-    return Container(
-      height: size.height * 0.2,
-      width: size.width * 0.9,
-      padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
-      decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey), color: primaryColor),
-      child: GestureDetector(
-        onTap: () => Navigator.push(
+    final menuProvider = Provider.of<MenuProvider>(context);
+    return GestureDetector(
+      onTap: () {
+        menuProvider.newOrderLine =
+            OrderLineDTO(product: product, count: 1, cost: product.cost);
+        Navigator.push(
             context,
             CreateRoutes.slideFadeIn(
                 direccion: const Offset(0, 1),
-                screen: ProductScreen(product: product))),
+                screen: ProductScreen(product: product)));
+      },
+      child: Container(
+        height: size.height * 0.2,
+        width: size.width * 0.9,
+        padding: EdgeInsets.symmetric(horizontal: size.width * 0.02),
+        decoration: BoxDecoration(
+            border: Border.all(color: Colors.grey), color: primaryColor),
         child: Flex(direction: Axis.horizontal, children: [
           Expanded(
             child:
@@ -122,6 +128,10 @@ class ProductCard extends StatelessWidget {
                           ),
                           IconButton(
                               onPressed: () {
+                                final menuProvider = Provider.of<MenuProvider>(
+                                    context,
+                                    listen: false);
+                                menuProvider.addToCart(product: product);
                                 NotificationService.showSnackBar(
                                     "¡Producto añadido al carrito!");
                               },

@@ -7,6 +7,10 @@ import 'package:flutter/material.dart';
 
 import 'package:grun_mobileapp/main/domain/entity/products_dto.dart';
 import 'package:grun_mobileapp/utils/utils.dart';
+import 'package:provider/provider.dart';
+
+import '../../menu/domain/entity/order_line_dto.dart';
+import '../../menu/ui/menu_provider.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductDTO product;
@@ -18,12 +22,17 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final menuProvider = Provider.of<MenuProvider>(context);
     return GestureDetector(
-      onTap: () => Navigator.push(
-          context,
-          CreateRoutes.slideFadeIn(
-              direccion: const Offset(1, 0),
-              screen: ProductScreen(product: product))),
+      onTap: () {
+        menuProvider.newOrderLine =
+            OrderLineDTO(cost: product.cost, count: 1, product: product);
+        Navigator.push(
+            context,
+            CreateRoutes.slideFadeIn(
+                direccion: const Offset(1, 0),
+                screen: ProductScreen(product: product)));
+      },
       child: Container(
         width: size.width < 600 ? 275 : 350,
         decoration: _cardDecoration(),

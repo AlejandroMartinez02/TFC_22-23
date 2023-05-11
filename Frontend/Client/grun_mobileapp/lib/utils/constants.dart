@@ -26,7 +26,7 @@ class Constants {
   static const categoryTitle = 'Nuestro menú';
   static const accountDrawerText = 'Tu perfil';
   static const addToCartButtonText = "Añadir al carrito";
-  static const addedToCart = '¡Producto añadido al carrito';
+  static const addedToCart = '¡Producto añadido al carrito!';
 
   //---Profile---//
   static String profileHeaderText(String name) => '¡Hola $name!';
@@ -49,7 +49,6 @@ class Constants {
   static const changePasswordFailed =
       'Tu antigua contraseña no coincide, por favor inténtalo de nuevo';
 
-  static var waiting = 'Espere';
   static const editProfileDataTitle = 'Actualiza tu perfil';
   static const updateUser = 'Actualizar usuario';
   static const updateUserSuccess = '¡Usuario actualizado correctamente!';
@@ -57,8 +56,6 @@ class Constants {
       'Ha ocurrido un error actualizando tu usuario, por favor inténtelo más tarde';
   static const anyChangesDone =
       'Debes realizar algún cambio para poder actualizar tu usuario';
-
-  static const myOrders = 'Mis pedidos';
 
   //---Others---//
   static const borderRadius = 30.0;
@@ -78,9 +75,18 @@ class Constants {
       '¡Oh no! Parece que tenemos algún problema, lo intentaremos solucionar lo antes posible';
   static const noProducts =
       'Lo sentimos, pero no hay productos disponibles. Puede ser que sea por renovación de menú...';
-  static const total = 'Total:';
+  static const waiting = 'Espere';
+  static const accept = '¡Entendido!';
+
   //---Order---//
   static const orderSummary = 'Resumen del pedido';
+  static const myOrders = 'Mis pedidos';
+  static const payButtonText = 'Finalizar pedido';
+  static const createdOrder =
+      '¡Pedido enviado! Revisa el apartado de "Mis pedidos" en tu perfil para ver como va el pedido';
+  static const errorCreatedOrder =
+      '¡Ha ocurrido un error creando tu pedido! Vuelve a intentarlo';
+  static const total = 'Total:';
 
   //*--- Static photos ---//
   static const lightLogoApp = 'assets/light_logo.png';

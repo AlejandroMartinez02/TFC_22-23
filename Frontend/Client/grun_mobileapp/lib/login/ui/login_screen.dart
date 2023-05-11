@@ -1,8 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import 'package:grun_mobileapp/exports/providers.dart';
 import 'package:grun_mobileapp/login/widgets/login_widgets.dart'
     show LoginBody, LoginForm;
 import 'package:grun_mobileapp/register/ui/register_screen.dart';

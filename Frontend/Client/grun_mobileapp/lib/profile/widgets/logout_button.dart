@@ -40,7 +40,7 @@ class LogoutButton extends StatelessWidget {
   }
 
   void _showDialog() {
-    showCupertinoDialog(
+    showDialog(
         context: NavigatorService.navigatorKey.currentContext!,
         builder: (context) {
           return const LogoutDialogAndroid();
