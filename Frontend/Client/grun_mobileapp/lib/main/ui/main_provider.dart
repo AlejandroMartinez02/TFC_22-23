@@ -1,11 +1,16 @@
 // ignore_for_file: unnecessary_getters_setters
 
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/main/domain/entity/entity.dart';
-import 'package:grun_mobileapp/main/domain/usecase/usecase.dart';
-import 'package:grun_mobileapp/menu/ui/menu_provider.dart';
+
+import '../../menu/ui/menu_provider.dart';
+import '../domain/entity/entity.dart';
+import '../domain/usecase/usecase.dart';
 
 class MainProvider extends ChangeNotifier {
+  bool _faIsVisible = true;
+  bool get faIsVisible => _faIsVisible;
+  set faIsVisible(bool visible) => _faIsVisible = visible;
+
   final List<ProductDTO> _products = [];
 
   List<ProductDTO> get products => _products;
@@ -54,10 +59,17 @@ class MainProvider extends ChangeNotifier {
 
   void changeActualPage(int page, MenuProvider menuProvider,
       {int secondaryPageName = -1}) {
+    faIsVisible = true;
+    notifyListeners();
     if (page == _actualPage) return;
 
     if (page == 1) {
       menuProvider.changeActualPage(page: secondaryPageName);
+    }
+
+    if (page == 2) {
+      faIsVisible = false;
+      notifyListeners();
     }
     _actualPage = page;
     _pageController.animateToPage(_actualPage,

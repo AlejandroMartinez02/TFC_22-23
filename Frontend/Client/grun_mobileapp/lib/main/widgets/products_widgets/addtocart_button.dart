@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/utils/constants.dart';
+import 'package:grun_mobileapp/utils/services/notification_service.dart';
+import 'package:provider/provider.dart';
+
+import '../../../menu/ui/menu_provider.dart';
 
 class AddToCartButton extends StatelessWidget {
   const AddToCartButton({super.key});
@@ -7,10 +11,15 @@ class AddToCartButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final menuProvider = Provider.of<MenuProvider>(context);
     return MaterialButton(
       minWidth: size.width * 0.6,
       height: size.height * 0.1,
-      onPressed: () {},
+      onPressed: () {
+        menuProvider.addOrderLine();
+        NotificationService.showSnackBar(Constants.addedToCart);
+        Navigator.pop(context);
+      },
       shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(Constants.borderRadius)),
       textColor: Colors.white,

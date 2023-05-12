@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 
 import '../../utils/constants.dart';
 import '../../utils/widgets/not_found_page.dart';
-import '../../utils/widgets/page_loading.dart';
 import '../widgets/widgets.dart';
 import 'profile_provider.dart';
 
@@ -33,25 +32,11 @@ class ProfilePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
                 ProfileHeader(),
-                MyOrderButton(),
+                MyOrderOption(),
                 PersonalDataButton(),
               ],
             ),
             const LogoutButton()
           ]));
-  }
-}
-
-class MyOrderButton extends StatelessWidget {
-  const MyOrderButton({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialButton(
-      onPressed: () {},
-      child: Text("Mis pedidos"),
-    );
   }
 }

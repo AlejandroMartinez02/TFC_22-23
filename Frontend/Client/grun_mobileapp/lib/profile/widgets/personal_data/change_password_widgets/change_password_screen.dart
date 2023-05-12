@@ -105,10 +105,10 @@ class _titleText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      "Cambiar la contraseña",
+      Constants.editPassword,
       style: Theme.of(context).textTheme.headlineLarge!.copyWith(
           color: Colors.black,
-          fontSize: size.width < 600 ? 36 : 40,
+          fontSize: size.width < 600 ? 32 : 40,
           fontFamily: 'Monserrat',
           fontWeight: FontWeight.w300),
     );

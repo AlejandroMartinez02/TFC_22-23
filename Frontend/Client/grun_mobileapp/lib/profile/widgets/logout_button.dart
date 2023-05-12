@@ -14,7 +14,7 @@ class LogoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Positioned(
-      bottom: 0,
+      bottom: size.height * 0.01,
       left: 0,
       child: MaterialButton(
         onPressed: () {
@@ -40,7 +40,7 @@ class LogoutButton extends StatelessWidget {
   }
 
   void _showDialog() {
-    showCupertinoDialog(
+    showDialog(
         context: NavigatorService.navigatorKey.currentContext!,
         builder: (context) {
           return const LogoutDialogAndroid();

@@ -13,17 +13,23 @@ class PersonalDataButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return MaterialButton(
-      onPressed: () async {
+    return GestureDetector(
+      onTap: () async {
         Navigator.push(
             context,
             CreateRoutes.slideFadeIn(
                 direccion: const Offset(1, 0),
                 screen: const MyPersonalDataScreen()));
       },
-      child: Text(Constants.personalDataText,
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-              fontSize: size.width < 600 ? 22 : 26, color: Colors.black)),
+      child: Container(
+        padding: EdgeInsets.symmetric(vertical: size.height * 0.02),
+        margin:
+            EdgeInsets.only(left: size.width * 0.05, top: size.height * 0.02),
+        width: size.width,
+        child: Text(Constants.personalDataText,
+            style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                fontSize: size.width < 600 ? 22 : 26, color: Colors.black)),
+      ),
     );
   }
 }

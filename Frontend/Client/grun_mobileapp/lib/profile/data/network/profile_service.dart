@@ -19,4 +19,9 @@ class ProfileService {
     final token = await SecureStorageService.getToken();
     return await ProfileClient.updateUser(user: user, token: token);
   }
+
+  static Future<String> getOrders() async {
+    final token = await SecureStorageService.getToken();
+    return await ProfileClient.getOrders(token: token);
+  }
 }

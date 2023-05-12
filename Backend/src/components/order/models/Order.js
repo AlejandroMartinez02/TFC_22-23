@@ -20,7 +20,9 @@ let orderSchema = new MONGOOSE.Schema({
         ref: 'OrderLine'
     }],
     state: {
-        enum: ['En espera', 'En proceso', 'En entrega', 'Finalizado']
+        type: String,
+        enum: ['En espera', 'En proceso', 'Entregando', 'Finalizado'],
+        default: 'En espera'
     }
 })
 

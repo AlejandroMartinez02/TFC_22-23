@@ -19,6 +19,8 @@ const GetAll = async (req, res) => {
 
 const Create = async (req, res) => {
     let { body } = req
+    body.userId = req.user.sub
+
     await SERVICE.Create(body)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
         .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))

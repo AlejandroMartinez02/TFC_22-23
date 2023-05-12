@@ -15,4 +15,8 @@ class ProfileRepository {
   static Future<String> updateUser({required UserDTO user}) async {
     return await ProfileService.updateUser(user: user);
   }
+
+  static Future<String> getOrders() async {
+    return await ProfileService.getOrders();
+  }
 }
