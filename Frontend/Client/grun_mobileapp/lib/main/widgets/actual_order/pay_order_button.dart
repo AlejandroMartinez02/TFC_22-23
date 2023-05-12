@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/utils/constants.dart';
 import 'package:provider/provider.dart';
@@ -14,31 +15,25 @@ class PayButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final menuProvider = Provider.of<MenuProvider>(context);
     final size = MediaQuery.of(context).size;
-    return MaterialButton(
-      minWidth: size.width * 0.6,
-      height: size.height * 0.1,
-      onPressed: () async {
-        final response = await menuProvider.finishOrder();
+    return Container(
+      constraints: BoxConstraints(
+          minWidth: size.width * 0.2, maxWidth: size.width * 0.4),
+      child: MaterialButton(
+        height: size.height * 0.1,
+        onPressed: () async {
+          final response = await menuProvider.finishOrder();
 
-        _checkResponse(status: response);
-      },
-      shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(Constants.borderRadius)),
-      textColor: Colors.white,
-      color: Constants.secondaryColor,
-      child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(Constants.payButtonText,
-                style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                      fontSize: size.width < 600 ? 22 : 28,
-                    )),
-            Icon(
-              Icons.shopping_cart,
-              size: size.width < 600 ? 22 : 28,
-            ),
-          ]),
+          _checkResponse(status: response);
+        },
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(Constants.borderRadius)),
+        textColor: Colors.white,
+        color: Constants.secondaryColor,
+        child: AutoSizeText(Constants.payButtonText,
+            minFontSize: size.width < 600 ? 16 : 28,
+            maxLines: 1,
+            style: Theme.of(context).textTheme.bodyLarge),
+      ),
     );
   }
 

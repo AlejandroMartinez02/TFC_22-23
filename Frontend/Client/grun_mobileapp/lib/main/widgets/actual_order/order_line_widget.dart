@@ -1,5 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';
 
 import '../../../menu/domain/entity/order_line_dto.dart';
@@ -18,19 +20,33 @@ class ActualOrderLineWidget extends StatelessWidget {
     final bodyLarge = Theme.of(context)
         .textTheme
         .bodyLarge!
-        .copyWith(color: Colors.black, fontSize: size.width < 600 ? 22 : 26);
+        .copyWith(color: Colors.black, fontSize: size.width < 600 ? 18 : 22);
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Text(
-              'x ${orderLine.count}\t${orderLine.product.name}',
-              style: bodyLarge,
+            Container(
+              constraints: BoxConstraints(
+                  maxHeight: size.height * 0.1, maxWidth: size.width * 0.7),
+              child: AutoSizeText(
+                'x ${orderLine.count}\t${orderLine.product.name}',
+                maxLines: 1,
+                minFontSize: size.width < 600 ? 18 : 22,
+                style: bodyLarge,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
-            Text(
+            AutoSizeText(
               '${orderLine.cost.toStringAsFixed(2)}€',
+              maxFontSize: size.width < 600 ? 18 : 22,
               style: bodyLarge,
+              overflowReplacement: Text(
+                '${orderLine.cost.toStringAsFixed(2)}€',
+                style: bodyLarge.copyWith(fontSize: 14),
+              ),
             )
           ],
         ),

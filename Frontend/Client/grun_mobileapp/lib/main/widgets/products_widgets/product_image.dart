@@ -16,7 +16,7 @@ class ProductImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
       width: size.width,
       height: size.height * 0.4,
       child: Stack(children: [
@@ -31,16 +31,23 @@ class ProductImage extends StatelessWidget {
                     "assets/foodLoader.gif",
                     fit: BoxFit.cover,
                   ),
-              errorWidget: (context, url, error) => const Image(
-                    image: AssetImage("assets/no-image.png"),
-                    fit: BoxFit.cover,
-                  )),
+              errorWidget: (context, url, error) {
+                return const Image(
+                  image: AssetImage("assets/no-image.png"),
+                  fit: BoxFit.cover,
+                );
+              }),
         ),
         BackButton(
           color: Colors.white,
           onPressed: () => Navigator.pop(context),
         ),
-        Align(alignment: Alignment.bottomCenter, child: const ProductCount()),
+        Align(
+            alignment: Alignment.bottomCenter,
+            child: Padding(
+              padding: EdgeInsets.only(top: size.height * 0.3),
+              child: const ProductCount(),
+            )),
       ]),
     );
   }

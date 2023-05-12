@@ -1,4 +1,6 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:marquee/marquee.dart';
 
 import '../../data/network/response/order_line_dto.dart';
 
@@ -25,14 +27,37 @@ class OrderLinesWidget extends StatelessWidget {
             return Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  '${orderLines[index].product.name} x ${orderLines[index].count}',
-                  style: bodyLarge,
+                Container(
+                  constraints: BoxConstraints(
+                      maxWidth: size.width * 0.6,
+                      maxHeight: size.height * 0.03),
+                  child: AutoSizeText(
+                    '${orderLines[index].product.name} x ${orderLines[index].count}',
+                    style: bodyLarge,
+                    minFontSize: size.width < 600 ? 18 : 20,
+                    maxLines: 1,
+                    overflowReplacement: Marquee(
+                      text:
+                          '${orderLines[index].product.name} x ${orderLines[index].count}',
+                      style: bodyLarge.copyWith(
+                        fontSize: size.width < 600 ? 18 : 20,
+                      ),
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      pauseAfterRound: const Duration(seconds: 2),
+                      startPadding: 10.0,
+                      blankSpace: 22,
+                      accelerationDuration: const Duration(seconds: 1),
+                      accelerationCurve: Curves.easeInCubic,
+                      decelerationDuration: const Duration(milliseconds: 500),
+                      decelerationCurve: Curves.easeOutCubic,
+                    ),
+                  ),
                 ),
                 SizedBox(height: size.height * 0.03),
-                Text(
+                AutoSizeText(
                   '${orderLines[index].cost}€',
                   style: bodyLarge,
+                  minFontSize: size.width < 600 ? 18 : 20,
                 ),
               ],
             );

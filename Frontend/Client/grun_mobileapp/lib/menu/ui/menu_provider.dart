@@ -147,9 +147,13 @@ class MenuProvider extends ChangeNotifier {
       final response = await CreateOrderUseCase.createOrder(order: order);
       _creatingOrder = false;
       notifyListeners();
+      order = OrderDTO(
+          date: DateTime.now().toLocal(),
+          totalCost: 0,
+          orderLines: [],
+          state: 'En espera');
       return response;
     } catch (ex) {
-      print(ex);
       _creatingOrder = false;
       notifyListeners();
       return 500;

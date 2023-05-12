@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 class OrderCost extends StatelessWidget {
@@ -7,11 +8,8 @@ class OrderCost extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Text(
-      'Total: ${price.toStringAsFixed(2)}€',
-      style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-            fontSize: size.width < 600 ? 30 : 34,
-          ),
-    );
+    return AutoSizeText('Total: ${price.toStringAsFixed(2)}€',
+        minFontSize: size.width < 600 ? 26 : 34,
+        style: Theme.of(context).textTheme.bodyLarge);
   }
 }
