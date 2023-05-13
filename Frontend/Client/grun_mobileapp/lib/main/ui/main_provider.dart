@@ -59,8 +59,6 @@ class MainProvider extends ChangeNotifier {
 
   void changeActualPage(int page, MenuProvider menuProvider,
       {int secondaryPageName = -1}) {
-    faIsVisible = true;
-    notifyListeners();
     if (page == _actualPage) return;
 
     if (page == 1) {
@@ -69,6 +67,9 @@ class MainProvider extends ChangeNotifier {
 
     if (page == 2) {
       faIsVisible = false;
+      notifyListeners();
+    } else {
+      faIsVisible = true;
       notifyListeners();
     }
     _actualPage = page;
