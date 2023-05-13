@@ -3,6 +3,8 @@ import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 
 import '../../login/ui/login_screen.dart';
+import '../../main/ui/main_provider.dart';
+import '../../menu/ui/menu_provider.dart';
 import '../../utils/utils.dart';
 import '../ui/profile_provider.dart';
 
@@ -32,10 +34,16 @@ class LogoutDialogAndroid extends StatelessWidget {
                     .logOut();
             if (logout) {
               SchedulerBinding.instance.addPostFrameCallback((_) {
-                Navigator.pushReplacement(
+                final mainProvider =
+                    Provider.of<MainProvider>(context, listen: false);
+                final menuProvider =
+                    Provider.of<MenuProvider>(context, listen: false);
+                Navigator.pushAndRemoveUntil(
                     context,
                     CreateRoutes.slideFadeIn(
-                        direccion: const Offset(0, -1), screen: LoginScreen()));
+                        direccion: const Offset(0, -1), screen: LoginScreen()),
+                    (Route<dynamic> route) => false);
+                mainProvider.changeActualPage(0, menuProvider);
               });
             } else {
               SchedulerBinding.instance.addPostFrameCallback((_) {
