@@ -70,7 +70,8 @@ const WorkerLogin = async (user) => {
             if (isMatch) {
                 if (searchedUser.login_attempts > 0)
                     await searchedUser.updateOne({ $set: { login_attempts: 0 }, $unset: { lock_until: 1 } })
-                return { status: 200, token: SECURITY.createTokenWorker(searchedUser) }
+                let worker = await WORKER.findById(searchedUser._id)
+                return { status: 200, token: SECURITY.createTokenWorker(searchedUser), worker: worker }
             } else {
                 let updates = { $inc: { login_attempts: 1 } }
                 if (searchedUser.login_attempts + 1 >= MAX_LOGIN_ATTEMPS)

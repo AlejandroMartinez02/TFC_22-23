@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:grun_adminapp/main/ui/main_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../login/ui/login_screen.dart';
@@ -40,10 +41,13 @@ class _SplashScreenState extends State<SplashScreen>
       if (controller.status == AnimationStatus.completed) {
         if (await splashProvider.getToken() != '') {
           if (await splashProvider.checkToken()) {
-            // Navigator.pushReplacement(
-            //     context,
-            //     CreateRoutes.slideFadeIn(
-            //         direccion: const Offset(1, 0), screen: const MainScreen()));
+            SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+              Navigator.pushReplacement(
+                  context,
+                  CreateRoutes.slideFadeIn(
+                      direccion: const Offset(1, 0),
+                      screen: const MainScreen()));
+            });
             return;
           } else {
             SchedulerBinding.instance.addPostFrameCallback((timeStamp) {

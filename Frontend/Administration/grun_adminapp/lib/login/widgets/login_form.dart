@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/scheduler.dart';
 
-import '../../utils/services/notification_service.dart';
-import 'login_button.dart';
-import 'login_textbox.dart';
+import '../../main/ui/main_screen.dart';
 import 'login_widgets.dart';
 import '../ui/login_form_provider.dart';
 import '../../utils/utils.dart';
@@ -37,6 +35,7 @@ class LoginForm extends StatelessWidget {
                 isLoading: loginForm.isLoading,
                 onPressed: () async {
                   FocusScope.of(context).unfocus();
+
                   final responseLogin = await loginForm.isValidForm();
                   SchedulerBinding.instance.addPostFrameCallback((_) {
                     _checkResponse(responseLogin, context);
@@ -50,16 +49,19 @@ class LoginForm extends StatelessWidget {
 void _checkResponse(String? responseLogin, BuildContext context) {
   switch (responseLogin) {
     case null:
-      // Navigator.pushReplacement(
-      //     context,
-      //     CreateRoutes.slideFadeIn(
-      //         direccion: const Offset(1, 0), screen: const MainScreen()));
+      Navigator.pushReplacement(
+          context,
+          CreateRoutes.slideFadeIn(
+              direccion: const Offset(1, 0), screen: const MainScreen()));
       break;
     case '401':
       NotificationService.showSnackBar(Constants.wrongLogin);
       break;
     case '403':
       NotificationService.showSnackBar(Constants.accountLocked);
+      break;
+    case '404':
+      NotificationService.showSnackBar(Constants.noAdmin);
       break;
     case Constants.error:
       NotificationService.showSnackBar(Constants.errorPageText);

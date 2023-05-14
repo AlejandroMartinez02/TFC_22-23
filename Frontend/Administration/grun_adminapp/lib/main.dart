@@ -1,20 +1,30 @@
 import 'dart:io';
 
+import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:grun_adminapp/utils/utils.dart';
 
 import 'package:provider/provider.dart';
-import 'package:flutter/services.dart';
+import 'package:window_manager/window_manager.dart';
 
 import 'login/ui/login_form_provider.dart';
 import 'splash/ui/splash_provider.dart';
 import 'splash/ui/splash_screen.dart';
 import 'utils/services/navigator_service.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   HttpOverrides.global = MyHttpOverrides();
+  windowManager.ensureInitialized();
+
+  doWhenWindowReady(() {
+    appWindow.title = Constants.appName;
+    appWindow.size = const Size(960, 800);
+    appWindow.minSize = const Size(960, 800);
+    appWindow.alignment = Alignment.center;
+    appWindow.show();
+  });
+
   runApp(const AppState());
 }
 
@@ -25,9 +35,7 @@ class AppState extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
-          create: (_) => SplashProvider(),
-        ),
+        ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => LoginFormProvider()),
       ],
       child: const MyApp(),

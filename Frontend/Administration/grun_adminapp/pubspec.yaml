@@ -20,6 +20,9 @@ dependencies:
   simple_animations: ^5.0.0+3
   auto_size_text: ^3.0.0
   scrollable_positioned_list: ^0.3.7
+  window_manager: ^0.3.2
+  bitsdojo_window: ^0.1.5
+  syncfusion_flutter_datagrid: ^21.2.4
 
 dev_dependencies:
   flutter_test:

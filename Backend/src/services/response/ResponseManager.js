@@ -10,7 +10,7 @@ const RESPONSE_200 = (res) => res.status(200).send({ "status": 200, "data": "OK"
 
 const RESPONSE_201 = (res, data) => res.status(201).send({ "status": 201, "data": data })
 
-const RESPONSE_TOKEN = (res, data) => res.status(200).send({ status: data.status, data: data.token })
+const RESPONSE_TOKEN = (res, data) => res.status(200).send({ status: data.status, data: data.token, worker: data.worker })
 
 module.exports = {
     RESPONSE_500,
