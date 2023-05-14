@@ -19,8 +19,8 @@ void main() async {
 
   doWhenWindowReady(() {
     appWindow.title = Constants.appName;
-    appWindow.size = const Size(960, 800);
-    appWindow.minSize = const Size(960, 800);
+    appWindow.size = const Size(1070, 800);
+    appWindow.minSize = const Size(1070, 800);
     appWindow.alignment = Alignment.center;
     appWindow.show();
   });

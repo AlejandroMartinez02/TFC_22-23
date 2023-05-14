@@ -40,6 +40,7 @@ class LoginFormProvider extends ChangeNotifier {
       return "NoValid";
       // ignore: empty_catches
     } catch (ex) {
+      print(ex);
       _isLoading = false;
       notifyListeners();
       return Constants.error;

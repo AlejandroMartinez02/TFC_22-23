@@ -14,6 +14,7 @@ class LoginClient {
     final response = await http.post(url,
         body: json.encode(user.toJson()),
         headers: {'content-type': 'application/json'});
+    print(response.body);
     return LoginResponse.fromRawJson(response.body);
   }
 }

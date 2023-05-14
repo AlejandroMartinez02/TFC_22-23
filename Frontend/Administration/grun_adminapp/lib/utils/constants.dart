@@ -16,9 +16,17 @@ class Constants {
   static const noAdmin =
       'Parece que no tienes permisos para entrar a esta aplicación... ¡Contacta con un administrador si es un error!';
 
+  //---Main---//
+  static const welcomeToAdmin = '¡Bienvenid@!';
+  static const users = 'Usuarios';
+  static const dishes = 'Platos';
+  static const categories = 'Categorias';
+  static const workers = 'Trabajadores';
+  static const logout = 'Cerrar sesión';
+
   //---Others---//
   static const borderRadius = 30.0;
-  static const secondaryColor = Color.fromARGB(255, 43, 181, 114);
+  static const secondaryColor = Color.fromARGB(255, 21, 98, 61);
   static const componentAnimationDuration = Duration(milliseconds: 500);
   static const nameFieldError = '¡Debes escribir tu nombre! :)';
   static const lastnameFieldError = '¡Debes escribir el apellido! :)';

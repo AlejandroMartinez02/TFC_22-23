@@ -45,8 +45,19 @@ const Login = async (user) => {
 }
 
 const WorkerLogin = async (user) => {
+    const defaultWorker = {
+        "_id": "",
+        "name": "",
+        "lastname": "",
+        "email": "",
+        "phone": "",
+        "maritalStatus": "",
+        "salary": 0,
+        "age": "0",
+        "role": "",
+    }
     const searchedUser = await WORKER.findOne({ email: user.email }, 'role password lock_until login_attempts')
-    if (searchedUser == null) return { status: 401 }
+    if (searchedUser == null) return { status: 401, data: '', worker: {} }
     const MAX_LOGIN_ATTEMPS = 5
     const LOCK_TIME = 4 * 60 * 1000
     let now = Date.now();
@@ -56,7 +67,7 @@ const WorkerLogin = async (user) => {
     hasLockExpired = searchedUser.lock_until < now;
 
     if (isLocked) {
-        return { status: 403 }
+        return { status: 403, data: 'AccountLocked', worker: defaultWorker }
     }
 
     if (hasLockExpired) {
@@ -71,13 +82,13 @@ const WorkerLogin = async (user) => {
                 if (searchedUser.login_attempts > 0)
                     await searchedUser.updateOne({ $set: { login_attempts: 0 }, $unset: { lock_until: 1 } })
                 let worker = await WORKER.findById(searchedUser._id)
-                return { status: 200, token: SECURITY.createTokenWorker(searchedUser), worker: worker }
+                return { status: 200, data: SECURITY.createTokenWorker(searchedUser), worker: worker }
             } else {
                 let updates = { $inc: { login_attempts: 1 } }
                 if (searchedUser.login_attempts + 1 >= MAX_LOGIN_ATTEMPS)
                     updates.$set = { lock_until: now + LOCK_TIME }
                 await searchedUser.updateOne(updates)
-                return { status: 401 }
+                return { status: 401, data: 'NoAuthorization', worker: defaultWorker }
             }
         })
 }
