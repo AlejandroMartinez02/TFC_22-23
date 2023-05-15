@@ -1,8 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import '../../users/ui/users_provider.dart';
+import '../../users/ui/users_screen.dart';
 import '../../utils/constants.dart';
 import '../../utils/widgets/custom_app_bar.dart';
+import 'main_provider.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -10,6 +14,7 @@ class MainScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final mainProvider = Provider.of<MainProvider>(context);
     return Scaffold(
         body: Column(
       children: [
@@ -19,7 +24,9 @@ class MainScreen extends StatelessWidget {
           children: [
             LeftMenu(size: size),
             Expanded(
-              child: Container(),
+              child: Container(
+                child: mainProvider.currentPage,
+              ),
             )
           ],
         )),
@@ -82,7 +89,14 @@ class UserOptions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mainProvider = Provider.of<MainProvider>(context);
+
     return GestureDetector(
+      onTap: () async {
+        final userProvider = Provider.of<UserProvider>(context, listen: false);
+        userProvider.loadData();
+        mainProvider.changePage(const UsersScreen());
+      },
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(

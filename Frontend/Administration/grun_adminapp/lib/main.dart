@@ -7,8 +7,7 @@ import 'package:grun_adminapp/utils/utils.dart';
 import 'package:provider/provider.dart';
 import 'package:window_manager/window_manager.dart';
 
-import 'login/ui/login_form_provider.dart';
-import 'splash/ui/splash_provider.dart';
+import 'exports/providers.dart';
 import 'splash/ui/splash_screen.dart';
 import 'utils/services/navigator_service.dart';
 
@@ -37,6 +36,8 @@ class AppState extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => LoginFormProvider()),
+        ChangeNotifierProvider(create: (_) => MainProvider()),
+        ChangeNotifierProvider(create: (_) => UserProvider())
       ],
       child: const MyApp(),
     );

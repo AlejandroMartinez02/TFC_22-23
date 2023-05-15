@@ -1,3 +1,12 @@
 import 'package:flutter/material.dart';
 
-class MainProvider extends ChangeNotifier {}
+import '../../users/ui/users_screen.dart';
+
+class MainProvider extends ChangeNotifier {
+  Widget currentPage = const UsersScreen();
+
+  void changePage(Widget page) {
+    currentPage = page;
+    notifyListeners();
+  }
+}
