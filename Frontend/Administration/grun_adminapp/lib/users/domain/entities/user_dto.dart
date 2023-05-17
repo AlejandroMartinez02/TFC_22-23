@@ -55,4 +55,14 @@ class UserDTO {
         "address": address,
         "phone_number": phoneNumber,
       };
+
+  bool equals(UserDTO toCompare) {
+    return address == toCompare.address &&
+            email == toCompare.email &&
+            lastname == toCompare.lastname &&
+            name == toCompare.name &&
+            phoneNumber == toCompare.phoneNumber
+        ? true
+        : false;
+  }
 }

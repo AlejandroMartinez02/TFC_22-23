@@ -2,28 +2,27 @@ import 'dart:io';
 
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
-import 'package:grun_adminapp/utils/utils.dart';
+import 'package:flutter/services.dart';
 
 import 'package:provider/provider.dart';
-import 'package:window_manager/window_manager.dart';
 
 import 'exports/providers.dart';
 import 'splash/ui/splash_screen.dart';
 import 'utils/services/navigator_service.dart';
+import 'utils/utils.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   HttpOverrides.global = MyHttpOverrides();
-  windowManager.ensureInitialized();
-
-  doWhenWindowReady(() {
-    appWindow.title = Constants.appName;
-    appWindow.size = const Size(1070, 800);
-    appWindow.minSize = const Size(1070, 800);
-    appWindow.alignment = Alignment.center;
-    appWindow.show();
-  });
-
+  if (Platform.isLinux || Platform.isMacOS || Platform.isWindows) {
+    doWhenWindowReady(() {
+      appWindow.title = Constants.appName;
+      appWindow.size = const Size(1070, 800);
+      appWindow.minSize = const Size(1070, 800);
+      appWindow.alignment = Alignment.center;
+      appWindow.show();
+    });
+  }
   runApp(const AppState());
 }
 
@@ -37,7 +36,8 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => SplashProvider()),
         ChangeNotifierProvider(create: (_) => LoginFormProvider()),
         ChangeNotifierProvider(create: (_) => MainProvider()),
-        ChangeNotifierProvider(create: (_) => UserProvider())
+        ChangeNotifierProvider(create: (_) => UserProvider()),
+        ChangeNotifierProvider(create: (_) => SocketService())
       ],
       child: const MyApp(),
     );
@@ -50,6 +50,9 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    if (Platform.isAndroid || Platform.isIOS) {
+      SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+    }
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Grün',

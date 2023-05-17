@@ -1,5 +1,5 @@
 const ORDER = require('../models/Order')
-const ORDER_LINE = require('../../order_line/models/OrderLine')
+const ORDER_LINE = require('../models/OrderLine')
 
 const Get = async (id) => {
     let order = await ORDER.findById(id)

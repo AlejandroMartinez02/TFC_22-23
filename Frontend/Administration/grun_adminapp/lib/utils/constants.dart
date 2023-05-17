@@ -24,21 +24,45 @@ class Constants {
   static const workers = 'Trabajadores';
   static const logout = 'Cerrar sesión';
 
+  //---Users---//
+  static const userTitle = 'Panel de administración de los usuarios';
+  static const nameText = 'Nombre';
+  static const lastnameText = 'Apellidos';
+  static const phoneText = 'Teléfono móvil';
+  static const addressText = 'Dirección';
+  static const emailAddressText = 'Correo electrónico';
+  static const updateUser = 'Actualizar usuario';
+  static const cancel = 'Cancelar';
+  static const nameHint = 'David';
+  static const lastnameHint = 'Ferrer';
+  static const emailHint = 'pizca777@gmail.com';
+  static const phoneHint = '695811734';
+  static const addressHint = 'Clle Sella 4, 1D';
+  static const updateUserSuccess = '¡Usuario actualizado correctamente!';
+  static const actionUserError =
+      'Ha ocurrido un error actualizando el usuario, por favor inténtelo más tarde';
+  static const anyChangesDone =
+      'Debes realizar algún cambio para poder actualizar el usuario';
+  static const deleteUser =
+      '¿Estás seguro de eliminar este usuario? Esta acción es irreversible';
+  static const deleteUserButton = 'Borrar usuario';
+  static const deleteSuccess = '¡Usuario eliminado correctamente!';
+
   //---Others---//
   static const borderRadius = 30.0;
   static const secondaryColor = Color.fromARGB(255, 21, 98, 61);
+  static const redColor = Color.fromARGB(255, 176, 48, 39);
+  static const blueColor = Color.fromARGB(255, 21, 89, 144);
   static const componentAnimationDuration = Duration(milliseconds: 500);
+  static const toastDuration = Duration(seconds: 3);
   static const nameFieldError = '¡Debes escribir tu nombre! :)';
   static const lastnameFieldError = '¡Debes escribir el apellido! :)';
   static const addressFieldError = '¡Debes escribir el dirección! :)';
-  static const nameTextFiled = 'Nombre';
-  static const lastnameTextField = 'Apellidos';
-  static const phoneTextField = 'Teléfono móvil';
-  static const addressTextField = 'Dirección';
-  static const emailAddressTextField = 'Correo electrónico';
+
   static const slogan = 'Sei Vegan, Sei Grün';
   static const appName = 'Grün';
   static const error = 'ERROR';
+  static const waiting = 'Espere';
   static const errorPageText =
       '¡Oh no! Parece que tenemos algún problema, lo intentaremos solucionar lo antes posible';
 
@@ -48,6 +72,7 @@ class Constants {
 
 //*--- IP's ---*//
   static const httpAPI = '192.168.1.104:8080';
+  static const httpSocket = 'http://192.168.1.104:3000';
 
 //*--- Functions ---*//
   static Color pickColor(String state) {

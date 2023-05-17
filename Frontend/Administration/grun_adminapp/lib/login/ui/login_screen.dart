@@ -1,5 +1,7 @@
 // ignore_for_file: must_be_immutable
 
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../../utils/constants.dart';
 import '../../utils/utils.dart';
@@ -41,7 +43,9 @@ class _loginForm extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const CustomAppBar(),
+          Platform.isLinux || Platform.isIOS || Platform.isWindows
+              ? const CustomAppBar()
+              : Container(),
           Container(
             padding: EdgeInsets.symmetric(
                 horizontal:

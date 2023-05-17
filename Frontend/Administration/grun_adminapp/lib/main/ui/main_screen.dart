@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../../users/ui/users_provider.dart';
@@ -16,22 +19,25 @@ class MainScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final mainProvider = Provider.of<MainProvider>(context);
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Column(
-      children: [
-        const CustomAppBar(),
-        Expanded(
-            child: Row(
           children: [
-            LeftMenu(size: size),
+            Platform.isLinux || Platform.isIOS || Platform.isWindows
+                ? const CustomAppBar()
+                : Container(),
             Expanded(
-              child: Container(
-                child: mainProvider.currentPage,
-              ),
-            )
+                child: Row(
+              children: [
+                LeftMenu(size: size),
+                Expanded(
+                  child: Container(
+                    child: mainProvider.currentPage,
+                  ),
+                )
+              ],
+            )),
           ],
-        )),
-      ],
-    ));
+        ));
   }
 }
 
@@ -245,6 +251,9 @@ class LogOutOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (Platform.isAndroid || Platform.isIOS) {
+      SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
+    }
     return GestureDetector(
       child: Container(
         width: double.infinity,

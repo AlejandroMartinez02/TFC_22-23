@@ -55,7 +55,7 @@ flutter_icons:
   android: "assets/light_logo.png"
   ios: true
   image_path: "assets/light_logo.png"
-  adaptive_icon_background: "/assets/dark_logo.png"
+  adaptive_icon_background: "assets/dark_logo.png"
   windows:
     generate: true
     image_path: "assets/light_logo.png"

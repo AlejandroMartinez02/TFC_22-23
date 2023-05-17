@@ -35,12 +35,18 @@ const Create = async (req, res) => {
 
 const Update = async (req, res) => {
     const { body } = req
-    if (req.user.sub != body._id) return RESPONSE_MANAGER.RESPONSE_403(res)
+    console.log(body)
+    console.log(req.user)
+    if (req.user.sub == body._id || req.user.rol == 'Admin') {
+        await SERVICE.Update(body)
+            .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
+            .catch(() => RESPONSE_MANAGER.RESPONSE_404(res))
+    } else {
+        return RESPONSE_MANAGER.RESPONSE_403(res)
+    }
 
-    await SERVICE.Update(body)
-        .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_500(500))
 }
+
 
 const Delete = async (req, res) => {
     if (req.user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)

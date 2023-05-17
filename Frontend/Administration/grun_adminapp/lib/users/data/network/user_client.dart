@@ -16,13 +16,10 @@ class UserClient {
   static Future<String> updateUser(
       {required String token, required UserDTO updateUser}) async {
     final url = Uri.http(_baseUrl, '/api/users/');
-    final response = await http.patch(url, body: {
-      updateUser.toRawJson()
-    }, headers: {
-      'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json'
-    });
-
+    print(updateUser.toJson());
+    final response = await http.patch(url,
+        body: updateUser.toJson(), headers: {'Authorization': 'Bearer $token'});
+    print(response.body);
     return response.body;
   }
 
@@ -33,7 +30,6 @@ class UserClient {
       "_id": id
     }, headers: {
       'Authorization': 'Bearer $token',
-      'Content-Type': 'application/json'
     });
 
     return response.body;

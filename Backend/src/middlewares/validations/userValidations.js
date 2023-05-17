@@ -61,8 +61,7 @@ const UPDATEUSERCHECK = () => {
 
         check('address')
             .trim()
-            .notEmpty()
-            .isAlphanumeric('es-ES', { ignore: ' ' }),
+            .notEmpty(),
 
         check('phone_number')
             .isMobilePhone('es-ES')
