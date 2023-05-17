@@ -13,11 +13,7 @@ class SocketService with ChangeNotifier {
   late IO.Socket _socket;
   IO.Socket get socket => _socket;
 
-  SocketService() {
-    _initConfig();
-  }
-
-  void _initConfig() {
+  void connect() {
     _socket = IO.io(Constants.httpSocket, <String, dynamic>{
       'autoConnect': true,
       'transports': ['websocket'],

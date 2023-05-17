@@ -9,6 +9,7 @@ import '../data/network/response/user_dto.dart';
 import '../domain/usecase/change_password_usecase.dart';
 import '../domain/usecase/get_orders_usecase.dart';
 import '../domain/usecase/get_user_usecase.dart';
+import '../domain/usecase/logout_usecase.dart';
 import '../domain/usecase/update_user_usecase.dart';
 
 class ProfileProvider extends ChangeNotifier {
@@ -69,7 +70,7 @@ class ProfileProvider extends ChangeNotifier {
 
   Future<bool> logOut() async {
     try {
-      await SecureStorageService.deleteToken();
+      await LogoutUseCase.logout();
     } catch (ex) {
       return false;
     }

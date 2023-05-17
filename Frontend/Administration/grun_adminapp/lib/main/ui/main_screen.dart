@@ -2,13 +2,16 @@ import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:animate_do/animate_do.dart';
 import 'package:provider/provider.dart';
 
 import '../../users/ui/users_provider.dart';
 import '../../users/ui/users_screen.dart';
 import '../../utils/constants.dart';
+import '../../utils/services/navigator_service.dart';
+import '../../utils/services/socket_service.dart';
 import '../../utils/widgets/custom_app_bar.dart';
+import '../widgets/logout_dialog_android.dart';
 import 'main_provider.dart';
 
 class MainScreen extends StatelessWidget {
@@ -18,6 +21,8 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final mainProvider = Provider.of<MainProvider>(context);
+    Provider.of<SocketService>(context, listen: false).connect();
+
     return Scaffold(
         resizeToAvoidBottomInset: false,
         body: Column(
@@ -251,10 +256,10 @@ class LogOutOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isAndroid || Platform.isIOS) {
-      SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft]);
-    }
     return GestureDetector(
+      onTap: () {
+        _showResponse();
+      },
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(
@@ -276,4 +281,12 @@ class LogOutOption extends StatelessWidget {
       ),
     );
   }
+}
+
+void _showResponse() {
+  showDialog(
+      context: NavigatorService.navigatorKey.currentContext!,
+      builder: (context) {
+        return const LogoutDialogAndroid();
+      });
 }

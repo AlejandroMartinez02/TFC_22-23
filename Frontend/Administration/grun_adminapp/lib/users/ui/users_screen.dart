@@ -23,6 +23,7 @@ class UsersScreen extends StatelessWidget {
         .bodyLarge!
         .copyWith(color: Colors.black, fontSize: 20);
     if (usersProvider.isLoading) return const LoadingScreen();
+
     return Container(
       margin: EdgeInsets.symmetric(horizontal: size.width * 0.02),
       child: Column(
@@ -152,20 +153,6 @@ class DeleteUser extends StatelessWidget {
       MaterialButton(
         onPressed: userProvider.isLoadingAction
             ? null
-            : () {
-                Navigator.pop(context);
-              },
-        child: Text(
-          Constants.cancel,
-          style: bodyLarge.copyWith(
-              color: userProvider.isLoadingAction
-                  ? Colors.grey
-                  : Constants.secondaryColor),
-        ),
-      ),
-      MaterialButton(
-        onPressed: userProvider.isLoadingAction
-            ? null
             : () async {
                 userProvider.currentUserIndex = rowIndex;
                 final response = await userProvider
@@ -182,6 +169,20 @@ class DeleteUser extends StatelessWidget {
               color: userProvider.isLoadingAction
                   ? Colors.grey
                   : Constants.redColor),
+        ),
+      ),
+      MaterialButton(
+        onPressed: userProvider.isLoadingAction
+            ? null
+            : () {
+                Navigator.pop(context);
+              },
+        child: Text(
+          Constants.cancel,
+          style: bodyLarge.copyWith(
+              color: userProvider.isLoadingAction
+                  ? Colors.grey
+                  : Constants.secondaryColor),
         ),
       )
     ];

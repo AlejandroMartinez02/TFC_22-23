@@ -19,4 +19,8 @@ class ProfileRepository {
   static Future<String> getOrders() async {
     return await ProfileService.getOrders();
   }
+
+  static logout() async {
+    await ProfileService.logout();
+  }
 }

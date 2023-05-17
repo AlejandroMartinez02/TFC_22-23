@@ -54,7 +54,6 @@ void checkUser(BuildContext context, LoginFormProvider loginForm) async {
   FocusScope.of(context).unfocus();
 
   final responseLogin = await loginForm.isValidForm();
-  print(responseLogin);
   SchedulerBinding.instance.addPostFrameCallback((_) {
     _checkResponse(responseLogin, context);
   });
@@ -67,6 +66,7 @@ void _checkResponse(String? responseLogin, BuildContext context) {
           context,
           CreateRoutes.slideFadeIn(
               direccion: const Offset(1, 0), screen: const MainScreen()));
+
       break;
     case '401':
       NotificationService.showSnackBar(Constants.wrongLogin);

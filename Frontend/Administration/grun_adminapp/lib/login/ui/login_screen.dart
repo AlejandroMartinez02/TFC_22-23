@@ -3,6 +3,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../utils/constants.dart';
 import '../../utils/utils.dart';
 import '../../utils/widgets/custom_app_bar.dart';
@@ -17,6 +18,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: LoginBody(
         child: _loginForm(size: size, isLogout: isLogout, message: message),
@@ -92,7 +94,7 @@ class _HeaderIcon extends StatelessWidget {
           image: const AssetImage(
             Constants.lightLogoApp,
           ),
-          height: size.height * 0.25,
+          height: size.height * 0.27,
         ));
   }
 }

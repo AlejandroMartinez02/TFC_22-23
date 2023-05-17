@@ -22,7 +22,10 @@ class Constants {
   static const dishes = 'Platos';
   static const categories = 'Categorias';
   static const workers = 'Trabajadores';
+  static const errorLogout =
+      'Ha ocurrido un error cerrando sesión, por favor inténtalo de nuevo';
   static const logout = 'Cerrar sesión';
+  static const logoutTitle = '¿Estás seguro que quieres cerrar sesión?';
 
   //---Users---//
   static const userTitle = 'Panel de administración de los usuarios';
