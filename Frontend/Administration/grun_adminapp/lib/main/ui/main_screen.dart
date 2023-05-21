@@ -2,17 +2,15 @@ import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:animate_do/animate_do.dart';
 import 'package:provider/provider.dart';
 
-import '../../users/ui/users_provider.dart';
-import '../../users/ui/users_screen.dart';
+import '../../exports/providers.dart';
+import '../../exports/screens.dart';
+
 import '../../utils/constants.dart';
 import '../../utils/services/navigator_service.dart';
-import '../../utils/services/socket_service.dart';
 import '../../utils/widgets/custom_app_bar.dart';
 import '../widgets/logout_dialog_android.dart';
-import 'main_provider.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({Key? key}) : super(key: key);
@@ -21,7 +19,6 @@ class MainScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final mainProvider = Provider.of<MainProvider>(context);
-    Provider.of<SocketService>(context, listen: false).connect();
 
     return Scaffold(
         resizeToAvoidBottomInset: false,
@@ -146,7 +143,13 @@ class DishOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mainProvider = Provider.of<MainProvider>(context);
     return GestureDetector(
+      onTap: () async {
+        final dishProvider = Provider.of<DishProvider>(context, listen: false);
+        await dishProvider.loadData();
+        mainProvider.changePage(const DishScreen());
+      },
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(

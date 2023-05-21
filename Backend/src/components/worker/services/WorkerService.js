@@ -6,8 +6,8 @@ const GetById = async (sub) => {
     return worker == null ? { status: 404 } : { status: 201, data: worker }
 }
 
-const GetAll = async () => {
-    return await WORKER.find()
+const GetAll = async (id) => {
+    return await WORKER.find({ _id: { $ne: id } })
 }
 
 const Create = async (worker) => {

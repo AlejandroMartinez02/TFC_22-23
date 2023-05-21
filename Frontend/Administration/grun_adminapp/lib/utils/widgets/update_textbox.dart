@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 
-class UpdateTextBox extends StatelessWidget {
+class CustomFormTextBox extends StatelessWidget {
   final Function(String?) onChanged;
   final TextInputType inputType;
   final String initialValue;
   final String hintText;
   final String labelText;
+  final int maxLines;
   final String? Function(String?) validator;
 
-  const UpdateTextBox({
+  const CustomFormTextBox({
     super.key,
     required this.initialValue,
     required this.onChanged,
@@ -16,6 +17,7 @@ class UpdateTextBox extends StatelessWidget {
     required this.hintText,
     required this.labelText,
     required this.validator,
+    required this.maxLines,
   });
 
   @override
@@ -29,6 +31,7 @@ class UpdateTextBox extends StatelessWidget {
         style:
             Theme.of(context).textTheme.bodyLarge!.copyWith(color: mainColor),
         cursorColor: mainColor,
+        maxLines: maxLines,
         initialValue: initialValue,
         onChanged: onChanged,
         keyboardType: inputType,

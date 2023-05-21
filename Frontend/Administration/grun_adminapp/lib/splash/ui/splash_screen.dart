@@ -2,11 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:grun_adminapp/main/ui/main_screen.dart';
 import 'package:provider/provider.dart';
 
 import '../../login/ui/login_screen.dart';
+import '../../main/ui/main_screen.dart';
 import '../../utils/constants.dart';
 import '../../utils/widgets/create_route.dart';
 import 'splash_provider.dart';

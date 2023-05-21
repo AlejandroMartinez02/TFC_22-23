@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import '../../utils/utils.dart';
 import '../domain/entities/user_dto.dart';
 import '../ui/users_provider.dart';
-import 'update_textbox.dart';
+import '../../utils/widgets/update_textbox.dart';
 
 class UpdateUserDialog extends StatelessWidget {
   const UpdateUserDialog({
@@ -91,7 +91,7 @@ class UpdateUserDialog extends StatelessWidget {
       case 403:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.actionUserError,
+                message: Constants.updateUserError,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -100,7 +100,7 @@ class UpdateUserDialog extends StatelessWidget {
       case 404:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.actionUserError,
+                message: Constants.updateUserError,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -108,7 +108,7 @@ class UpdateUserDialog extends StatelessWidget {
       case 100:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.anyChangesDone,
+                message: Constants.anyChangesDoneUser,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -133,7 +133,8 @@ class _EditUserForm extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          UpdateTextBox(
+          CustomFormTextBox(
+            maxLines: 1,
             hintText: Constants.nameHint,
             inputType: TextInputType.name,
             labelText: Constants.nameText,
@@ -142,7 +143,8 @@ class _EditUserForm extends StatelessWidget {
                 value!.isEmpty ? Constants.nameFieldError : null,
             initialValue: user.name,
           ),
-          UpdateTextBox(
+          CustomFormTextBox(
+            maxLines: 1,
             hintText: Constants.lastnameHint,
             inputType: TextInputType.name,
             labelText: Constants.lastnameText,
@@ -151,7 +153,8 @@ class _EditUserForm extends StatelessWidget {
                 value!.isEmpty ? Constants.lastnameFieldError : null,
             initialValue: user.lastname,
           ),
-          UpdateTextBox(
+          CustomFormTextBox(
+            maxLines: 1,
             hintText: Constants.emailHint,
             inputType: TextInputType.emailAddress,
             labelText: Constants.emailAddressText,
@@ -159,7 +162,8 @@ class _EditUserForm extends StatelessWidget {
             validator: (value) => Validations.emailValidator(value),
             initialValue: user.email,
           ),
-          UpdateTextBox(
+          CustomFormTextBox(
+            maxLines: 1,
             hintText: Constants.phoneHint,
             inputType: TextInputType.phone,
             labelText: Constants.phoneText,
@@ -167,7 +171,8 @@ class _EditUserForm extends StatelessWidget {
             validator: (value) => Validations.phoneValidator(value),
             initialValue: user.phoneNumber,
           ),
-          UpdateTextBox(
+          CustomFormTextBox(
+            maxLines: 2,
             hintText: Constants.addressHint,
             inputType: TextInputType.streetAddress,
             labelText: Constants.addressText,

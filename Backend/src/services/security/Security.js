@@ -12,7 +12,6 @@ function createToken(user) {
 }
 
 function createTokenWorker(worker) {
-    console.log(worker.role)
     const payload = {
         sub: worker._id,
         rol: worker.role,
@@ -37,8 +36,8 @@ function decodeToken(token) {
 
 async function checkToken(token) {
     try {
-        await jwt.decode(token, process.env.SECRET_TOKEN);
-        return true;
+        let user = await jwt.decode(token, process.env.SECRET_TOKEN);
+        return [true, user.sub];
     } catch (error) {
         return false;
     }

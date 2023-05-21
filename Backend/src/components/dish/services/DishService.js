@@ -1,5 +1,4 @@
 const DISH = require('../models/Dish')
-const CATEGORY = require('../../category/models/Category')
 
 const GetOne = async (id) => {
     let dish = await DISH.findOne({ _id: id }).populate("category")

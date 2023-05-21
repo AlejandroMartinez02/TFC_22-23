@@ -3,7 +3,17 @@ const WORKER = require('../../worker/models/Worker')
 const SECURITY = require('../../../services/security/Security')
 
 const Check = async (token) => {
-    return await SECURITY.checkToken(token)
+    let valid = await SECURITY.checkToken(token)
+
+    if (valid[0]) {
+        let user = await USER.findById(valid[1]);
+        let worker = await WORKER.findById(valid[1])
+        if (user == null && worker == null)
+            return !valid[0]
+        return valid[0]
+    }
+
+    return valid[0]
 }
 
 const Login = async (user) => {

@@ -5,7 +5,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
-import '../../utils/services/socket_service.dart';
 import '../../utils/utils.dart';
 import '../domain/entities/user_dto.dart';
 import '../widgets/widgets.dart';
@@ -33,7 +32,9 @@ class UsersScreen extends StatelessWidget {
                 top: size.height * 0.05, bottom: size.height * 0.05),
             child: _UsersTitle(bodyLarge: bodyLarge),
           ),
-          UsersDataGrid(usersProvider: usersProvider, bodyLarge: bodyLarge),
+          Expanded(
+              child: UsersDataGrid(
+                  usersProvider: usersProvider, bodyLarge: bodyLarge)),
         ],
       ),
     );
@@ -54,26 +55,29 @@ class UsersDataGrid extends StatelessWidget {
   Widget build(BuildContext context) {
     final usersSource =
         UsersDataSource(bodyLarge: bodyLarge, users: usersProvider.users);
-    final sockets = Provider.of<SocketService>(context);
 
-    return SfDataGrid(
-        verticalScrollPhysics: ClampingScrollPhysics(),
-        horizontalScrollPhysics: ClampingScrollPhysics(),
-        onCellTap: (details) => details.rowColumnIndex.rowIndex - 1 < 0
-            ? sockets.emit()
-            : cellTapFunction(context, details, usersSource),
-        allowSorting: true,
-        allowSwiping: true,
-        columnWidthMode: ColumnWidthMode.fill,
-        highlightRowOnHover: true,
-        source: usersSource,
-        columns: dataGridColumns,
-        startSwipeActionsBuilder: (context, dataGridRow, rowIndex) =>
-            EditUser(rowIndex: rowIndex),
-        endSwipeActionsBuilder: (context, dataGridRow, rowIndex) => DeleteUser(
-              rowIndex: rowIndex,
-              bodyLarge: bodyLarge,
-            ));
+    return ScrollConfiguration(
+      behavior: const ScrollBehavior().copyWith(overscroll: false),
+      child: SfDataGrid(
+          verticalScrollPhysics: const ClampingScrollPhysics(),
+          horizontalScrollPhysics: const ClampingScrollPhysics(),
+          onCellTap: (details) => details.rowColumnIndex.rowIndex - 1 < 0
+              ? null
+              : cellTapFunction(context, details, usersSource),
+          allowSorting: true,
+          allowSwiping: true,
+          columnWidthMode: ColumnWidthMode.fill,
+          highlightRowOnHover: true,
+          source: usersSource,
+          columns: dataGridColumns,
+          startSwipeActionsBuilder: (context, dataGridRow, rowIndex) =>
+              EditUser(rowIndex: rowIndex),
+          endSwipeActionsBuilder: (context, dataGridRow, rowIndex) =>
+              DeleteUser(
+                rowIndex: rowIndex,
+                bodyLarge: bodyLarge,
+              )),
+    );
   }
 
   Future<dynamic> cellTapFunction(BuildContext context,
@@ -194,7 +198,7 @@ class DeleteUser extends StatelessWidget {
         Navigator.pop(context);
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.deleteSuccess,
+                message: Constants.deleteUserSuccess,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -203,7 +207,7 @@ class DeleteUser extends StatelessWidget {
       case 403:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.actionUserError,
+                message: Constants.updateUserError,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -211,7 +215,7 @@ class DeleteUser extends StatelessWidget {
       case 404:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.actionUserError,
+                message: Constants.updateUserError,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);

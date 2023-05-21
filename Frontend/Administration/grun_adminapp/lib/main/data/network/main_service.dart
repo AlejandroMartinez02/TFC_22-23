@@ -1,4 +1,4 @@
-import '../datastore/secure_storage_service.dart';
+import '../../../utils/services/secure_storage_service.dart';
 
 class MainService {
   static logout() async {

@@ -16,10 +16,8 @@ class UserClient {
   static Future<String> updateUser(
       {required String token, required UserDTO updateUser}) async {
     final url = Uri.http(_baseUrl, '/api/users/');
-    print(updateUser.toJson());
     final response = await http.patch(url,
         body: updateUser.toJson(), headers: {'Authorization': 'Bearer $token'});
-    print(response.body);
     return response.body;
   }
 

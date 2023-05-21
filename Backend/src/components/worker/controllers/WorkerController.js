@@ -14,7 +14,7 @@ const GetAll = async (req, res) => {
     let { user } = req
     if (user.rol != 'Admin') return RESPONSE_MANAGER.RESPONSE_401(res)
 
-    await SERVICE.GetAll()
+    await SERVICE.GetAll(user.sub)
         .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
         .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }

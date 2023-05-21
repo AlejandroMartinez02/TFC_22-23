@@ -1,5 +1,5 @@
+import '../../../utils/services/secure_storage_service.dart';
 import '../../domain/entity/user_dto.dart';
-import '../datastore/secure_storage_service.dart';
 import 'login_client.dart';
 
 class LoginService {
