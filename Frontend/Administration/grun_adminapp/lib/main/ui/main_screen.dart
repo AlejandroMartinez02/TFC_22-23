@@ -102,8 +102,8 @@ class UserOptions extends StatelessWidget {
     return GestureDetector(
       onTap: () async {
         final userProvider = Provider.of<UserProvider>(context, listen: false);
-        userProvider.loadData();
         mainProvider.changePage(const UsersScreen());
+        userProvider.loadData();
       },
       child: Container(
         width: double.infinity,
@@ -147,8 +147,8 @@ class DishOption extends StatelessWidget {
     return GestureDetector(
       onTap: () async {
         final dishProvider = Provider.of<DishProvider>(context, listen: false);
-        await dishProvider.loadData();
         mainProvider.changePage(const DishScreen());
+        await dishProvider.loadData();
       },
       child: Container(
         width: double.infinity,
@@ -187,7 +187,16 @@ class CategoryOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mainProvider = Provider.of<MainProvider>(context);
+
     return GestureDetector(
+      onTap: () async {
+        print("WOOOOOOOOOOOW");
+        final categoryProvider =
+            Provider.of<CategoryProvider>(context, listen: false);
+        mainProvider.changePage(const CategoryScreen());
+        await categoryProvider.loadData();
+      },
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(

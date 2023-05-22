@@ -1,6 +1,6 @@
 const MONGOOSE = require('mongoose')
 
-let orderLineSchema = MONGOOSE.Schema({
+let orderLineSchema = new MONGOOSE.Schema({
     cost: {
         type: Number,
         required: true
@@ -15,6 +15,6 @@ let orderLineSchema = MONGOOSE.Schema({
         required: true
     }
 })
-let OrderLine = new MONGOOSE.model('OrderLine', orderLineSchema)
+let OrderLine = MONGOOSE.model('OrderLine', orderLineSchema)
 
 module.exports = OrderLine

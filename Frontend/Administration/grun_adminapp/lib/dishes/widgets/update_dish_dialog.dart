@@ -50,20 +50,6 @@ class UpdateDishDialog extends StatelessWidget {
       MaterialButton(
         onPressed: dishProvider.isLoadingAction
             ? null
-            : () {
-                Navigator.pop(context);
-              },
-        child: Text(
-          Constants.cancel,
-          style: bodyLarge.copyWith(
-              color: dishProvider.isLoadingAction
-                  ? Colors.grey
-                  : Constants.secondaryColor),
-        ),
-      ),
-      MaterialButton(
-        onPressed: dishProvider.isLoadingAction
-            ? null
             : () async {
                 final response = await dishProvider.updateDish();
                 SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
@@ -79,7 +65,21 @@ class UpdateDishDialog extends StatelessWidget {
                   ? Colors.grey
                   : Constants.secondaryColor),
         ),
-      )
+      ),
+      MaterialButton(
+        onPressed: dishProvider.isLoadingAction
+            ? null
+            : () {
+                Navigator.pop(context);
+              },
+        child: Text(
+          Constants.cancel,
+          style: bodyLarge.copyWith(
+              color: dishProvider.isLoadingAction
+                  ? Colors.grey
+                  : Constants.secondaryColor),
+        ),
+      ),
     ];
   }
 

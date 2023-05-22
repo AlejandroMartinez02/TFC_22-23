@@ -6,22 +6,23 @@ import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import '../../utils/utils.dart';
-import '../domain/entities/dish_dto.dart';
-import '../widgets/widgets.dart';
-import 'dish_provider.dart';
+import '../domain/entities/category_dto.dart';
 
-class DishScreen extends StatelessWidget {
-  const DishScreen({Key? key}) : super(key: key);
+import '../widgets/widgets.dart';
+import 'category_provider.dart';
+
+class CategoryScreen extends StatelessWidget {
+  const CategoryScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final dishProvider = Provider.of<DishProvider>(context);
+    final categoryProvider = Provider.of<CategoryProvider>(context);
     final size = MediaQuery.of(context).size;
     final bodyLarge = Theme.of(context)
         .textTheme
         .bodyLarge!
         .copyWith(color: Colors.black, fontSize: 20);
-    if (dishProvider.isLoading) return const LoadingScreen();
+    if (categoryProvider.isLoading) return const LoadingScreen();
 
     return Container(
       margin: EdgeInsets.symmetric(horizontal: size.width * 0.02),
@@ -32,14 +33,14 @@ class DishScreen extends StatelessWidget {
             child: Container(
               margin: EdgeInsets.only(
                   top: size.height * 0.05, bottom: size.height * 0.05),
-              child: _DishTitle(bodyLarge: bodyLarge),
+              child: _CategoryTitle(bodyLarge: bodyLarge),
             ),
           ),
           Expanded(
               child: FadeInRight(
             duration: Constants.componentAnimationDuration,
-            child: DishDataGrid(
-                dishesProvider: dishProvider, bodyLarge: bodyLarge),
+            child: CategoryDataGrid(
+                categoryProvider: categoryProvider, bodyLarge: bodyLarge),
           )),
         ],
       ),
@@ -47,20 +48,20 @@ class DishScreen extends StatelessWidget {
   }
 }
 
-class DishDataGrid extends StatelessWidget {
-  const DishDataGrid({
+class CategoryDataGrid extends StatelessWidget {
+  const CategoryDataGrid({
     super.key,
-    required this.dishesProvider,
+    required this.categoryProvider,
     required this.bodyLarge,
   });
 
-  final DishProvider dishesProvider;
+  final CategoryProvider categoryProvider;
   final TextStyle bodyLarge;
 
   @override
   Widget build(BuildContext context) {
-    final dishesSource =
-        DishesDataSource(bodyLarge: bodyLarge, dishes: dishesProvider.dishes);
+    final categorySource = CategoryDataSource(
+        bodyLarge: bodyLarge, categories: categoryProvider.categories);
     final size = MediaQuery.of(context).size;
 
     return ScrollConfiguration(
@@ -72,86 +73,72 @@ class DishDataGrid extends StatelessWidget {
         horizontalScrollPhysics: const ClampingScrollPhysics(),
         onCellTap: (details) => details.rowColumnIndex.rowIndex - 1 < 0
             ? null
-            : cellTapFunction(context, details, dishesSource),
+            : cellTapFunction(context, details, categorySource),
         allowSorting: true,
         allowSwiping: true,
         columnWidthMode: ColumnWidthMode.fill,
         highlightRowOnHover: true,
-        source: dishesSource,
+        source: categorySource,
         columns: dataGridColumns,
         startSwipeActionsBuilder: (context, dataGridRow, rowIndex) =>
-            UpdateDish(rowIndex: rowIndex),
-        endSwipeActionsBuilder: (context, dataGridRow, rowIndex) => DeleteDish(
+            UpdateCategory(rowIndex: rowIndex),
+        endSwipeActionsBuilder: (context, dataGridRow, rowIndex) =>
+            DeleteCategory(
           bodyLarge: bodyLarge,
           rowIndex: rowIndex,
         ),
         footerFrozenRowsCount: 1,
-        footer: const AddDish(),
+        footer: const AddCategory(),
       ),
     );
   }
 
   Future<dynamic> cellTapFunction(BuildContext context,
-      DataGridCellTapDetails details, DishesDataSource dishesSource) {
+      DataGridCellTapDetails details, CategoryDataSource categorySource) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
-          return ShowDishCell(
+          return ShowCategoryCell(
               details: details,
               bodyLarge: bodyLarge,
-              dishesSource: dishesSource);
+              categorySource: categorySource);
         });
   }
 
   List<GridColumn> get dataGridColumns {
     return [
       GridColumn(
-          columnName: Constants.photoDishText,
-          label: const ColumnDishWidget(
-            columnTitle: Constants.photoDishText,
+          columnName: Constants.photoCategoryText,
+          label: const ColumnCategoryWidget(
+            columnTitle: Constants.photoCategoryText,
           )),
       GridColumn(
-          columnName: Constants.dishNameText,
-          label: const ColumnDishWidget(
-            columnTitle: Constants.dishNameText,
+          columnName: Constants.nameCategoryText,
+          label: const ColumnCategoryWidget(
+            columnTitle: Constants.nameCategoryText,
           )),
       GridColumn(
-          columnName: Constants.descriptionDishText,
-          label: const ColumnDishWidget(
-            columnTitle: Constants.descriptionDishText,
-          )),
-      GridColumn(
-          columnName: Constants.costDishText,
-          label: const ColumnDishWidget(
-            columnTitle: Constants.costDishText,
-          )),
-      GridColumn(
-          columnName: Constants.ingredientsText,
-          label: const ColumnDishWidget(
-            columnTitle: Constants.ingredientsText,
-          )),
-      GridColumn(
-          columnName: Constants.categoryDishText,
-          label: const ColumnDishWidget(
-            columnTitle: Constants.categoryDishText,
-          )),
+          columnName: Constants.descriptionCategoryText,
+          label: const ColumnCategoryWidget(
+            columnTitle: Constants.descriptionCategoryText,
+          ))
     ];
   }
 }
 
-class ShowDishCell extends StatelessWidget {
-  const ShowDishCell(
+class ShowCategoryCell extends StatelessWidget {
+  const ShowCategoryCell(
       {super.key,
       required this.bodyLarge,
-      required this.dishesSource,
+      required this.categorySource,
       required this.details});
   final DataGridCellDetails details;
   final TextStyle bodyLarge;
-  final DishesDataSource dishesSource;
+  final CategoryDataSource categorySource;
 
   @override
   Widget build(BuildContext context) {
-    final value = dishesSource
+    final value = categorySource
         .effectiveRows[details.rowColumnIndex.rowIndex - 1]
         .getCells()[details.rowColumnIndex.columnIndex]
         .value;
@@ -166,10 +153,10 @@ class ShowDishCell extends StatelessWidget {
           color: Colors.grey,
           margin: const EdgeInsets.symmetric(vertical: 10),
         ),
-        details.column.columnName == Constants.photoDishText
+        details.column.columnName == Constants.photoCategoryText
             ? Container(
                 alignment: Alignment.center,
-                child: _dishPhotoShowCell(photo: value),
+                child: _categoryPhotoShowCell(photo: value),
               )
             : Text(
                 value.toString(),
@@ -181,8 +168,8 @@ class ShowDishCell extends StatelessWidget {
   }
 }
 
-class _DishTitle extends StatelessWidget {
-  const _DishTitle({
+class _CategoryTitle extends StatelessWidget {
+  const _CategoryTitle({
     required this.bodyLarge,
   });
 
@@ -191,14 +178,14 @@ class _DishTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      Constants.dishTitle,
+      Constants.categoryTitle,
       style: bodyLarge.copyWith(fontSize: 35),
     );
   }
 }
 
-class ColumnDishWidget extends StatelessWidget {
-  const ColumnDishWidget({
+class ColumnCategoryWidget extends StatelessWidget {
+  const ColumnCategoryWidget({
     super.key,
     required this.columnTitle,
   });
@@ -215,55 +202,46 @@ class ColumnDishWidget extends StatelessWidget {
   }
 }
 
-class DishesDataSource extends DataGridSource {
-  DishesDataSource({required List<DishDTO> dishes, required this.bodyLarge}) {
-    _dishes = dishes
+class CategoryDataSource extends DataGridSource {
+  CategoryDataSource(
+      {required List<CategoryDTO> categories, required this.bodyLarge}) {
+    _categories = categories
         .map((e) => DataGridRow(cells: [
               DataGridCell(columnName: "Foto", value: e.photo),
               DataGridCell(columnName: "Nombre", value: e.name),
               DataGridCell(columnName: "Descripción", value: e.description),
-              DataGridCell(columnName: "Precio", value: e.cost),
-              DataGridCell(columnName: "Ingredientes", value: e.ingredients),
-              DataGridCell(columnName: "Categoria", value: e.category.name)
             ]))
         .toList();
   }
 
   final TextStyle bodyLarge;
-  List<DataGridRow> _dishes = [];
+  List<DataGridRow> _categories = [];
 
   @override
-  List<DataGridRow> get rows => _dishes;
+  List<DataGridRow> get rows => _categories;
 
   @override
   DataGridRowAdapter? buildRow(DataGridRow row) {
     return DataGridRowAdapter(
-        cells: row.getCells().map<Widget>((dish) {
+        cells: row.getCells().map<Widget>((category) {
       return Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8.0),
-        child: dish.columnName == Constants.photoDishText
-            ? _dishPhotoCell(photo: dish.value)
-            : dish.columnName == Constants.costDishText
-                ? Text(
-                    '${dish.value}€',
-                    maxLines: 1,
-                    style: bodyLarge,
-                    overflow: TextOverflow.ellipsis,
-                  )
-                : Text(
-                    dish.value,
-                    maxLines: 1,
-                    style: bodyLarge,
-                    overflow: TextOverflow.ellipsis,
-                  ),
+        child: category.columnName == Constants.photoCategoryText
+            ? _categoryPhotoCell(photo: category.value)
+            : Text(
+                category.value,
+                maxLines: 1,
+                style: bodyLarge,
+                overflow: TextOverflow.ellipsis,
+              ),
       );
     }).toList());
   }
 }
 
-class _dishPhotoCell extends StatelessWidget {
-  const _dishPhotoCell({
+class _categoryPhotoCell extends StatelessWidget {
+  const _categoryPhotoCell({
     required this.photo,
   });
 
@@ -272,7 +250,11 @@ class _dishPhotoCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return photo == ''
-        ? Image.asset(Constants.noImagePhoto)
+        ? const Image(
+            image: AssetImage(Constants.noImagePhoto),
+            fit: BoxFit.cover,
+            height: 60,
+          )
         : CachedNetworkImage(
             height: 60,
             imageUrl: photo!,
@@ -290,8 +272,8 @@ class _dishPhotoCell extends StatelessWidget {
   }
 }
 
-class _dishPhotoShowCell extends StatelessWidget {
-  const _dishPhotoShowCell({
+class _categoryPhotoShowCell extends StatelessWidget {
+  const _categoryPhotoShowCell({
     required this.photo,
   });
 
@@ -300,7 +282,11 @@ class _dishPhotoShowCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return photo == ''
-        ? Image.asset(Constants.noImagePhoto, height: 300)
+        ? const Image(
+            image: AssetImage(Constants.noImagePhoto),
+            fit: BoxFit.cover,
+            height: 300,
+          )
         : CachedNetworkImage(
             height: 300,
             imageUrl: photo!,

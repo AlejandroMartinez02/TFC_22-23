@@ -19,16 +19,17 @@ const GetOne = async (req, res) => {
 
 const Create = async (req, res) => {
     if (req.user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)
-
     const { body } = req
+    delete body._id
     await SERVICE.Create(body)
-        .then(() => RESPONSE_MANAGER.RESPONSE_200(req))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
+        .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
+        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res)
+        )
 
 
 }
 
-const Update = async () => {
+const Update = async (req, res) => {
     if (req.user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)
 
     const { body } = req
@@ -37,13 +38,17 @@ const Update = async () => {
         .catch(() => RESPONSE_MANAGER.RESPONSE_404(res))
 }
 
-const Delete = async () => {
+const Delete = async (req, res) => {
     if (req.user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)
-
-    const { id } = req.body
-    await SERVICE.Delete(id)
-        .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_404(res))
+    const { _id } = req.body
+    await SERVICE.Delete(_id)
+        .then(() => {
+            RESPONSE_MANAGER.RESPONSE_200(res)
+        })
+        .catch((error) => {
+            RESPONSE_MANAGER.RESPONSE_404(res)
+            console.log(error)
+        })
 }
 
 module.exports = {

@@ -19,12 +19,20 @@ const Create = async (order) => {
     return await new ORDER(order).save()
 }
 
-const Update = async () => {
-
+const Update = async (order) => {
+    await ORDER.updateOne(order)
 }
 
-const Delete = async () => {
+const Delete = async (id) => {
+    let order = await ORDER.findById(id)
+    for (let i = 0; i < order.order_lines.length; i++) {
+        await ORDER_LINE.findByIdAndDelete(order.order_lines[i]._id)
+    }
+    await ORDER.findByIdAndDelete(id)
+}
 
+const DeleteByDish = async (id) => {
+    await ORDER_LINE.deleteOne({ product: { _id: id } })
 }
 
 
@@ -34,4 +42,5 @@ module.exports = {
     Create,
     Update,
     Delete,
+    DeleteByDish
 }

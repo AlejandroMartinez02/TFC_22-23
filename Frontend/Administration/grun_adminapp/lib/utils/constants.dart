@@ -85,11 +85,32 @@ class Constants {
       'Ha ocurrido un error eliminando  el plato, por favor inténtelo más tarde';
   static const addDish = 'Añadir plato';
   static const selectCategory = 'Selecciona una categoria';
-  static const createDish = '¡Añade un plato!';
-  static const createDishButtonText = 'Añadir plato';
   static const addDishSuccess = '¡Plato creado correctamente!';
   static const addDishError =
       'Ha ocurrido un error creando el plato, por favor inténtelo más tarde';
+
+  //---Category---//
+  static const categoryTitle = 'Panel de administración de las categorías';
+  static const nameCategoryText = 'Nombre';
+  static const descriptionCategoryText = 'Descripción';
+  static const photoCategoryText = 'Foto';
+  static const addCategory = 'Añadir categoría';
+  static const addCategorySuccess = 'Categoría creada correctamente!';
+  static const addCategoryError =
+      'Ha ocurrido un error creando la categoría, por favor inténtelo más tarde';
+  static const nameCategoryHint = 'Tostas';
+  static const descriptionCategoryHint =
+      '¡Las mejores tostas de toda la comarca!';
+  static const nameCategoryError = '¡Debes escribir un nombre!';
+  static const descriptionCategoryError = '¡Debes escribir una descripcion!';
+  static const deleteCategory = 'Eliminar categoría';
+  static const deleteCategorySuccess = 'Categoría eliminada correctamente!';
+  static const deleteCategoryError =
+      'Ha ocurrido un error eliminando la categoría, por favor inténtelo más tarde';
+  static const updateCategory = 'Actualizar categoría';
+  static const updateCategorySuccess = 'Categoria actualizada correctamente!';
+  static const updateCategoryError =
+      'Ha ocurrido un error actualizando la categoria, por favor inténtelo más tarde';
 
   //---Others---//
   static const borderRadius = 30.0;

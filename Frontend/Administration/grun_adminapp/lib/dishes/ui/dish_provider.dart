@@ -5,12 +5,7 @@ import 'package:flutter/material.dart';
 
 import '../domain/entities/category_dto.dart';
 import '../domain/entities/dish_dto.dart';
-import '../domain/usecase/add_dish_usecase.dart';
-import '../domain/usecase/change_image_usecase.dart';
-import '../domain/usecase/delete_dish_usecase.dart';
-import '../domain/usecase/get_all_dishes_usecase.dart';
-import '../domain/usecase/get_categories_usecase.dart';
-import '../domain/usecase/update_dish_usecase.dart';
+import '../domain/usecase/usecase.dart';
 
 class DishProvider extends ChangeNotifier {
   GlobalKey<FormState> updateDishKey = GlobalKey();

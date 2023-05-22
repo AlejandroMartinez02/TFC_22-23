@@ -49,18 +49,6 @@ class UpdateUserDialog extends StatelessWidget {
       MaterialButton(
         onPressed: isLoading
             ? null
-            : () {
-                Navigator.pop(context);
-              },
-        child: Text(
-          Constants.cancel,
-          style: bodyLarge.copyWith(
-              color: isLoading ? Colors.grey : Constants.secondaryColor),
-        ),
-      ),
-      MaterialButton(
-        onPressed: isLoading
-            ? null
             : () async {
                 final response = await userProvider.updateUser();
                 SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
@@ -69,6 +57,18 @@ class UpdateUserDialog extends StatelessWidget {
               },
         child: Text(
           isLoading ? Constants.waiting : Constants.updateUser,
+          style: bodyLarge.copyWith(
+              color: isLoading ? Colors.grey : Constants.secondaryColor),
+        ),
+      ),
+      MaterialButton(
+        onPressed: isLoading
+            ? null
+            : () {
+                Navigator.pop(context);
+              },
+        child: Text(
+          Constants.cancel,
           style: bodyLarge.copyWith(
               color: isLoading ? Colors.grey : Constants.secondaryColor),
         ),

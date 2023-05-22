@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -27,14 +28,20 @@ class UsersScreen extends StatelessWidget {
       margin: EdgeInsets.symmetric(horizontal: size.width * 0.02),
       child: Column(
         children: [
-          Container(
-            margin: EdgeInsets.only(
-                top: size.height * 0.05, bottom: size.height * 0.05),
-            child: _UsersTitle(bodyLarge: bodyLarge),
+          FadeInDown(
+            duration: Constants.componentAnimationDuration,
+            child: Container(
+              margin: EdgeInsets.only(
+                  top: size.height * 0.05, bottom: size.height * 0.05),
+              child: _UsersTitle(bodyLarge: bodyLarge),
+            ),
           ),
           Expanded(
-              child: UsersDataGrid(
-                  usersProvider: usersProvider, bodyLarge: bodyLarge)),
+              child: FadeInRight(
+            duration: Constants.componentAnimationDuration,
+            child: UsersDataGrid(
+                usersProvider: usersProvider, bodyLarge: bodyLarge),
+          )),
         ],
       ),
     );

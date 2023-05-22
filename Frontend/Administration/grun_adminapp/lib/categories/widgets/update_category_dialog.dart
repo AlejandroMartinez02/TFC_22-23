@@ -7,23 +7,22 @@ import 'package:provider/provider.dart';
 
 import '../../utils/utils.dart';
 import '../../utils/widgets/update_textbox.dart';
-import '../domain/entities/dish_dto.dart';
-import '../ui/dish_provider.dart';
-import 'add_category.dart';
+import '../domain/entities/category_dto.dart';
+import '../ui/category_provider.dart';
 
-class AddDishDialog extends StatelessWidget {
-  const AddDishDialog({
+class UpdateCategoryDialog extends StatelessWidget {
+  const UpdateCategoryDialog({
     super.key,
-    required this.isLoading,
+    required this.category,
     required this.bodyLarge,
   });
-  final bool isLoading;
+  final CategoryDTO category;
   final TextStyle bodyLarge;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final dishProvider = Provider.of<DishProvider>(context);
+    final categoryProvider = Provider.of<CategoryProvider>(context);
     return ScrollConfiguration(
       behavior: const ScrollBehavior().copyWith(overscroll: false),
       child: Scaffold(
@@ -31,14 +30,14 @@ class AddDishDialog extends StatelessWidget {
         body: SingleChildScrollView(
           child: AlertDialog(
             title: Text(
-              Constants.addDish,
+              Constants.updateCategory,
               style: bodyLarge.copyWith(color: Colors.black),
             ),
-            actions: _dialogActions(context, dishProvider),
+            actions: _dialogActions(context, categoryProvider),
             content: Container(
               constraints: BoxConstraints(maxWidth: size.width * 0.2),
-              child: _AddDishForm(
-                  dishProvider: dishProvider, dish: dishProvider.newDish),
+              child: _EditCategoryForm(
+                  categoryProvider: categoryProvider, category: category),
             ),
           ),
         ),
@@ -46,25 +45,30 @@ class AddDishDialog extends StatelessWidget {
     );
   }
 
-  List<Widget> _dialogActions(BuildContext context, DishProvider dishProvider) {
+  List<Widget> _dialogActions(
+      BuildContext context, CategoryProvider categoryProvider) {
     return [
       MaterialButton(
-        onPressed: isLoading
+        onPressed: categoryProvider.isLoadingAction
             ? null
             : () async {
-                final response = await dishProvider.addDish();
+                final response = await categoryProvider.updateCategory();
                 SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
                   _checkResponse(response, context);
                 });
               },
         child: Text(
-          isLoading ? Constants.waiting : Constants.addDish,
+          categoryProvider.isLoadingAction
+              ? Constants.waiting
+              : Constants.updateCategory,
           style: bodyLarge.copyWith(
-              color: isLoading ? Colors.grey : Constants.secondaryColor),
+              color: categoryProvider.isLoadingAction
+                  ? Colors.grey
+                  : Constants.secondaryColor),
         ),
       ),
       MaterialButton(
-        onPressed: isLoading
+        onPressed: categoryProvider.isLoadingAction
             ? null
             : () {
                 Navigator.pop(context);
@@ -72,7 +76,9 @@ class AddDishDialog extends StatelessWidget {
         child: Text(
           Constants.cancel,
           style: bodyLarge.copyWith(
-              color: isLoading ? Colors.grey : Constants.secondaryColor),
+              color: categoryProvider.isLoadingAction
+                  ? Colors.grey
+                  : Constants.secondaryColor),
         ),
       ),
     ];
@@ -84,7 +90,7 @@ class AddDishDialog extends StatelessWidget {
         Navigator.pop(context);
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.addDishSuccess,
+                message: Constants.updateCategorySuccess,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -93,16 +99,24 @@ class AddDishDialog extends StatelessWidget {
       case 403:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.addDishError,
+                message: Constants.updateCategoryError,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
         break;
 
-      case 404:
+      case 500:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.addDishError,
+                message: Constants.updateCategoryError,
+                messageSize: 20,
+                duration: Constants.toastDuration)
+            .show(context);
+        break;
+      case 100:
+        Flushbar(
+                backgroundColor: Theme.of(context).primaryColor,
+                message: Constants.anyChangeDoneDish,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -111,67 +125,45 @@ class AddDishDialog extends StatelessWidget {
   }
 }
 
-class _AddDishForm extends StatelessWidget {
-  const _AddDishForm({
-    required this.dishProvider,
-    required this.dish,
+class _EditCategoryForm extends StatelessWidget {
+  const _EditCategoryForm({
+    required this.categoryProvider,
+    required this.category,
   });
 
-  final DishProvider dishProvider;
-  final DishDTO dish;
+  final CategoryProvider categoryProvider;
+  final CategoryDTO category;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Form(
-      key: dishProvider.addDishKey,
+      key: categoryProvider.updateCategoryKey,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           CustomFormTextBox(
-            initialValue: '',
             maxLines: 1,
-            hintText: Constants.nameDishHint,
+            hintText: Constants.nameCategoryHint,
             inputType: TextInputType.name,
-            labelText: Constants.dishNameText,
-            onChanged: (value) => dishProvider.newDish.name = value!,
+            labelText: Constants.nameCategoryText,
+            onChanged: (value) =>
+                categoryProvider.updatedCategory.name = value!,
             validator: (value) =>
-                value!.isEmpty ? Constants.nameDishError : null,
+                value!.isEmpty ? Constants.nameCategoryError : null,
+            initialValue: category.name,
           ),
           CustomFormTextBox(
-            initialValue: '',
             maxLines: 3,
-            hintText: Constants.descriptionDishHint,
+            hintText: Constants.descriptionCategoryHint,
             inputType: TextInputType.name,
-            labelText: Constants.descriptionDishText,
-            onChanged: (value) => dishProvider.newDish.description = value!,
+            labelText: Constants.descriptionCategoryText,
+            onChanged: (value) =>
+                categoryProvider.updatedCategory.description = value!,
             validator: (value) =>
-                value!.isEmpty ? Constants.descriptionDishError : null,
+                value!.isEmpty ? Constants.descriptionCategoryError : null,
+            initialValue: category.description,
           ),
-          CustomFormTextBox(
-            initialValue: '',
-            maxLines: 1,
-            hintText: Constants.costDishHint,
-            inputType: TextInputType.number,
-            labelText: Constants.costDishText,
-            onChanged: (value) => dishProvider.newDish.cost =
-                double.tryParse(value!.replaceAll(",", "")) ?? 0.0,
-            validator: (value) =>
-                double.tryParse(value!.replaceAll(",", "")) == 0.0
-                    ? Constants.costDishError
-                    : null,
-          ),
-          CustomFormTextBox(
-            initialValue: '',
-            maxLines: 3,
-            hintText: Constants.ingredientsDishHint,
-            inputType: TextInputType.number,
-            labelText: Constants.ingredientsText,
-            onChanged: (value) => dishProvider.newDish.ingredients = value!,
-            validator: (value) =>
-                value!.isEmpty ? Constants.ingredientsDishError : null,
-          ),
-          AddCategory(dishProvider: dishProvider),
           Platform.isWindows || Platform.isMacOS || Platform.isLinux
               ? Container(
                   margin: EdgeInsets.only(top: size.height * 0.05),
@@ -179,7 +171,7 @@ class _AddDishForm extends StatelessWidget {
                   alignment: Alignment.centerLeft,
                   child: GestureDetector(
                       onTap: () async {
-                        await dishProvider.getImage();
+                        await categoryProvider.getImage();
                       },
                       child: Row(
                         children: [
