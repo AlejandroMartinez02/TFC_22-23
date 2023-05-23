@@ -1,14 +1,13 @@
 import 'package:another_flushbar/flushbar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/constants.dart';
-import '../ui/worker_provider.dart';
+import '../ui/order_provider.dart';
 
-class DeleteWorker extends StatelessWidget {
-  const DeleteWorker(
+class DeleteOrderDialog extends StatelessWidget {
+  const DeleteOrderDialog(
       {super.key, required this.rowIndex, required this.bodyLarge});
 
   final int rowIndex;
@@ -16,54 +15,43 @@ class DeleteWorker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final workerProvider = Provider.of<WorkerProvider>(context);
-    return GestureDetector(
-      onTap: () async {
-        showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              return AlertDialog(
-                actions: _dialogActions(context, workerProvider),
-                content: Text(
-                  Constants.deleteWorkerTitle,
-                  style: bodyLarge,
-                ),
-              );
-            });
-      },
-      child: Container(
-        color: Constants.redColor,
-        child: const Icon(FontAwesomeIcons.trashCan, color: Colors.white),
+    final orderProvider = Provider.of<OrderProvider>(context);
+
+    return AlertDialog(
+      actions: _dialogActions(context, orderProvider),
+      content: Text(
+        Constants.deleteOrderTitle,
+        style: bodyLarge,
       ),
     );
   }
 
   List<Widget> _dialogActions(
-      BuildContext context, WorkerProvider workerProvider) {
+      BuildContext context, OrderProvider orderProvider) {
     return [
       MaterialButton(
-        onPressed: workerProvider.isLoadingAction
+        onPressed: orderProvider.isLoadingAction
             ? null
             : () async {
-                workerProvider.currentWorkerIndex = rowIndex;
-                final response = await workerProvider
-                    .deleteWorker(workerProvider.workers[rowIndex].id);
+                orderProvider.currentOrderIndex = rowIndex;
+                final response = await orderProvider
+                    .deleteOrder(orderProvider.orders[rowIndex].id);
                 SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
                   _checkResponse(response, context);
                 });
               },
         child: Text(
-          workerProvider.isLoadingAction
+          orderProvider.isLoadingAction
               ? Constants.waiting
-              : Constants.deleteWorker,
+              : Constants.deleteOrder,
           style: bodyLarge.copyWith(
-              color: workerProvider.isLoadingAction
+              color: orderProvider.isLoadingAction
                   ? Colors.grey
                   : Constants.redColor),
         ),
       ),
       MaterialButton(
-        onPressed: workerProvider.isLoadingAction
+        onPressed: orderProvider.isLoadingAction
             ? null
             : () {
                 Navigator.pop(context);
@@ -71,7 +59,7 @@ class DeleteWorker extends StatelessWidget {
         child: Text(
           Constants.cancel,
           style: bodyLarge.copyWith(
-              color: workerProvider.isLoadingAction
+              color: orderProvider.isLoadingAction
                   ? Colors.grey
                   : Constants.secondaryColor),
         ),
@@ -85,7 +73,7 @@ class DeleteWorker extends StatelessWidget {
         Navigator.pop(context);
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.deleteWorkerSuccess,
+                message: Constants.deleteOrderSuccess,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -94,7 +82,7 @@ class DeleteWorker extends StatelessWidget {
       case 403:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.deleteWorkerError,
+                message: Constants.deleteOrderError,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -102,7 +90,7 @@ class DeleteWorker extends StatelessWidget {
       case 404:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.deleteWorkerError,
+                message: Constants.deleteOrderError,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);

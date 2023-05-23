@@ -17,6 +17,16 @@ const GetAll = async (req, res) => {
         .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }
 
+const GetAllOrders = async (req, res) => {
+    if (req.user.rol != 'Admin') return RESPONSE_MANAGER.RESPONSE_403(res)
+    await SERVICE.GetAllOrders()
+        .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
+        .catch((error) => {
+            console.log(error)
+            RESPONSE_MANAGER.RESPONSE_500(res)
+        })
+}
+
 const Create = async (req, res) => {
     let { body } = req
     body.userId = req.user.sub
@@ -41,6 +51,7 @@ const Delete = async (req, res) => {
 module.exports = {
     Get,
     GetAll,
+    GetAllOrders,
     Create,
     Update,
     Delete,

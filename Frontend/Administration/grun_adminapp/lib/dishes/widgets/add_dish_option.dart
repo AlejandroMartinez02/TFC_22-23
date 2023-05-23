@@ -17,17 +17,21 @@ class AddDish extends StatelessWidget {
         .copyWith(color: Colors.black, fontSize: 20);
 
     return GestureDetector(
-        onTap: () => showDialog(
-            context: context,
-            builder: (BuildContext context) {
-              dishProvider.newDish.category = dishProvider.categories[0];
-              return AddDishDialog(
-                bodyLarge: bodyLarge,
-                isLoading: dishProvider.isLoadingAction,
-              );
-            }),
+        onTap: () => dishProvider.categories.isEmpty
+            ? null
+            : showDialog(
+                context: context,
+                builder: (BuildContext context) {
+                  dishProvider.newDish.category = dishProvider.categories[0];
+                  return AddDishDialog(
+                    bodyLarge: bodyLarge,
+                    isLoading: dishProvider.isLoadingAction,
+                  );
+                }),
         child: Container(
-            color: Constants.secondaryColor,
+            color: dishProvider.categories.isEmpty
+                ? Colors.grey
+                : Constants.secondaryColor,
             child: Center(
                 child: Text(
               Constants.addDish,

@@ -1,3 +1,4 @@
+export 'package:grun_adminapp/orders/ui/order_provider.dart';
 export 'package:grun_adminapp/workers/ui/worker_provider.dart';
 export 'package:grun_adminapp/categories/ui/category_provider.dart';
 export 'package:grun_adminapp/dishes/ui/dish_provider.dart';

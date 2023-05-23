@@ -60,8 +60,9 @@ class LeftMenu extends StatelessWidget {
               topRight: Radius.circular(Constants.borderRadius),
               bottomRight: Radius.circular(Constants.borderRadius))),
       width: size.width * 0.2,
-      child: Stack(children: [
-        Column(
+      child: SizedBox(
+        height: size.height,
+        child: Column(
           children: [
             Container(
               height: size.height * 0.2,
@@ -75,14 +76,29 @@ class LeftMenu extends StatelessWidget {
             SizedBox(
               height: size.height * 0.02,
             ),
-            UserOptions(size: size),
-            DishOption(size: size),
-            CategoryOption(size: size),
-            WorkerOption(size: size),
+            SizedBox(
+              height: size.height * 0.55,
+              child: ScrollConfiguration(
+                behavior: const ScrollBehavior().copyWith(overscroll: false),
+                child: ListView(
+                  shrinkWrap: true,
+                  physics: const ClampingScrollPhysics(),
+                  children: [
+                    UserOptions(size: size),
+                    DishOption(size: size),
+                    CategoryOption(size: size),
+                    WorkerOption(size: size),
+                    OrderOption(size: size),
+                  ],
+                ),
+              ),
+            ),
+            Container(
+                margin: EdgeInsets.only(top: size.height * 0.02),
+                child: LogOutOption(size: size))
           ],
         ),
-        Align(alignment: Alignment.bottomLeft, child: LogOutOption(size: size))
-      ]),
+      ),
     );
   }
 }
@@ -256,6 +272,49 @@ class WorkerOption extends StatelessWidget {
           ),
           AutoSizeText(
             Constants.workers,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+        ]),
+      ),
+    );
+  }
+}
+
+class OrderOption extends StatelessWidget {
+  const OrderOption({
+    super.key,
+    required this.size,
+  });
+
+  final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    final mainProvider = Provider.of<MainProvider>(context);
+    return GestureDetector(
+      onTap: () async {
+        final orderProvider =
+            Provider.of<OrderProvider>(context, listen: false);
+        mainProvider.changePage(const OrderScreen());
+        await orderProvider.loadData();
+      },
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+            vertical: size.height * 0.05, horizontal: size.width * 0.02),
+        decoration: const BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.white))),
+        child: Row(children: [
+          Image(
+            image: const AssetImage("assets/order.png"),
+            height: size.height * 0.04,
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: size.width * 0.01,
+          ),
+          AutoSizeText(
+            Constants.orders,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ]),

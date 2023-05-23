@@ -10,6 +10,10 @@ const GetAll = async (userId) => {
     return await ORDER.find({ userId: userId }).populate({ path: "order_lines", populate: { path: 'product' } })
 }
 
+const GetAllOrders = async () => {
+    return await ORDER.find().populate({ path: "order_lines", populate: { path: 'product' } })
+}
+
 const Create = async (order) => {
     if (order.date == null) order.date = Date.now()
     for (let i = 0; i < order.order_lines.length; i++) {
@@ -39,6 +43,7 @@ const DeleteByDish = async (id) => {
 module.exports = {
     Get,
     GetAll,
+    GetAllOrders,
     Create,
     Update,
     Delete,

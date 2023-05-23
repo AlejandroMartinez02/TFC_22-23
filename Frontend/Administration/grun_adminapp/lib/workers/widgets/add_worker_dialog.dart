@@ -126,6 +126,7 @@ class _AddWorkerForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     final bodyLarge =
         Theme.of(context).textTheme.bodyLarge!.copyWith(color: Colors.black);
     return Form(
@@ -200,6 +201,17 @@ class _AddWorkerForm extends StatelessWidget {
               bodyLarge: bodyLarge,
               worker: workerProvider.newWorker,
               workerProvider: workerProvider),
+          SizedBox(height: size.height * 0.02),
+          Container(
+            alignment: Alignment.centerLeft,
+            child: Text(
+              Constants.birthDate,
+              textAlign: TextAlign.left,
+              style: bodyLarge,
+            ),
+          ),
+          const Divider(thickness: 2),
+          SizedBox(height: size.height * 0.01),
           AgePicker(worker: workerProvider.newWorker)
         ],
       ),

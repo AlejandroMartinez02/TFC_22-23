@@ -25,7 +25,7 @@ class DeleteCategory extends StatelessWidget {
               return AlertDialog(
                 actions: _dialogActions(context, categoryProvider),
                 content: Text(
-                  Constants.deleteCategory,
+                  Constants.deleteCategoryTitle,
                   style: bodyLarge,
                 ),
               );

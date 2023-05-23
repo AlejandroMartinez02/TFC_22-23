@@ -11,7 +11,7 @@ let orderLineSchema = new MONGOOSE.Schema({
     },
     product: {
         type: MONGOOSE.Types.ObjectId,
-        ref: 'Product',
+        ref: 'Dish',
         required: true
     }
 })

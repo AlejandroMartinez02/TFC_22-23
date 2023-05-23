@@ -22,6 +22,7 @@ class Constants {
   static const dishes = 'Platos';
   static const categories = 'Categorias';
   static const workers = 'Trabajadores';
+  static const orders = 'Pedidos';
   static const errorLogout =
       'Ha ocurrido un error cerrando sesión, por favor inténtalo de nuevo';
   static const logout = 'Cerrar sesión';
@@ -104,6 +105,8 @@ class Constants {
   static const nameCategoryError = '¡Debes escribir un nombre!';
   static const descriptionCategoryError = '¡Debes escribir una descripcion!';
   static const deleteCategory = 'Eliminar categoría';
+  static const deleteCategoryTitle =
+      '¿Está seguro de eliminar esta categoría? Esta acción es irreversible';
   static const deleteCategorySuccess = '¡Categoría eliminada correctamente!';
   static const deleteCategoryError =
       'Ha ocurrido un error eliminando la categoría, por favor inténtelo más tarde';
@@ -150,6 +153,8 @@ class Constants {
   static const adminText = 'Administrador';
   static const adminValue = 'Admin';
   static const deleteWorker = 'Eliminar trabajador';
+  static const deleteWorkerTitle =
+      '¿Está seguro de eliminar este trabajador? Esta acción es irreversible';
   static const deleteWorkerSuccess = '¡Trabajador eliminado correctamente!';
   static const deleteWorkerError =
       'Ha ocurrido un error eliminando al trabajador, por favor inténtelo más tarde';
@@ -175,6 +180,7 @@ class Constants {
   static const appName = 'Grün';
   static const error = 'ERROR';
   static const waiting = 'Espere';
+  static const accept = 'Aceptar';
   static const errorPageText =
       '¡Oh no! Parece que tenemos algún problema, lo intentaremos solucionar lo antes posible';
 
@@ -193,6 +199,25 @@ class Constants {
   static const apiSecreKey = 'e2DOUb3VIJ9iCufBbHBfyaMR-e8';
   static const imageUrlApi2 =
       '/v1_1/ddcjuozld/image/upload?upload_preset=tfc2223';
+
+  //---Orders---//
+  static const orderCost = 'Coste total';
+  static const orderDate = 'Fecha de creación';
+  static const orderState = 'Estado';
+  static const orderTitle = 'Panel de administración de los pedidos';
+  static const totalCost = 'Ganancias brutas';
+  static const deleteOrder = 'Eliminar pedido';
+  static const deleteOrderTitle =
+      '¿Está seguro de eliminar este pedido? Esta acción es irreversible';
+  static const deleteOrderSuccess = '¡Pedido eliminado correctamente!';
+  static const deleteOrderError =
+      'Ha ocurrido un error eliminando el pedido, por favor inténtelo más tarde';
+  static const orderSummary = 'Resumen del pedido';
+  static const orderLineName = 'Nombre del producto';
+  static const orderLineCount = 'Cantidad';
+  static const orderLineCost = 'Coste';
+
+  static const birthDate = 'Fecha de nacimiento';
 
 //*--- Functions ---*//
   static Color pickColor(String state) {

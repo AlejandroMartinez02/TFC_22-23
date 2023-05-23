@@ -30,7 +30,8 @@ class DishProvider extends ChangeNotifier {
       id: '',
       name: '',
       ingredients: '',
-      category: CategoryDTO(id: '', name: '', description: '', photo: ''),
+      category:
+          CategoryDTO(id: '', name: 'Entrantes', description: '', photo: ''),
       cost: 0,
       photo: '',
       description: '');
