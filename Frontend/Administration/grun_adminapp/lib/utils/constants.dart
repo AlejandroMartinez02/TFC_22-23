@@ -104,13 +104,59 @@ class Constants {
   static const nameCategoryError = '¡Debes escribir un nombre!';
   static const descriptionCategoryError = '¡Debes escribir una descripcion!';
   static const deleteCategory = 'Eliminar categoría';
-  static const deleteCategorySuccess = 'Categoría eliminada correctamente!';
+  static const deleteCategorySuccess = '¡Categoría eliminada correctamente!';
   static const deleteCategoryError =
       'Ha ocurrido un error eliminando la categoría, por favor inténtelo más tarde';
   static const updateCategory = 'Actualizar categoría';
   static const updateCategorySuccess = 'Categoria actualizada correctamente!';
   static const updateCategoryError =
       'Ha ocurrido un error actualizando la categoria, por favor inténtelo más tarde';
+  static const categoryCreated =
+      'Esta categoría ya existe, por favor intente crear otra';
+
+  //---Worker---//
+  static const workerTitle = 'Panel de administración de los trabajadores';
+  static const addWorker = 'Añadir trabajador';
+  static const addWorkerSuccess = '¡Trabajador añadido correctamente!';
+  static const addWorkerError =
+      'Ha ocurrido un error creando al trabajador, por favor inténtelo más tarde';
+  static const workerName = 'Nombre';
+  static const workerLastname = 'Apellidos';
+  static const workerEmail = 'Correo electrónico';
+  static const workerPhone = 'Teléfono móvil';
+  static const workerMaritalStatus = 'Emparejado';
+  static const workerSalary = "Salario";
+  static const workerAge = 'Edad';
+  static const workerRole = 'Rol';
+  static const workerPassword = 'Contraseña';
+  static const workerNameHint = 'Guillermo';
+  static const workerLastnameHint = 'Baeza';
+  static const workerEmailHint = 'gm2003@gmail.com';
+  static const workerPhoneHint = '695811734';
+  static const workerMaritalStatusHint = 'Soltero';
+  static const workerSalaryHint = "1000";
+  static const workerAgeHint = '21';
+  static const workerNameError = '¡Debes escribir un nombre!';
+  static const workerLastnameError = '¡Debes escribir un apellido';
+  static const workerSalaryError = '¡Debes escribir un salario válido!';
+  static const single = 'Soltero';
+  static const married = 'Casado';
+  static const other = 'Otro';
+  static const engagement = 'Emparejado';
+  static const chefText = 'Cocinero';
+  static const chefValue = 'Chef';
+  static const waiterText = 'Camarero';
+  static const waiterValue = 'Waiter';
+  static const adminText = 'Administrador';
+  static const adminValue = 'Admin';
+  static const deleteWorker = 'Eliminar trabajador';
+  static const deleteWorkerSuccess = '¡Trabajador eliminado correctamente!';
+  static const deleteWorkerError =
+      'Ha ocurrido un error eliminando al trabajador, por favor inténtelo más tarde';
+  static const updateWorker = 'Actualizar trabajador';
+  static const updateWorkerSuccess = '¡Trabajador actualizado correctamente!';
+  static const updateWorkerError =
+      'Ha ocurrido un error actualizando el trabajador, por favor inténtelo más tarde';
 
   //---Others---//
   static const borderRadius = 30.0;
@@ -118,6 +164,8 @@ class Constants {
   static const redColor = Color.fromARGB(255, 176, 48, 39);
   static const blueColor = Color.fromARGB(255, 21, 89, 144);
   static const componentAnimationDuration = Duration(milliseconds: 500);
+  static const maxAgeWorker = Duration(days: 365 * 65);
+  static const minAgeWorker = Duration(days: 365 * 18);
   static const toastDuration = Duration(seconds: 3);
   static const nameFieldError = '¡Debes escribir tu nombre! :)';
   static const lastnameFieldError = '¡Debes escribir el apellido! :)';
@@ -136,7 +184,7 @@ class Constants {
   static const noImagePhoto = 'assets/no-image.png';
 
 //*--- IP's ---*//
-  static const httpAPI = '192.168.1.104:8080';
+  static const httpAPI = '192.168.1.105:8080';
   static const imageUrlApi = 'api.cloudinary.com';
   static const cloudName = 'ddcjuozld';
   static const uploadPreset = 'tfc2223';

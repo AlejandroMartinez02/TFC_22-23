@@ -19,7 +19,7 @@ const GetByCategory = async (category) => {
 }
 
 const Create = async (dish) => {
-    await new DISH(dish).save()
+    return await new DISH(dish).save()
 }
 
 

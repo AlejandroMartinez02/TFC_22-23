@@ -80,7 +80,7 @@ class AddDishDialog extends StatelessWidget {
 
   void _checkResponse(int response, BuildContext context) {
     switch (response) {
-      case 200:
+      case 201:
         Navigator.pop(context);
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
@@ -165,7 +165,7 @@ class _AddDishForm extends StatelessWidget {
             initialValue: '',
             maxLines: 3,
             hintText: Constants.ingredientsDishHint,
-            inputType: TextInputType.number,
+            inputType: TextInputType.name,
             labelText: Constants.ingredientsText,
             onChanged: (value) => dishProvider.newDish.ingredients = value!,
             validator: (value) =>

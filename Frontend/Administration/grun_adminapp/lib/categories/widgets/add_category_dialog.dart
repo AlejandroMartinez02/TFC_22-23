@@ -85,7 +85,7 @@ class AddCategoryDialog extends StatelessWidget {
 
   void _checkResponse(int response, BuildContext context) {
     switch (response) {
-      case 200:
+      case 201:
         Navigator.pop(context);
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
@@ -99,6 +99,15 @@ class AddCategoryDialog extends StatelessWidget {
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
                 message: Constants.addCategoryError,
+                messageSize: 20,
+                duration: Constants.toastDuration)
+            .show(context);
+        break;
+
+      case 404:
+        Flushbar(
+                backgroundColor: Theme.of(context).primaryColor,
+                message: Constants.categoryCreated,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);

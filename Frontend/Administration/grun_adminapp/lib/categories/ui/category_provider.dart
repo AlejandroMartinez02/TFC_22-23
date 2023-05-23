@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'dart:convert';
+
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 
@@ -60,21 +62,22 @@ class CategoryProvider extends ChangeNotifier {
       if (addCategoryKey.currentState!.validate()) {
         isLoadingAction = true;
         notifyListeners();
-        final response =
-            await AddCategoryUseCase.addCategory(category: newCategory);
-        if (response == 200) {
+        final response = json.decode(
+            await AddCategoryUseCase.addCategory(category: newCategory));
+        if (response['status'] == 201) {
+          newCategory.id = response['data']['_id'];
           categories.add(newCategory);
           newCategory = _clearCategory;
         }
         isLoadingAction = false;
         notifyListeners();
-        return response;
+        return response['status'];
       }
       return 0;
     } catch (ex) {
       isLoadingAction = false;
       notifyListeners();
-      return 404;
+      return 500;
     }
   }
 

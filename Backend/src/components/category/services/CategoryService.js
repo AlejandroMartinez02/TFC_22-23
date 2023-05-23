@@ -12,7 +12,7 @@ const GetAll = async () => {
 }
 
 const Create = async (category) => {
-    await new CATEGORY(category).save()
+    return await new CATEGORY(category).save()
 }
 
 const Update = async (category) => {

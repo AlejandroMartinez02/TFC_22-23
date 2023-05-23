@@ -1,5 +1,7 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'dart:convert';
+
 import 'package:file_selector/file_selector.dart';
 import 'package:flutter/material.dart';
 
@@ -146,14 +148,16 @@ class DishProvider extends ChangeNotifier {
       if (addDishKey.currentState!.validate()) {
         isLoadingAction = true;
         notifyListeners();
-        final response = await AddDishUseCase.addDish(newDish: newDish);
-        if (response == 200) {
+        final response =
+            json.decode(await AddDishUseCase.addDish(newDish: newDish));
+        if (response['status'] == 201) {
+          newDish.id = response['data']['_id'];
           dishes.add(newDish);
           newDish = _clearDish;
         }
         isLoadingAction = false;
         notifyListeners();
-        return response;
+        return response['status'];
       }
       return 0;
     } catch (ex) {

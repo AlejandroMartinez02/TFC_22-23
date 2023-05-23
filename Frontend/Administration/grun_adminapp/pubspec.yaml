@@ -17,6 +17,8 @@ dependencies:
   file_selector: ^0.9.3
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
   flutter_secure_storage: ^8.0.0
   font_awesome_flutter: ^10.4.0
   http: ^0.13.5
@@ -26,6 +28,7 @@ dependencies:
   simple_animations: ^5.0.0+3
   socket_io_client: ^2.0.2
   syncfusion_flutter_datagrid: ^21.2.4
+  syncfusion_flutter_datepicker: ^21.2.5
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1

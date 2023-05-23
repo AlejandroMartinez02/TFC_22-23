@@ -19,7 +19,6 @@ class CategoryClient {
     final url = Uri.http(Constants.httpAPI, '/api/categories/');
     final response = await http.post(url,
         body: category.toJson(), headers: {'Authorization': 'Bearer $token'});
-    print(response);
     return response.body;
   }
 
@@ -53,7 +52,6 @@ class CategoryClient {
             resourceType: CloudinaryResourceType.image,
             folder: Constants.folderCloudName));
     await _deleteImage(oldImage);
-    print("${response.secureUrl} SUUUUUUUUUUUUUU");
     return response.secureUrl!;
   }
 

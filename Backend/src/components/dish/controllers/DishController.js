@@ -31,13 +31,9 @@ const Create = async (req, res) => {
 
     const { body } = req
     delete body._id
-    console.log(body)
     await SERVICE.Create(body)
-        .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch((error) => {
-            RESPONSE_MANAGER.RESPONSE_500(res)
-            console.log(error)
-        })
+        .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
+        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }
 
 

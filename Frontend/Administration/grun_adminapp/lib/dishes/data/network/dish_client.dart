@@ -37,7 +37,6 @@ class DishClient {
     final url = Uri.http(_baseUrl, '/api/dishes/');
     final response = await http.delete(url,
         body: {"_id": id}, headers: {'Authorization': 'Bearer $token'});
-
     return response.body;
   }
 

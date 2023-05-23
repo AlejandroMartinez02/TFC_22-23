@@ -191,7 +191,6 @@ class CategoryOption extends StatelessWidget {
 
     return GestureDetector(
       onTap: () async {
-        print("WOOOOOOOOOOOW");
         final categoryProvider =
             Provider.of<CategoryProvider>(context, listen: false);
         mainProvider.changePage(const CategoryScreen());
@@ -232,7 +231,14 @@ class WorkerOption extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final mainProvider = Provider.of<MainProvider>(context);
     return GestureDetector(
+      onTap: () async {
+        final workerProvider =
+            Provider.of<WorkerProvider>(context, listen: false);
+        mainProvider.changePage(const WorkerScreen());
+        await workerProvider.loadData();
+      },
       child: Container(
         width: double.infinity,
         padding: EdgeInsets.symmetric(

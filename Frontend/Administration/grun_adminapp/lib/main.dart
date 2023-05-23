@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 import 'package:provider/provider.dart';
 
@@ -38,7 +39,8 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => MainProvider()),
         ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(create: (_) => DishProvider()),
-        ChangeNotifierProvider(create: (_) => CategoryProvider())
+        ChangeNotifierProvider(create: (_) => CategoryProvider()),
+        ChangeNotifierProvider(create: (_) => WorkerProvider())
       ],
       child: const MyApp(),
     );
@@ -56,6 +58,11 @@ class MyApp extends StatelessWidget {
           [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
     }
     return MaterialApp(
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+        ],
+        supportedLocales: const [Locale('es')],
+        locale: const Locale('es'),
         debugShowCheckedModeBanner: false,
         title: 'Grün',
         initialRoute: 'splash',

@@ -22,7 +22,7 @@ const Create = async (req, res) => {
     const { body } = req
     delete body._id
     await SERVICE.Create(body)
-        .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
+        .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
         .catch(() => RESPONSE_MANAGER.RESPONSE_500(res)
         )
 

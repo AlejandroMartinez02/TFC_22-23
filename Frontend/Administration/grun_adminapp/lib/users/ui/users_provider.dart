@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_getters_setters
+
 import 'package:flutter/material.dart';
 import 'package:grun_adminapp/users/domain/usecase/update_user_usecase.dart';
 
