@@ -30,6 +30,7 @@ const Login = async (req, res) => {
 }
 
 const WorkerLogin = async (req, res) => {
+
     const user = {
         email: req.body.email,
         password: req.body.password
@@ -37,13 +38,7 @@ const WorkerLogin = async (req, res) => {
 
     await SERVICE.WorkerLogin(user)
         .then((data) => {
-            if (data.status == 200) {
-                RESPONSE_MANAGER.RESPONSE_TOKEN(res, data)
-            } else if (data.status == 401) {
-                RESPONSE_MANAGER.RESPONSE_401(res)
-            } else {
-                RESPONSE_MANAGER.RESPONSE_403(res)
-            }
+            RESPONSE_MANAGER.RESPONSE_LOGIN_WORKER(res, data)
         })
         .catch((error) => {
             console.log(error)

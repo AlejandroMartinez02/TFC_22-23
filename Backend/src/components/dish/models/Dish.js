@@ -22,11 +22,9 @@ let dishSchema = new MONGOOSE.Schema({
     },
     photo: {
         type: String,
-        required: true,
     },
     description: {
         type: String,
-
     }
 
 })

@@ -37,7 +37,7 @@ const workerSchema = new MONGOOSE.Schema({
         require: true,
     },
     age: {
-        type: Number,
+        type: String,
         require: true,
     },
     role: {

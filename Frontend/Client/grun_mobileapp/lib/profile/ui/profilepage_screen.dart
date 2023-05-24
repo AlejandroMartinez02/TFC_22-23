@@ -26,17 +26,17 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           )
-        : Scaffold(
+        : const Scaffold(
             body: Stack(children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
+              children: [
                 ProfileHeader(),
                 MyOrderOption(),
                 PersonalDataButton(),
               ],
             ),
-            const LogoutButton()
+            LogoutButton()
           ]));
   }
 }

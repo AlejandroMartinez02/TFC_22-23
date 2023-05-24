@@ -14,7 +14,7 @@ const GetAll = async (req, res) => {
     let { user } = req
     if (user.rol != 'Admin') return RESPONSE_MANAGER.RESPONSE_401(res)
 
-    await SERVICE.GetAll()
+    await SERVICE.GetAll(user.sub)
         .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
         .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }
@@ -26,8 +26,11 @@ const Create = async (req, res) => {
     let worker = req.body
 
     await SERVICE.Create(worker)
-        .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
+        .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
+        .catch((error) => {
+            RESPONSE_MANAGER.RESPONSE_500(res)
+            console.log(error)
+        })
 }
 
 
@@ -36,9 +39,13 @@ const Update = async (req, res) => {
     if (user.rol != 'Admin') return RESPONSE_MANAGER.RESPONSE_401(res)
 
     let worker = req.body
+
     await SERVICE.Update(worker)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
+        .catch((error) => {
+            console.log(error)
+            RESPONSE_MANAGER.RESPONSE_500(res)
+        })
 }
 
 const Delete = async (req, res) => {

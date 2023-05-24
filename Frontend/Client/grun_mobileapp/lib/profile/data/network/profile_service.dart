@@ -24,4 +24,8 @@ class ProfileService {
     final token = await SecureStorageService.getToken();
     return await ProfileClient.getOrders(token: token);
   }
+
+  static logout() async {
+    await SecureStorageService.deleteToken();
+  }
 }

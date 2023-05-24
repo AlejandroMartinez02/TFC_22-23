@@ -1,5 +1,5 @@
 const DISH = require('../models/Dish')
-const CATEGORY = require('../../category/models/Category')
+const ORDER_SERVICE = require('../../order/services/OrderService')
 
 const GetOne = async (id) => {
     let dish = await DISH.findOne({ _id: id }).populate("category")
@@ -19,7 +19,7 @@ const GetByCategory = async (category) => {
 }
 
 const Create = async (dish) => {
-    await new DISH(dish).save()
+    return await new DISH(dish).save()
 }
 
 
@@ -33,6 +33,15 @@ const Delete = async (id) => {
     await DISH.findByIdAndDelete(id)
 }
 
+const DeleteByCategory = async (id) => {
+    let dishes = await DISH.find({ category: { _id: id } })
+
+    for (let i = 0; i < dishes.length; i++) {
+        await ORDER_SERVICE.DeleteByDish(dishes[i]._id)
+        await DISH.findByIdAndDelete(dishes[i]._id)
+    }
+}
+
 
 module.exports = {
     GetOne,
@@ -40,5 +49,6 @@ module.exports = {
     GetByCategory,
     Create,
     Update,
-    Delete
+    Delete,
+    DeleteByCategory
 }

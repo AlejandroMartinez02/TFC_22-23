@@ -4,8 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
-
 class UserDTO {
   String id;
   String name;

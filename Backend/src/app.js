@@ -5,15 +5,11 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 var app = express()
-
-
 const server = require('http').createServer(app)
-const io = require('socket.io')(server)
-io.on('connection', client => {
-    client.on('event', data => { })
-    client.on('disconnect', () => { })
-})
+module.exports.io = require('socket.io')(server)
 server.listen(3000)
+
+require('../src/services/sockets/Socket')
 
 let userRouter = require('./components/user/UserRoutes')
 let workersRoutes = require('./components/worker/WorkerRoutes')

@@ -1,8 +1,12 @@
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
+// ignore_for_file: must_be_immutable
 
+import 'dart:io';
+
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import '../../utils/constants.dart';
 import '../../utils/utils.dart';
+import '../../utils/widgets/custom_app_bar.dart';
 import '../widgets/login_widgets.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -14,6 +18,7 @@ class LoginScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+
     return Scaffold(
       body: LoginBody(
         child: _loginForm(size: size, isLogout: isLogout, message: message),
@@ -37,33 +42,41 @@ class _loginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       physics: const BouncingScrollPhysics(),
-      padding: EdgeInsets.symmetric(
-          horizontal: size.width < 500 ? size.width * 0.01 : size.width * 0.1),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _HeaderIcon(),
-          SizedBox(
-            height: size.height * 0.04,
-          ),
-          Text(Constants.loginTitle,
-              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                    color: Colors.black,
-                  )),
-          SizedBox(
-            height: size.height * 0.04,
-          ),
-          const LoginForm(),
-          SizedBox(height: size.height * 0.05),
-          if (isLogout ?? false)
-            Text(
-              message!,
-              textAlign: TextAlign.center,
-              style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                    color: Colors.red,
-                    fontSize: size.width < 600 ? 16 : 18,
-                  ),
-            )
+          Platform.isLinux || Platform.isIOS || Platform.isWindows
+              ? const CustomAppBar()
+              : Container(),
+          Container(
+            padding: EdgeInsets.symmetric(
+                horizontal:
+                    size.width < 500 ? size.width * 0.01 : size.width * 0.1),
+            child: Column(children: [
+              _HeaderIcon(),
+              SizedBox(
+                height: size.height * 0.04,
+              ),
+              Text(Constants.loginTitle,
+                  style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+                        color: Colors.black,
+                      )),
+              SizedBox(
+                height: size.height * 0.04,
+              ),
+              const LoginForm(),
+              SizedBox(height: size.height * 0.05),
+              if (isLogout ?? false)
+                Text(
+                  message!,
+                  textAlign: TextAlign.center,
+                  style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                        color: Colors.red,
+                        fontSize: size.width < 600 ? 16 : 18,
+                      ),
+                )
+            ]),
+          )
         ],
       ),
     );
@@ -81,7 +94,7 @@ class _HeaderIcon extends StatelessWidget {
           image: const AssetImage(
             Constants.lightLogoApp,
           ),
-          height: size.height * 0.25,
+          height: size.height * 0.27,
         ));
   }
 }

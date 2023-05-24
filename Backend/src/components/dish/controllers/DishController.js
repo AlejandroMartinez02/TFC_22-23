@@ -30,26 +30,30 @@ const Create = async (req, res) => {
     if (req.user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)
 
     const { body } = req
+    delete body._id
     await SERVICE.Create(body)
-        .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
+        .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
         .catch(() => RESPONSE_MANAGER.RESPONSE_500(res))
 }
 
 
 const Update = async (req, res) => {
-    if (req.user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)
 
+    if (req.user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)
     const { body } = req
     await SERVICE.Update(body)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_404(res))
+        .catch((error) => {
+            RESPONSE_MANAGER.RESPONSE_404(res)
+            console.log(error)
+        })
 }
 
 const Delete = async (req, res) => {
     if (req.user.rol != "Admin") return RESPONSE_MANAGER.RESPONSE_403(res)
 
-    const { id } = req.body
-    await SERVICE.Delete(id)
+    const { _id } = req.body
+    await SERVICE.Delete(_id)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
         .catch(() => RESPONSE_MANAGER.RESPONSE_404(res))
 }

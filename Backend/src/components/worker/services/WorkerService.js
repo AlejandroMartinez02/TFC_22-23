@@ -6,16 +6,19 @@ const GetById = async (sub) => {
     return worker == null ? { status: 404 } : { status: 201, data: worker }
 }
 
-const GetAll = async () => {
-    return await WORKER.find()
+const GetAll = async (id) => {
+    return await WORKER.find({ _id: { $ne: id } })
 }
 
 const Create = async (worker) => {
+    delete worker._id
     worker.password = await SERVICE.encrypt(worker.password)
-    await new WORKER(worker).save()
+    return await new WORKER(worker).save()
 }
 
 const Update = async (worker) => {
+    if (worker.password == '') worker.password = await SERVICE.encrypt(worker.password)
+    else delete worker.password
     await WORKER.findByIdAndUpdate(worker._id, worker)
 }
 

@@ -1,4 +1,4 @@
-import '../datastore/secure_storage_service.dart';
+import '../../../utils/services/secure_storage_service.dart';
 import 'response/check_token_response.dart';
 import 'splash_client.dart';
 

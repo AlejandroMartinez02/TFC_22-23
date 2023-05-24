@@ -1,4 +1,6 @@
 const CATEGORY = require('../models/Category')
+const DISH_SERVICE = require('../../dish/services/DishService')
+
 
 const GetOne = async (id) => {
     let category = await CATEGORY.findOne({ _id: id })
@@ -10,7 +12,7 @@ const GetAll = async () => {
 }
 
 const Create = async (category) => {
-    await new CATEGORY(...category).save()
+    return await new CATEGORY(category).save()
 }
 
 const Update = async (category) => {
@@ -20,7 +22,9 @@ const Update = async (category) => {
 
 const Delete = async (id) => {
     if (await CATEGORY.findOne({ _id: id }) == null) throw new Error()
+    await DISH_SERVICE.DeleteByCategory(id)
     await CATEGORY.deleteOne({ _id: id })
+
 }
 
 module.exports = {

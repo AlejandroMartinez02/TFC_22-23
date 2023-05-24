@@ -3,6 +3,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 
 import '../../login/ui/login_screen.dart';
+import '../../main/ui/main_screen.dart';
 import '../../utils/constants.dart';
 import '../../utils/widgets/create_route.dart';
 import 'splash_provider.dart';
@@ -40,10 +41,13 @@ class _SplashScreenState extends State<SplashScreen>
       if (controller.status == AnimationStatus.completed) {
         if (await splashProvider.getToken() != '') {
           if (await splashProvider.checkToken()) {
-            // Navigator.pushReplacement(
-            //     context,
-            //     CreateRoutes.slideFadeIn(
-            //         direccion: const Offset(1, 0), screen: const MainScreen()));
+            SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+              Navigator.pushReplacement(
+                  context,
+                  CreateRoutes.slideFadeIn(
+                      direccion: const Offset(1, 0),
+                      screen: const MainScreen()));
+            });
             return;
           } else {
             SchedulerBinding.instance.addPostFrameCallback((timeStamp) {

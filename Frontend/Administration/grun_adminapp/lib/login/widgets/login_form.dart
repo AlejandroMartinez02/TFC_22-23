@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/scheduler.dart';
 
-import '../../utils/services/notification_service.dart';
-import 'login_button.dart';
-import 'login_textbox.dart';
+import '../../main/ui/main_screen.dart';
 import 'login_widgets.dart';
 import '../ui/login_form_provider.dart';
 import '../../utils/utils.dart';
@@ -29,37 +28,54 @@ class LoginForm extends StatelessWidget {
               validator: (value) => Validations.emailValidator(value),
             ),
             const SizedBox(height: 20),
-            const _passwordBox(),
+            RawKeyboardListener(
+              focusNode: FocusNode(),
+              child: const _passwordBox(),
+              onKey: (RawKeyEvent event) async {
+                if (event.isKeyPressed(LogicalKeyboardKey.enter)) {
+                  checkUser(context, loginForm);
+                }
+              },
+            ),
             const SizedBox(
               height: 40,
             ),
             LoginButton(
                 isLoading: loginForm.isLoading,
                 onPressed: () async {
-                  FocusScope.of(context).unfocus();
-                  final responseLogin = await loginForm.isValidForm();
-                  SchedulerBinding.instance.addPostFrameCallback((_) {
-                    _checkResponse(responseLogin, context);
-                  });
+                  checkUser(context, loginForm);
                 })
           ],
         ));
   }
 }
 
+void checkUser(BuildContext context, LoginFormProvider loginForm) async {
+  FocusScope.of(context).unfocus();
+
+  final responseLogin = await loginForm.isValidForm();
+  SchedulerBinding.instance.addPostFrameCallback((_) {
+    _checkResponse(responseLogin, context);
+  });
+}
+
 void _checkResponse(String? responseLogin, BuildContext context) {
   switch (responseLogin) {
     case null:
-      // Navigator.pushReplacement(
-      //     context,
-      //     CreateRoutes.slideFadeIn(
-      //         direccion: const Offset(1, 0), screen: const MainScreen()));
+      Navigator.pushReplacement(
+          context,
+          CreateRoutes.slideFadeIn(
+              direccion: const Offset(1, 0), screen: const MainScreen()));
+
       break;
     case '401':
       NotificationService.showSnackBar(Constants.wrongLogin);
       break;
     case '403':
       NotificationService.showSnackBar(Constants.accountLocked);
+      break;
+    case '404':
+      NotificationService.showSnackBar(Constants.noAdmin);
       break;
     case Constants.error:
       NotificationService.showSnackBar(Constants.errorPageText);
@@ -76,10 +92,10 @@ class _passwordBox extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return Container(
-        constraints:
-            const BoxConstraints(minWidth: 250, maxWidth: 400, maxHeight: 70),
-        width: size.width < 600 ? size.width * 0.3 : size.width * 0.5,
-        child: TextFormField(
+      constraints:
+          const BoxConstraints(minWidth: 250, maxWidth: 400, maxHeight: 70),
+      width: size.width < 600 ? size.width * 0.3 : size.width * 0.5,
+      child: TextFormField(
           obscureText: loginForm.isHidden,
           style: Theme.of(context)
               .textTheme
@@ -90,7 +106,16 @@ class _passwordBox extends StatelessWidget {
           cursorColor: mainColor,
           decoration: passwordDecoration(loginForm, mainColor),
           onChanged: (value) => loginForm.password = value,
-        ));
+          validator: (value) =>
+              value!.length < 1 ? '¡Debes escribir la contraseña!' : null,
+          onFieldSubmitted: (_) async {
+            FocusScope.of(context).unfocus();
+            final responseLogin = await loginForm.isValidForm();
+            SchedulerBinding.instance.addPostFrameCallback((_) {
+              _checkResponse(responseLogin, context);
+            });
+          }),
+    );
   }
 
   InputDecoration passwordDecoration(

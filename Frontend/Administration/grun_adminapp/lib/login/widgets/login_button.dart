@@ -22,7 +22,7 @@ class LoginButton extends StatelessWidget {
         style: Theme.of(context)
             .textTheme
             .bodyLarge!
-            .copyWith(fontSize: size.width < 600 ? 22 : 28),
+            .copyWith(fontSize: size.width < 600 ? 20 : 22),
       ),
     );
   }
