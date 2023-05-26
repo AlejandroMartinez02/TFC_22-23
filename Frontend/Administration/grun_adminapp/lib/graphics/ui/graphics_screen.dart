@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 import '../../utils/utils.dart';
-import '../domain/entities/product_graphics_dto.dart';
+import '../widgets/widgets.dart';
 import 'graphics_provider.dart';
 
 class GraphicsScreen extends StatelessWidget {
@@ -25,48 +24,8 @@ class GraphicsScreen extends StatelessWidget {
               Container(
                 height: size.height * 0.7,
                 margin: EdgeInsets.all(size.width * 0.02),
-                child: SfCircularChart(
-                  title: ChartTitle(
-                      text: Constants.getTitle(graphicsProvider.isBestSelected,
-                          graphicsProvider.currentNumOrders.abs()),
-                      textStyle: bodyLarge),
-                  legend: Legend(
-                      iconHeight: 40,
-                      iconWidth: 40,
-                      isVisible: true,
-                      position: LegendPosition.left,
-                      overflowMode: LegendItemOverflowMode.wrap,
-                      legendItemBuilder: (String name, dynamic series,
-                          dynamic point, int index) {
-                        return Row(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            Container(
-                                color: (point as ChartPoint).color,
-                                height: 10,
-                                width: 10),
-                            const SizedBox(width: 10),
-                            Text(
-                              name,
-                              style: bodyLarge,
-                            ),
-                          ],
-                        );
-                      }),
-                  series: <CircularSeries>[
-                    PieSeries<ProductGraphicsDTO, String>(
-                        dataSource: graphicsProvider.numProducts[
-                            graphicsProvider.currentNumOrders.toString()],
-                        dataLabelMapper: (ProductGraphicsDTO data, index) =>
-                            data.count.toString(),
-                        xValueMapper: (ProductGraphicsDTO data, _) =>
-                            data.product.name,
-                        yValueMapper: (ProductGraphicsDTO data, _) =>
-                            data.count,
-                        dataLabelSettings: DataLabelSettings(
-                            isVisible: true, textStyle: bodyLarge))
-                  ],
-                ),
+                child: CircularChart(
+                    graphicsProvider: graphicsProvider, bodyLarge: bodyLarge),
               ),
               BestLessProductButtons(
                   graphicsProvider: graphicsProvider, bodyLarge: bodyLarge),
@@ -76,109 +35,6 @@ class GraphicsScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class LastOrdersButtons extends StatelessWidget {
-  const LastOrdersButtons({
-    super.key,
-    required this.graphicsProvider,
-    required this.bodyLarge,
-  });
-
-  final GraphicsProvider graphicsProvider;
-  final TextStyle bodyLarge;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        MaterialButton(
-            color: graphicsProvider.currentNumOrders.abs() == 10
-                ? Constants.secondaryColor
-                : null,
-            onPressed: () async {
-              graphicsProvider.changeCurrentNumOrders(10);
-            },
-            child: Text('Últimos 10 pedidos',
-                style: bodyLarge.copyWith(
-                    color: graphicsProvider.currentNumOrders.abs() == 10
-                        ? Colors.white
-                        : Colors.black))),
-        MaterialButton(
-            color: graphicsProvider.currentNumOrders.abs() == 50
-                ? Constants.secondaryColor
-                : null,
-            onPressed: () async {
-              graphicsProvider.changeCurrentNumOrders(50);
-            },
-            child: Text('Últimos 50 pedidos',
-                style: bodyLarge.copyWith(
-                    color: graphicsProvider.currentNumOrders.abs() == 50
-                        ? Colors.white
-                        : Colors.black))),
-        MaterialButton(
-          color: graphicsProvider.currentNumOrders.abs() == 100
-              ? Constants.secondaryColor
-              : null,
-          onPressed: () async {
-            graphicsProvider.changeCurrentNumOrders(100);
-          },
-          child: Text('Últimos 100 pedidos',
-              style: bodyLarge.copyWith(
-                  color: graphicsProvider.currentNumOrders.abs() == 100
-                      ? Colors.white
-                      : Colors.black)),
-        )
-      ],
-    );
-  }
-}
-
-class BestLessProductButtons extends StatelessWidget {
-  const BestLessProductButtons({
-    super.key,
-    required this.graphicsProvider,
-    required this.bodyLarge,
-  });
-
-  final GraphicsProvider graphicsProvider;
-  final TextStyle bodyLarge;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        MaterialButton(
-            color: graphicsProvider.isBestSelected
-                ? Constants.secondaryColor
-                : null,
-            onPressed: () {
-              graphicsProvider.changeIsBestSelected(true);
-            },
-            child: Text('Productos más vendidos',
-                style: bodyLarge.copyWith(
-                    color: graphicsProvider.isBestSelected
-                        ? Colors.white
-                        : Colors.black))),
-        MaterialButton(
-            color: !graphicsProvider.isBestSelected
-                ? Constants.secondaryColor
-                : null,
-            onPressed: () {
-              graphicsProvider.changeIsBestSelected(false);
-            },
-            child: Text('Productos menos vendidos',
-                style: bodyLarge.copyWith(
-                    color: !graphicsProvider.isBestSelected
-                        ? Colors.white
-                        : Colors.black))),
-      ],
     );
   }
 }
