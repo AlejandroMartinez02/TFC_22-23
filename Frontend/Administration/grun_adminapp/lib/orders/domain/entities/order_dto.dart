@@ -6,7 +6,6 @@ class OrderDTO {
   String id;
   DateTime date;
   double totalCost;
-  String userId;
   List<OrderLineDTO> orderLines;
   String state;
   int v;
@@ -15,7 +14,6 @@ class OrderDTO {
     required this.id,
     required this.date,
     required this.totalCost,
-    required this.userId,
     required this.orderLines,
     required this.state,
     required this.v,
@@ -25,7 +23,6 @@ class OrderDTO {
     String? id,
     DateTime? date,
     double? totalCost,
-    String? userId,
     List<OrderLineDTO>? orderLines,
     String? state,
     int? v,
@@ -34,7 +31,6 @@ class OrderDTO {
         id: id ?? this.id,
         date: date ?? this.date,
         totalCost: totalCost ?? this.totalCost,
-        userId: userId ?? this.userId,
         orderLines: orderLines ?? this.orderLines,
         state: state ?? this.state,
         v: v ?? this.v,
@@ -49,7 +45,6 @@ class OrderDTO {
         id: json["_id"],
         date: DateTime.parse(json["date"]),
         totalCost: json["total_cost"]?.toDouble(),
-        userId: json["userId"],
         orderLines: List<OrderLineDTO>.from(json["order_lines"].map((x) {
           if (x != null) return OrderLineDTO.fromJson(x);
         })),
@@ -61,7 +56,6 @@ class OrderDTO {
         "_id": id,
         "date": date.toIso8601String(),
         "total_cost": totalCost,
-        "userId": userId,
         "order_lines": List<dynamic>.from(orderLines.map((x) => x.toJson())),
         "state": state,
         "__v": v,

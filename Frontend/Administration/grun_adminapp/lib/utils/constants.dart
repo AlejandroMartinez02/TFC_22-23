@@ -23,6 +23,7 @@ class Constants {
   static const categories = 'Categorias';
   static const workers = 'Trabajadores';
   static const orders = 'Pedidos';
+  static const graphics = 'Gráficos';
   static const errorLogout =
       'Ha ocurrido un error cerrando sesión, por favor inténtalo de nuevo';
   static const logout = 'Cerrar sesión';
@@ -237,5 +238,13 @@ class Constants {
     }
 
     return color;
+  }
+
+  static String getTitle(bool isBestSelling, int currentBestNumOrders) {
+    if (isBestSelling) {
+      return 'Los 5 productos más vendidos de los ultimos $currentBestNumOrders pedidos';
+    } else {
+      return 'Los 5 productos menos vendidos de los ultimos $currentBestNumOrders pedidos';
+    }
   }
 }

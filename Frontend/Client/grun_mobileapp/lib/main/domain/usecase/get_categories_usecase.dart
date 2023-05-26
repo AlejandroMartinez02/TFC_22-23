@@ -5,7 +5,7 @@ import 'package:grun_mobileapp/main/domain/entity/category_dto.dart';
 
 class GetCategoriesUseCase {
   static Future<List<CategoryDTO>> getCategories() async {
-    final response = await MainRespository.getCategories();
+    final response = await MainRepository.getCategories();
     final Map<String, dynamic> categoriesMap = json.decode(response);
     final List<CategoryDTO> categories = [];
     categoriesMap['data'].forEach(

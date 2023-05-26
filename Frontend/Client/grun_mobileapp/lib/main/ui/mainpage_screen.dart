@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:grun_mobileapp/menu/ui/menu_provider.dart';
 import 'package:grun_mobileapp/main/widgets/main_widgets.dart';
-import 'package:grun_mobileapp/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 import '../../menu/widgets/no_products.dart';
@@ -32,7 +31,7 @@ class HomePage extends StatelessWidget {
                         : size.height * 0.04,
                   ),
                   const TextTitle(),
-                  ProductSwiper(products: mainProvider.products),
+                  ProductSwiper(products: mainProvider.lessPaidProducts),
                   const MenuDivider(),
                   const CategoryTitle(),
                   const MenuDivider(),

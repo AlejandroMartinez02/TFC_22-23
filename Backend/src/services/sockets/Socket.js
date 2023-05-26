@@ -1,4 +1,4 @@
-const { io } = require('../../app')
+const io = require('../../app')
 const AUTH = require('../security/Security')
 
 io.on('connection', client => {
@@ -7,22 +7,27 @@ io.on('connection', client => {
     if (valid) return client.disconnect()
 
     //ORDERS
-    client.join(uid)
     client.to(uid).emit()
 
+    client.on('CreateOrder', async (payload) => {
+        //Añadir order a la base de datos
+
+        client.emit('GetOrders', /*VARIABLE CON LA NUEVA ORDEN*/)
+
+    })
 
     client.on('connect', () => {
         console.log('conectadoaaa')
 
     })
 
-
     client.on('disconnect', () => { console.log('disconnect') })
-    client.on('usuarios', (payload) => {
-        io.emit('mensaje-nuevo', 'recibido y enviado')
-        console.log("RECIBIOOO")
-    })
 
 })
 
+const UpdateTables = (table) => {
+    io.emit('UpdateTables', table)
+}
+
+module.exports = { UpdateTables }
 

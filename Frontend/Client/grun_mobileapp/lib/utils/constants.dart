@@ -22,7 +22,7 @@ class Constants {
       'El correo electrónico ya está en uso, por favor ingresa uno nuevo';
 
   //---Main---//
-  static const mainTitle = '¡Lo más vendido!';
+  static const mainTitle = '¡Nuestras recomendaciones!';
   static const categoryTitle = 'Nuestro menú';
   static const accountDrawerText = 'Tu perfil';
   static const addToCartButtonText = "Añadir al carrito";
@@ -59,7 +59,7 @@ class Constants {
 
   //---Others---//
   static const borderRadius = 30.0;
-  static const secondaryColor = Color.fromARGB(255, 43, 181, 114);
+  static const secondaryColor = Color.fromARGB(255, 21, 98, 61);
   static const componentAnimationDuration = Duration(milliseconds: 500);
   static const nameFieldError = '¡Debes escribir tu nombre! :)';
   static const lastnameFieldError = '¡Debes escribir tu apellido! :)';
@@ -93,7 +93,7 @@ class Constants {
   static const darkLogoApp = 'assets/dark_logo.png';
 
 //*--- IP's ---*//
-  static const httpAPI = '192.168.1.104:8080';
+  static const httpAPI = '192.168.1.105:8080';
 
 //*--- Functions ---*//
   static Color pickColor(String state) {
