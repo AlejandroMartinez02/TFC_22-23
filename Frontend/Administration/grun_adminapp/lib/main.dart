@@ -41,7 +41,8 @@ class AppState extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => DishProvider()),
         ChangeNotifierProvider(create: (_) => CategoryProvider()),
         ChangeNotifierProvider(create: (_) => WorkerProvider()),
-        ChangeNotifierProvider(create: (_) => OrderProvider())
+        ChangeNotifierProvider(create: (_) => OrderProvider()),
+        ChangeNotifierProvider(create: (_) => GraphicsProvider())
       ],
       child: const MyApp(),
     );

@@ -28,10 +28,8 @@ class OrderProvider extends ChangeNotifier {
       notifyListeners();
       orders = await GetAllOrdersUseCase.getOrders();
       isLoading = false;
-      print(orders);
       notifyListeners();
     } catch (ex) {
-      print(ex);
       isLoading = false;
       notifyListeners();
     }

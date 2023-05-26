@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 
 import '../../utils/constants.dart';
 import '../../utils/widgets/create_route.dart';

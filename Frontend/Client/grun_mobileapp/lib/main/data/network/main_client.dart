@@ -10,6 +10,13 @@ class MainClient {
     return response.body;
   }
 
+  static Future<String> getLessPaidProducts({required String token}) async {
+    final uri = Uri.http(_baseUrl, '/api/orders/less-sold');
+    final response = await http.get(uri,
+        headers: {'Authorization': 'Bearer $token', 'numorders': '20'});
+    return response.body;
+  }
+
   static Future<String> getCategories({required String token}) async {
     final uri = Uri.http(_baseUrl, '/api/categories/all');
     final response =

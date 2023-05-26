@@ -11,7 +11,8 @@ class NotificationService {
         content: Text(
       message,
       textAlign: TextAlign.center,
-      style: const TextStyle(color: Colors.white, fontSize: 20),
+      style: const TextStyle(
+          fontSize: 20, color: Colors.white, fontFamily: 'Montserrat'),
     ));
 
     messengerKey.currentState!.showSnackBar(snackbar);

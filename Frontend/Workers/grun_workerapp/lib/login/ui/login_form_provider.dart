@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../../utils/constants.dart';
 import '../domain/usecase/login_usecase.dart';
 
 class LoginFormProvider extends ChangeNotifier {
@@ -27,14 +28,20 @@ class LoginFormProvider extends ChangeNotifier {
   }
 
   Future isValidForm() async {
-    if (formKey.currentState?.validate() ?? false) {
-      _isLoading = true;
-      notifyListeners();
-      final reponse = await LoginUseCase.login(email!, password!);
+    try {
+      if (formKey.currentState?.validate() ?? false) {
+        _isLoading = true;
+        notifyListeners();
+        final reponse = await LoginUseCase.login(email!, password!);
+        _isLoading = false;
+        notifyListeners();
+        return reponse;
+      }
+      return "NoValid";
+    } catch (ex) {
       _isLoading = false;
       notifyListeners();
-      return reponse;
+      return Constants.error;
     }
-    return "NoValid";
   }
 }

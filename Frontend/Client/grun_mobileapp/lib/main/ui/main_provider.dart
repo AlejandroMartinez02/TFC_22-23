@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import '../../menu/ui/menu_provider.dart';
 import '../domain/entity/entity.dart';
+import '../domain/usecase/get_less_pais_products_usecase.dart';
 import '../domain/usecase/usecase.dart';
 
 class MainProvider extends ChangeNotifier {
@@ -12,12 +13,23 @@ class MainProvider extends ChangeNotifier {
   set faIsVisible(bool visible) => _faIsVisible = visible;
 
   final List<ProductDTO> _products = [];
-
   List<ProductDTO> get products => _products;
 
   set products(List<ProductDTO> products) {
     _products.removeRange(0, _products.length);
     _products.addAll(products);
+  }
+
+  final List<ProductDTO> _lessPaidProducts = [];
+  List<ProductDTO> get lessPaidProducts => _lessPaidProducts;
+  set lessPaidProducts(List<ProductDTO> products) {
+    if (products.length <= 6) {
+      products.forEach((element) => _lessPaidProducts.add(element));
+    } else {
+      for (var x = 0; x < 6; x++) {
+        _lessPaidProducts.add(products[x]);
+      }
+    }
   }
 
   final List<CategoryDTO> _categories = [];
@@ -43,11 +55,13 @@ class MainProvider extends ChangeNotifier {
 
   Future loadData() async {
     try {
-      products = await GetProductsUseCase.init();
+      products = await GetProductsUseCase.getProducts();
       categories = await GetCategoriesUseCase.getCategories();
+      lessPaidProducts = await GetLessPaidProductsUseCase.getLessPaidProducts();
       isLoading = false;
       notifyListeners();
     } catch (ex) {
+      print(ex);
       isLoading = false;
       notifyListeners();
     }

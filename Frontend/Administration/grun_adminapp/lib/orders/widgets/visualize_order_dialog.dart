@@ -182,7 +182,7 @@ class OrderDataSource extends DataGridSource {
   }
 
   final TextStyle bodyLarge;
-  List<DataGridRow> _categories = [];
+  final List<DataGridRow> _categories = [];
 
   @override
   List<DataGridRow> get rows => _categories;
@@ -191,7 +191,6 @@ class OrderDataSource extends DataGridSource {
   DataGridRowAdapter? buildRow(DataGridRow row) {
     return DataGridRowAdapter(
         cells: row.getCells().map<Widget>((order) {
-      print(order.value);
       return Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8.0),

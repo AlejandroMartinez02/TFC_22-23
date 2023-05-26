@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../utils/widgets/animated_background.dart';
+import '../../utils/utils.dart' show AnimatedWave;
 
 class LoginBody extends StatelessWidget {
   const LoginBody({super.key, required this.child});

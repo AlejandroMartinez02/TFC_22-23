@@ -13,7 +13,10 @@ let orderSchema = new MONGOOSE.Schema({
     userId: {
         type: MONGOOSE.Schema.Types.ObjectId,
         ref: 'User',
-        required: true,
+    },
+    workerId: {
+        type: MONGOOSE.Schema.Types.ObjectId,
+        ref: 'Worker',
     },
     order_lines: [{
         type: MONGOOSE.Schema.Types.ObjectId,
@@ -21,8 +24,12 @@ let orderSchema = new MONGOOSE.Schema({
     }],
     state: {
         type: String,
-        enum: ['En espera', 'En proceso', 'Entregando', 'Finalizado'],
+        enum: ['En cocina', 'Entregando', 'Finalizado'],
         default: 'En espera'
+    },
+    table: {
+        type: MONGOOSE.Schema.Types.ObjectId,
+        ref: 'Table'
     }
 })
 
