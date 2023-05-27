@@ -1,6 +1,8 @@
 const ORDER = require('../models/Order')
 const ORDER_LINE = require('../models/OrderLine')
 const DISH = require('../../dish/models/Dish')
+const socket = require('../../../services/sockets/Socket')
+
 const TABLE_SERVICE = require('../../table/services/TableService')
 
 const Get = async (id) => {
@@ -22,6 +24,10 @@ const LessSold = async (numOrders) => {
 
 const BestSelling = async (numOrders) => {
     return await GetAgregation(numOrders, -1)
+}
+
+const InProcess = async () => {
+    return await ORDER.find({ state: 'En cocina' }).populate('table').populate({ path: "order_lines", populate: { path: 'product' } })
 }
 
 const GetAgregation = async (numOrders, sort) => {
@@ -81,11 +87,14 @@ const Create = async (order) => {
     if (order.table != undefined) {
         await TABLE_SERVICE.Update(order.table)
     }
-    return await new ORDER(order).save()
+    let newOrder = await new ORDER(order).save()
+    newOrder = await ORDER.findById(newOrder._id).populate('table').populate({ path: "order_lines", populate: { path: 'product' } })
+    socket.NewOrder(newOrder)
 }
 
 const Update = async (order) => {
-    if (order.state == 'Finalizado') {
+    console.log(order.table)
+    if (order.state == 'Finalizado' && order.table != null) {
         TABLE_SERVICE.Update(order.table)
     }
     await ORDER.findByIdAndUpdate({ _id: order._id }, order)
@@ -110,6 +119,7 @@ module.exports = {
     GetAllOrders,
     BestSelling,
     LessSold,
+    InProcess,
     Create,
     Update,
     Delete,

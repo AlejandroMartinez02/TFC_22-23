@@ -2,7 +2,7 @@ const EXPRESS = require('express')
 const ROUTER = EXPRESS.Router()
 const AUTH = require('../../middlewares/authentication/AuthenticationMiddleware')
 const CONTROLLER = require('../dish/controllers/DishController')
-const VALIDATOR = require('../../middlewares/validations/dishValidations')
+const VALIDATOR = require('../../middlewares/validations/DishValidations')
 const CHECKERRORS = require('../../middlewares/validations/CheckErrors')
 
 

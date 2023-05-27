@@ -12,10 +12,21 @@ import '../domain/usecase/create_order_usecase.dart';
 import '../domain/usecase/get_categories_usecase.dart';
 import '../domain/usecase/get_products_by_category_usecase.dart';
 import '../domain/usecase/get_tables_usecase.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class MenuProvider extends ChangeNotifier {
   MenuProvider() {
     loadData();
+    final socket = IO.io('http://192.168.1.105:3000', {
+      'autoConnect': true,
+      'transports': ['websocket']
+    });
+
+    socket.on('UpdateTables', (data) {
+      List<TableDTO> tables = [];
+      data.forEach((table) => tables.add(TableDTO.fromJson(table)));
+      changeTables(tables);
+    });
   }
 
   final ItemScrollController _categoryController = ItemScrollController();
@@ -192,7 +203,7 @@ class MenuProvider extends ChangeNotifier {
 
     if (this.tables[tableNumberSelected].isInUse) {
       tableNumberSelected = -1;
-      notifyListeners();
     }
+    notifyListeners();
   }
 }

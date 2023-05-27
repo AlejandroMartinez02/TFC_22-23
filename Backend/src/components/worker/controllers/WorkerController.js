@@ -39,7 +39,7 @@ const Update = async (req, res) => {
     if (user.rol != 'Admin') return RESPONSE_MANAGER.RESPONSE_401(res)
 
     let worker = req.body
-
+    console.log(worker)
     await SERVICE.Update(worker)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
         .catch((error) => {

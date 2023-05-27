@@ -99,7 +99,14 @@ class UpdateWorkerDialog extends StatelessWidget {
                 duration: Constants.toastDuration)
             .show(context);
         break;
-
+      case 404:
+        Flushbar(
+                backgroundColor: Theme.of(context).primaryColor,
+                message: Constants.usedData,
+                messageSize: 20,
+                duration: Constants.toastDuration)
+            .show(context);
+        break;
       case 500:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,

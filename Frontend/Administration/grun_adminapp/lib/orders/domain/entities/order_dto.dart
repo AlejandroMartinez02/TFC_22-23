@@ -55,9 +55,8 @@ class OrderDTO {
   Map<String, dynamic> toJson() => {
         "_id": id,
         "date": date.toIso8601String(),
-        "total_cost": totalCost,
+        "total_cost": totalCost.toStringAsFixed(2),
         "order_lines": List<dynamic>.from(orderLines.map((x) => x.toJson())),
         "state": state,
-        "__v": v,
       };
 }

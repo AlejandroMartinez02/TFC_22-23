@@ -166,6 +166,8 @@ class Constants {
 
   //---Others---//
   static const borderRadius = 30.0;
+  static const usedData =
+      'Algún dato ya está en uso, por favor cambielo y vuelva a intentarlo';
   static const secondaryColor = Color.fromARGB(255, 21, 98, 61);
   static const redColor = Color.fromARGB(255, 176, 48, 39);
   static const blueColor = Color.fromARGB(255, 21, 89, 144);

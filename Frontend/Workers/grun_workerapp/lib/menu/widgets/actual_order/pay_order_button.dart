@@ -1,12 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../../menu/ui/menu_provider.dart';
 import '../../../utils/constants.dart';
-import '../../../utils/services/navigator_service.dart';
-import 'created_order_notification.dart';
-import 'error_creating_order_notification.dart';
 import 'select_table_dialog.dart';
 
 class PayButton extends StatelessWidget {
@@ -14,7 +9,6 @@ class PayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final menuProvider = Provider.of<MenuProvider>(context);
     final size = MediaQuery.of(context).size;
     return Container(
       constraints: BoxConstraints(

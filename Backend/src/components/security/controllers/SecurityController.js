@@ -30,7 +30,6 @@ const Login = async (req, res) => {
 }
 
 const WorkerLogin = async (req, res) => {
-
     const user = {
         email: req.body.email,
         password: req.body.password
