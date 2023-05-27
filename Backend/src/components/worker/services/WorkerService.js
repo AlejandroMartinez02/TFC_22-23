@@ -17,8 +17,10 @@ const Create = async (worker) => {
 }
 
 const Update = async (worker) => {
-    if (worker.password == '') worker.password = await SERVICE.encrypt(worker.password)
-    else delete worker.password
+    if (worker.password != '')
+        worker.password = await SERVICE.encrypt(worker.password)
+    else
+        delete worker.password
     await WORKER.findByIdAndUpdate(worker._id, worker)
 }
 

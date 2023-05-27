@@ -1,10 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
-import '../../utils/services/socket_service.dart';
-import '../../utils/widgets/custom_app_bar.dart';
 import '../widgets/category_list.dart';
 import '../widgets/floating_button.dart';
 import '../widgets/product_list.dart';

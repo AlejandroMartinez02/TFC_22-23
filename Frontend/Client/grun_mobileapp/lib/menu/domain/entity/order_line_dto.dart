@@ -38,7 +38,7 @@ class OrderLineDTO {
 
   Map<String, dynamic> toJson() => {
         "product": product.toJson(),
-        "count": count,
-        "cost": cost,
+        "count": count.toString(),
+        "cost": cost.toStringAsFixed(2),
       };
 }

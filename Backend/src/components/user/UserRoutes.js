@@ -2,7 +2,7 @@ const EXPRESS = require('express')
 const ROUTER = EXPRESS.Router()
 const AUTH = require('../../middlewares/authentication/AuthenticationMiddleware')
 const CONTROLLER = require('./controllers/UserController')
-const VALIDATIONS = require('../../middlewares/validations/userValidations')
+const VALIDATIONS = require('../../middlewares/validations/UserValidations')
 const CHECKERRORS = require('../../middlewares/validations/CheckErrors')
 
 

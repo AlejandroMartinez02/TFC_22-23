@@ -22,7 +22,6 @@ const GetAllOrders = async (req, res) => {
     await SERVICE.GetAllOrders()
         .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
         .catch((error) => {
-            console.log(error)
             RESPONSE_MANAGER.RESPONSE_500(res)
         })
 }
@@ -34,7 +33,6 @@ const LessSold = async (req, res) => {
         .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
         .catch((error) => {
             RESPONSE_MANAGER.RESPONSE_500(res)
-            console.log(error)
         })
 }
 
@@ -45,13 +43,21 @@ const BestSelling = async (req, res) => {
         .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
         .catch((error) => {
             RESPONSE_MANAGER.RESPONSE_500(res)
-            console.log(error)
+        })
+}
+
+const InProcess = async (req, res) => {
+    if (req.user.rol != 'Chef') return RESPONSE_MANAGER.RESPONSE_403(res)
+
+    await SERVICE.InProcess()
+        .then((response) => RESPONSE_MANAGER.RESPONSE_201(res, response))
+        .catch((error) => {
+            RESPONSE_MANAGER.RESPONSE_500(res)
         })
 }
 
 const Create = async (req, res) => {
     let { body } = req
-    console.log(req.user)
     if (req.user.rol != undefined) {
         body.workerId = req.user.sub
         delete body.userId
@@ -60,13 +66,10 @@ const Create = async (req, res) => {
     }
     if (body.table == null) delete body.table
 
-    console.log(body)
-
     await SERVICE.Create(body)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
         .catch((error) => {
             RESPONSE_MANAGER.RESPONSE_500(res)
-            console.log(error);
         })
 }
 
@@ -74,7 +77,10 @@ const Update = async (req, res) => {
     let { body } = req
     await SERVICE.Update(body)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch(() => RESPONSE_MANAGER.RESPONSE_500(res)
+        .catch((error) => {
+            RESPONSE_MANAGER.RESPONSE_500(res)
+            console.log(error)
+        }
         )
 }
 
@@ -92,6 +98,7 @@ module.exports = {
     GetAllOrders,
     LessSold,
     BestSelling,
+    InProcess,
     Create,
     Update,
     Delete,

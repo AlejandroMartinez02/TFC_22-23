@@ -17,13 +17,6 @@ class ActualOrderScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final mainColor = Theme.of(context).primaryColor;
     final menuProvider = Provider.of<MenuProvider>(context);
-    final socket = (Provider.of<SocketService>(context)).socket;
-
-    List<TableDTO> tables = [];
-    socket.on('UpdateTables', (data) {
-      data.forEach((table) => tables.add(TableDTO.fromJson(table)));
-      menuProvider.changeTables(tables);
-    });
 
     final order = menuProvider.order;
     return Scaffold(
