@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import '../../data/network/response/table_dto.dart';
+import '../../data/network/response/worker_dto.dart';
 import 'order_line_dto.dart';
 
 class OrderDTO {
@@ -9,26 +10,29 @@ class OrderDTO {
   List<OrderLineDTO> orderLines;
   String state;
   TableDTO? table;
+  WorkerDTO? worker;
 
   OrderDTO(
       {required this.date,
       required this.totalCost,
       required this.orderLines,
       required this.state,
+      this.worker,
       this.table});
 
   OrderDTO copyWith({
     DateTime? date,
     double? totalCost,
     List<OrderLineDTO>? orderLines,
+    WorkerDTO? worker,
     String? state,
   }) =>
       OrderDTO(
-        date: date ?? this.date,
-        totalCost: totalCost ?? this.totalCost,
-        orderLines: orderLines ?? this.orderLines,
-        state: state ?? this.state,
-      );
+          date: date ?? this.date,
+          totalCost: totalCost ?? this.totalCost,
+          orderLines: orderLines ?? this.orderLines,
+          state: state ?? this.state,
+          worker: worker ?? this.worker);
 
   factory OrderDTO.fromRawJson(String str) =>
       OrderDTO.fromJson(json.decode(str));

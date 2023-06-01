@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:grun_mobileapp/profile/data/network/response/order_dto.dart';
 
 import '../../../../utils/constants.dart';
 
 class CustomOrderBottomBar extends StatelessWidget {
-  const CustomOrderBottomBar(
-      {super.key, required this.cost, required this.state});
+  const CustomOrderBottomBar({super.key, required this.order});
 
-  final double cost;
-  final String state;
+  final OrderDTO order;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -22,13 +21,13 @@ class CustomOrderBottomBar extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              state,
+              order.state,
               style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                   fontSize: size.width < 600 ? 28 : 32,
-                  color: Constants.pickColor(state)),
+                  color: Constants.pickColor(order.state)),
             ),
             Text(
-              '${Constants.total} $cost€',
+              '${Constants.total} ${order.totalCost}€',
               style: Theme.of(context)
                   .textTheme
                   .bodyLarge!

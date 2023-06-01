@@ -32,6 +32,13 @@ class Constants {
   static const componentAnimationDuration = Duration(milliseconds: 500);
   static const toastDuration = Duration(seconds: 3);
   static const slogan = 'Sei Vegan, Sei Grün';
+  static const webPage = 'www.grun.es';
+  static const grunPhone = 'Teléfono: 695811734';
+  static const grunAdress = 'Avinguda Rei Jaume I, 32';
+  static const productTicketColumn = 'Producto';
+  static const unitsTicketColumn = 'Unid.';
+  static const costTicketColumn = 'Precio';
+  static const totalCostTicketColumn = 'Total';
   static const appName = 'Grün';
   static const error = 'ERROR';
   static const turnBack = 'Volver atrás';
@@ -48,5 +55,5 @@ class Constants {
   static const darkLogoApp = 'assets/dark_logo.png';
 
 //*--- IP's ---*//
-  static const httpAPI = '192.168.1.105:8080';
+  static const httpAPI = '10.2.249.103:8080';
 }

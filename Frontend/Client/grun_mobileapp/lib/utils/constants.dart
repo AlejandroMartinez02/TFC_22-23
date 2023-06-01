@@ -93,7 +93,7 @@ class Constants {
   static const darkLogoApp = 'assets/dark_logo.png';
 
 //*--- IP's ---*//
-  static const httpAPI = '192.168.1.105:8080';
+  static const httpAPI = '10.2.249.103:8080';
 
 //*--- Functions ---*//
   static Color pickColor(String state) {

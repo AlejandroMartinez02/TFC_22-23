@@ -2,19 +2,17 @@
 
 import 'package:flutter/material.dart';
 
-import '../../login/data/datastore/secure_storage_service.dart';
 import '../../utils/constants.dart';
 import '../data/network/response/order_dto.dart';
 import '../data/network/response/user_dto.dart';
-import '../domain/usecase/change_password_usecase.dart';
-import '../domain/usecase/get_orders_usecase.dart';
-import '../domain/usecase/get_user_usecase.dart';
-import '../domain/usecase/logout_usecase.dart';
-import '../domain/usecase/update_user_usecase.dart';
+import '../domain/usecase/usecase.dart';
+import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ProfileProvider extends ChangeNotifier {
   GlobalKey<FormState> changePasswordKey = GlobalKey();
   GlobalKey<FormState> updateUserKey = GlobalKey();
+
+  late IO.Socket _socket;
 
   List<OrderDTO> orders = [];
 
@@ -50,6 +48,14 @@ class ProfileProvider extends ChangeNotifier {
 
   ProfileProvider() {
     getUser();
+    _config();
+  }
+
+  void _config() {
+    _socket = IO.io('http://192.168.1.105:3000', {
+      'autoConnect': true,
+      'transports': ['websocket']
+    });
   }
 
   void getUser() async {
@@ -133,11 +139,22 @@ class ProfileProvider extends ChangeNotifier {
       notifyListeners();
       orders = await GetOrdersUseCase.getOrders();
       orders.sort((a, b) => b.date.compareTo(a.date));
+      orders.forEach((order) {
+        if (order.state == 'En cocina') createSocket(order);
+      });
       isOrderLoading = false;
       notifyListeners();
     } catch (ex) {
       isOrderLoading = false;
       notifyListeners();
     }
+  }
+
+  void createSocket(OrderDTO order) {
+    _socket.on(order.id, (data) {
+      order.state = 'Finalizado';
+      _socket.off(order.id);
+      notifyListeners();
+    });
   }
 }

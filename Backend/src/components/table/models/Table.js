@@ -3,7 +3,8 @@ const MONGOOSE = require('mongoose')
 let tableSchema = new MONGOOSE.Schema({
     tableNumber: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
     },
     isInUse: {
         type: Boolean,

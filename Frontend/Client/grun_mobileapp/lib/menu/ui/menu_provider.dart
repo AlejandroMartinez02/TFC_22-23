@@ -22,7 +22,7 @@ class MenuProvider extends ChangeNotifier {
       date: DateTime.now().toLocal(),
       totalCost: 0,
       orderLines: [],
-      state: 'En espera');
+      state: 'En cocina');
 
   late OrderLineDTO _newOrderLine;
   OrderLineDTO get newOrderLine => _newOrderLine;
@@ -147,11 +147,13 @@ class MenuProvider extends ChangeNotifier {
       final response = await CreateOrderUseCase.createOrder(order: order);
       _creatingOrder = false;
       notifyListeners();
-      order = OrderDTO(
-          date: DateTime.now().toLocal(),
-          totalCost: 0,
-          orderLines: [],
-          state: 'En espera');
+      if (response == 200) {
+        order = OrderDTO(
+            date: DateTime.now().toLocal(),
+            totalCost: 0,
+            orderLines: [],
+            state: 'En cocina');
+      }
       return response;
     } catch (ex) {
       _creatingOrder = false;

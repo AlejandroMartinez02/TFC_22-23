@@ -7,18 +7,17 @@ import '../domain/usecase/update_orders_usecase.dart';
 
 class OrdersProvider extends ChangeNotifier {
   late IO.Socket _socket;
-  IO.Socket get socket => _socket;
 
   OrdersProvider() {
     config();
     loadData();
-    socket.on('NewOrder', (data) {
+    _socket.on('NewOrder', (data) {
       addOrder(OrderDTO.fromJson(data));
     });
   }
 
   void config() {
-    _socket = IO.io('http://192.168.1.105:3000', {
+    _socket = IO.io('http://10.2.249.103:3000', {
       'autoConnect': true,
       'transports': ['websocket']
     });

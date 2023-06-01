@@ -24,6 +24,7 @@ class Constants {
   static const workers = 'Trabajadores';
   static const orders = 'Pedidos';
   static const graphics = 'Gráficos';
+  static const tables = 'Mesas';
   static const errorLogout =
       'Ha ocurrido un error cerrando sesión, por favor inténtalo de nuevo';
   static const logout = 'Cerrar sesión';
@@ -153,6 +154,7 @@ class Constants {
   static const waiterValue = 'Waiter';
   static const adminText = 'Administrador';
   static const adminValue = 'Admin';
+  static const birthDate = 'Fecha de nacimiento';
   static const deleteWorker = 'Eliminar trabajador';
   static const deleteWorkerTitle =
       '¿Está seguro de eliminar este trabajador? Esta acción es irreversible';
@@ -163,6 +165,47 @@ class Constants {
   static const updateWorkerSuccess = '¡Trabajador actualizado correctamente!';
   static const updateWorkerError =
       'Ha ocurrido un error actualizando el trabajador, por favor inténtelo más tarde';
+
+  //---Orders---//
+  static const orderCost = 'Coste total';
+  static const orderDate = 'Fecha de creación';
+  static const orderState = 'Estado';
+  static const orderTitle = 'Panel de administración de los pedidos';
+  static const totalCost = 'Ganancias brutas';
+  static const deleteOrder = 'Eliminar pedido';
+  static const deleteOrderTitle =
+      '¿Está seguro de eliminar este pedido? Esta acción es irreversible';
+  static const deleteOrderSuccess = '¡Pedido eliminado correctamente!';
+  static const deleteOrderError =
+      'Ha ocurrido un error eliminando el pedido, por favor inténtelo más tarde';
+  static const orderSummary = 'Resumen del pedido';
+  static const orderLineName = 'Nombre del producto';
+  static const orderLineCount = 'Cantidad';
+  static const orderLineCost = 'Coste';
+
+  //---Tables---//
+  static const tableTitle = 'Panel de administración de las mesas';
+  static const tableNumberText = 'Número de mesa';
+  static const tableNumberHint = '10';
+  static const isInUseText = '¿Está en uso?';
+  static const addTable = 'Añadir mesa';
+  static const addTableSuccess = 'Mesa añadida correctamente';
+  static const addTableError =
+      'Ha ocurrido un error creando la tabla, por favor inténtelo más tarde';
+  static const invalidNumberTable = 'Ese número de mesa ya está en uso';
+  static const deleteTableTitle =
+      '¿Deseas eliminar esta mensa? Esta acción es irreversible.';
+  static const deleteTable = 'Eliminar mesa';
+  static const deleteTableSuccess = 'Mesa eliminada correctamente';
+  static const deleteTableError =
+      'Ha ocurrido un error eliminando la mesa, por favor inténtelo de nuevo';
+  static const updateTableTitle = 'Actualizar mesa';
+  static const updateTable = 'Actualizar mesa';
+  static const updateTableSuccess = 'Mesa actualizada correctamente';
+  static const updateTableError =
+      'Ha ocurrido un error actualizando la mesa, por favor inténtelo de nuevo';
+  static const anyChangeDoneTable =
+      'Debes realizar algún cambio para poder actualizar la mesa';
 
   //---Others---//
   static const borderRadius = 30.0;
@@ -194,33 +237,11 @@ class Constants {
 
 //*--- IP's ---*//
   static const httpAPI = '192.168.1.105:8080';
-  static const imageUrlApi = 'api.cloudinary.com';
   static const cloudName = 'ddcjuozld';
   static const uploadPreset = 'tfc2223';
   static const folderCloudName = 'Restaurant';
   static const apiKey = '264994649263339';
   static const apiSecreKey = 'e2DOUb3VIJ9iCufBbHBfyaMR-e8';
-  static const imageUrlApi2 =
-      '/v1_1/ddcjuozld/image/upload?upload_preset=tfc2223';
-
-  //---Orders---//
-  static const orderCost = 'Coste total';
-  static const orderDate = 'Fecha de creación';
-  static const orderState = 'Estado';
-  static const orderTitle = 'Panel de administración de los pedidos';
-  static const totalCost = 'Ganancias brutas';
-  static const deleteOrder = 'Eliminar pedido';
-  static const deleteOrderTitle =
-      '¿Está seguro de eliminar este pedido? Esta acción es irreversible';
-  static const deleteOrderSuccess = '¡Pedido eliminado correctamente!';
-  static const deleteOrderError =
-      'Ha ocurrido un error eliminando el pedido, por favor inténtelo más tarde';
-  static const orderSummary = 'Resumen del pedido';
-  static const orderLineName = 'Nombre del producto';
-  static const orderLineCount = 'Cantidad';
-  static const orderLineCost = 'Coste';
-
-  static const birthDate = 'Fecha de nacimiento';
 
 //*--- Functions ---*//
   static Color pickColor(String state) {

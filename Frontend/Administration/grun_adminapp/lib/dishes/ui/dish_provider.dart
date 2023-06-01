@@ -154,7 +154,7 @@ class DishProvider extends ChangeNotifier {
         if (response['status'] == 201) {
           newDish.id = response['data']['_id'];
           dishes.add(newDish);
-          newDish = _clearDish;
+          newDish = _clearDish.copyWith();
         }
         isLoadingAction = false;
         notifyListeners();

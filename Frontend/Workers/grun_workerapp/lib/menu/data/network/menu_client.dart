@@ -37,4 +37,11 @@ class MenuClient {
         await http.get(uri, headers: {'Authorization': 'Bearer $token'});
     return response.body;
   }
+
+  static Future<String> getWorker({required String token}) async {
+    final url = Uri.http(_baseUrl, 'api/workers');
+    final response =
+        await http.get(url, headers: {'Authorization': 'Bearer $token'});
+    return response.body;
+  }
 }

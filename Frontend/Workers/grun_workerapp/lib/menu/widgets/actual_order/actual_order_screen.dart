@@ -3,8 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../../menu/domain/entity/order_line_dto.dart';
 import '../../../utils/constants.dart';
-import '../../../utils/services/socket_service.dart';
-import '../../data/network/response/table_dto.dart';
+
 import '../../ui/menu_provider.dart';
 import 'order_bottom_bar.dart';
 import 'order_line_widget.dart';

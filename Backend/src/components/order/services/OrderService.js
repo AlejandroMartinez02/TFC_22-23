@@ -93,11 +93,11 @@ const Create = async (order) => {
 }
 
 const Update = async (order) => {
-    console.log(order.table)
     if (order.state == 'Finalizado' && order.table != null) {
         TABLE_SERVICE.Update(order.table)
     }
     await ORDER.findByIdAndUpdate({ _id: order._id }, order)
+    socket.UpdateOrder(order._id)
 }
 
 const Delete = async (id) => {

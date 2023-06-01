@@ -89,6 +89,7 @@ class LeftMenu extends StatelessWidget {
                     CategoryOption(size: size),
                     WorkerOption(size: size),
                     OrderOption(size: size),
+                    TableOption(size: size),
                     GraphicsOption(size: size)
                   ],
                 ),
@@ -359,6 +360,49 @@ class GraphicsOption extends StatelessWidget {
           ),
           AutoSizeText(
             Constants.graphics,
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+        ]),
+      ),
+    );
+  }
+}
+
+class TableOption extends StatelessWidget {
+  const TableOption({
+    super.key,
+    required this.size,
+  });
+
+  final Size size;
+
+  @override
+  Widget build(BuildContext context) {
+    final mainProvider = Provider.of<MainProvider>(context);
+    return GestureDetector(
+      onTap: () async {
+        final tableProvider =
+            Provider.of<TableProvider>(context, listen: false);
+        mainProvider.changePage(const TableScreen());
+        await tableProvider.loadData();
+      },
+      child: Container(
+        width: double.infinity,
+        padding: EdgeInsets.symmetric(
+            vertical: size.height * 0.05, horizontal: size.width * 0.02),
+        decoration: const BoxDecoration(
+            border: Border(bottom: BorderSide(color: Colors.white))),
+        child: Row(children: [
+          Image(
+            image: const AssetImage("assets/table.png"),
+            height: size.height * 0.04,
+            color: Colors.white,
+          ),
+          SizedBox(
+            width: size.width * 0.01,
+          ),
+          AutoSizeText(
+            Constants.tables,
             style: Theme.of(context).textTheme.bodyLarge,
           ),
         ]),

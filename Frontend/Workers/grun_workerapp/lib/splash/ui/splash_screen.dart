@@ -5,7 +5,6 @@ import 'package:provider/provider.dart';
 import '../../login/ui/login_screen.dart';
 import '../../menu/ui/menu_screen.dart';
 import '../../utils/constants.dart';
-import '../../utils/services/socket_service.dart';
 import '../../utils/widgets/create_route.dart';
 import 'splash_provider.dart';
 
@@ -24,7 +23,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void initState() {
-    final socketService = Provider.of<SocketService>(context, listen: false);
     controller = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 5600),

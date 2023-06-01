@@ -12,16 +12,21 @@ class MenuService {
 
   static Future<String> getCategories() async {
     final token = await SecureStorageService.getToken();
-    return MenuClient.getCategories(token: token);
+    return await MenuClient.getCategories(token: token);
   }
 
   static Future<String> createOrder({required OrderDTO order}) async {
     final token = await SecureStorageService.getToken();
-    return MenuClient.createOrder(order: order, token: token);
+    return await MenuClient.createOrder(order: order, token: token);
   }
 
   static Future<String> getTables() async {
     final token = await SecureStorageService.getToken();
-    return MenuClient.getTables(token: token);
+    return await MenuClient.getTables(token: token);
+  }
+
+  static Future<String> getWorker() async {
+    final token = await SecureStorageService.getToken();
+    return await MenuClient.getWorker(token: token);
   }
 }

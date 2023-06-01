@@ -17,10 +17,7 @@ class OrderDetailsScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     final mainColor = Theme.of(context).primaryColor;
     return Scaffold(
-        bottomNavigationBar: CustomOrderBottomBar(
-          cost: order.totalCost,
-          state: order.state,
-        ),
+        bottomNavigationBar: CustomOrderBottomBar(order: order),
         appBar: AppBar(
           title: Text(
             Constants.orderSummary,

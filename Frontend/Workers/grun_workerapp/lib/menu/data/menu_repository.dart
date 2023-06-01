@@ -18,4 +18,8 @@ class MenuRepository {
   static Future<String> getTables() async {
     return await MenuService.getTables();
   }
+
+  static Future<String> getWorker() async {
+    return await MenuService.getWorker();
+  }
 }

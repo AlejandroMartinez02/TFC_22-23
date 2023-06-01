@@ -6,18 +6,17 @@ import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 import '../data/network/response/category_dto.dart';
 import '../data/network/response/products_dto.dart';
 import '../data/network/response/table_dto.dart';
+import '../data/network/response/worker_dto.dart';
 import '../domain/entity/order_dto.dart';
 import '../domain/entity/order_line_dto.dart';
-import '../domain/usecase/create_order_usecase.dart';
-import '../domain/usecase/get_categories_usecase.dart';
-import '../domain/usecase/get_products_by_category_usecase.dart';
-import '../domain/usecase/get_tables_usecase.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+
+import '../domain/usecase/usecase.dart';
 
 class MenuProvider extends ChangeNotifier {
   MenuProvider() {
     loadData();
-    final socket = IO.io('http://192.168.1.105:3000', {
+    final socket = IO.io('http://10.2.249.103:3000', {
       'autoConnect': true,
       'transports': ['websocket']
     });
@@ -28,6 +27,8 @@ class MenuProvider extends ChangeNotifier {
       changeTables(tables);
     });
   }
+  //TODO GET WORKER AND ADD IT TO TICKET
+  late WorkerDTO actualWorker;
 
   final ItemScrollController _categoryController = ItemScrollController();
 
@@ -66,7 +67,7 @@ class MenuProvider extends ChangeNotifier {
   set tableNumberSelected(int tableNumber) =>
       _tableNumberSelected = tableNumber;
 
-  TableDTO _noTable = TableDTO(id: '', tableNumber: -1, isInUse: false);
+  final TableDTO _noTable = TableDTO(id: '', tableNumber: -1, isInUse: false);
 
   void changeSelectedTable(int table) {
     _tableNumberSelected = table;
@@ -92,6 +93,7 @@ class MenuProvider extends ChangeNotifier {
       await loadCategories();
       await loadProducts();
       await loadTables();
+      await loadWorker();
       _isLoading = false;
       notifyListeners();
     } catch (ex) {
@@ -177,13 +179,6 @@ class MenuProvider extends ChangeNotifier {
       final response = await CreateOrderUseCase.createOrder(order: order);
       _creatingOrder = false;
       notifyListeners();
-      if (response == 200) {
-        order = OrderDTO(
-            date: DateTime.now().toLocal(),
-            totalCost: 0,
-            orderLines: [],
-            state: 'En cocina');
-      }
       return response;
     } catch (ex) {
       _creatingOrder = false;
@@ -205,5 +200,20 @@ class MenuProvider extends ChangeNotifier {
       tableNumberSelected = -1;
     }
     notifyListeners();
+  }
+
+  void restartOrder() {
+    order = OrderDTO(
+        date: DateTime.now().toLocal(),
+        totalCost: 0,
+        orderLines: [],
+        state: 'En cocina',
+        worker: actualWorker);
+    notifyListeners();
+  }
+
+  Future loadWorker() async {
+    actualWorker = await GetWorkerUseCase.getWorker();
+    order.worker = actualWorker;
   }
 }

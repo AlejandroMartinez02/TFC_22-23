@@ -1,10 +1,7 @@
-import 'dart:io';
-
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 import '../../utils/constants.dart';
-import '../../utils/widgets/custom_app_bar.dart';
 import '../data/network/response/products_dto.dart';
 import '../widgets/products_widgets/product_bottom_bar.dart';
 import '../widgets/products_widgets/product_category.dart';

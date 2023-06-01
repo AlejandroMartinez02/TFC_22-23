@@ -77,9 +77,8 @@ const Update = async (req, res) => {
     let { body } = req
     await SERVICE.Update(body)
         .then(() => RESPONSE_MANAGER.RESPONSE_200(res))
-        .catch((error) => {
+        .catch(() => {
             RESPONSE_MANAGER.RESPONSE_500(res)
-            console.log(error)
         }
         )
 }

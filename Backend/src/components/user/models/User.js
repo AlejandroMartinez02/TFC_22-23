@@ -30,11 +30,6 @@ const UserSchema = new MONGOOSE.Schema({
         require: true,
         trim: true
     },
-    rol: {
-        type: String,
-        require: true,
-        enum: ['User', 'Admin', 'Chef', 'Waiter']
-    },
     password: {
         type: String,
         require: true,

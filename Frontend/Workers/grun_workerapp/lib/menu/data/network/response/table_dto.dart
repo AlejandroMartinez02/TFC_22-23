@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final tableDto = tableDtoFromJson(jsonString);
-
 import 'dart:convert';
 
 class TableDTO {
