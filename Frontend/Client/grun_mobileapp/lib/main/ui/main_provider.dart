@@ -24,7 +24,9 @@ class MainProvider extends ChangeNotifier {
   List<ProductDTO> get lessPaidProducts => _lessPaidProducts;
   set lessPaidProducts(List<ProductDTO> products) {
     if (products.length <= 6) {
-      products.forEach((element) => _lessPaidProducts.add(element));
+      for (var product in products) {
+        _lessPaidProducts.add(product);
+      }
     } else {
       for (var x = 0; x < 6; x++) {
         _lessPaidProducts.add(products[x]);
@@ -61,7 +63,6 @@ class MainProvider extends ChangeNotifier {
       isLoading = false;
       notifyListeners();
     } catch (ex) {
-      print(ex);
       isLoading = false;
       notifyListeners();
     }
@@ -93,7 +94,7 @@ class MainProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  PageController _pageController = PageController(initialPage: 0);
+  final PageController _pageController = PageController(initialPage: 0);
 
   PageController get pageController => _pageController;
 }

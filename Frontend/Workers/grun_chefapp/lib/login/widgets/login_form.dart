@@ -60,7 +60,6 @@ void checkUser(BuildContext context, LoginFormProvider loginForm) async {
 }
 
 void _checkResponse(String? responseLogin, BuildContext context) {
-  print(responseLogin);
   switch (responseLogin) {
     case null:
       Navigator.pushReplacement(
@@ -107,8 +106,7 @@ class _passwordBox extends StatelessWidget {
           cursorColor: mainColor,
           decoration: passwordDecoration(loginForm, mainColor),
           onChanged: (value) => loginForm.password = value,
-          validator: (value) =>
-              value!.length < 1 ? '¡Debes escribir la contraseña!' : null,
+          validator: (value) => value!.isEmpty ? Constants.passwordError : null,
           onFieldSubmitted: (_) async {
             FocusScope.of(context).unfocus();
             final responseLogin = await loginForm.isValidForm();

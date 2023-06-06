@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+// ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
+import '../../utils/constants.dart';
 import '../domain/entities/order_dto.dart';
 import '../domain/usecase/get_orders_usecase.dart';
 import '../domain/usecase/update_orders_usecase.dart';
@@ -17,7 +19,7 @@ class OrdersProvider extends ChangeNotifier {
   }
 
   void config() {
-    _socket = IO.io('http://10.2.251.163:3000', {
+    _socket = IO.io(Constants.httpSocket, {
       'autoConnect': true,
       'transports': ['websocket']
     });
@@ -26,6 +28,7 @@ class OrdersProvider extends ChangeNotifier {
   List<OrderDTO> orders = [];
 
   bool _isLoading = true;
+  // ignore: unnecessary_getters_setters
   bool get isLoading => _isLoading;
   set isLoading(bool loading) => _isLoading = loading;
 

@@ -7,6 +7,7 @@ class Constants {
   static const labelPassword = 'Contraseña';
   static const loginTitle = 'Inicio de sesión';
   static const wrongLogin = 'El usuario o la contraseña son incorrectos';
+  static const passwordError = '¡Debes escribir la contraseña!';
   static const accountLocked =
       'La cuenta está bloqueada, por favor inicie sesión más tarde';
   static const logoutAutoMessage =
@@ -56,4 +57,5 @@ class Constants {
 
 //*--- IP's ---*//
   static const httpAPI = '10.2.251.163:8080';
+  static const httpSocket = 'http://10.2.251.163:3000';
 }

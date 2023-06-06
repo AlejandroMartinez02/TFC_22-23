@@ -8,7 +8,6 @@ class GetBestSellingUseCase {
       {required int numOrders}) async {
     final response =
         await GraphicsRepository.getBestSellingProducts(numOrders: numOrders);
-    print(response);
     List<ProductGraphicsDTO> products = [];
     final mapProducts = json.decode(response)['data'];
     mapProducts.forEach(

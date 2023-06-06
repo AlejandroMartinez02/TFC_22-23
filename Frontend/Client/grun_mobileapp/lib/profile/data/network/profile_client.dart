@@ -4,7 +4,7 @@ import '../../../utils/constants.dart';
 import 'response/user_dto.dart';
 
 class ProfileClient {
-  static String _baseUrl = Constants.httpAPI;
+  static const String _baseUrl = Constants.httpAPI;
 
   static Future<String> getUser({required String token}) async {
     final uri = Uri.http(_baseUrl, '/api/users/');

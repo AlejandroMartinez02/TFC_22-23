@@ -96,7 +96,7 @@ class _SplashScreenState extends State<SplashScreen>
                 height: double.infinity,
                 width: double.infinity,
                 color: Colors.white,
-                child: _splashContent(
+                child: _SplashContent(
                     size: size,
                     controller: controller,
                     primaryColor: primaryColor))),
@@ -111,8 +111,8 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-class _splashContent extends StatelessWidget {
-  const _splashContent({
+class _SplashContent extends StatelessWidget {
+  const _SplashContent({
     required this.size,
     required this.controller,
     required this.primaryColor,

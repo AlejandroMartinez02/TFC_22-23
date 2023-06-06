@@ -168,7 +168,7 @@ class ShowDishCell extends StatelessWidget {
         details.column.columnName == Constants.photoDishText
             ? Container(
                 alignment: Alignment.center,
-                child: _dishPhotoShowCell(photo: value),
+                child: _DishPhotoShowCell(photo: value),
               )
             : Text(
                 value.toString(),
@@ -242,7 +242,7 @@ class DishesDataSource extends DataGridSource {
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8.0),
         child: dish.columnName == Constants.photoDishText
-            ? _dishPhotoCell(photo: dish.value)
+            ? _DishPhotoCell(photo: dish.value)
             : dish.columnName == Constants.costDishText
                 ? Text(
                     '${dish.value}€',
@@ -261,8 +261,8 @@ class DishesDataSource extends DataGridSource {
   }
 }
 
-class _dishPhotoCell extends StatelessWidget {
-  const _dishPhotoCell({
+class _DishPhotoCell extends StatelessWidget {
+  const _DishPhotoCell({
     required this.photo,
   });
 
@@ -289,8 +289,8 @@ class _dishPhotoCell extends StatelessWidget {
   }
 }
 
-class _dishPhotoShowCell extends StatelessWidget {
-  const _dishPhotoShowCell({
+class _DishPhotoShowCell extends StatelessWidget {
+  const _DishPhotoShowCell({
     required this.photo,
   });
 

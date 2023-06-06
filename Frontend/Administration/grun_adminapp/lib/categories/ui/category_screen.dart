@@ -156,7 +156,7 @@ class ShowCategoryCell extends StatelessWidget {
         details.column.columnName == Constants.photoCategoryText
             ? Container(
                 alignment: Alignment.center,
-                child: _categoryPhotoShowCell(photo: value),
+                child: _CategoryPhotoShowCell(photo: value),
               )
             : Text(
                 value.toString(),
@@ -228,7 +228,7 @@ class CategoryDataSource extends DataGridSource {
         alignment: Alignment.center,
         padding: const EdgeInsets.all(8.0),
         child: category.columnName == Constants.photoCategoryText
-            ? _categoryPhotoCell(photo: category.value)
+            ? _CategoryPhotoCell(photo: category.value)
             : Text(
                 category.value,
                 maxLines: 1,
@@ -240,8 +240,8 @@ class CategoryDataSource extends DataGridSource {
   }
 }
 
-class _categoryPhotoCell extends StatelessWidget {
-  const _categoryPhotoCell({
+class _CategoryPhotoCell extends StatelessWidget {
+  const _CategoryPhotoCell({
     required this.photo,
   });
 
@@ -272,8 +272,8 @@ class _categoryPhotoCell extends StatelessWidget {
   }
 }
 
-class _categoryPhotoShowCell extends StatelessWidget {
-  const _categoryPhotoShowCell({
+class _CategoryPhotoShowCell extends StatelessWidget {
+  const _CategoryPhotoShowCell({
     required this.photo,
   });
 

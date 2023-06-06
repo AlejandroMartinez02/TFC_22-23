@@ -22,12 +22,12 @@ class OrderLineDetails extends StatelessWidget {
       child: Flex(direction: Axis.horizontal, children: [
         Expanded(
           child: Row(crossAxisAlignment: CrossAxisAlignment.center, children: [
-            _productPhoto(orderLine: orderLine, size: size),
+            _ProductPhoto(orderLine: orderLine, size: size),
             Expanded(
               child: Column(
                 children: [
-                  _titlePrice(orderLine: orderLine, size: size),
-                  _productDescription(orderLine: orderLine, size: size)
+                  _TitlePrice(orderLine: orderLine, size: size),
+                  _ProductDescription(orderLine: orderLine, size: size)
                 ],
               ),
             ),
@@ -38,8 +38,8 @@ class OrderLineDetails extends StatelessWidget {
   }
 }
 
-class _productDescription extends StatelessWidget {
-  const _productDescription({
+class _ProductDescription extends StatelessWidget {
+  const _ProductDescription({
     required this.orderLine,
     required this.size,
   });
@@ -78,9 +78,8 @@ class _productDescription extends StatelessWidget {
   }
 }
 
-class _titlePrice extends StatelessWidget {
-  const _titlePrice({
-    super.key,
+class _TitlePrice extends StatelessWidget {
+  const _TitlePrice({
     required this.orderLine,
     required this.size,
   });
@@ -129,9 +128,8 @@ class _titlePrice extends StatelessWidget {
   }
 }
 
-class _productPhoto extends StatelessWidget {
-  const _productPhoto({
-    super.key,
+class _ProductPhoto extends StatelessWidget {
+  const _ProductPhoto({
     required this.orderLine,
     required this.size,
   });

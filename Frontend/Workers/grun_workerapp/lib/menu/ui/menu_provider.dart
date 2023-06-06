@@ -3,12 +3,14 @@
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import '../../utils/constants.dart';
 import '../data/network/response/category_dto.dart';
 import '../data/network/response/products_dto.dart';
 import '../data/network/response/table_dto.dart';
 import '../data/network/response/worker_dto.dart';
 import '../domain/entity/order_dto.dart';
 import '../domain/entity/order_line_dto.dart';
+// ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 import '../domain/usecase/usecase.dart';
@@ -16,7 +18,7 @@ import '../domain/usecase/usecase.dart';
 class MenuProvider extends ChangeNotifier {
   MenuProvider() {
     loadData();
-    final socket = IO.io('http://10.2.251.163:3000', {
+    final socket = IO.io(Constants.httpSocket, {
       'autoConnect': true,
       'transports': ['websocket']
     });

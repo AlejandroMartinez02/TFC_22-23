@@ -1,4 +1,4 @@
-import '../../../register/data/datastore/secure_storage_service.dart';
+import '../../../utils/services/secure_storage_service.dart';
 import '../../domain/entity/user_dto.dart';
 import 'login_client.dart';
 

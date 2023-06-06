@@ -103,6 +103,7 @@ class Constants {
   static const notFoundImage = AssetImage('assets/notFound.gif');
 //*--- IP's ---*//
   static const httpAPI = '192.168.1.105:3000';
+  static const httpSocket = 'http://10.2.251.163:3000';
 
 //*--- Functions ---*//
   static Color pickColor(String state) {

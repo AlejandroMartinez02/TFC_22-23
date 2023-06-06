@@ -77,7 +77,6 @@ class AddTableDialog extends StatelessWidget {
   }
 
   void _checkResponse(int response, BuildContext context) {
-    print(response);
     switch (response) {
       case 201:
         Navigator.pop(context);

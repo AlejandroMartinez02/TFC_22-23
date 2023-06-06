@@ -74,9 +74,4 @@ class CategoryList extends StatelessWidget {
       ],
     );
   }
-
-  TextStyle _textStyle(Size size) => TextStyle(
-      fontFamily: 'Paralucent',
-      fontSize: size.width < 600 ? 22 : 30,
-      fontWeight: FontWeight.w600);
 }

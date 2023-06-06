@@ -33,25 +33,5 @@ class ProductTitle extends StatelessWidget {
                 fontSize: fontSize,
               ),
         ));
-    // : Marquee(
-    //     crossAxisAlignment: CrossAxisAlignment.end,
-    //     pauseAfterRound: const Duration(seconds: 2),
-    //     startPadding: 18.0,
-    //     blankSpace: 22,
-    //     accelerationDuration: const Duration(seconds: 1),
-    //     accelerationCurve: Curves.easeInCubic,
-    //     decelerationDuration: const Duration(milliseconds: 500),
-    //     decelerationCurve: Curves.easeOutCubic,
-    //     text: name,
-    //     style: _textStyle(size),
-    //   ));
-  }
-
-  TextStyle _textStyle(Size size) {
-    return TextStyle(
-      fontFamily: 'Paralucent',
-      fontSize: size.width < 600 ? 26 : 35,
-      fontWeight: FontWeight.bold,
-    );
   }
 }

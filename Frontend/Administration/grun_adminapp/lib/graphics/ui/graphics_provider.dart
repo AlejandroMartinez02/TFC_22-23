@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_getters_setters
+
 import 'package:flutter/material.dart';
 
 import '../domain/entities/product_graphics_dto.dart';
@@ -58,9 +60,7 @@ class GraphicsProvider extends ChangeNotifier {
   }
 
   loadLessData() async {
-    print('LESSS');
     if (numProducts[currentNumOrders.toString()]?.isNotEmpty ?? false) {
-      print(currentNumOrders);
       notifyListeners();
       return;
     }
@@ -75,7 +75,6 @@ class GraphicsProvider extends ChangeNotifier {
 
   void changeIsBestSelected(bool selected) async {
     isBestSelected = selected;
-    print(isBestSelected);
     notifyListeners();
     await changeCurrentNumOrders(currentNumOrders);
   }

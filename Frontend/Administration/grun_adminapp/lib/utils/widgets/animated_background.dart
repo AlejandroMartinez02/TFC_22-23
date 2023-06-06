@@ -17,7 +17,7 @@ class AnimatedWave extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(builder: (context, constraints) {
-      return Container(
+      return SizedBox(
         height: height,
         width: constraints.biggest.width,
         child: LoopAnimationBuilder(
@@ -40,7 +40,7 @@ class CurvePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final green = Paint()
-      ..color = Color.fromARGB(255, 0, 125, 65).withAlpha(100);
+      ..color = const Color.fromARGB(255, 0, 125, 65).withAlpha(100);
     final path = Path();
 
     final y1 = sin(value);

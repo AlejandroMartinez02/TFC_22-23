@@ -33,14 +33,14 @@ class OrderCard extends StatelessWidget {
             horizontal: size.width * 0.03, vertical: size.height * 0.01),
         width: size.width,
         height: size.height * 0.25,
-        child: _orderCardContent(size: size, index: index, order: order),
+        child: _OrderCardContent(size: size, index: index, order: order),
       ),
     );
   }
 }
 
-class _orderCardContent extends StatelessWidget {
-  const _orderCardContent({
+class _OrderCardContent extends StatelessWidget {
+  const _OrderCardContent({
     required this.size,
     required this.index,
     required this.order,

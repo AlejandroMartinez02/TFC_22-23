@@ -72,7 +72,7 @@ class ActualOrderLineWidget extends StatelessWidget {
                 ))
           ],
         ),
-        Divider(thickness: 2),
+        const Divider(thickness: 2),
         SizedBox(height: size.height * 0.02)
       ],
     );

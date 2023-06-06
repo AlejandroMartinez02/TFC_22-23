@@ -8,6 +8,7 @@ class Constants {
   static const loginTitle = 'Inicio de sesión';
   static const loginRegisterText = '¿Quieres ser Grün? ';
   static const loginRegisterLink = '¡Regístrate!';
+  static const passwordError = '¡Debes escribir la contraseña!';
   static const wrongLogin = 'El usuario o la contraseña son incorrectos';
   static const accountLocked =
       'La cuenta está bloqueada, por favor inicie sesión más tarde';

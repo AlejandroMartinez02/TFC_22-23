@@ -41,7 +41,8 @@ class LogoutDialogAndroid extends StatelessWidget {
                 Navigator.pushAndRemoveUntil(
                     context,
                     CreateRoutes.slideFadeIn(
-                        direccion: const Offset(0, -1), screen: LoginScreen()),
+                        direccion: const Offset(0, -1),
+                        screen: const LoginScreen()),
                     (Route<dynamic> route) => false);
                 mainProvider.changeActualPage(0, menuProvider);
               });

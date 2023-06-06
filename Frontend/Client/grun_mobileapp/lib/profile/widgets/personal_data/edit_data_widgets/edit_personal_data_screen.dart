@@ -38,7 +38,7 @@ class EditPersonalDataScreen extends StatelessWidget {
                           color: Colors.black,
                           fontSize: size.width < 600 ? 26 : 30),
                     ),
-                    _separation(size: size),
+                    _Separation(size: size),
                     UpdateTextBox(
                       initialValue: profileProvider.updatedUser.name,
                       onChanged: (value) =>
@@ -48,7 +48,7 @@ class EditPersonalDataScreen extends StatelessWidget {
                       validator: (value) =>
                           value!.isEmpty ? Constants.nameFieldError : null,
                     ),
-                    _separation(size: size),
+                    _Separation(size: size),
                     UpdateTextBox(
                       onChanged: (value) =>
                           profileProvider.updatedUser.lastname = value!,
@@ -58,7 +58,7 @@ class EditPersonalDataScreen extends StatelessWidget {
                           value!.isEmpty ? Constants.lastnameFieldError : null,
                       initialValue: profileProvider.updatedUser.lastname,
                     ),
-                    _separation(size: size),
+                    _Separation(size: size),
                     UpdateTextBox(
                       onChanged: (value) =>
                           profileProvider.updatedUser.address = value!,
@@ -68,7 +68,7 @@ class EditPersonalDataScreen extends StatelessWidget {
                           value!.isEmpty ? Constants.addressFieldError : null,
                       initialValue: profileProvider.updatedUser.address,
                     ),
-                    _separation(size: size),
+                    _Separation(size: size),
                     UpdateTextBox(
                       onChanged: (value) =>
                           profileProvider.updatedUser.phoneNumber = value!,
@@ -77,7 +77,7 @@ class EditPersonalDataScreen extends StatelessWidget {
                       validator: (value) => Validations.phoneValidator(value),
                       initialValue: profileProvider.updatedUser.phoneNumber,
                     ),
-                    _separation(size: size),
+                    _Separation(size: size),
                     UpdateTextBox(
                       onChanged: (value) =>
                           profileProvider.updatedUser.email = value!,
@@ -86,7 +86,7 @@ class EditPersonalDataScreen extends StatelessWidget {
                       validator: (value) => Validations.emailValidator(value),
                       initialValue: profileProvider.updatedUser.email,
                     ),
-                    _separation(size: size),
+                    _Separation(size: size),
                     MaterialButton(
                       onPressed: profileProvider.isWaiting
                           ? null
@@ -132,9 +132,8 @@ class EditPersonalDataScreen extends StatelessWidget {
   }
 }
 
-class _separation extends StatelessWidget {
-  const _separation({
-    super.key,
+class _Separation extends StatelessWidget {
+  const _Separation({
     required this.size,
   });
 

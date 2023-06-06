@@ -6,6 +6,7 @@ import '../../utils/constants.dart';
 import '../data/network/response/order_dto.dart';
 import '../data/network/response/user_dto.dart';
 import '../domain/usecase/usecase.dart';
+// ignore: library_prefixes
 import 'package:socket_io_client/socket_io_client.dart' as IO;
 
 class ProfileProvider extends ChangeNotifier {
@@ -52,11 +53,10 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   void _config() {
-    _socket = IO.io('https://tfc-api-2223-amm.herokuapp.com/', {
+    _socket = IO.io(Constants.httpSocket, {
       'autoConnect': true,
       'transports': ['websocket']
     });
-    _socket.onConnect((_) => print("CONNECTED"));
   }
 
   void getUser() async {
@@ -140,9 +140,9 @@ class ProfileProvider extends ChangeNotifier {
       notifyListeners();
       orders = await GetOrdersUseCase.getOrders();
       orders.sort((a, b) => b.date.compareTo(a.date));
-      orders.forEach((order) {
+      for (var order in orders) {
         if (order.state == 'En cocina') createSocket(order);
-      });
+      }
       isOrderLoading = false;
       notifyListeners();
     } catch (ex) {

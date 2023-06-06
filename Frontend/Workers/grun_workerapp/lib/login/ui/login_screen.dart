@@ -3,7 +3,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import '../../utils/constants.dart';
 import '../../utils/utils.dart';
 import '../../utils/widgets/custom_app_bar.dart';
@@ -21,14 +20,14 @@ class LoginScreen extends StatelessWidget {
 
     return Scaffold(
       body: LoginBody(
-        child: _loginForm(size: size, isLogout: isLogout, message: message),
+        child: _LoginForm(size: size, isLogout: isLogout, message: message),
       ),
     );
   }
 }
 
-class _loginForm extends StatelessWidget {
-  const _loginForm({
+class _LoginForm extends StatelessWidget {
+  const _LoginForm({
     required this.size,
     required this.isLogout,
     required this.message,

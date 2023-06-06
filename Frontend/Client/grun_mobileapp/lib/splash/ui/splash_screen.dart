@@ -65,7 +65,7 @@ class _SplashScreenState extends State<SplashScreen>
           Navigator.pushReplacement(
               context,
               CreateRoutes.slideFadeIn(
-                  direccion: const Offset(1, 0), screen: LoginScreen()));
+                  direccion: const Offset(1, 0), screen: const LoginScreen()));
         });
       }
     });

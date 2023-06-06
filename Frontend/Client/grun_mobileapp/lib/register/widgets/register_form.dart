@@ -137,7 +137,7 @@ class _LoginText extends StatelessWidget {
                       context,
                       CreateRoutes.slideFadeIn(
                           direccion: const Offset(0, -1),
-                          screen: LoginScreen())))
+                          screen: const LoginScreen())))
           ]),
         )
       ],

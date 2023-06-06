@@ -8,7 +8,6 @@ class GetProductsUseCase {
     final response = await MainRepository.getProducts();
     final Map<String, dynamic> productsMap = json.decode(response);
     final List<ProductDTO> products = [];
-    print(productsMap['data']);
     productsMap['data']
         .forEach((product) => products.add(ProductDTO.fromJson(product)));
     return products;

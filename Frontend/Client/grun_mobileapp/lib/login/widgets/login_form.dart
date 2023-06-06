@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:flutter/scheduler.dart';
 
 import '../../main/ui/main_screen.dart';
-import '../../utils/services/notification_service.dart';
 import 'login_widgets.dart';
 import '../ui/login_form_provider.dart';
 import '../../utils/utils.dart';

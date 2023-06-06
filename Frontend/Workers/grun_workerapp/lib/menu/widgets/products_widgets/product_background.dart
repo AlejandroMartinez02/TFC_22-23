@@ -7,7 +7,7 @@ class ProductBackground extends StatelessWidget {
   Widget build(BuildContext context) {
     final primaryColor = Theme.of(context).primaryColor;
     final size = MediaQuery.of(context).size;
-    return Container(
+    return SizedBox(
         width: size.width,
         height: size.height * 0.4,
         child: CustomPaint(painter: _CurvePainter(primaryColor)));
