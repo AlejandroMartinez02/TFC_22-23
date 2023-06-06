@@ -66,4 +66,15 @@ class DishClient {
         body: newDish.toJson(), headers: {'Authorization': 'Bearer $token'});
     return response.body;
   }
+
+  static Future<String> addImage({required XFile file}) async {
+    final cloudinary = Cloudinary.basic(cloudName: Constants.cloudName);
+    final response = await cloudinary.unsignedUploadResource(
+        CloudinaryUploadResource(
+            uploadPreset: Constants.uploadPreset,
+            filePath: file.path,
+            resourceType: CloudinaryResourceType.image,
+            folder: Constants.folderCloudName));
+    return response.secureUrl!;
+  }
 }

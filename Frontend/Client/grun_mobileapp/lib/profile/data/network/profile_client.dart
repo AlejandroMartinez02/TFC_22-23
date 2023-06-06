@@ -9,7 +9,7 @@ class ProfileClient {
   static String _baseUrl = Constants.httpAPI;
 
   static Future<String> getUser({required String token}) async {
-    final uri = Uri.http(_baseUrl, '/api/users/');
+    final uri = Uri.https(_baseUrl, '/api/users/');
     final response =
         await http.get(uri, headers: {'Authorization': 'Bearer $token'});
     return response.body;
@@ -19,7 +19,7 @@ class ProfileClient {
       {required String oldPassword,
       required String newPassword,
       required String token}) async {
-    final uri = Uri.http(_baseUrl, '/api/changepassword');
+    final uri = Uri.https(_baseUrl, '/api/changepassword');
     final response = await http.patch(uri,
         body: {"oldPassword": oldPassword, "newPassword": newPassword},
         headers: {"Authorization": 'Bearer $token'});
@@ -28,14 +28,14 @@ class ProfileClient {
 
   static Future<String> updateUser(
       {required UserDTO user, required String token}) async {
-    final uri = Uri.http(_baseUrl, '/api/users/');
+    final uri = Uri.https(_baseUrl, '/api/users/');
     final response = await http.patch(uri,
         body: user.toJson(), headers: {'Authorization': 'Bearer $token'});
     return response.body;
   }
 
   static Future<String> getOrders({required String token}) async {
-    final uri = Uri.http(_baseUrl, '/api/orders/all');
+    final uri = Uri.https(_baseUrl, '/api/orders/all');
     final response =
         await http.get(uri, headers: {'Authorization': 'Bearer $token'});
     return response.body;

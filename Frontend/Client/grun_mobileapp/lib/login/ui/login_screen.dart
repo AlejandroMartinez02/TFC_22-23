@@ -7,10 +7,10 @@ import 'package:grun_mobileapp/register/ui/register_screen.dart';
 import 'package:grun_mobileapp/utils/utils.dart' show Constants, CreateRoutes;
 
 class LoginScreen extends StatelessWidget {
-  bool? isLogout;
-  String? message = ' ';
+  final bool? isLogout;
+  final String? message;
 
-  LoginScreen({super.key, this.isLogout, this.message});
+  const LoginScreen({super.key, this.isLogout, this.message = ''});
 
   @override
   Widget build(BuildContext context) {

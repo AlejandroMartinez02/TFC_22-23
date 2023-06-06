@@ -9,7 +9,7 @@ class RegisterClient {
   static const _baseUrl = Constants.httpAPI;
 
   static Future<RegisterResponse> register(RegisterUserDTO user) async {
-    final url = Uri.http(_baseUrl, '/api/register');
+    final url = Uri.https(_baseUrl, '/api/register');
 
     final response = await http.post(url,
         body: user.toRawJson(), headers: {'content-type': 'application/json'});

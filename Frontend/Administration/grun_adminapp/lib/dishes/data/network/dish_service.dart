@@ -33,4 +33,8 @@ class DishService {
     final token = await SecureStorageService.getToken();
     return await DishClient.addDish(newDish: newDish, token: token);
   }
+
+  static Future<String> addImage({required XFile file}) async {
+    return await DishClient.addImage(file: file);
+  }
 }

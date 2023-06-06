@@ -25,7 +25,6 @@ class AddDish extends StatelessWidget {
                   dishProvider.newDish.category = dishProvider.categories[0];
                   return AddDishDialog(
                     bodyLarge: bodyLarge,
-                    isLoading: dishProvider.isLoadingAction,
                   );
                 }),
         child: Container(

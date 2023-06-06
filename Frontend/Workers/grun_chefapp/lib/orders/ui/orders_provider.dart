@@ -17,7 +17,7 @@ class OrdersProvider extends ChangeNotifier {
   }
 
   void config() {
-    _socket = IO.io('http://10.2.249.103:3000', {
+    _socket = IO.io('http://10.2.251.163:3000', {
       'autoConnect': true,
       'transports': ['websocket']
     });

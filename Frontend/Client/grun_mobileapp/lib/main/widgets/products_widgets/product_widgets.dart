@@ -6,3 +6,4 @@ export 'package:grun_mobileapp/main/widgets/products_widgets/product_description
 export 'package:grun_mobileapp/main/widgets/products_widgets/product_price.dart';
 export 'package:grun_mobileapp/main/widgets/products_widgets/product_title.dart';
 export 'package:grun_mobileapp/main/widgets/products_widgets/product_image.dart';
+export 'package:grun_mobileapp/main/widgets/products_widgets/product_ingredients.dart';

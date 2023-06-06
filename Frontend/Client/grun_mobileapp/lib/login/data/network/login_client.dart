@@ -9,7 +9,7 @@ class LoginClient {
   static const _baseUrl = Constants.httpAPI;
 
   static Future<LoginResponse> login(UserDTO user) async {
-    final url = Uri.http(_baseUrl, '/api/login');
+    final url = Uri.https(_baseUrl, '/api/login');
 
     final response = await http.post(url,
         body: json.encode(user.toJson()),

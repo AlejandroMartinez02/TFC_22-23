@@ -73,7 +73,6 @@ class DishDataGrid extends StatelessWidget {
         onCellTap: (details) => details.rowColumnIndex.rowIndex - 1 < 0
             ? null
             : cellTapFunction(context, details, dishesSource),
-        allowSorting: true,
         allowSwiping: true,
         columnWidthMode: ColumnWidthMode.fill,
         highlightRowOnHover: true,

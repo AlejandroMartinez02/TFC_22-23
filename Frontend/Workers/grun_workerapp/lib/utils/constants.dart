@@ -55,5 +55,5 @@ class Constants {
   static const darkLogoApp = 'assets/dark_logo.png';
 
 //*--- IP's ---*//
-  static const httpAPI = '10.2.249.103:8080';
+  static const httpAPI = '10.2.251.163:8080';
 }

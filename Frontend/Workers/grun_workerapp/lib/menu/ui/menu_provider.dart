@@ -16,7 +16,7 @@ import '../domain/usecase/usecase.dart';
 class MenuProvider extends ChangeNotifier {
   MenuProvider() {
     loadData();
-    final socket = IO.io('http://10.2.249.103:3000', {
+    final socket = IO.io('http://10.2.251.163:3000', {
       'autoConnect': true,
       'transports': ['websocket']
     });
@@ -27,7 +27,7 @@ class MenuProvider extends ChangeNotifier {
       changeTables(tables);
     });
   }
-  //TODO GET WORKER AND ADD IT TO TICKET
+
   late WorkerDTO actualWorker;
 
   final ItemScrollController _categoryController = ItemScrollController();

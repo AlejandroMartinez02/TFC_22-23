@@ -3,8 +3,6 @@ import 'package:grun_mobileapp/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 import '../../exports/screens.dart';
-import '../../utils/constants.dart';
-import '../../utils/widgets/create_route.dart';
 import 'splash_provider.dart';
 
 class SplashScreen extends StatefulWidget {

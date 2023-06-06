@@ -147,8 +147,14 @@ class DishProvider extends ChangeNotifier {
   Future<int> addDish() async {
     try {
       if (addDishKey.currentState!.validate()) {
+        String photo;
         isLoadingAction = true;
         notifyListeners();
+        if (_file != null) {
+          photo = await AddImageUseCase.addImage(file: _file!);
+          newDish.photo = photo;
+          _file = null;
+        }
         final response =
             json.decode(await AddDishUseCase.addDish(newDish: newDish));
         if (response['status'] == 201) {

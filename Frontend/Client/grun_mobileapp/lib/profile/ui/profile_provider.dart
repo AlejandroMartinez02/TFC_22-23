@@ -52,10 +52,11 @@ class ProfileProvider extends ChangeNotifier {
   }
 
   void _config() {
-    _socket = IO.io('http://192.168.1.105:3000', {
+    _socket = IO.io('https://tfc-api-2223-amm.herokuapp.com/', {
       'autoConnect': true,
       'transports': ['websocket']
     });
+    _socket.onConnect((_) => print("CONNECTED"));
   }
 
   void getUser() async {

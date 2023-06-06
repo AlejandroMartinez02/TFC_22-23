@@ -40,6 +40,7 @@ class ProductScreen extends StatelessWidget {
                         color: Colors.white,
                       ),
                       ProductDescription(description: product.description),
+                      ProductIngredients(ingredients: product.ingredients),
                     ],
                   )),
             ]),

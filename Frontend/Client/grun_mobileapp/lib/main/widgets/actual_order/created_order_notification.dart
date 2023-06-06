@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/exports/screens.dart';
 
 import '../../../utils/constants.dart';
-import '../../../utils/widgets/create_route.dart';
 
 class CreatedOrderNotification extends StatelessWidget {
   const CreatedOrderNotification({super.key});
@@ -23,6 +21,7 @@ class CreatedOrderNotification extends StatelessWidget {
       actions: [
         MaterialButton(
           onPressed: () {
+            Navigator.pop(context);
             Navigator.pop(context);
           },
           child: Text(

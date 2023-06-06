@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:grun_mobileapp/main/domain/entity/custom_credit_card_dto.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
 import '../../main/domain/entity/entity.dart';
@@ -14,6 +15,8 @@ class MenuProvider extends ChangeNotifier {
     loadData();
   }
 
+  CustomCreditCard? currentCreditCard;
+
   final ItemScrollController _categoryController = ItemScrollController();
 
   ItemScrollController get categoryController => _categoryController;
@@ -23,6 +26,10 @@ class MenuProvider extends ChangeNotifier {
       totalCost: 0,
       orderLines: [],
       state: 'En cocina');
+
+  int _productCount = 0;
+  int get productCount => _productCount;
+  set productCount(int count) => _productCount = count;
 
   late OrderLineDTO _newOrderLine;
   OrderLineDTO get newOrderLine => _newOrderLine;
@@ -98,6 +105,8 @@ class MenuProvider extends ChangeNotifier {
           .add(OrderLineDTO(product: product, count: count, cost: cost));
       order.totalCost += cost;
     }
+    productCount += count;
+    notifyListeners();
   }
 
   void removeProductCount({required OrderLineDTO orderLine}) {
@@ -105,9 +114,11 @@ class MenuProvider extends ChangeNotifier {
       order.orderLines.removeWhere((element) => element == orderLine);
     } else {
       orderLine.count--;
+
       orderLine.cost -= orderLine.product.cost;
     }
     order.totalCost -= orderLine.product.cost;
+    productCount -= 1;
     notifyListeners();
   }
 
@@ -115,6 +126,7 @@ class MenuProvider extends ChangeNotifier {
     orderLine.count++;
     orderLine.cost += orderLine.product.cost;
     order.totalCost += orderLine.product.cost;
+    productCount += 1;
     notifyListeners();
   }
 
@@ -153,6 +165,8 @@ class MenuProvider extends ChangeNotifier {
             totalCost: 0,
             orderLines: [],
             state: 'En cocina');
+        productCount = 0;
+        currentCreditCard = null;
       }
       return response;
     } catch (ex) {
@@ -160,5 +174,14 @@ class MenuProvider extends ChangeNotifier {
       notifyListeners();
       return 500;
     }
+  }
+
+  void changeCurrentCreditCard(CustomCreditCard card) {
+    if (card != currentCreditCard) {
+      currentCreditCard = card;
+    } else {
+      currentCreditCard = null;
+    }
+    notifyListeners();
   }
 }

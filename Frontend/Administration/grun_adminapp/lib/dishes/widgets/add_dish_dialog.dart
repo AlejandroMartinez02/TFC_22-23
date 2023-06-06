@@ -14,16 +14,15 @@ import 'add_category.dart';
 class AddDishDialog extends StatelessWidget {
   const AddDishDialog({
     super.key,
-    required this.isLoading,
     required this.bodyLarge,
   });
-  final bool isLoading;
   final TextStyle bodyLarge;
 
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final dishProvider = Provider.of<DishProvider>(context);
+
     return ScrollConfiguration(
       behavior: const ScrollBehavior().copyWith(overscroll: false),
       child: Scaffold(
@@ -49,7 +48,7 @@ class AddDishDialog extends StatelessWidget {
   List<Widget> _dialogActions(BuildContext context, DishProvider dishProvider) {
     return [
       MaterialButton(
-        onPressed: isLoading
+        onPressed: dishProvider.isLoadingAction
             ? null
             : () async {
                 final response = await dishProvider.addDish();
@@ -58,13 +57,15 @@ class AddDishDialog extends StatelessWidget {
                 });
               },
         child: Text(
-          isLoading ? Constants.waiting : Constants.addDish,
+          dishProvider.isLoadingAction ? Constants.waiting : Constants.addDish,
           style: bodyLarge.copyWith(
-              color: isLoading ? Colors.grey : Constants.secondaryColor),
+              color: dishProvider.isLoadingAction
+                  ? Colors.grey
+                  : Constants.secondaryColor),
         ),
       ),
       MaterialButton(
-        onPressed: isLoading
+        onPressed: dishProvider.isLoadingAction
             ? null
             : () {
                 Navigator.pop(context);
@@ -72,7 +73,9 @@ class AddDishDialog extends StatelessWidget {
         child: Text(
           Constants.cancel,
           style: bodyLarge.copyWith(
-              color: isLoading ? Colors.grey : Constants.secondaryColor),
+              color: dishProvider.isLoadingAction
+                  ? Colors.grey
+                  : Constants.secondaryColor),
         ),
       ),
     ];

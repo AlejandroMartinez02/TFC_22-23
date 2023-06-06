@@ -77,6 +77,8 @@ class Constants {
       'Lo sentimos, pero no hay productos disponibles. Puede ser que sea por renovación de menú...';
   static const waiting = 'Espere';
   static const accept = '¡Entendido!';
+  static const selectCard = 'Seleccionar tarjeta';
+  static const selectCardTitle = 'Seleccione la tarjeta de crédito';
 
   //---Order---//
   static const orderSummary = 'Resumen del pedido';
@@ -93,7 +95,7 @@ class Constants {
   static const darkLogoApp = 'assets/dark_logo.png';
 
 //*--- IP's ---*//
-  static const httpAPI = '10.2.249.103:8080';
+  static const httpAPI = 'tfc-api-2223-amm.herokuapp.com';
 
 //*--- Functions ---*//
   static Color pickColor(String state) {

@@ -27,4 +27,8 @@ class DishRepository {
   static Future<String> addDish({required DishDTO newDish}) async {
     return await DishService.addDish(newDish: newDish);
   }
+
+  static Future<String> addImage({required XFile file}) async {
+    return await DishService.addImage(file: file);
+  }
 }

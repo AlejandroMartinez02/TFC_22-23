@@ -236,7 +236,7 @@ class Constants {
   static const noImagePhoto = 'assets/no-image.png';
 
 //*--- IP's ---*//
-  static const httpAPI = '192.168.1.105:8080';
+  static const httpAPI = '10.2.251.163:8080';
   static const cloudName = 'ddcjuozld';
   static const uploadPreset = 'tfc2223';
   static const folderCloudName = 'Restaurant';
