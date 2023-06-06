@@ -1,4 +1,4 @@
-import 'package:grun_mobileapp/main/data/network/main_service.dart';
+import 'network/main_service.dart';
 
 class MainRepository {
   static Future<String> getProducts() async {

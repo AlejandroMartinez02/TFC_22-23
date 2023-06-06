@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/menu/ui/menu_provider.dart';
-import 'package:grun_mobileapp/main/widgets/main_widgets.dart';
+
 import 'package:provider/provider.dart';
 
+import '../../exports/providers.dart';
 import '../../menu/widgets/no_products.dart';
-import 'main_provider.dart';
+import '../widgets/main_widgets.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({

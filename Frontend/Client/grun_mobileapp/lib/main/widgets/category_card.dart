@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/main/domain/entity/category_dto.dart';
-import 'package:grun_mobileapp/utils/widgets/card/card_widgets.dart';
+
+import '../../utils/widgets/card/card_widgets.dart';
+import '../domain/entity/category_dto.dart';
 
 class CategoryCard extends StatelessWidget {
   final CategoryDTO category;

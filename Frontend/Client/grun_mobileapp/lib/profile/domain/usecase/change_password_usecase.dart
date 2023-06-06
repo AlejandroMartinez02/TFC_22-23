@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:grun_mobileapp/profile/data/profile_repository.dart';
+import '../../data/profile_repository.dart';
 
 class ChangePasswordUseCase {
   static Future<int> changePassword(

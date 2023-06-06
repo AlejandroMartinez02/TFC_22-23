@@ -1,5 +1,5 @@
-import 'package:grun_mobileapp/login/data/datastore/secure_storage_service.dart';
-import 'package:grun_mobileapp/main/data/network/main_client.dart';
+import '../../../utils/services/services.dart';
+import 'main_client.dart';
 
 class MainService {
   static Future<String> getProducts() async {

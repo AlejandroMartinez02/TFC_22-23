@@ -1,3 +1,3 @@
-export 'package:grun_workerapp/menu/ui/menu_provider.dart';
-export 'package:grun_workerapp/login/ui/login_form_provider.dart';
-export 'package:grun_workerapp/splash/ui/splash_provider.dart';
+export '/menu/ui/menu_provider.dart';
+export '/login/ui/login_form_provider.dart';
+export '/splash/ui/splash_provider.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/menu/ui/menu_provider.dart';
 import 'package:provider/provider.dart';
 
 import '../../../menu/domain/entity/order_line_dto.dart';
+import '../../../menu/ui/menu_provider.dart';
 import '../../../utils/constants.dart';
 import 'order_bottom_bar.dart';
 import 'order_line_widget.dart';
@@ -44,7 +44,7 @@ class ActualOrderScreen extends StatelessWidget {
                   height: size.height * 0.05,
                 ),
                 order.orderLines.isEmpty
-                    ? Text("No hay productos añadidos",
+                    ? Text(Constants.noProducts,
                         style: Theme.of(context).textTheme.bodyLarge!.copyWith(
                             color: Colors.black,
                             fontSize: size.width < 600 ? 22 : 26))
@@ -60,8 +60,9 @@ class ActualOrderScreen extends StatelessWidget {
 }
 
 class OrderLinesColumn extends StatelessWidget {
-  OrderLinesColumn({super.key, required this.orderLines, required this.size});
-  List<OrderLineDTO> orderLines;
+  const OrderLinesColumn(
+      {super.key, required this.orderLines, required this.size});
+  final List<OrderLineDTO> orderLines;
   final Size size;
   @override
   Widget build(BuildContext context) {

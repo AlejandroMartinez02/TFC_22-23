@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
+import '../../../utils/constants.dart';
 import 'product_count.dart';
 
 class ProductImage extends StatelessWidget {
@@ -27,13 +28,13 @@ class ProductImage extends StatelessWidget {
               height: size.height * 0.4,
               imageUrl: photo!,
               fit: BoxFit.cover,
-              placeholder: (context, url) => Image.asset(
-                    "assets/foodLoader.gif",
+              placeholder: (context, url) => const Image(
+                    image: Constants.foodLoader,
                     fit: BoxFit.cover,
                   ),
               errorWidget: (context, url, error) {
                 return const Image(
-                  image: AssetImage("assets/no-image.png"),
+                  image: Constants.noImage,
                   fit: BoxFit.cover,
                 );
               }),

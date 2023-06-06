@@ -3,6 +3,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:marquee/marquee.dart';
 
+import '../../../../utils/constants.dart';
 import '../../../data/network/response/order_line_dto.dart';
 
 class OrderLineDetails extends StatelessWidget {
@@ -147,12 +148,12 @@ class _productPhoto extends StatelessWidget {
         width: size.width * 0.25,
         imageUrl: orderLine.product.photo,
         fit: BoxFit.cover,
-        placeholder: (context, url) => Image.asset(
-          "assets/foodLoader.gif",
+        placeholder: (context, url) => const Image(
+          image: Constants.foodLoader,
           fit: BoxFit.cover,
         ),
         errorWidget: (context, url, error) =>
-            Image.asset("assets/no-image.png", fit: BoxFit.cover),
+            const Image(image: Constants.noImage, fit: BoxFit.cover),
       ),
     );
   }

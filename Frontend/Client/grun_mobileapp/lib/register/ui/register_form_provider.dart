@@ -1,11 +1,10 @@
 // ignore_for_file: unnecessary_getters_setters
 
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/login/data/network/login_client.dart';
-import 'package:grun_mobileapp/register/domain/entities/register_user_dto.dart';
-import 'package:grun_mobileapp/register/domain/usecase/register_usecase.dart';
 
 import '../../utils/constants.dart';
+import '../domain/entities/register_user_dto.dart';
+import '../domain/usecase/register_usecase.dart';
 
 class RegisterFormProvider extends ChangeNotifier {
   GlobalKey<FormState> firstKey = GlobalKey();

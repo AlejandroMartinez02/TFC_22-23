@@ -1,6 +1,6 @@
-import 'package:grun_mobileapp/profile/data/network/profile_client.dart';
-import 'package:grun_mobileapp/profile/data/network/response/user_dto.dart';
-import 'package:grun_mobileapp/register/data/datastore/secure_storage_service.dart';
+import '../../../utils/services/secure_storage_service.dart';
+import 'profile_client.dart';
+import 'response/user_dto.dart';
 
 class ProfileService {
   static Future<String> getUser() async {

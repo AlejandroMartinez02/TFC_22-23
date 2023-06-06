@@ -22,7 +22,7 @@ let tableRoutes = require('./components/table/TableRouter')
 mongoose.set('strictQuery', true)
 mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log("contected to mongodb"))
-    .catch(() => console.log("Error connecting"))
+    .catch((error) => console.log(error))
 
 
 app.use(bodyParser.json({ limit: '50mb' }))

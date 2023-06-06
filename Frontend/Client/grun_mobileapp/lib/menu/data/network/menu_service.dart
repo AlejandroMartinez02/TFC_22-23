@@ -1,7 +1,6 @@
-import 'package:grun_mobileapp/login/data/datastore/secure_storage_service.dart';
-import 'package:grun_mobileapp/menu/data/network/menu_client.dart';
-
+import '../../../utils/services/services.dart';
 import '../../domain/entity/order_dto.dart';
+import 'menu_client.dart';
 
 class MenuService {
   static Future<String> getProductsByCategory(

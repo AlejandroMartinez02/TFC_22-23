@@ -1,7 +1,7 @@
-import 'package:grun_adminapp/users/domain/entities/user_dto.dart';
-
 import '../../../utils/constants.dart';
 import 'package:http/http.dart' as http;
+
+import '../../domain/entities/user_dto.dart';
 
 class UserClient {
   static const _baseUrl = Constants.httpAPI;

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:grun_mobileapp/utils/services/notification_service.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../utils/constants.dart';
+import '../../../../utils/services/notification_service.dart';
 import '../../../../utils/validators.dart';
 import '../../../ui/profile_provider.dart';
 
@@ -33,15 +33,15 @@ class ChangePasswordScreen extends StatelessWidget {
                 SizedBox(
                   height: size.height * 0.05,
                 ),
-                _titleText(size: size),
+                _TitleText(size: size),
                 SizedBox(height: size.height * 0.05),
-                _textField(
+                _TextField(
                   isValidated: false,
                   labelText: Constants.passwordTextField,
                   onChanged: (value) => profileProvider.oldPassword = value,
                 ),
                 SizedBox(height: size.height * 0.05),
-                _textField(
+                _TextField(
                   isValidated: true,
                   labelText: Constants.newPasswordTextField,
                   onChanged: (value) => profileProvider.newPassword = value,
@@ -94,9 +94,8 @@ class ChangePasswordScreen extends StatelessWidget {
   }
 }
 
-class _titleText extends StatelessWidget {
-  const _titleText({
-    super.key,
+class _TitleText extends StatelessWidget {
+  const _TitleText({
     required this.size,
   });
 
@@ -115,10 +114,9 @@ class _titleText extends StatelessWidget {
   }
 }
 
-class _textField extends StatelessWidget {
-  _textField(
-      {super.key,
-      required this.labelText,
+class _TextField extends StatelessWidget {
+  const _TextField(
+      {required this.labelText,
       required this.onChanged,
       required this.isValidated});
 

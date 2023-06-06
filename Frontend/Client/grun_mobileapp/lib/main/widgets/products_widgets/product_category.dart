@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/main/domain/entity/category_dto.dart';
+
+import '../../domain/entity/category_dto.dart';
 
 class ProductCategory extends StatelessWidget {
   final CategoryDTO category;

@@ -1,4 +1,4 @@
-import 'package:grun_mobileapp/login/data/login_repository.dart';
+import '../../data/login_repository.dart';
 
 class LoginUseCase {
   static Future<String?> login(String email, String password) async {

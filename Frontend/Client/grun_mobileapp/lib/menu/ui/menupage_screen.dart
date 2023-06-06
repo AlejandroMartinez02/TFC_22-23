@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/menu/widgets/widgets.dart';
+
+import '../widgets/widgets.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -10,10 +11,10 @@ class MenuPage extends StatelessWidget {
         body: SafeArea(
       child: ScrollConfiguration(
         behavior: const ScrollBehavior().copyWith(overscroll: false),
-        child: SingleChildScrollView(
-          physics: const ClampingScrollPhysics(),
+        child: const SingleChildScrollView(
+          physics: ClampingScrollPhysics(),
           child: Column(
-            children: const [
+            children: [
               CategoryList(),
               ProductList(),
             ],

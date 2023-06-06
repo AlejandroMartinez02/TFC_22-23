@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:grun_adminapp/workers/ui/worker_provider.dart';
 
 import '../../utils/constants.dart';
 import '../domain/entities/worker_dto.dart';
+import '../ui/worker_provider.dart';
 
 // ignore: must_be_immutable
 class MaritalStatusDropDown extends StatelessWidget {

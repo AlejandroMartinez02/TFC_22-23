@@ -1,5 +1,5 @@
-export 'package:grun_mobileapp/main/ui/main_screen.dart';
-export 'package:grun_mobileapp/utils/widgets/loading_screen.dart';
-export 'package:grun_mobileapp/login/ui/login_screen.dart';
-export 'package:grun_mobileapp/splash/ui/splash_screen.dart';
-export 'package:grun_mobileapp/register/ui/register_screen.dart';
+export '../main/ui/main_screen.dart';
+export '../utils/widgets/loading_screen.dart';
+export '../login/ui/login_screen.dart';
+export '../splash/ui/splash_screen.dart';
+export '../register/ui/register_screen.dart';

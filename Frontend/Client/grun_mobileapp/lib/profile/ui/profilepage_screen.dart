@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/exports/screens.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/constants.dart';
+import '../../utils/widgets/loading_screen.dart';
 import '../../utils/widgets/not_found_page.dart';
 import '../widgets/widgets.dart';
 import 'profile_provider.dart';

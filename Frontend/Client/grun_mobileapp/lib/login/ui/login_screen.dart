@@ -1,10 +1,9 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
-import 'package:grun_mobileapp/login/widgets/login_widgets.dart'
-    show LoginBody, LoginForm;
-import 'package:grun_mobileapp/register/ui/register_screen.dart';
-import 'package:grun_mobileapp/utils/utils.dart' show Constants, CreateRoutes;
+import '../../register/ui/register_screen.dart';
+import '../../utils/utils.dart' show Constants, CreateRoutes;
+import '../widgets/login_widgets.dart' show LoginBody, LoginForm;
 
 class LoginScreen extends StatelessWidget {
   final bool? isLogout;
@@ -17,14 +16,14 @@ class LoginScreen extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: LoginBody(
-        child: _loginForm(size: size, isLogout: isLogout, message: message),
+        child: _LoginForm(size: size, isLogout: isLogout, message: message),
       ),
     );
   }
 }
 
-class _loginForm extends StatelessWidget {
-  const _loginForm({
+class _LoginForm extends StatelessWidget {
+  const _LoginForm({
     required this.size,
     required this.isLogout,
     required this.message,
@@ -114,9 +113,7 @@ class _HeaderIcon extends StatelessWidget {
         width: double.infinity,
         margin: EdgeInsets.only(top: size.height * 0.1),
         child: Image(
-          image: const AssetImage(
-            Constants.lightLogoApp,
-          ),
+          image: Constants.lightLogoApp,
           height: size.height * 0.25,
         ));
   }

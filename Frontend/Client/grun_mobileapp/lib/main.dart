@@ -1,12 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/exports/screens.dart';
-import 'package:grun_mobileapp/exports/providers.dart';
-import 'package:grun_mobileapp/utils/services/navigator_service.dart';
-import 'package:grun_mobileapp/utils/services/notification_service.dart';
+
 import 'package:provider/provider.dart';
 import 'package:flutter/services.dart';
+
+import 'exports/providers.dart';
+import 'splash/ui/splash_screen.dart';
+import 'utils/constants.dart';
+import 'utils/services/services.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -54,20 +56,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Grün',
-        initialRoute: 'splash',
+        title: Constants.titleApp,
+        initialRoute: Constants.initialRoute,
         navigatorKey: NavigatorService.navigatorKey,
         scaffoldMessengerKey: NotificationService.messengerKey,
-        routes: {'splash': (_) => const SplashScreen()},
+        routes: {Constants.initialRoute: (_) => const SplashScreen()},
         theme: ThemeData.light().copyWith(
             primaryColor: Colors.grey[800],
             textTheme: const TextTheme(
                 headlineLarge: TextStyle(
-                    fontFamily: 'Paralucent', fontWeight: FontWeight.w700),
+                    fontFamily: Constants.paralucentFamily,
+                    fontWeight: FontWeight.w700),
                 bodyLarge: TextStyle(
                   fontSize: 18,
                   color: Colors.white,
-                  fontFamily: 'Montserrat',
+                  fontFamily: Constants.montserratFamily,
                 ))));
   }
 }

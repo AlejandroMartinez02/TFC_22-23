@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:grun_mobileapp/main/domain/entity/category_dto.dart';
+import 'category_dto.dart';
 
 class ProductDTO {
   ProductDTO({

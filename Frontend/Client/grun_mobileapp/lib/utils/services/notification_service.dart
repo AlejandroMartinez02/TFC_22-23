@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
+
+import '../constants.dart';
 
 class NotificationService {
   static GlobalKey<ScaffoldMessengerState> messengerKey =

@@ -1,4 +1,4 @@
-export 'package:grun_chefapp/login/ui/login_form_provider.dart';
-export 'package:grun_chefapp/orders/ui/orders_provider.dart';
-export 'package:grun_chefapp/splash/ui/splash_provider.dart';
-export 'package:grun_chefapp/utils/services/socket_service.dart';
+export '/login/ui/login_form_provider.dart';
+export '/orders/ui/orders_provider.dart';
+export '/splash/ui/splash_provider.dart';
+export '/utils/services/socket_service.dart';

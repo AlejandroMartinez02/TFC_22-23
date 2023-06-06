@@ -1,16 +1,15 @@
 // ignore_for_file: camel_case_types
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:grun_mobileapp/main/ui/product_screen.dart';
-import 'package:grun_mobileapp/utils/widgets/card/card_widgets.dart';
 import 'package:marquee/marquee.dart';
 import 'package:flutter/material.dart';
-
-import 'package:grun_mobileapp/main/domain/entity/products_dto.dart';
-import 'package:grun_mobileapp/utils/utils.dart';
 import 'package:provider/provider.dart';
 
 import '../../menu/domain/entity/order_line_dto.dart';
 import '../../menu/ui/menu_provider.dart';
+import '../../utils/utils.dart';
+import '../../utils/widgets/card/background_image_card.dart';
+import '../domain/entity/products_dto.dart';
+import '../ui/product_screen.dart';
 
 class ProductCard extends StatelessWidget {
   final ProductDTO product;

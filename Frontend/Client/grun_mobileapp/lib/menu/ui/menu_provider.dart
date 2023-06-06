@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/main/domain/entity/custom_credit_card_dto.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import '../../main/domain/entity/custom_credit_card_dto.dart';
 import '../../main/domain/entity/entity.dart';
-
 import '../domain/entity/order_dto.dart';
 import '../domain/entity/order_line_dto.dart';
-import '../domain/usecase/create_order_usecase.dart';
-import '../domain/usecase/get_categories_usecase.dart';
-import '../domain/usecase/get_products_by_category_usecase.dart';
+import '../domain/usecase/usecase.dart';
 
 class MenuProvider extends ChangeNotifier {
   MenuProvider() {

@@ -1,9 +1,9 @@
 // ignore_for_file: unnecessary_getters_setters
 
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/login/domain/usecase/login_usecase.dart';
 
 import '../../utils/constants.dart';
+import '../domain/usecase/login_usecase.dart';
 
 class LoginFormProvider extends ChangeNotifier {
   GlobalKey<FormState> formKey = GlobalKey();

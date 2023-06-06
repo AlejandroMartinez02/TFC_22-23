@@ -1,7 +1,7 @@
-export 'package:grun_mobileapp/utils/widgets/not_found_page.dart';
-export 'package:grun_mobileapp/utils/services/notification_service.dart';
-export 'package:grun_mobileapp/utils/widgets/loading_screen.dart';
-export 'package:grun_mobileapp/utils/widgets/create_route.dart';
-export 'package:grun_mobileapp/utils/constants.dart';
-export 'package:grun_mobileapp/utils/validators.dart';
-export 'package:grun_mobileapp/utils/widgets/animated_background.dart';
+export '/utils/widgets/not_found_page.dart';
+export '/utils/services/notification_service.dart';
+export '/utils/widgets/loading_screen.dart';
+export '/utils/widgets/create_route.dart';
+export '/utils/constants.dart';
+export '/utils/validators.dart';
+export '/utils/widgets/animated_background.dart';

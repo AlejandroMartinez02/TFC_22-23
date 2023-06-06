@@ -1,6 +1,5 @@
-import 'package:grun_adminapp/users/domain/entities/user_dto.dart';
-
 import '../../../utils/services/secure_storage_service.dart';
+import '../../domain/entities/user_dto.dart';
 import 'user_client.dart';
 
 class UserService {

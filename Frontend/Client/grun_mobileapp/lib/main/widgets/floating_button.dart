@@ -14,7 +14,6 @@ class CustomFloatingButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final menuProvider = Provider.of<MenuProvider>(context);
-    final size = MediaQuery.of(context).size;
     return FloatingActionButton.extended(
       backgroundColor: Constants.secondaryColor,
       onPressed: () {

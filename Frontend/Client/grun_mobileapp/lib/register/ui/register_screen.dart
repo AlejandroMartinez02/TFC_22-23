@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'package:grun_mobileapp/exports/providers.dart';
-import 'package:grun_mobileapp/register/widgets/register_widgets.dart';
-
 import '../widgets/register_form.dart';
+import '../widgets/register_widgets.dart';
+import 'register_form_provider.dart';
 
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({Key? key}) : super(key: key);

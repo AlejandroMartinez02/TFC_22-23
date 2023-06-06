@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/profile/widgets/widgets.dart';
 
 import '../../../utils/constants.dart';
+import '../widgets.dart';
 
 class MyPersonalDataScreen extends StatelessWidget {
   const MyPersonalDataScreen({Key? key}) : super(key: key);

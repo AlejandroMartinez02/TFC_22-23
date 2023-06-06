@@ -1,5 +1,5 @@
-import 'package:grun_mobileapp/profile/data/network/profile_service.dart';
-import 'package:grun_mobileapp/profile/data/network/response/user_dto.dart';
+import 'network/profile_service.dart';
+import 'network/response/user_dto.dart';
 
 class ProfileRepository {
   static Future<String> getUser() async {

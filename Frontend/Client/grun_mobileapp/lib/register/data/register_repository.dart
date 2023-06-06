@@ -1,5 +1,5 @@
-import 'package:grun_mobileapp/register/data/network/register_service.dart';
-import 'package:grun_mobileapp/register/domain/entities/register_user_dto.dart';
+import '../domain/entities/register_user_dto.dart';
+import 'network/register_service.dart';
 
 class RegisterRepository {
   static Future<String?> register(RegisterUserDTO user) async {

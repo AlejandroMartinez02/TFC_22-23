@@ -20,14 +20,14 @@ class LoginScreen extends StatelessWidget {
 
     return Scaffold(
       body: LoginBody(
-        child: _loginForm(size: size, isLogout: isLogout, message: message),
+        child: _LoginForm(size: size, isLogout: isLogout, message: message),
       ),
     );
   }
 }
 
-class _loginForm extends StatelessWidget {
-  const _loginForm({
+class _LoginForm extends StatelessWidget {
+  const _LoginForm({
     required this.size,
     required this.isLogout,
     required this.message,

@@ -1,11 +1,11 @@
 // ignore_for_file: unnecessary_getters_setters
 
 import 'package:flutter/material.dart';
-import 'package:grun_adminapp/users/domain/usecase/update_user_usecase.dart';
 
 import '../domain/entities/user_dto.dart';
 import '../domain/usecase/delete_user_case.dart';
 import '../domain/usecase/get_all_user_usecase.dart';
+import '../domain/usecase/update_user_usecase.dart';
 
 class UserProvider extends ChangeNotifier {
   GlobalKey<FormState> updateUserKey = GlobalKey();

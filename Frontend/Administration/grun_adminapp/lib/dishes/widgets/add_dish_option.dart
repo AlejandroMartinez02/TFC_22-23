@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:grun_adminapp/dishes/widgets/add_dish_dialog.dart';
 import 'package:provider/provider.dart';
 
 import '../../utils/constants.dart';
 import '../ui/dish_provider.dart';
+import 'add_dish_dialog.dart';
 
 class AddDish extends StatelessWidget {
   const AddDish({super.key});

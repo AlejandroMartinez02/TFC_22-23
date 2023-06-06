@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/profile/widgets/profile_data_container.dart';
 import 'package:provider/provider.dart';
 
 import '../../../utils/constants.dart';
 import '../../../utils/widgets/create_route.dart';
 import '../../ui/profile_provider.dart';
+import '../profile_data_container.dart';
 import 'edit_data_widgets/edit_personal_data_screen.dart';
 
 class EditProfileData extends StatelessWidget {

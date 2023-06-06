@@ -1,9 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/main/domain/entity/products_dto.dart';
-import 'package:grun_mobileapp/main/widgets/main_widgets.dart';
 
 import '../../utils/constants.dart';
+import '../domain/entity/products_dto.dart';
+import 'main_widgets.dart';
 
 class ProductSwiper extends StatelessWidget {
   final List<ProductDTO> products;
@@ -13,7 +13,6 @@ class ProductSwiper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    print(products);
     return products.isEmpty
         ? Container(
             margin: EdgeInsets.symmetric(
@@ -49,25 +48,5 @@ class ProductSwiper extends StatelessWidget {
                   );
                 }),
           );
-  }
-}
-
-class _errorSwiper extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-    return Container(
-      height: size.height * 0.4,
-      child: Center(
-        child: Text(
-          Constants.noProducts,
-          textAlign: TextAlign.center,
-          style: Theme.of(context)
-              .textTheme
-              .bodyLarge!
-              .copyWith(color: Colors.black),
-        ),
-      ),
-    );
   }
 }

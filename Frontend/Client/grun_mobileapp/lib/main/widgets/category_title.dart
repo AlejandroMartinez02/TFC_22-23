@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
+
+import '../../utils/constants.dart';
 
 class CategoryTitle extends StatelessWidget {
   const CategoryTitle({super.key});

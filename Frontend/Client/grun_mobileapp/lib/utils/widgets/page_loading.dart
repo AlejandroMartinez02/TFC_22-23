@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class PageLoading extends StatelessWidget {
   const PageLoading({
     super.key,
@@ -11,7 +13,7 @@ class PageLoading extends StatelessWidget {
     return Center(
       child: Padding(
         padding: EdgeInsets.symmetric(vertical: size.height * 0.1),
-        child: const Image(image: AssetImage("assets/hamburgerLoader.gif")),
+        child: const Image(image: Constants.burgerLoader),
       ),
     );
   }

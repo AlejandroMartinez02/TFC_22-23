@@ -1,7 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/main/widgets/products_widgets/product_widgets.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
+
+import '../../../utils/constants.dart';
+import 'product_widgets.dart';
 
 class ProductBottomBar extends StatelessWidget {
   final double cost;

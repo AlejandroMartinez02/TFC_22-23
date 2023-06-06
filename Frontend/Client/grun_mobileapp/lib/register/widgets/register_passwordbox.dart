@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/exports/providers.dart';
-import 'package:grun_mobileapp/utils/utils.dart';
-import 'package:provider/provider.dart';
+
+import '../../utils/validators.dart';
+import '../ui/register_form_provider.dart';
 
 class RegisterPasswordBox extends StatelessWidget {
   final RegisterFormProvider registerForm;

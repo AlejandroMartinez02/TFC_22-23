@@ -1,6 +1,6 @@
-import 'package:grun_mobileapp/register/data/datastore/secure_storage_service.dart';
-import 'package:grun_mobileapp/register/data/network/register_client.dart';
-import 'package:grun_mobileapp/register/domain/entities/register_user_dto.dart';
+import '../../../utils/services/secure_storage_service.dart';
+import '../../domain/entities/register_user_dto.dart';
+import 'register_client.dart';
 
 class RegisterService {
   static Future<String?> register(RegisterUserDTO user) async {

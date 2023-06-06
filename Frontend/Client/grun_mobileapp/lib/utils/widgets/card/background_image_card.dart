@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
+
+import '../../constants.dart';
 
 class BackgroundImage extends StatelessWidget {
   final String photo;
@@ -20,11 +21,11 @@ class BackgroundImage extends StatelessWidget {
             fit: BoxFit.cover,
             imageUrl: photo,
             placeholder: (_, __) => const Image(
-                  image: AssetImage("assets/foodLoader.gif"),
+                  image: Constants.foodLoader,
                   fit: BoxFit.cover,
                 ),
             errorWidget: (context, url, error) => const Image(
-                  image: AssetImage("assets/no-image.png"),
+                  image: Constants.noImage,
                   fit: BoxFit.cover,
                 )),
       ),

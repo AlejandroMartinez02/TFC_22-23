@@ -1,9 +1,11 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/exports/providers.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
+
 import 'package:provider/provider.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+
+import '../../utils/constants.dart';
+import '../ui/menu_provider.dart';
 
 class CategoryList extends StatelessWidget {
   const CategoryList({super.key});

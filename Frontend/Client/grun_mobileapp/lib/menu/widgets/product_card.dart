@@ -1,13 +1,13 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/menu/domain/entity/entity.dart';
 import 'package:marquee/marquee.dart';
 import 'package:provider/provider.dart';
 
 import '../../main/ui/product_screen.dart';
 import '../../utils/utils.dart';
 import '../../main/domain/entity/products_dto.dart';
+import '../domain/entity/order_line_dto.dart';
 import '../ui/menu_provider.dart';
 
 class ProductCard extends StatelessWidget {
@@ -50,12 +50,12 @@ class ProductCard extends StatelessWidget {
                   width: size.width * 0.25,
                   imageUrl: product.photo,
                   fit: BoxFit.cover,
-                  placeholder: (context, url) => Image.asset(
-                    "assets/foodLoader.gif",
+                  placeholder: (context, url) => const Image(
+                    image: Constants.foodLoader,
                     fit: BoxFit.cover,
                   ),
                   errorWidget: (context, url, error) =>
-                      Image.asset("assets/no-image.png", fit: BoxFit.cover),
+                      const Image(image: Constants.noImage, fit: BoxFit.cover),
                 ),
               ),
               Expanded(

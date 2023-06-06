@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/utils/utils.dart';
-import 'package:grun_mobileapp/utils/widgets/loading_screen.dart';
 import 'package:provider/provider.dart';
-import 'package:grun_mobileapp/menu/widgets/widgets.dart';
-import 'package:grun_mobileapp/menu/ui/menu_provider.dart';
+
+import '../ui/menu_provider.dart';
+import 'widgets.dart';
 
 class ProductList extends StatelessWidget {
   const ProductList({super.key});

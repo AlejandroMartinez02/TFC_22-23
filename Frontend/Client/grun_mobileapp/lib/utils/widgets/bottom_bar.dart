@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/exports/providers.dart';
 import 'package:provider/provider.dart';
+
+import '../../exports/providers.dart';
 
 class CustomBottomBar extends StatelessWidget {
   const CustomBottomBar({

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../constants.dart';
+
 class NotFoundPage extends StatelessWidget {
   const NotFoundPage({super.key, required this.message});
   final String message;
@@ -18,7 +20,9 @@ class NotFoundPage extends StatelessWidget {
                 color: Colors.black, fontSize: size.width < 600 ? 20 : 24),
           ),
         ),
-        Image.asset("assets/notFound.gif")
+        const Image(
+          image: Constants.notFoundImage,
+        )
       ],
     );
   }

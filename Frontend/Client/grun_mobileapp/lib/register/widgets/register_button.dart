@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/exports/providers.dart';
-import 'package:provider/provider.dart';
 
 class RegisterButton extends StatelessWidget {
   final VoidCallback onPressed;

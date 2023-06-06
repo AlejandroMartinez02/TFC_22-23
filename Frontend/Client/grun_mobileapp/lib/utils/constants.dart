@@ -70,16 +70,20 @@ class Constants {
   static const addressTextField = 'Dirección';
   static const emailAddressTextField = 'Correo electrónico';
   static const slogan = 'Sei Vegan, Sei Grün';
+  static const titleApp = 'Grün';
+  static const initialRoute = 'splash';
+  static const paralucentFamily = 'Paralucent';
+  static const montserratFamily = 'Montserrat';
   static const error = 'ERROR';
   static const errorPageText =
       '¡Oh no! Parece que tenemos algún problema, lo intentaremos solucionar lo antes posible';
   static const noProducts =
       'Lo sentimos, pero no hay productos disponibles. Puede ser que sea por renovación de menú...';
+  static const noProductsAvailable = 'No hay productos añadidos';
   static const waiting = 'Espere';
   static const accept = '¡Entendido!';
   static const selectCard = 'Seleccionar tarjeta';
   static const selectCardTitle = 'Seleccione la tarjeta de crédito';
-
   //---Order---//
   static const orderSummary = 'Resumen del pedido';
   static const myOrders = 'Mis pedidos';
@@ -91,11 +95,14 @@ class Constants {
   static const total = 'Total:';
 
   //*--- Static photos ---//
-  static const lightLogoApp = 'assets/light_logo.png';
-  static const darkLogoApp = 'assets/dark_logo.png';
-
+  static const lightLogoApp = AssetImage('assets/light_logo.png');
+  static const darkLogoApp = AssetImage('assets/dark_logo.png');
+  static const noImage = AssetImage('assets/no-image.png');
+  static const foodLoader = AssetImage('assets/foodLoader.gif');
+  static const burgerLoader = AssetImage('assets/hamburgerLoader.gif');
+  static const notFoundImage = AssetImage('assets/notFound.gif');
 //*--- IP's ---*//
-  static const httpAPI = 'tfc-api-2223-amm.herokuapp.com';
+  static const httpAPI = '192.168.1.105:3000';
 
 //*--- Functions ---*//
   static Color pickColor(String state) {

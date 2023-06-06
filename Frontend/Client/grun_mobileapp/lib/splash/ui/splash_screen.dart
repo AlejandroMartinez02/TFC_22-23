@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/utils/utils.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:provider/provider.dart';
 
 import '../../exports/screens.dart';
+import '../../utils/utils.dart';
 import 'splash_provider.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -38,27 +39,34 @@ class _SplashScreenState extends State<SplashScreen>
       if (controller.status == AnimationStatus.completed) {
         if (await splashProvider.getToken() != '') {
           if (await splashProvider.checkToken()) {
-            Navigator.pushReplacement(
-                context,
-                CreateRoutes.slideFadeIn(
-                    direccion: const Offset(1, 0), screen: const MainScreen()));
+            SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+              Navigator.pushReplacement(
+                  context,
+                  CreateRoutes.slideFadeIn(
+                      direccion: const Offset(1, 0),
+                      screen: const MainScreen()));
+            });
             return;
           } else {
-            Navigator.pushReplacement(
-                context,
-                CreateRoutes.slideFadeIn(
-                    direccion: const Offset(1, 0),
-                    screen: LoginScreen(
-                      isLogout: true,
-                      message: Constants.logoutAutoMessage,
-                    )));
+            SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+              Navigator.pushReplacement(
+                  context,
+                  CreateRoutes.slideFadeIn(
+                      direccion: const Offset(1, 0),
+                      screen: const LoginScreen(
+                        isLogout: true,
+                        message: Constants.logoutAutoMessage,
+                      )));
+            });
             return;
           }
         }
-        Navigator.pushReplacement(
-            context,
-            CreateRoutes.slideFadeIn(
-                direccion: const Offset(1, 0), screen: LoginScreen()));
+        SchedulerBinding.instance.addPostFrameCallback((timeStamp) {
+          Navigator.pushReplacement(
+              context,
+              CreateRoutes.slideFadeIn(
+                  direccion: const Offset(1, 0), screen: LoginScreen()));
+        });
       }
     });
 
@@ -86,7 +94,7 @@ class _SplashScreenState extends State<SplashScreen>
                 height: double.infinity,
                 width: double.infinity,
                 color: Colors.white,
-                child: _splashContent(
+                child: _SplashContent(
                     size: size,
                     controller: controller,
                     primaryColor: primaryColor))),
@@ -101,8 +109,8 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-class _splashContent extends StatelessWidget {
-  const _splashContent({
+class _SplashContent extends StatelessWidget {
+  const _SplashContent({
     required this.size,
     required this.controller,
     required this.primaryColor,
@@ -118,7 +126,7 @@ class _splashContent extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Image(image: AssetImage("assets/light_logo.png")),
+        const Image(image: Constants.lightLogoApp),
         SizedBox(
           height: size.height * 0.05,
         ),

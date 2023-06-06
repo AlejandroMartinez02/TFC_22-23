@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/utils/utils.dart';
+
+import '../../utils/utils.dart';
 
 class NoProducts extends StatelessWidget {
   const NoProducts({

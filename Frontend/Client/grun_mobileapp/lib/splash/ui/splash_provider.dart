@@ -1,8 +1,9 @@
 // ignore_for_file: unnecessary_getters_setters
 
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/login/data/datastore/secure_storage_service.dart';
-import 'package:grun_mobileapp/splash/domain/usecase/check_token_usecase.dart';
+
+import '../../utils/services/secure_storage_service.dart';
+import '../domain/usecase/check_token_usecase.dart';
 
 class SplashProvider extends ChangeNotifier {
   bool _isLoading = false;

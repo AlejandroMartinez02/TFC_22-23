@@ -2,10 +2,10 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 
-import 'package:grun_mobileapp/exports/screens.dart';
-import 'package:grun_mobileapp/register/widgets/register_widgets.dart';
+import '../../exports/screens.dart';
 import '../../utils/utils.dart';
 import '../ui/register_form_provider.dart';
+import 'register_widgets.dart';
 
 class RegisterForm extends StatelessWidget {
   const RegisterForm({

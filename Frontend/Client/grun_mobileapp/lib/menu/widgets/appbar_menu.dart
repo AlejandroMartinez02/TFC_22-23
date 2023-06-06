@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/menu/widgets/category_list.dart';
+
+import 'category_list.dart';
 
 class AppBarMenu extends StatelessWidget {
   const AppBarMenu({super.key});

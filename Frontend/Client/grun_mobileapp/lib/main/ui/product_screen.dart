@@ -1,8 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/main/domain/entity/products_dto.dart';
-import 'package:grun_mobileapp/main/widgets/products_widgets/product_widgets.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
+
+import '../../utils/constants.dart';
+import '../domain/entity/products_dto.dart';
+import '../widgets/products_widgets/product_widgets.dart';
 
 class ProductScreen extends StatelessWidget {
   final ProductDTO product;

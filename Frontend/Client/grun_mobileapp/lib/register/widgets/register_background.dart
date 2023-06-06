@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/utils/utils.dart' show AnimatedWave;
+
+import '../../utils/widgets/animated_background.dart';
 
 class RegisterBody extends StatelessWidget {
   const RegisterBody({super.key, required this.height, required this.child});

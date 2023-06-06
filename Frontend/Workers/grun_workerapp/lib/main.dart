@@ -3,12 +3,12 @@ import 'dart:io';
 import 'package:bitsdojo_window/bitsdojo_window.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:grun_workerapp/splash/ui/splash_screen.dart';
-import 'package:grun_workerapp/utils/constants.dart';
-import 'package:grun_workerapp/utils/services/navigator_service.dart';
 import 'package:provider/provider.dart';
 
 import 'exports/providers.dart';
+import 'splash/ui/splash_screen.dart';
+import 'utils/constants.dart';
+import 'utils/services/navigator_service.dart';
 import 'utils/services/notification_service.dart';
 
 void main() async {

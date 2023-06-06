@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
+
+import '../../constants.dart';
 
 class BackgroundColor extends StatelessWidget {
-  const BackgroundColor();
+  const BackgroundColor({super.key});
 
   @override
   Widget build(BuildContext context) {

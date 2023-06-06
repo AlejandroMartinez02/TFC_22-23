@@ -2,11 +2,11 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 import '../../../menu/ui/menu_provider.dart';
+import '../../../utils/constants.dart';
 import '../../../utils/services/navigator_service.dart';
 import '../../data/static_data/credit_card_data.dart';
 import 'created_order_notification.dart';
@@ -56,7 +56,6 @@ class SelectCreditCard extends StatelessWidget {
               onPressed: isSelected
                   ? () async {
                       final response = await menuProvider.finishOrder();
-                      print(response);
                       SchedulerBinding.instance
                           .addPostFrameCallback((timeStamp) {
                         _checkResponse(status: response, context: context);

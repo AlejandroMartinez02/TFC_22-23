@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/utils/constants.dart';
+
+import '../../utils/constants.dart';
 
 class TextTitle extends StatelessWidget {
   const TextTitle({

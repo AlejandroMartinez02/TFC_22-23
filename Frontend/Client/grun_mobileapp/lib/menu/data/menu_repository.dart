@@ -1,6 +1,5 @@
-import 'package:grun_mobileapp/menu/data/network/menu_service.dart';
-
 import '../domain/entity/order_dto.dart';
+import 'network/menu_service.dart';
 
 class MenuRepository {
   static Future<String> getProductsByCategory(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:grun_mobileapp/profile/data/network/response/order_dto.dart';
 
 import '../../../../utils/constants.dart';
+import '../../../data/network/response/order_dto.dart';
 
 class CustomOrderBottomBar extends StatelessWidget {
   const CustomOrderBottomBar({super.key, required this.order});

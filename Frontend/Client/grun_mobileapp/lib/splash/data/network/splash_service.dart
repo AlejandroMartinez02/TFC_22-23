@@ -1,6 +1,6 @@
-import 'package:grun_mobileapp/splash/data/datastore/secure_storage_service.dart';
-import 'package:grun_mobileapp/splash/data/network/response/check_token_response.dart';
-import 'package:grun_mobileapp/splash/data/network/splash_client.dart';
+import '/splash/data/datastore/secure_storage_service.dart';
+import '/splash/data/network/response/check_token_response.dart';
+import '/splash/data/network/splash_client.dart';
 
 class SplashService {
   static Future<bool> checkToken() async {

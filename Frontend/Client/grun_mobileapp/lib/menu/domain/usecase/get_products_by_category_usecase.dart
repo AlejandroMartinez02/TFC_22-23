@@ -1,8 +1,7 @@
 import 'dart:convert';
 
-import 'package:grun_mobileapp/menu/data/menu_repository.dart';
-
 import '../../../main/domain/entity/products_dto.dart';
+import '../../data/menu_repository.dart';
 
 class GetProductsByCategoryUseCase {
   static Future<List<ProductDTO>> getProductsByCategory(
