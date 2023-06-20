@@ -74,7 +74,6 @@ class CategoryDataGrid extends StatelessWidget {
         onCellTap: (details) => details.rowColumnIndex.rowIndex - 1 < 0
             ? null
             : cellTapFunction(context, details, categorySource),
-        allowSorting: true,
         allowSwiping: true,
         columnWidthMode: ColumnWidthMode.fill,
         highlightRowOnHover: true,

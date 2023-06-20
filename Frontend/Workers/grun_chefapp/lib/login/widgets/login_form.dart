@@ -75,7 +75,7 @@ void _checkResponse(String? responseLogin, BuildContext context) {
       NotificationService.showSnackBar(Constants.accountLocked);
       break;
     case '404':
-      NotificationService.showSnackBar('NO SE QUE PASA');
+      NotificationService.showSnackBar(Constants.noAdmin);
       break;
     case Constants.error:
       NotificationService.showSnackBar(Constants.errorPageText);

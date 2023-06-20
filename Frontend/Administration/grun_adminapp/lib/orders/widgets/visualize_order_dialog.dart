@@ -69,7 +69,6 @@ class OrderLinesDataGrid extends StatelessWidget {
           onCellTap: (details) => details.rowColumnIndex.rowIndex - 1 < 0
               ? null
               : cellTapFunction(context, details, orderSource),
-          allowSorting: true,
           columnWidthMode: ColumnWidthMode.fill,
           highlightRowOnHover: true,
           source: orderSource,

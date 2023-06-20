@@ -43,12 +43,13 @@ class Constants {
       '¡Oh no! Parece que tenemos algún problema, lo intentaremos solucionar lo antes posible';
   static const noProducts =
       '¡Vaya!¡No hay productos! Contacta con tu administrador para resolver este problema.';
-
+  static const noAdmin =
+      'Parece que no tienes permisos para entrar a esta aplicación... ¡Contacta con un administrador si es un error!';
   //*--- Static photos ---//
   static const lightLogoApp = 'assets/light_logo.png';
   static const darkLogoApp = 'assets/dark_logo.png';
 
 //*--- IP's ---*//
-  static const httpAPI = '10.2.251.163:8080';
-  static const httpSocket = 'http://10.2.251.163:3000';
+  static const httpAPI = '10.2.249.161:8080';
+  static const httpSocket = 'http://10.2.249.161:3000';
 }

@@ -103,6 +103,7 @@ class WorkerProvider extends ChangeNotifier {
           workers.add(newWorker);
           newWorker = _clearWorker.copyWith();
         }
+        print(response['status']);
         return response['status'];
       } catch (ex) {
         isLoadingAction = false;

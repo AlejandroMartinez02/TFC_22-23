@@ -1,0 +1,56 @@
+[{
+  "_id": {
+    "$oid": "643c1b7047031274becb2811"
+  },
+  "name": "Entrantes",
+  "description": "¡Los mejores platos para empezar a comer!",
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1684770265/Restaurant/ipevysmf3dmhsxxxoqvf.jpg"
+},
+{
+  "_id": {
+    "$oid": "643c1bd647031274becb2813"
+  },
+  "name": "Para compartir",
+  "description": "¿Comes con amigos? ¡Elige uno de estos platos para compartir!",
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1684770277/Restaurant/uzdvripbervbyxmu0fko.jpg"
+},
+{
+  "_id": {
+    "$oid": "643c1c7147031274becb2815"
+  },
+  "name": "Hamburguesas",
+  "description": "¡Elige y disfruta de las mejores hamburguesas veganas!",
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1684770298/Restaurant/nf2y1nmxea2csj9kabir.jpg"
+},
+{
+  "_id": {
+    "$oid": "643c1c9b47031274becb2817"
+  },
+  "name": "Bocatas",
+  "description": "¿No te apetecen nuestras hamburguesas? ¡Prueba uno de nuestros riquísimos bocatas!",
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1684770313/Restaurant/ypasgkwfqori8ycpiscx.jpg"
+},
+{
+  "_id": {
+    "$oid": "643c1cd247031274becb2819"
+  },
+  "name": "Postres",
+  "description": "Si nuestros platos salados te han gustado, ¡verás la que te espera con lo dulce!¡Delicioso!",
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1684770329/Restaurant/aj0zucvjuqi3c6ldjz9r.jpg"
+},
+{
+  "_id": {
+    "$oid": "644cf98668f1f9c963acbab6"
+  },
+  "name": "Salsas",
+  "description": "¡Acompaña nuestros platos con las mejores salsas caseras!",
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1684770427/Restaurant/d2fiozoyqpy27crorbmf.webp"
+},
+{
+  "_id": {
+    "$oid": "643c1cff47031274becb281b"
+  },
+  "name": "Bebidas",
+  "description": "¡Escoge alguna bebida para acompañar nuestros riquísimos platos!",
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1684770346/Restaurant/ba39mq8kq2rv7b6w7x3j.jpg"
+}]

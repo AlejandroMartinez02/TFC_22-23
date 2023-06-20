@@ -1,0 +1,400 @@
+[{
+  "_id": {
+    "$oid": "643afc534795005708494f46"
+  },
+  "name": "Patatas Vravas",
+  "ingredients": "Patatas, salsa vrava(Cebolla,ajo tierno, caldo vegetal, pimenton, cayena), alioli(Aceite, ajo y leche vegetal), perejil y sal",
+  "category": {
+    "$oid": "643c1b7047031274becb2811"
+  },
+  "cost": 3.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1680555185/Restaurant/bravas1_aadip6.jpg",
+  "description": "Un plato español mítico adaptado a la dieta vegana. Unas patatas fritas en AOVE acompañada una salsa muy 'vrava' y un alioli que, en conjunto, hacen una combinación exquisita"
+},
+{
+  "_id": {
+    "$oid": "643afe0f4795005708494f48"
+  },
+  "name": "Patatas Fritas",
+  "ingredients": "Patatas, AOVE, sal",
+  "category": {
+    "$oid": "643c1b7047031274becb2811"
+  },
+  "cost": 2.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685965973/Restaurant/gqlkdb2k0mysfuu35inr.jpg",
+  "description": "Un simple plato de patatas fritas clásicas, sabroso y que acompaña a cualquier plato"
+},
+{
+  "_id": {
+    "$oid": "643b02097c95a41fa02ba46c"
+  },
+  "name": "Babaganoush con pan Naan",
+  "ingredients": "Babaganoush(Berenjena, tahini, comino, limon, perejil, ajo, sal , AOVE, sal) y pan Naan(Harina, sal, yogur de soja, agua, margarina, azucar)",
+  "category": {
+    "$oid": "643c1bd647031274becb2813"
+  },
+  "cost": 4.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1681571047/Restaurant/babaganoush_agf3fk.jpg",
+  "description": "Plato libanés muy nutritivo hecho a base de berenjena acompañado de pan Naan, un pan típico del sur de Asia, perfecto para 'dipear'"
+},
+{
+  "_id": {
+    "$oid": "643b06537c95a41fa02ba476"
+  },
+  "name": "Bhaji de cebolla con salsa de yogur",
+  "ingredients": "Bhaji(Cebolla, harina, agua,cúrcuma, curry, comino, cayena, AOVE, sal) y salsa de yogur(yogur de coco, perejil, limon, sal, azucar)",
+  "category": {
+    "$oid": "643c1b7047031274becb2811"
+  },
+  "cost": 3.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1681571044/Restaurant/bhaji_atc9op.jpg",
+  "description": "Entrante indio a base de cebolla rebozada y frita, con toques sutiles de picante, acompañada de una salsa de yogur, la cual aporta frescura y suavidad"
+},
+{
+  "_id": {
+    "$oid": "643b08437c95a41fa02ba478"
+  },
+  "name": "Batata frita",
+  "ingredients": "Batata, sal, AOVE",
+  "category": {
+    "$oid": "643c1b7047031274becb2811"
+  },
+  "cost": 3.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1681571043/Restaurant/batata2_l3ao9t.jpg",
+  "description": "Batata, también llamado boniato, frita acompañada de una salsa a elección."
+},
+{
+  "_id": {
+    "$oid": "643b09147c95a41fa02ba47e"
+  },
+  "name": "Morcilla de verano",
+  "ingredients": "Berenjena, piñones, perejil, cebolla fresca, ajo tierno, sal, pimienta",
+  "category": {
+    "$oid": "643c1b7047031274becb2811"
+  },
+  "cost": 3.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1680555183/Restaurant/morcillaVerano2_slnvyt.jpg",
+  "description": "Entrante murciano a base de berenjena acompañado de picatostes y piñones"
+},
+{
+  "_id": {
+    "$oid": "647db60b2d6da760fee9a4fc"
+  },
+  "name": "Nachos Grün",
+  "ingredients": "Carne vegana(proteína de guisante, maicena, especias), salsa agria(anarcardos y levadura nutricional), salsa de queso(patata, zanahoria y levadura nutricional), guacamole(aguacate, cebolla, pimiento, tomate) y totopos",
+  "category": {
+    "$oid": "643c1bd647031274becb2813"
+  },
+  "cost": 7.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685960227/Restaurant/h8jvb8mqfmlnmivoqdvg.jpg",
+  "description": "Unos riquísimos nachos con salsa agria a base de anacardos, guacamole casero, salsa de queso y carne vegana",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647db6752d6da760fee9a503"
+  },
+  "name": "Muhammara",
+  "ingredients": "Pimientos, nueces, especias",
+  "category": {
+    "$oid": "643c1bd647031274becb2813"
+  },
+  "cost": 6.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685960354/Restaurant/t1nkerta81zix2wybctg.jpg",
+  "description": "Un plato sirio para \"dipear\" ríquisimo para compatir con tus amigos a base de pimiento asados.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dba022d6da760fee9a50a"
+  },
+  "name": "Campero de poyo",
+  "ingredients": "Filete de soja, canónigos, queso vegano, veganesa, calabacín y especias",
+  "category": {
+    "$oid": "643c1c9b47031274becb2817"
+  },
+  "cost": 9.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685961286/Restaurant/x3p6vcffwmi0gpg3eaek.jpg",
+  "description": "Un clásico bocata campero veganizado, con pechuga de poyo, queso, canónigos, veganesa y calabacín marinado",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dbaca2d6da760fee9a50e"
+  },
+  "name": "CheeseSteak",
+  "ingredients": "Tofu, salsa de queso(patata, zanahoria, levadura nutricional), cebolla y especias",
+  "category": {
+    "$oid": "643c1c9b47031274becb2817"
+  },
+  "cost": 8.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685961416/Restaurant/i3zx7e2yzfqvjtzssnb4.jpg",
+  "description": "Un bocadillo estadounidense veganizado, cambiando la ternera por tofu marinado, cebolla sofrita y salsa de queso vegana. ¡Una opción excelente!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dbc382d6da760fee9a510"
+  },
+  "name": "Froggy Cinnamon Roll",
+  "ingredients": "Harina, agua, levadura fresca, leche vegetal, azucar, aceite, canela y crema de coco",
+  "category": {
+    "$oid": "643c1cd247031274becb2819"
+  },
+  "cost": 5.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685961782/Restaurant/xqiolumwbsb0vgw6y5ne.jpg",
+  "description": "¿Te gustan los rollos de canela? ¡Este es tu postre! Un clásico rollo de canela con forma de ranita. ¡Un postre bonito y rico!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dbd542d6da760fee9a512"
+  },
+  "name": "Grün",
+  "ingredients": "Hamburguesa de proteina de guisante, aguacate, canónigos, tomate, cebolla y salsa barbacoa",
+  "category": {
+    "$oid": "643c1c7147031274becb2815"
+  },
+  "cost": 10.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685962067/Restaurant/o5oo6bvs74ge60ul0hfl.jpg",
+  "description": "Una hamburguesa que hace referencia al restauraurante, siendo esta la mas verde. Con aguacate, canónigos, tomate y una salsa barbacoa, esta hamburguesa se convierte en una excelente opción",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dbe0c2d6da760fee9a514"
+  },
+  "name": "Kentucky Friend Chicken't",
+  "ingredients": "Filete de soja, salsa vrava(ajo tierno, cebolla tierna, caldo de verduras, harina y cayena), queso vegano, lechuga y tomate",
+  "category": {
+    "$oid": "643c1c7147031274becb2815"
+  },
+  "cost": 11.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685962251/Restaurant/a01opyaddmvyxdgxefwl.jpg",
+  "description": "¿Añoras el pollo frito o quieres una opción más saludable? ¡Esta hamburguesa es para tí! Dos hamburguesas de no-pollo frito con queso, lechuga, tomate y salsa vrava. ¡Una combinación monstruosa! ",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dbf172d6da760fee9a516"
+  },
+  "name": "Mario Vros",
+  "ingredients": "Filete de soja, canónigos, setas, caldo de verduras, levadura nutricional, especias",
+  "category": {
+    "$oid": "643c1c7147031274becb2815"
+  },
+  "cost": 10.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685962518/Restaurant/ds3yvhguxnhfkym55bfb.jpg",
+  "description": "¡Mamma mia! Esta hamburguesa vegana con salsa de setas es una perfecta opción si te gusta la combinación de sabores. Junto a una hamburguesa de no-pollo y canónigos, consigue una combinación de sabores ri-quí-si-ma",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dbfee2d6da760fee9a518"
+  },
+  "name": "Mousse de chocolate",
+  "ingredients": "Tofu, chocolate puro 90%, sacarina, leche vegetal, fresas",
+  "category": {
+    "$oid": "643c1cd247031274becb2819"
+  },
+  "cost": 5.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685962733/Restaurant/wzegktob9acdxcu7ztbq.jpg",
+  "description": "Si lo que te apetece es chocolate esta debe ser tu opción. Una mousse super cremosa de chocolate acompañado de fresas, una mezcla espectacular",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dc12c2d6da760fee9a51a"
+  },
+  "name": "Pulled Schroom BBQ",
+  "ingredients": "Setas ostra, pepinillos, cebolla, salsa barbacoa, salsa de soja, levadura nutricional y especias",
+  "category": {
+    "$oid": "643c1c9b47031274becb2817"
+  },
+  "cost": 8.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685963050/Restaurant/rqe5zmwysfjvrdyepanx.jpg",
+  "description": "¿Te gusta el pulled pork? Pues este bocata es una copia perfecta del pulled pork. A base de setas ostras marinadas y horneadas, conseguimos un pulled schroom riquísimo, jugoso y lleno de sabor. ¡ A comer!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dc2152d6da760fee9a51f"
+  },
+  "name": "Vaconator",
+  "ingredients": "Hamburguesa de proteína de guisante, queso vegano y vacon(papel de arroz, salsa de soja y especias)",
+  "category": {
+    "$oid": "643c1c7147031274becb2815"
+  },
+  "cost": 9.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685963284/Restaurant/ozmhi6emez6rv0htmnwe.jpg",
+  "description": "¡La hamburguesa del vacon! Esta hamburguessa está repleta de vacon, además de queso y una riquísima hamburguesa.",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dc2682d6da760fee9a521"
+  },
+  "name": "Alioli",
+  "ingredients": "Leche vegetal, aceite, ajo y sal",
+  "category": {
+    "$oid": "644cf98668f1f9c963acbab6"
+  },
+  "cost": 0.5,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685963366/Restaurant/ljyvjggjs6mnuxtr9are.jpg",
+  "description": "Alioli casero",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dc33f2d6da760fee9a523"
+  },
+  "name": "Salsa barbacoa",
+  "ingredients": "Salsa barbacoa de bote",
+  "category": {
+    "$oid": "644cf98668f1f9c963acbab6"
+  },
+  "cost": 0.5,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685963581/Restaurant/rfcftsy2nrcifzgyht2k.jpg",
+  "description": "Salsa barbacoa",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dc4ed2d6da760fee9a525"
+  },
+  "name": "Salsa de queso",
+  "ingredients": "Patata, zanahoria, levadura nutricional y especias",
+  "category": {
+    "$oid": "644cf98668f1f9c963acbab6"
+  },
+  "cost": 0.5,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685964012/Restaurant/gwblfjqqdhia1fcjze0p.jpg",
+  "description": "Salsa de queso vegana",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dc5382d6da760fee9a527"
+  },
+  "name": "Salsa vrava",
+  "ingredients": "Cebolleta fresca, ajo tierno, harina, caldo de verduras y cayena",
+  "category": {
+    "$oid": "644cf98668f1f9c963acbab6"
+  },
+  "cost": 0.5,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685964087/Restaurant/gyga4lrwktukblemqvjs.jpg",
+  "description": "Salsa vrava casera",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dc68e2d6da760fee9a529"
+  },
+  "name": "Tarta de queso",
+  "ingredients": "Tofu, yogur de soja, sacarina, agar agar, galleta lotus, margarina, arándanos, framuesas, fresas y azúcar",
+  "category": {
+    "$oid": "643c1cd247031274becb2819"
+  },
+  "cost": 5.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685964428/Restaurant/ppoocrf9tddemkz0n5ev.jpg",
+  "description": "¿A quién no le apetece siempre una tarta de queso? ¡Pues aquí la tienes! Una riquísima tarta de queso a base de yorgur de soja y tofu, con galleta Lotus y una mermelada de frutos del bosque casera. ¡Que rico!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "647dc79b2d6da760fee9a543"
+  },
+  "name": "Tiramisú",
+  "ingredients": "Anacardos, tofu, leche vegetal, bizcocho, cacao en polvo y café",
+  "category": {
+    "$oid": "643c1cd247031274becb2819"
+  },
+  "cost": 4.99,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1685964698/Restaurant/kaacwpdm5yo3kwxnv1my.jpg",
+  "description": "Un riquísimo tiramisú clásico con queso vegano a partir de tofu y anarcados. Además de rico, ¡sanísimo!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648370bc5db44c42343ff73f"
+  },
+  "name": "Cocacola",
+  "ingredients": "Cocacola",
+  "category": {
+    "$oid": "643c1cff47031274becb281b"
+  },
+  "cost": 1.5,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1686335676/Restaurant/mwadygcxhg5dep7duftq.jpg",
+  "description": "Cocacola",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648371105db44c42343ff741"
+  },
+  "name": "Fanta de naranja",
+  "ingredients": "Fanta de naranja",
+  "category": {
+    "$oid": "643c1cff47031274becb281b"
+  },
+  "cost": 1.5,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1686335760/Restaurant/f5xhymxgh0tsrhxpdyaj.jpg",
+  "description": "Fanta de naranja",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648371745db44c42343ff743"
+  },
+  "name": "Alhambra 1925",
+  "ingredients": "Alhambra 1925",
+  "category": {
+    "$oid": "643c1cff47031274becb281b"
+  },
+  "cost": 2,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1686335860/Restaurant/f4zzks2rfrsbatwuj36a.jpg",
+  "description": "Alhambra 1925",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648371a95db44c42343ff745"
+  },
+  "name": "Mahou clásica",
+  "ingredients": "Mahou clásica",
+  "category": {
+    "$oid": "643c1cff47031274becb281b"
+  },
+  "cost": 2,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1686335913/Restaurant/urmhixjqp0vkahnpkkqt.jpg",
+  "description": "Mahou clásica",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648371d95db44c42343ff747"
+  },
+  "name": "Cocacola Zero",
+  "ingredients": "Cocacola Zero",
+  "category": {
+    "$oid": "643c1cff47031274becb281b"
+  },
+  "cost": 1.5,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1686335994/Restaurant/bngy8ffkstszpddwlmqb.jpg",
+  "description": "Cocacola Zero",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648372355db44c42343ff74b"
+  },
+  "name": "Agua",
+  "ingredients": "Agua",
+  "category": {
+    "$oid": "643c1cff47031274becb281b"
+  },
+  "cost": 1,
+  "photo": "https://res.cloudinary.com/ddcjuozld/image/upload/v1686336053/Restaurant/amxi1ihnpyihtssrhayp.jpg",
+  "description": "Agua",
+  "__v": 0
+}]

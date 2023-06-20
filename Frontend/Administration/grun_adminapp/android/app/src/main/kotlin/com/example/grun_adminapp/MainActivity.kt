@@ -1,4 +1,4 @@
-package com.example.grun_adminapp
+package com.tfc.grun_adminapp
 
 import io.flutter.embedding.android.FlutterActivity
 

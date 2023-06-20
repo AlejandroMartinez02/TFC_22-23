@@ -21,7 +21,7 @@ let tableRoutes = require('./components/table/TableRouter')
 
 mongoose.set('strictQuery', true)
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => console.log("contected to mongodb"))
+    .then(() => console.log("connected to mongodb"))
     .catch((error) => console.log(error))
 
 

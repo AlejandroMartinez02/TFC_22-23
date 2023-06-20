@@ -1,0 +1,40 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Flutter-Android",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "M2101K6G"
+        },
+        {
+            "name": "Flutter-Tablet",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "SM T870"
+        },
+        {
+            "name": "Android-VM",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
+        },
+        {
+            "name": "Tablet-VM",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5556"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "All devices",
+            "configurations": [
+                "Flutter-Android",
+                "Flutter-Tablet",
+                "Android-VM",
+                "Tablet-VM"
+            ]
+        }
+    ]
+}

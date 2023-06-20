@@ -14,10 +14,12 @@ const workerSchema = new MONGOOSE.Schema({
     email: {
         type: String,
         require: true,
+        unique: true,
         trim: true
     },
     phone: {
         type: String,
+        unique: true,
         require: true,
         trim: true
     },

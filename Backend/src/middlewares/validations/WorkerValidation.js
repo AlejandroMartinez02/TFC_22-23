@@ -19,12 +19,7 @@ const CREATE_WORKER = () => {
             }),
 
         check('phone')
-            .isMobilePhone('es-ES')
-            .custom(async (phone) => {
-                const searchedPhone = await USER.find({ phone_number: phone })
-                if (searchedPhone.length > 0)
-                    throw new Error('This phone number is already in use')
-            }),
+            .isMobilePhone('es-ES'),
 
         check('password')
             .notEmpty(),
@@ -59,12 +54,7 @@ const UPDATE_WORKER = () => {
             .notEmpty(),
 
         check('phone')
-            .isMobilePhone('es-ES')
-            .custom(async (phone) => {
-                const searchedPhone = await WORKER.find({ phone: phone })
-                if (searchedPhone.length > 0)
-                    throw new Error('This phone number is already in use')
-            }),
+            .isMobilePhone('es-ES'),
 
         check('maritalStatus')
             .notEmpty()

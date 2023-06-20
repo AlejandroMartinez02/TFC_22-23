@@ -17,14 +17,20 @@
             "name": "Android-VM",
             "request": "launch",
             "type": "dart",
-            "deviceId": "sdk gphone x86 64"
+            "deviceId": "emulator-5556"
+        },
+        {
+            "name": "Tablet-VM",
+            "request": "launch",
+            "type": "dart",
+            "deviceId": "emulator-5554"
         },
         {
             "name": "Windows",
             "request": "launch",
             "type": "dart",
             "deviceId": "Windows"
-        }
+        },
     ],
     "compounds": [
         {

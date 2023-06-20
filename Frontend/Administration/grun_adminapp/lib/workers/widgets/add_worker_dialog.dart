@@ -102,11 +102,19 @@ class AddWorkerDialog extends StatelessWidget {
                 duration: Constants.toastDuration)
             .show(context);
         break;
+      case 404:
+        Flushbar(
+                backgroundColor: Theme.of(context).primaryColor,
+                message: Constants.addWorkerError,
+                messageSize: 20,
+                duration: Constants.toastDuration)
+            .show(context);
+        break;
 
       case 500:
         Flushbar(
                 backgroundColor: Theme.of(context).primaryColor,
-                message: Constants.addWorkerError,
+                message: Constants.usedData,
                 messageSize: 20,
                 duration: Constants.toastDuration)
             .show(context);
@@ -189,8 +197,7 @@ class _AddWorkerForm extends StatelessWidget {
             hintText: Constants.workerPassword,
             inputType: TextInputType.name,
             labelText: Constants.workerPassword,
-            onChanged: (value) =>
-                workerProvider.newWorker.salary = int.tryParse(value ?? '0')!,
+            onChanged: (value) => workerProvider.newWorker.password = value!,
             validator: (value) => Validations.passwordValidator(value),
           ),
           MaritalStatusDropDown(

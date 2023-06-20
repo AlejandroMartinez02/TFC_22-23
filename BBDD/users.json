@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "646dec34482236c1c2ee15b6"
+  },
+  "name": "Alejandro",
+  "lastname": "Martinez",
+  "email": "martinezmorilloalejandro@gmail.com",
+  "address": "Avenida Rei Jaume I, 32, 3izq",
+  "phone_number": "695811734",
+  "password": "$2b$10$sYl2rXoSzM4Py.Oz5ND0F./MxokCXPghCsF1tKENJWObpWH6nyj.6",
+  "login_attempts": 5,
+  "__v": 0,
+  "lock_until": {
+    "$numberLong": "1686319351025"
+  }
+},
+{
+  "_id": {
+    "$oid": "6483305b43732d0f604887b8"
+  },
+  "name": "Juan Carlos",
+  "lastname": "Cardo",
+  "email": "jcc@gmail.com",
+  "address": "Avenida Panama 21",
+  "phone_number": "653988741",
+  "password": "$2b$10$bCyCfDFUIclrVC3.fVP3ru15/w47XrS8vnM3XuRXvEJyy2y3lJAP6",
+  "login_attempts": 0,
+  "__v": 0
+}]

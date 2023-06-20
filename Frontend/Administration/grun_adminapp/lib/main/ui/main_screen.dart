@@ -24,7 +24,7 @@ class MainScreen extends StatelessWidget {
         resizeToAvoidBottomInset: false,
         body: Column(
           children: [
-            Platform.isLinux || Platform.isIOS || Platform.isWindows
+            Platform.isLinux || Platform.isMacOS || Platform.isWindows
                 ? const CustomAppBar()
                 : Container(),
             Expanded(

@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "645581fddcc78afc61394642"
+  },
+  "name": "Alex",
+  "lastname": "Martinez",
+  "email": "martinezmorilloalejandro@gmail.com",
+  "phone": "695811734",
+  "password": "$2b$10$WSrjZ1ycIaqE9dclR0rUK.VIL/LlXOoD1pkgHUBO4NlhLcBoZ5qhq",
+  "maritalStatus": "Soltero",
+  "salary": 2000,
+  "age": "10/11/1993",
+  "role": "Admin",
+  "login_attempts": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "645586566858424dad308f09"
+  },
+  "name": "Maria",
+  "lastname": "Jiménez García",
+  "email": "mjimenezgarcia@gmail.com",
+  "phone": "675581231",
+  "password": "$2b$10$o9okRXxMDR.SuoMSkelRcOYx7jm8fh/2dubK1.1rjkSj4fFEJeyEq",
+  "maritalStatus": "Emparejado",
+  "salary": 1400,
+  "age": "2005-06-02 00:00:00.000",
+  "role": "Waiter",
+  "login_attempts": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64711dcd2919eb48b415ffe3"
+  },
+  "name": "Jose",
+  "lastname": "Jiménez García",
+  "email": "jjimenezgarcia@gmail.com",
+  "phone": "685911734",
+  "password": "$2b$10$3BXcOBOQ1nDL8SSEUrejduMJEJvGSOVtTl.HbWORukVcPOnaoXQp2",
+  "maritalStatus": "Emparejado",
+  "salary": 1400,
+  "age": "2000-04-10 00:00:00.000",
+  "role": "Chef",
+  "login_attempts": 0,
+  "__v": 0
+}]

@@ -27,6 +27,7 @@ class CircularChart extends StatelessWidget {
           iconHeight: 40,
           iconWidth: 40,
           isVisible: true,
+          title: LegendTitle(text: 'Productos', textStyle: bodyLarge),
           position: LegendPosition.left,
           overflowMode: LegendItemOverflowMode.wrap,
           legendItemBuilder:

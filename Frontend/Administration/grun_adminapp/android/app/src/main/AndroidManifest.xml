@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.grun_adminapp">
+    package="com.tfc.grun_adminapp">
 
     <compatible-screens>
         android:smallScreens="false"

@@ -1,0 +1,38 @@
+[{
+  "_id": {
+    "$oid": "646e50a7c640940c16ebcc9a"
+  },
+  "tableNumber": 1,
+  "isInUse": false
+},
+{
+  "_id": {
+    "$oid": "646e50d5c640940c16ebcc9c"
+  },
+  "tableNumber": 2,
+  "isInUse": false
+},
+{
+  "_id": {
+    "$oid": "6478e00664be05bf3ecf8152"
+  },
+  "tableNumber": 4,
+  "isInUse": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6478e09864be05bf3ecf818c"
+  },
+  "tableNumber": 3,
+  "isInUse": false,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6478e0a264be05bf3ecf818e"
+  },
+  "tableNumber": 5,
+  "isInUse": false,
+  "__v": 0
+}]
